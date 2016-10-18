@@ -1,0 +1,17 @@
+Clean System Files/
+
+sapl/
+
+Trains-data/
+
+Trains.exe-data/
+
+cleanTrains.sublime-project
+
+cleanTrains.sublime-workspace
+
+Trains.exe
+
+Trains.exe.exe
+
+*.prp
