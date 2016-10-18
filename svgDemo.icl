@@ -14,7 +14,18 @@ implementation module svgDemo
 import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 
+import hoi
 
+font = normalFontDef "Arial" 14.0
+
+sectionWidth :: Span
+sectionWidth = px 100.0
+
+sectionHeight :: Span
+sectionHeight = px 100.0
+
+sectionBackgroundColor :: SVGColor
+sectionBackgroundColor = toSVGColor "silver"
 
 
 // Train
@@ -30,5 +41,14 @@ wheels = beside [] [] [wheel, wheelSpace, wheel, wheelSpace, wheel, wheelSpace, 
 house :: Image a
 house = polygon Nothing [(zero,zero),(zero, px 80.0),(px 200.0, px 80.0),(px 100.0, zero)] <@< {fill = toSVGColor "grey"}
 
-train ::  Bool -> Image a
-train  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing)
+drawTrain ::  Bool -> Image a
+drawTrain  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing)
+
+// Section
+sectionBackground :: Image a
+sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroundColor}
+
+drawSection :: Section -> Image a
+drawSection {sLabel} = overlay [(AtMiddleX, AtBottom)] [] [text font sLabel] (Just (sectionBackground))
+
+
