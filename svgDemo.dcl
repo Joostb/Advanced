@@ -7,3 +7,4 @@ import hoi
 drawTrain ::  Bool -> Image a
 
 drawSection :: Section -> Image a
+drawSections :: [Section] -> Image a

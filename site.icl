@@ -22,6 +22,12 @@ task
 updateTask :: Task State
 updateTask = updateSharedInformation (Title "State") [] state
 
+createTestSection :: Int -> Section
+createTestSection n = {sLabel="s" +++ toString(n), sPosition={xPos = n, yPos=0}, sLeftSignal = (Just True), sRightSignal = (Just False)}
+
+createTest :: Int -> [Section]
+createTest n = map createTestSection [1..n] 
+
 // display the shared state as an image and update it
 imageTask :: Task State
 imageTask =
@@ -38,10 +44,6 @@ imageTask =
 		state
 
 myImage :: State -> Image State
-myImage s = 
-	overlay [(AtMiddleX,AtMiddleY)] [] [text font (toString s.clicks)]
-	(Just (drawSection {sLabel="lolnoob", sPosition={xPos = 0, yPos=0}, sLeftSignal = Nothing, sRightSignal = Nothing}
-					<@< {onclick = \i s.{s & clicks = i + s.clicks, red = not s.red}, local = False}
-			  ))
+myImage s = drawSections (createTest 4)
 			  
 font = normalFontDef "Arial" 18.0
