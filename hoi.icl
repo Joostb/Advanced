@@ -22,4 +22,6 @@ derive class iTask Section
 derive class iTask Type
 derive class iTask Track
 
+derive class iTask UserRole
+
 derive class iTask State

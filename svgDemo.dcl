@@ -4,7 +4,6 @@ import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 import hoi
 
-drawTrain ::  Bool -> Image a
+drawTrain ::  Bool -> Image State
 
-drawSection :: String Section -> Image a
 drawTracks :: State -> Image State

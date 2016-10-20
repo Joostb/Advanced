@@ -7,8 +7,12 @@ import svgDemo
 Start :: *World -> *World
 Start world = startEngine [publish "/" (WebApp []) (\_ -> task)] world
 
-state :: Shared State
-state = sharedStore "sharedState" {tracks = createTest 4}
+state :: Shared State 
+state = sharedStore "sharedState" {
+		tracks = createTest 4,
+		role = Designer,
+		step = 1
+	}
 
 task :: Task State
 task
