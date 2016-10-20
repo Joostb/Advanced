@@ -7,11 +7,13 @@ import svgDemo
 Start :: *World -> *World
 Start world = startEngine [publish "/" (WebApp []) (\_ -> task)] world
 
-:: State = {red :: Bool, clicks :: Int}
-derive class iTask State
 
-state :: Shared State
-state = sharedStore "sharedState" {red = False, clicks = 0}
+state :: Shared State 
+state = sharedStore "sharedState" {
+		sections = [],
+		role = Designer,
+		step = 1
+	}
 
 task :: Task State
 task

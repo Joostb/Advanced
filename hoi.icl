@@ -16,3 +16,5 @@ import iTasks.API.Extensions.SVG.SVGlet
 
 derive class iTask Position
 derive class iTask Section
+derive class iTask UserRole
+derive class iTask State

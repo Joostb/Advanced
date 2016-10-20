@@ -35,26 +35,26 @@ sectionBackgroundColor = toSVGColor "silver"
 
 
 // Train
-wheel :: Image a
+wheel :: Image State
 wheel = circle (px 30.0)
 
-wheelSpace :: Image a
+wheelSpace :: Image State
 wheelSpace = empty (px 5.0) (px 5.0)
 
-wheels :: Image a
+wheels :: Image State
 wheels = beside [] [] [wheel, wheelSpace, wheel, wheelSpace, wheel, wheelSpace, wheel] Nothing
 
-house :: Image a
+house :: Image State
 house = polygon Nothing [(zero,zero),(zero, px 80.0),(px 200.0, px 80.0),(px 100.0, zero)] <@< {fill = toSVGColor "grey"}
 
-drawTrain ::  Bool -> Image a
+drawTrain ::  Bool -> Image State
 drawTrain  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing)
 
 // Section
-drawRail :: Image a
+drawRail :: Image State
 drawRail = rect sectionWidth railHeight <@< {fill = railColor}
 
-drawLeftSignal :: (Maybe Bool) -> [Image a]
+drawLeftSignal :: (Maybe Bool) -> [Image State]
 drawLeftSignal Nothing = []
 drawLeftSignal (Just b) = 	[overlay 
 								[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
@@ -63,7 +63,7 @@ drawLeftSignal (Just b) = 	[overlay
 								(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} <@< {strokewidth = zero}))
 							]
 							
-drawRightSignal :: (Maybe Bool) -> [Image a]
+drawRightSignal :: (Maybe Bool) -> [Image State]
 drawRightSignal Nothing = []
 drawRightSignal (Just b) = 	[overlay 
 								[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
@@ -72,17 +72,17 @@ drawRightSignal (Just b) = 	[overlay
 								(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} <@< {strokewidth = zero}))
 							]
 
-sectionBackground :: Image a
+sectionBackground :: Image State
 sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroundColor}
 
-drawSection :: Section -> Image a
+drawSection :: Section -> Image State
 drawSection {sLabel, sLeftSignal, sRightSignal} = overlay	
 								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY)] ++ (if(sLeftSignal == Nothing) ([]) ([(AtLeft, AtTop)])) ++ (if(sRightSignal == Nothing) ([]) ([(AtRight, AtTop)])))
 								[] 
-								([text font sLabel, drawRail] ++ (drawLeftSignal sLeftSignal) ++ (drawRightSignal sRightSignal)) 
+								([text font sLabel, drawRail] ++ (drawLeftSignal sLeftSignal /*<@< {onclick = f, local = False}*/) ++ (drawRightSignal sRightSignal)) 
 								(Just (sectionBackground))
 
-drawSections :: [Section] -> Image a
+drawSections :: [Section] -> Image State
 drawSections ss = beside [] [] (map drawSection ss) Nothing
 
 
