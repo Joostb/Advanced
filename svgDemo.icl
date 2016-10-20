@@ -54,18 +54,9 @@ drawTrain  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing
 drawRail :: Image a
 drawRail = rect sectionWidth railHeight <@< {fill = railColor}
 
-drawLeftSignal :: (Maybe Bool) -> [Image a]
-drawLeftSignal Nothing = []
-drawLeftSignal (Just b) = 	[overlay 
-								[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
-								[] 
-								[circle (px 12.0) <@< {fill = toSVGColor "black"}, circle (px 10.0) <@< {fill = toSVGColor (if (b) ("green") ("red"))}] 
-								(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} <@< {strokewidth = zero}))
-							]
-							
-drawRightSignal :: (Maybe Bool) -> [Image a]
-drawRightSignal Nothing = []
-drawRightSignal (Just b) = 	[overlay 
+drawSignal :: (Maybe Bool) -> [Image a]
+drawSignal Nothing = []
+drawSignal (Just b) = 	[overlay 
 								[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
 								[] 
 								[circle (px 12.0) <@< {fill = toSVGColor "black"}, circle (px 10.0) <@< {fill = toSVGColor (if (b) ("green") ("red"))}] 
@@ -75,14 +66,18 @@ drawRightSignal (Just b) = 	[overlay
 sectionBackground :: Image a
 sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroundColor}
 
-drawSection :: Section -> Image a
-drawSection {sLabel, sLeftSignal, sRightSignal} = overlay	
+drawSection :: String Section -> Image a
+drawSection sLabel {sLeftSignal, sRightSignal} = overlay	
 								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY)] ++ (if(sLeftSignal == Nothing) ([]) ([(AtLeft, AtTop)])) ++ (if(sRightSignal == Nothing) ([]) ([(AtRight, AtTop)])))
 								[] 
-								([text font sLabel, drawRail] ++ (drawLeftSignal sLeftSignal) ++ (drawRightSignal sRightSignal)) 
+								([text font sLabel, drawRail] ++ (drawSignal sLeftSignal) ++ (drawSignal sRightSignal)) 
 								(Just (sectionBackground))
 
-drawSections :: [Section] -> Image a
-drawSections ss = beside [] [] (map drawSection ss) Nothing
+drawTracksInternal :: [Track] -> [Image a]
+drawTracksInternal [{tLabel, tType = (SEC s)}:ts] = [(drawSection tLabel s):(drawTracksInternal ts)]
+drawTracksInternal [] = []
+								
+drawTracks :: State -> Image State
+drawTracks s = beside [] [] (drawTracksInternal s.tracks) Nothing
 
 

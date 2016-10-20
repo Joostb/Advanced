@@ -15,4 +15,11 @@ import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 
 derive class iTask Position
+derive class iTask Orientation
+
+derive class iTask Switch
 derive class iTask Section
+derive class iTask Type
+derive class iTask Track
+
+derive class iTask State

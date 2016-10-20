@@ -6,5 +6,5 @@ import hoi
 
 drawTrain ::  Bool -> Image a
 
-drawSection :: Section -> Image a
-drawSections :: [Section] -> Image a
+drawSection :: String Section -> Image a
+drawTracks :: State -> Image State

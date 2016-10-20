@@ -7,11 +7,8 @@ import svgDemo
 Start :: *World -> *World
 Start world = startEngine [publish "/" (WebApp []) (\_ -> task)] world
 
-:: State = {red :: Bool, clicks :: Int}
-derive class iTask State
-
 state :: Shared State
-state = sharedStore "sharedState" {red = False, clicks = 0}
+state = sharedStore "sharedState" {tracks = createTest 4}
 
 task :: Task State
 task
@@ -22,10 +19,10 @@ task
 updateTask :: Task State
 updateTask = updateSharedInformation (Title "State") [] state
 
-createTestSection :: Int -> Section
-createTestSection n = {sLabel="s" +++ toString(n), sPosition={xPos = n, yPos=0}, sLeftSignal = (Just True), sRightSignal = (Just False)}
+createTestSection :: Int -> Track
+createTestSection n = {tLabel="s" +++ toString(n), tPosition={xPos = n, yPos=0}, tType = (SEC {sLeftSignal = (Just True), sRightSignal = (Just False)})}
 
-createTest :: Int -> [Section]
+createTest :: Int -> [Track]
 createTest n = map createTestSection [1..n] 
 
 // display the shared state as an image and update it
@@ -44,6 +41,6 @@ imageTask =
 		state
 
 myImage :: State -> Image State
-myImage s = drawSections (createTest 4)
+myImage s = drawTracks s
 			  
 font = normalFontDef "Arial" 18.0
