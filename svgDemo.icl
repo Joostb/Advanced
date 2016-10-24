@@ -11,6 +11,8 @@ implementation module svgDemo
 	- the SVG system can use much memory, for instance 50M (in project options)
 */
 
+import StdArray
+
 import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 
@@ -52,32 +54,52 @@ drawTrain  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing
 
 // Section
 drawRail :: Image State
-drawRail = rect sectionWidth railHeight <@< {fill = railColor}
+drawRail = rect sectionWidth railHeight <@< {fill = railColor}					
 
-drawSignal :: (Maybe Bool) -> [Image a]
-drawSignal Nothing = []
-drawSignal (Just b) = 	[overlay 
-								[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
-								[] 
-								[circle (px 12.0) <@< {fill = toSVGColor "black"}, circle (px 10.0) <@< {fill = toSVGColor (if (b) ("green") ("red"))}] 
-								(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} <@< {strokewidth = zero}))
-							]
+drawSignal :: Int (Maybe Bool) Bool -> Image State
+drawSignal _ Nothing _ = empty zero zero
+drawSignal index (Just b) isLeft = overlay 
+						[(AtMiddleX, AtMiddleY), (AtMiddleX, AtMiddleY)] 
+						[] 
+						[circle (px 10.0) 
+						<@< {fill = toSVGColor (if (b) ("green") ("red"))}
+						<@< {strokewidth = (px 2.5)}
+						<@< {onclick = \i s -> {s & tracks =  case (s.tracks!!index).tType of
+																(SEC section) = updateAt 	index 
+																							({s.tracks!!index & tType = if (isLeft)
+																														(SEC {section & sLeftSignal = Just (not b)}) 
+																														(SEC {section & sRightSignal = Just (not b)})
+																							})
+																							s.tracks
+												}, local = False}] 
+						(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} 
+						<@< {strokewidth = zero}
+						
+						))
+						
+drawLeftSignal :: Int (Maybe Bool) -> Image State
+drawLeftSignal arg1 arg2 = drawSignal arg1 arg2 True
+
+drawRightSignal :: Int (Maybe Bool) -> Image State
+drawRightSignal arg1 arg2 = drawSignal arg1 arg2 False 
+		
 
 sectionBackground :: Image State
 sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroundColor}
 
-drawSection :: String Section -> Image State
-drawSection sLabel {sLeftSignal, sRightSignal} = overlay	
-								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY)] ++ (if(sLeftSignal == Nothing) ([]) ([(AtLeft, AtTop)])) ++ (if(sRightSignal == Nothing) ([]) ([(AtRight, AtTop)])))
+drawSection :: Int Track -> Image State
+drawSection index {tLabel, tType = (SEC {sLeftSignal, sRightSignal})} = overlay	
+								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop)])
 								[] 
-								([text font sLabel, drawRail] ++ (drawSignal sLeftSignal) ++ (drawSignal sRightSignal)) 
+								([text font tLabel, drawRail, drawLeftSignal index sLeftSignal, drawRightSignal index sRightSignal]) 
 								(Just (sectionBackground))
+								
 
-drawTracksInternal :: [Track] -> [Image State]
-drawTracksInternal [{tLabel, tType = (SEC s)}:ts] = [(drawSection tLabel s):(drawTracksInternal ts)]
-drawTracksInternal [] = []
+drawTrack :: State Int -> Image State
+drawTrack s index = case ((s.tracks!!index).tType) of 
+						(SEC section) = drawSection index (s.tracks!!index)
 								
 drawTracks :: State -> Image State
-drawTracks s = beside [] [] (drawTracksInternal s.tracks) Nothing
+drawTracks s = beside [] [] (map (drawTrack s) [0..((length s.tracks) - 1)]) Nothing
 
 
