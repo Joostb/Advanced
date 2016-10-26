@@ -11,7 +11,8 @@ import iTasks.API.Extensions.SVG.SVGlet
 :: Orientation = NE | NW | SE | SW
 	
 :: Switch = { 
-		sOrientation :: Orientation
+		sOrientation :: Orientation,
+		sOn :: Bool
 	}	
 
 :: Section = {
@@ -35,6 +36,15 @@ import iTasks.API.Extensions.SVG.SVGlet
 		role :: UserRole,
 		step :: Int
 	}
+	
+
+GetTrackIndex :: [Track] Track -> Int
+
+GetTracksSmallestX :: [Track] -> Int
+GetTracksSmallestY :: [Track] -> Int
+	
+GetTrackHeight :: [Track] -> Int
+GetTrackWidth :: [Track] -> Int
 	
 
 derive class iTask Position
