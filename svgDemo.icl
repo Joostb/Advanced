@@ -32,6 +32,9 @@ sectionWidth = px 100.0
 sectionHeight :: Span
 sectionHeight = px 100.0
 
+switchHeight :: Span
+switchHeight = px 200.0
+
 sectionBackgroundColor :: SVGColor
 sectionBackgroundColor = toSVGColor "silver"
 
@@ -87,6 +90,9 @@ drawRightSignal arg1 arg2 = drawSignal arg1 arg2 False
 sectionBackground :: Image State
 sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroundColor}
 
+switchBackground :: Image State
+switchBackground = rect sectionWidth switchHeight <@< {fill = sectionBackgroundColor}
+
 drawSection :: Int Track -> Image State
 drawSection index {tLabel, tType = (SEC {sLeftSignal, sRightSignal})} = overlay	
 								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop)])
@@ -94,10 +100,18 @@ drawSection index {tLabel, tType = (SEC {sLeftSignal, sRightSignal})} = overlay
 								([text font tLabel, drawRail, drawLeftSignal index sLeftSignal, drawRightSignal index sRightSignal]) 
 								(Just (sectionBackground))
 								
+drawSwitch :: Int Track -> Image State
+drawSwitch index {tLabel, tType = (SWT {sOrientation})} = overlay	
+															([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY)])
+															[] 
+															([text font tLabel, drawRail]) 
+															(Just (switchBackground))
+								
 
 drawTrack :: State Int -> Image State
 drawTrack s index = case ((s.tracks!!index).tType) of 
 						(SEC section) = drawSection index (s.tracks!!index)
+						(SWT switch) = drawSwitch index (s.tracks!!index)
 								
 drawTracks :: State -> Image State
 drawTracks s = beside [] [] (map (drawTrack s) [0..((length s.tracks) - 1)]) Nothing

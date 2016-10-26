@@ -9,7 +9,7 @@ Start world = startEngine [publish "/" (WebApp []) (\_ -> task)] world
 
 state :: Shared State 
 state = sharedStore "sharedState" {
-		tracks = createTest 4,
+		tracks = (createTest 4) ++ [{tLabel="s5", tPosition={xPos=4, yPos=0}, tType = (SEC {sLeftSignal = (Just True), sRightSignal = (Just False)})}],
 		role = Designer,
 		step = 1
 	}
