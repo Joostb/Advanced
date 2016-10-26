@@ -14,6 +14,13 @@ implementation module hoi
 import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 
+instance == UserRole where
+	(==) Designer Designer = True
+	(==) Machinist Machinist = True
+	(==) Controller Controller = True
+	(==) _ _ = False
+
+
 derive class iTask Position
 derive class iTask Orientation
 
@@ -21,6 +28,8 @@ derive class iTask Switch
 derive class iTask Section
 derive class iTask Type
 derive class iTask Track
+
+derive class iTask Train
 
 derive class iTask UserRole
 

@@ -28,15 +28,21 @@ import iTasks.API.Extensions.SVG.SVGlet
 		tType :: Type
 	}
 
+:: Train = {
+		position :: Position,
+		direction :: Bool
+	}
 
 :: UserRole = Machinist | Controller | Designer
 
 :: State = {
 		tracks :: [Track],
 		role :: UserRole,
-		step :: Int
+		step :: Int,
+		trains :: [Train]
 	}
-	
+
+instance == UserRole
 
 GetTrackIndex :: [Track] Track -> Int
 
@@ -54,6 +60,8 @@ derive class iTask Switch
 derive class iTask Section
 derive class iTask Type
 derive class iTask Track
+
+derive class iTask Train
 
 derive class iTask UserRole
 

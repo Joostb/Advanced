@@ -136,7 +136,7 @@ sectionBackground = rect sectionWidth sectionHeight <@< {fill = sectionBackgroun
 
 drawSection :: Int Track -> Image State
 drawSection index {tLabel, tType = (SEC {sLeftSignal, sRightSignal})} = overlay	
-								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop)])
+								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop), (AtMiddleX, AtBottom)])
 								[] 
 								([text font tLabel, drawRail False, drawLeftSignal index sLeftSignal, drawRightSignal index sRightSignal]) 
 								(Just (sectionBackground))
