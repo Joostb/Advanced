@@ -58,7 +58,7 @@ drawTrain  r = if r flipx id (above (repeat AtMiddleX) [] [house,wheels] Nothing
 // Section
 drawRail :: Image State
 drawRail = rect sectionWidth railHeight <@< {fill = railColor}					
-
+ 
 drawSignal :: Int (Maybe Bool) Bool -> Image State
 drawSignal _ Nothing _ = empty zero zero
 drawSignal index (Just b) isLeft = overlay 
@@ -95,7 +95,7 @@ switchBackground = rect sectionWidth switchHeight <@< {fill = sectionBackgroundC
 
 drawSection :: Int Track -> Image State
 drawSection index {tLabel, tType = (SEC {sLeftSignal, sRightSignal})} = overlay	
-								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop)])
+								([(AtMiddleX, AtBottom), (AtMiddleX, AtMiddleY), (AtLeft, AtTop), (AtRight, AtTop), (AtMiddleX, AtBottom)])
 								[] 
 								([text font tLabel, drawRail, drawLeftSignal index sLeftSignal, drawRightSignal index sRightSignal]) 
 								(Just (sectionBackground))

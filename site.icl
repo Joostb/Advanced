@@ -11,13 +11,42 @@ state :: Shared State
 state = sharedStore "sharedState" {
 		tracks = (createTest 4) ++ [{tLabel="s5", tPosition={xPos=4, yPos=0}, tType = (SEC {sLeftSignal = (Just True), sRightSignal = (Just False)})}],
 		role = Designer,
-		step = 1
+		step = 1,
+		trains = [{xPos=1,yPos=1}]
 	}
 
 task :: Task State
 task
-	= (		(updateTask <<@ ArrangeHorizontal)
-	-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal
+	=  doIdentified >>= nextTask  
+
+
+// TODO Verschillende tasks implementeren
+nextTask :: State -> Task State 
+nextTask ({role})  
+	| role==Designer  = designerTask
+	| role==Machinist = ((		(updateTask <<@ ArrangeHorizontal)
+		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
+    | role==Controller = controllerTask
+    | True             = ((		(updateTask <<@ ArrangeHorizontal)
+		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
+ 
+ 
+designerTask = ((		(updateTask <<@ ArrangeHorizontal)
+		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
+
+machinistTrack = (imageTask <<@ ArrangeHorizontal) 
+		   // -||- (stepTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal
+
+//stepTask = upd (\ step. if step {s & trains=[{xPos}]})
+
+
+
+controllerTask = imageTask
+
+
+doIdentified :: Task State 
+doIdentified  = enterInformation "Enter your role" [] 
+				>>= \role . upd (\s. {s & role = role}) state 
 
 // regular iTask update of shared state
 updateTask :: Task State
