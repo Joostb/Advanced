@@ -22,9 +22,25 @@ import hoi
 
 DrawTrackDrawing :: State TrackDraw -> Image State
 DrawTrackDrawing _ EMPTY 		= rect sectionWidth sectionHeight <@< {strokewidth = (px 0.0)} <@< {opacity=0.0}
-DrawTrackDrawing s (SECTION t) 	= drawSection (GetTrackIndex s.tracks t) t
-DrawTrackDrawing _ (SWITCHA t)	= drawSwitchA t
-DrawTrackDrawing _ (SWITCHB t)	= drawSwitchB t
+DrawTrackDrawing s (SECTION t) 	= overlay [] [(px 22.0, px 15.0)] (TrackHasTrain s t) (Just (drawSection (GetTrackIndex s.tracks t) t))
+DrawTrackDrawing s (SWITCHA (t=:{tType = (SWT {sOn})})) = overlay [] [(px 22.0, px 15.0)] if (not sOn) (TrackHasTrain s t) [] (Just (drawSwitchA t))
+DrawTrackDrawing s (SWITCHB (t=:{tType = (SWT {sOn})})) = overlay [] [(px 22.0, px -19.0)] if sOn (map (rotate (deg -45.0)) (TrackHasTrain s t)) [] (Just (drawSwitchB t))
+
+TrackHasTrain :: State Track -> [Image State]
+TrackHasTrain s t = if ((length trains) >= 1) 
+						[(fitx (px 60.0) (drawTrain (trains!!0).Train.direction))
+							<@< {onclick = \i s -> drive (trains!!0) s, local=False} ] 
+						[]
+					where trains = (filter (\{position={xPos,yPos}}. (xPos == t.tPosition.xPos && yPos==t.tPosition.yPos)) s.trains)
+
+
+drive :: Train State -> State
+drive t s = {s & trains = tr}
+			where tr = map 
+						(\ {position={xPos,yPos}, direction}. 
+								if (xPos == t.position.xPos && yPos == t.position.yPos) 
+									({direction=direction, position={xPos=xPos + (if direction (-1) 1), yPos=yPos}})
+									({position={xPos=xPos,yPos=yPos}, direction=direction})) s.trains
 
 BuildEmptyTrackDrawing :: [Track] -> [[TrackDraw]]
 BuildEmptyTrackDrawing tracks = repeatn (GetTrackWidth tracks) (repeatn (GetTrackHeight tracks) EMPTY)
@@ -180,11 +196,6 @@ drawSwitchB (t=:{tLabel, tType = (SWT {sOrientation, sOn})}) = overlay
 																	(SW) = (AtLeft, AtTop)
 																	(SE) = (AtRight, AtTop)
 								
-
-drawTrack :: State Int -> Image State
-drawTrack s index = case ((s.tracks!!index).tType) of 
-						(SEC section) = drawSection index (s.tracks!!index)
-						//(SWT switch) = drawSwitch index (s.tracks!!index)			
 
 /*drawTracks :: State -> Image State
 drawTracks s = beside 
