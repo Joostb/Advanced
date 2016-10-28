@@ -24,8 +24,7 @@ task
 nextTask :: State -> Task State 
 nextTask ({role})  
 	| role==Designer  = designerTask
-	| role==Machinist = ((		(updateTask <<@ ArrangeHorizontal)
-		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
+	| role==Machinist = machinistTask
     | role==Controller = controllerTask
     | True             = ((		(updateTask <<@ ArrangeHorizontal)
 		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
@@ -34,7 +33,7 @@ nextTask ({role})
 designerTask = ((		(updateTask <<@ ArrangeHorizontal)
 		-||-	(imageTask  <<@ ArrangeHorizontal)) <<@ ArrangeHorizontal)
 
-machinistTrack = (imageTask <<@ ArrangeHorizontal) 
+machinistTask = (imageTask <<@ ArrangeHorizontal) 
 		   // -||- (stepTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal
 
 //stepTask = upd (\ step. if step {s & trains=[{xPos}]})

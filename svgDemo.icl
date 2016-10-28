@@ -39,8 +39,49 @@ drive t s = {s & trains = tr}
 			where tr = map 
 						(\ {position={xPos,yPos}, direction}. 
 								if (xPos == t.position.xPos && yPos == t.position.yPos) 
-									({direction=direction, position={xPos=xPos + (if direction (-1) 1), yPos=yPos}})
+									({direction=direction, position={xPos=xPos + (if direction (-1) 1), yPos=yPos + (switchUpDown s xPos yPos direction)}})
 									({position={xPos=xPos,yPos=yPos}, direction=direction})) s.trains
+
+
+
+/* 
+:: Track = {
+		tLabel :: String,
+		tPosition :: Position,
+		tType :: Type
+	}
+*/
+
+switchUpDown :: State Int Int Bool -> Int
+switchUpDown s xPos yPos direction = nextTrack // TODO Als de volgende track leeg is, dan zou het een switch kunnen zijn die aanstaat, in dat geval, verplaats zo dat je echt op de track staat.
+				where currentTrack = (filter (\ track . xPos == track.tPosition.xPos && yPos == track.tPosition.yPos) s.tracks)!!0 //never empty
+					  currentSwitch = case currentTrack.tType of 
+								(SEC s)     = 0
+								(SWT swtch) = if (not swtch.sOn)
+												0
+												(case swtch.sOrientation of
+													NE = 1
+													SE = -1
+													NW = 1
+													NE = -1)
+	  				  xDir = if direction (-1) 1
+					  nextTrack = case getNextTrack xDir 0 of
+					  				[x:xs] = currentSwitch // niks aan de hand, hier kunnen wee op rijden
+					  				[] = case getNextTrack xDir 1 of
+					  						[x:xs] = case x.tType of
+					  									(SEC _) = down // als dit een section is is het geen switch
+					  									(SWT swtch) = currentSwitch + 1 // geen check als het fout gaat
+					  						[] = down // als er niks is, dan is er geen switch
+					  down = case getNextTrack xDir (-1) of
+					  			[x:xs] = case x.tType of
+	  												(SEC _) = 100 //Je bent het beeld uit gereden
+	  												(SWT swtch) = currentSwitch - 1 // geen check, als het fout gat
+	  							[] = 100 //je bent het beeld uit gereden
+	  				  getNextTrack xdirection ydirection = (filter (\ track . (xPos + xdirection) == track.tPosition.xPos  && (yPos + currentSwitch + ydirection) == track.tPosition.yPos) s.tracks) 
+
+
+
+
 
 BuildEmptyTrackDrawing :: [Track] -> [[TrackDraw]]
 BuildEmptyTrackDrawing tracks = repeatn (GetTrackWidth tracks) (repeatn (GetTrackHeight tracks) EMPTY)
