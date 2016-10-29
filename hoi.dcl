@@ -43,6 +43,18 @@ import iTasks.API.Extensions.SVG.SVGlet
 	}
 
 instance == UserRole
+instance == Orientation
+
+isNorth :: Orientation -> Bool
+isEast :: Orientation -> Bool
+isSouth :: Orientation -> Bool
+isWest :: Orientation -> Bool
+
+ExistsTrackByPosition :: [Track] Position -> Bool
+GetTrackByPosition :: [Track] Position -> Track
+
+ToggleSwitch :: [Track] Int -> [Track]
+ToggleLight :: [Track] Bool Int -> [Track]
 
 GetTrackIndex :: [Track] Track -> Int
 

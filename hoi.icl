@@ -19,6 +19,13 @@ instance == UserRole where
 	(==) Machinist Machinist = True
 	(==) Controller Controller = True
 	(==) _ _ = False
+	
+instance == Orientation where
+	(==) NE NE = True
+	(==) NW NW = True
+	(==) SE SE = True
+	(==) SW SW = True
+	(==) _ _ = False
 
 
 derive class iTask Position
@@ -35,6 +42,49 @@ derive class iTask UserRole
 
 derive class iTask State
 
+isNorth :: Orientation -> Bool
+isNorth orin = isMember orin [NE, NW]
+
+isEast :: Orientation -> Bool
+isEast orin = isMember orin [NE, SE]
+
+isSouth :: Orientation -> Bool
+isSouth orin = isMember orin [SE, SW]
+
+isWest :: Orientation -> Bool
+isWest orin = isMember orin [SW, NW]
+
+ExistsTrackByPosition :: [Track] Position -> Bool
+ExistsTrackByPosition ts {xPos=x, yPos=y} = length (valid) > 0
+		where 	valid = filter (\{tPosition={xPos, yPos}, tType} . case tType of
+										(SEC section) = x == xPos && y == yPos 
+										(SWT {sOrientation}) = (x == xPos && y == yPos) ||
+																(x == xPos && (y+1) == yPos && isSouth sOrientation) ||
+																(x == xPos && (y-1) == yPos && isNorth sOrientation))
+								ts
+
+GetTrackByPosition :: [Track] Position -> Track
+GetTrackByPosition ts {xPos=x, yPos=y} = (valid)!!0
+		where	valid = filter (\{tPosition={xPos, yPos}, tType} . case tType of
+										(SEC section) = x == xPos && y == yPos 
+										(SWT {sOrientation}) = (x == xPos && y == yPos) ||
+																(x == xPos && (y+1) == yPos && isSouth sOrientation) ||
+																(x == xPos && (y-1) == yPos && isNorth sOrientation))
+								ts
+
+
+ToggleSwitch :: [Track] Int -> [Track]
+ToggleSwitch ts i = case (ts!!i).tType of
+					(SWT swt) = updateAt i {ts!!i & tType = (SWT {swt & sOn=(not swt.sOn)})} ts
+					
+ToggleLight :: [Track] Bool Int -> [Track]
+ToggleLight ts left i = case (ts!!i).tType of
+							(SEC sec) = updateAt 	i 
+														({ts!!i & tType = if (left)
+															(SEC {sec & sLeftSignal = Just (not (fromJust sec.sLeftSignal))}) 
+															(SEC {sec & sRightSignal = Just (not (fromJust sec.sRightSignal))})
+														})
+														ts
 /*
 GetTrackIndex
 */

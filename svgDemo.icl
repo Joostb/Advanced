@@ -23,8 +23,22 @@ import hoi
 DrawTrackDrawing :: State TrackDraw -> Image State
 DrawTrackDrawing _ EMPTY 		= rect sectionWidth sectionHeight <@< {strokewidth = (px 0.0)} <@< {opacity=0.0}
 DrawTrackDrawing s (SECTION t) 	= overlay [] [(px 22.0, px 15.0)] (TrackHasTrain s t) (Just (drawSection (GetTrackIndex s.tracks t) t))
-DrawTrackDrawing s (SWITCHA (t=:{tType = (SWT {sOn})})) = overlay [] [(px 22.0, px 15.0)] if (not sOn) (TrackHasTrain s t) [] (Just (drawSwitchA t))
-DrawTrackDrawing s (SWITCHB (t=:{tType = (SWT {sOn})})) = overlay [] [(px 22.0, px -19.0)] if sOn (map (rotate (deg -45.0)) (TrackHasTrain s t)) [] (Just (drawSwitchB t))
+DrawTrackDrawing s (SWITCHA (t=:{tType = (SWT {sOn, sOrientation})})) = if(not sOn)
+																		(overlay [] [(px 22.0, px 15.0)] (TrackHasTrain s t) (Just (drawSwitchA t)))
+																		(if(isNorth sOrientation)
+																			(drawSwitchA t)
+																			(overlay [(AtLeft, AtBottom)] [pos] (map (rotate (deg d)) (TrackHasTrain s t)) (Just (drawSwitchA t))))
+																	where (d,pos) = case sOrientation of
+																						SE = ((45.0), (px -35.0, px 42.0))
+																						SW = ((-45.0), (px 35.0, px -63.0))
+
+DrawTrackDrawing s (SWITCHB (t=:{tType = (SWT {sOn, sOrientation})})) = if(not sOn || isSouth sOrientation) 
+																			(drawSwitchB t)
+																			(overlay [(AtLeft, AtBottom)] [pos] (map (rotate (deg d)) (TrackHasTrain s t)) (Just (drawSwitchB t)))
+																	where (d, pos) = case sOrientation of 
+																						NE = ((-45.0), (px 35.0, px -65.0))
+																						NW = ((45.0), (px -35.0, px 40.0))
+										
 
 TrackHasTrain :: State Track -> [Image State]
 TrackHasTrain s t = if ((length trains) >= 1) 
@@ -37,10 +51,35 @@ TrackHasTrain s t = if ((length trains) >= 1)
 drive :: Train State -> State
 drive t s = {s & trains = tr}
 			where tr = map 
-						(\ {position={xPos,yPos}, direction}. 
-								if (xPos == t.position.xPos && yPos == t.position.yPos) 
-									({direction=direction, position={xPos=xPos + (if direction (-1) 1), yPos=yPos + (switchUpDown s xPos yPos direction)}})
-									({position={xPos=xPos,yPos=yPos}, direction=direction})) s.trains
+						(\(train=:{position={xPos, yPos}}). if (xPos == t.position.xPos && yPos == t.position.yPos)
+									(driveCheck train s)
+									(train))
+						s.trains
+									
+driveCheck :: Train State -> Train
+driveCheck (t=:{direction, position={xPos, yPos}}) s = if (not (ExistsTrackByPosition s.tracks {xPos=nextX, yPos=nextY})) 
+														{t & Train.direction = (not direction)}
+														(case nextTrack of
+															{tType = (SEC section)} = ({t & position={xPos=nextX, yPos=nextY}}) //Next track is section -> go there
+															{tType = (SWT switch)} = driveSwitch t nextTrack s					//Next track is switch -> we have a problem
+														)
+			where 	nextX = xPos + (if direction (-1) 1)
+					nextY = yPos + currentSwitch
+					nextTrack = GetTrackByPosition s.tracks {xPos=nextX, yPos=nextY}
+					currentSwitch = case (GetTrackByPosition s.tracks {xPos=xPos, yPos=yPos}).tType of 
+									(SEC s)     = 0
+									(SWT swtch) = 	if ((not swtch.sOn) || (direction && (isEast swtch.sOrientation)) || ((not direction) && (isWest swtch.sOrientation)))
+													0
+													if (isNorth swtch.sOrientation) (1) (-1)
+					
+driveSwitch :: Train Track State -> Train
+driveSwitch (train=:{direction, position={xPos, yPos}}) (track=:{tPosition={xPos=nextX, yPos=nextY}, tType=(SWT {sOrientation, sOn})}) s
+			|yPos < nextY 	= if ((sOn && isSouth sOrientation) || (not sOn && isNorth sOrientation)) (trainGoes) (trainStays)
+			|yPos > nextY 	= if ((sOn && isNorth sOrientation) || (not sOn && isSouth sOrientation)) (trainGoes) (trainStays)
+			|yPos == nextY	= if (sOn && ((xPos < nextX && isWest sOrientation) || (xPos > nextX && isEast sOrientation))) (trainStays) (trainGoes)
+		where
+			trainGoes = ({train & position={xPos=nextX, yPos=nextY}})
+			trainStays = train
 
 
 
@@ -51,7 +90,7 @@ drive t s = {s & trains = tr}
 		tType :: Type
 	}
 */
-
+/*
 switchUpDown :: State Int Int Bool -> Int
 switchUpDown s xPos yPos direction = nextTrack // TODO Als de volgende track leeg is, dan zou het een switch kunnen zijn die aanstaat, in dat geval, verplaats zo dat je echt op de track staat.
 				where currentTrack = (filter (\ track . xPos == track.tPosition.xPos && yPos == track.tPosition.yPos) s.tracks)!!0 //never empty
@@ -79,7 +118,7 @@ switchUpDown s xPos yPos direction = nextTrack // TODO Als de volgende track lee
 	  							[] = 100 //je bent het beeld uit gereden
 	  				  getNextTrack xdirection ydirection = (filter (\ track . (xPos + xdirection) == track.tPosition.xPos  && (yPos + currentSwitch + ydirection) == track.tPosition.yPos) s.tracks) 
 
-
+*/
 
 
 
@@ -91,15 +130,13 @@ BuildTrackDrawing td [x:xs] offx offy = BuildTrackDrawing (BuildTrackDraw td x (
 BuildTrackDrawing td [] _ _ = td
 
 BuildTrackDraw :: [[TrackDraw]] Track Int Int-> [[TrackDraw]]
-BuildTrackDraw td (t=:{tPosition, tType = (SEC section)}) offx offy 			= updateAt (xpos) (updateAt (ypos) (SECTION t) (td!!xpos)) td
+BuildTrackDraw td (t=:{tPosition, tType = (SEC section)}) offx offy = updateAt (xpos) (updateAt (ypos) (SECTION t) (td!!xpos)) td
 																		where
 																			xpos = tPosition.xPos - offx
 																			ypos = tPosition.yPos - offy
-BuildTrackDraw td (t=:{tPosition, tType = (SWT {sOrientation})}) offx offy = case sOrientation of
-																				NE = updateAt xpos (updateAt ypos (SWITCHA t) (newtd!!xpos)) newtd
-																				NW = updateAt xpos (updateAt ypos (SWITCHA t) (newtd!!xpos)) newtd
-																				SE = updateAt xpos (updateAt ypos (SWITCHA t) (newtd2!!xpos)) newtd2
-																				SW = updateAt xpos (updateAt ypos (SWITCHA t) (newtd2!!xpos)) newtd2
+BuildTrackDraw td (t=:{tPosition, tType = (SWT {sOrientation})}) offx offy = if(isNorth sOrientation) 
+																				(updateAt xpos (updateAt ypos (SWITCHA t) (newtd!!xpos)) newtd) 
+																				(updateAt xpos (updateAt ypos (SWITCHA t) (newtd2!!xpos)) newtd2)
 																		where
 																			newtd = (updateAt xpos (updateAt (ypos+1) (SWITCHB t) (td!!xpos)) td)
 																			newtd2 = (updateAt xpos (updateAt (ypos-1) (SWITCHB t) (td!!xpos)) td)
@@ -168,14 +205,7 @@ drawSignal index (Just b) isLeft = overlay
 						[circle (px 10.0) 
 						<@< {fill = toSVGColor (if (b) ("green") ("red"))}
 						<@< {strokewidth = (px 2.5)}
-						<@< {onclick = \i s -> {s & tracks =  case (s.tracks!!index).tType of
-																(SEC section) = updateAt 	index 
-																							({s.tracks!!index & tType = if (isLeft)
-																														(SEC {section & sLeftSignal = Just (not b)}) 
-																														(SEC {section & sRightSignal = Just (not b)})
-																							})
-																							s.tracks
-												}, local = False}] 
+						<@< {onclick = \i s -> {s & tracks = ToggleLight s.tracks isLeft index}, local = False}] 
 						(Just ((rect (px 25.0) (px 25.0)) <@< {opacity = 0.0} 
 						<@< {strokewidth = zero}
 						
@@ -213,6 +243,7 @@ drawSwitchA (t=:{tLabel, tType = (SWT {sOrientation, sOn})}) = overlay
 														[] 
 														[text font tLabel, drawRail sOn, drawSwitchRail t (not sOn)]
 														(Just (sectionBackground))
+														<@< {onclick= \i s -> {s & tracks = ToggleSwitch s.tracks (GetTrackIndex s.tracks t)}, local=False}
 														
 													where 	RailPos = case sOrientation of
 																	(NW) = (AtRight, AtTop)
@@ -231,6 +262,7 @@ drawSwitchB (t=:{tLabel, tType = (SWT {sOrientation, sOn})}) = overlay
 														[] 
 														[drawSwitchRail t (not sOn)]
 														(Just (sectionBackground))
+														<@< {onclick= \i s -> {s & tracks = ToggleSwitch s.tracks (GetTrackIndex s.tracks t)}, local=False}
 													where RailPos = case sOrientation of
 																	(NW) = (AtLeft, AtBottom)
 																	(NE)  = (AtRight, AtBottom)
