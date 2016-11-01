@@ -1,4 +1,4 @@
-implementation module hoi
+implementation module types
 
 /*
 	Pieter Koopman pieter@cs.ru.nl
@@ -15,6 +15,7 @@ import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
 
 instance == UserRole where
+	(==) Master Master = True
 	(==) Designer Designer = True
 	(==) Machinist Machinist = True
 	(==) Controller Controller = True
@@ -26,6 +27,9 @@ instance == Orientation where
 	(==) SE SE = True
 	(==) SW SW = True
 	(==) _ _ = False
+	
+instance == Position where
+	(==) {xPos=x, yPos=y} {xPos, yPos} = x==xPos && y==yPos
 
 
 derive class iTask Position
@@ -39,8 +43,16 @@ derive class iTask Track
 derive class iTask Train
 
 derive class iTask UserRole
+derive class iTask UserSettings
 
 derive class iTask State
+
+GetRoleSettings :: UserRole -> UserSettings
+GetRoleSettings Master = {uShowGrid = True, uShowTrain = True, uTrainDriver = Nothing, uMoveTrain = True,	uToggleLights = True, uToggleSwitches = True}
+GetRoleSettings Designer = {uShowGrid = True, uShowTrain = True, uTrainDriver = Nothing, uMoveTrain = False,	uToggleLights = False, uToggleSwitches = False}
+GetRoleSettings Machinist = {uShowGrid = False, uShowTrain = True, uTrainDriver = Nothing, uMoveTrain = False, uToggleLights = False, uToggleSwitches = False}
+GetRoleSettings Controller = {uShowGrid = False, uShowTrain = True, uTrainDriver = Nothing, uMoveTrain = False, uToggleLights = True, uToggleSwitches = True}
+
 
 isNorth :: Orientation -> Bool
 isNorth orin = isMember orin [NE, NW]
@@ -53,6 +65,16 @@ isSouth orin = isMember orin [SE, SW]
 
 isWest :: Orientation -> Bool
 isWest orin = isMember orin [SW, NW]
+
+isSection :: Track -> Bool
+isSection {tType=(SEC _ )} = True
+isSection _ = False
+
+isSwitch :: Track -> Bool
+isSwitch t = not (isSection t)
+
+TrainEq :: Train Train -> Bool
+TrainEq {inipos, despos} {inipos=inipos2, despos=despos2} = inipos == inipos2 && despos==despos2
 
 ExistsTrackByPosition :: [Track] Position -> Bool
 ExistsTrackByPosition ts {xPos=x, yPos=y} = length (valid) > 0

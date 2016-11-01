@@ -1,4 +1,4 @@
-definition module hoi
+definition module types
 
 import iTasks
 import iTasks.API.Extensions.SVG.SVGlet
@@ -30,25 +30,42 @@ import iTasks.API.Extensions.SVG.SVGlet
 
 :: Train = {
 		position :: Position,
-		direction :: Bool
+		direction :: Bool,
+		inipos :: Position,
+		despos :: Position
 	}
 
-:: UserRole = Machinist | Controller | Designer
+:: UserRole = Master | Machinist | Controller | Designer
+
+:: UserSettings = {
+		uShowGrid :: Bool,
+		uShowTrain :: Bool,
+		uMoveTrain :: Bool,
+		uTrainDriver :: Maybe Train,
+		uToggleLights :: Bool,
+		uToggleSwitches :: Bool
+	}
 
 :: State = {
 		tracks :: [Track],
-		role :: UserRole,
-		step :: Int,
 		trains :: [Train]
 	}
 
 instance == UserRole
 instance == Orientation
+instance == Position
+
+GetRoleSettings :: UserRole -> UserSettings
 
 isNorth :: Orientation -> Bool
 isEast :: Orientation -> Bool
 isSouth :: Orientation -> Bool
 isWest :: Orientation -> Bool
+
+isSection :: Track -> Bool
+isSwitch :: Track -> Bool
+
+TrainEq :: Train Train -> Bool
 
 ExistsTrackByPosition :: [Track] Position -> Bool
 GetTrackByPosition :: [Track] Position -> Track
@@ -76,5 +93,6 @@ derive class iTask Track
 derive class iTask Train
 
 derive class iTask UserRole
+derive class iTask UserSettings
 
 derive class iTask State

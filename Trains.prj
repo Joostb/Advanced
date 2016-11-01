@@ -57,7 +57,7 @@ MainModule
 		Fusion:	False
 OtherModules
 	Module
-		Name:	hoi
+		Name:	draw
 		Dir:	{Project}
 		Compiler
 			NeverMemoryProfile:	False
@@ -71,7 +71,7 @@ OtherModules
 			ReuseUniqueNodes:	True
 			Fusion:	False
 	Module
-		Name:	svgDemo
+		Name:	types
 		Dir:	{Project}
 		Compiler
 			NeverMemoryProfile:	False
