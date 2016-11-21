@@ -99,8 +99,6 @@ instance - Set where
 eval :: (Sem a) -> (a, State)
 eval e = (unS e) emptyState
 
-Start = eval expr8
-
 
 
 (:.)  infixl 1 :: (Sem a) (Sem b)             -> Sem b    // sequential composition
@@ -121,6 +119,14 @@ IF (Sem cond) THEN (Sem stat1) ELSE (Sem stat2) = Sem (\s . case cond s of
 
 
 //WHILE :: (Sem Bool) DO (Sem a)                -> Sem ()   // repetition
+WHILE (Sem cond) DO (Sem a) = Sem (\s . case cond s of
+											(False, s2) = ((), s2)
+											(True, s2) = case a s2 of
+														(a2, s3) = case (unS (WHILE (Sem cond) DO (Sem a))) s3 of
+																(a3, s4) = ((), s4)
+									)
+									
+									
 
 :: THEN = THEN
 :: ELSE = ELSE
@@ -174,20 +180,23 @@ expr9 =
         (x =. delete (integer 0) (variable x)) :.
     variable x
 
-/*
+
 expr10 :: Set
 expr10 =
 	z =. integer 7 :.
 	x =. new :.
 	x =. insert (variable z) (variable x) :.
-	y =. op (variable x) (variable x) :.
+	y =. union (variable x) (variable x) :.
 	WHILE (size (variable x) <. integer 5) DO
 		(x =. insert (size (variable x)) (variable x)) :.
-	z =. op (variable x) -. (intersection (variable x) (insert (variable z) new))
+	z =. difference (variable x) (intersect (variable x) (insert (variable z) new))
 
 exprTypeError :: Set
 exprTypeError =
     x =. integer 0 :.
     variable x
-*/
+    
+    
+// START
+Start = eval expr10
 
