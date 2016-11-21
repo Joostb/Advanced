@@ -18,6 +18,9 @@ import qualified Data.List as List
 :: State	:== Map Ident Val
 :: Sem a 	= Sem (State -> (a, State))
 
+emptyState :: State
+emptyState = newMap
+
 integer :: Int -> Element
 integer i = pure i
 
@@ -28,7 +31,7 @@ toList :: Int -> [Int]
 toList i = [i]
 
 insert :: Element Set -> Set
-insert e s = pure (++) <*> (fmap toList e) <*> s
+insert e s = pure (++) <*> s <*> (fmap toList e)
 
 union :: Set Set -> Set
 union s1 s2 = pure 'List'.union <*> s1 <*> s2
@@ -82,6 +85,20 @@ instance + Set where
 	
 instance - Set where
 	(-) x y = pure ('List'.difference) <*> x <*> y
+	
+eval :: (Sem a) -> (a, State)
+eval e = (unS e) emptyState
+
+expr1 :: Element
+expr1 = integer 2
+
+expr2 :: Element
+expr2 = expr1 + expr1
+
+expr3 :: Element
+expr3 = expr1 + expr1 * integer 3
+
+Start = eval (insert expr1 (insert expr3 new))
 
 
 /*
@@ -159,6 +176,4 @@ x = "x"
 y = "y"
 z = "z"
 */
-
-Start = "hello"
 
