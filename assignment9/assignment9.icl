@@ -42,6 +42,14 @@ intersect s1 s2 = pure 'List'.intersect <*> s1 <*> s2
 difference :: Set Set -> Set
 difference s1 s2 = pure 'List'.difference <*> s1 <*> s2
 
+class Assign a where
+	(=.) infixl 9 :: Variable (Sem a) -> Sem a
+	
+instance Assign Int where
+	(=.) var (Sem f) = Sem (\s . case f s of (int1, s2) = (int1, put var (I int1) s2))
+
+instance Assign [Int] where
+	(=.) var (Sem f) = Sem (\s . case f s of (ints, s2) = (ints, put var (S ints) s2))
 
 
 class variable a :: Variable -> (Sem a)
@@ -98,7 +106,7 @@ expr2 = expr1 + expr1
 expr3 :: Element
 expr3 = expr1 + expr1 * integer 3
 
-Start = eval (insert expr1 (insert expr3 new))
+Start = eval ("9sfd9" =. (insert expr1 (insert expr3 new)))
 
 
 /*
