@@ -21,6 +21,15 @@ import qualified Data.List as List
 integer :: Int -> Element
 integer i = pure i
 
+new :: Set
+new = pure []
+
+toList :: Int -> [Int]
+toList i = [i]
+
+insert :: Element Set -> Set
+insert e s = pure (++) <*> (fmap toList e) <*> s
+
 class variable a :: Variable -> (Sem a)
 
 instance variable Int where
@@ -62,6 +71,8 @@ instance + Set where
 	
 instance - Set where
 	(-) x y = pure ('List'.difference) <*> x <*> y
+
+
 /*
 (:.)  infixl 1 :: (Sem a) (Sem b)             -> Sem b    // sequential composition
 (==.) infix  4 :: (Sem a) (Sem a)             -> Sem Bool // equality
