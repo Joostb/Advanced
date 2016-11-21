@@ -30,6 +30,17 @@ toList i = [i]
 insert :: Element Set -> Set
 insert e s = pure (++) <*> (fmap toList e) <*> s
 
+union :: Set Set -> Set
+union s1 s2 = pure 'List'.union <*> s1 <*> s2
+
+intersect :: Set Set -> Set
+intersect s1 s2 = pure 'List'.intersect <*> s1 <*> s2
+
+difference :: Set Set -> Set
+difference s1 s2 = pure 'List'.difference <*> s1 <*> s2
+
+
+
 class variable a :: Variable -> (Sem a)
 
 instance variable Int where
