@@ -33,6 +33,9 @@ toList i = [i]
 insert :: Element Set -> Set
 insert e s = pure (++) <*> s <*> (fmap toList e)
 
+delete :: Element Set -> Set
+delete e s = pure 'List'.removeMember <*> e <*> s
+
 union :: Set Set -> Set
 union s1 s2 = pure 'List'.union <*> s1 <*> s2
 
@@ -50,7 +53,6 @@ instance Assign Int where
 
 instance Assign [Int] where
 	(=.) var (Sem f) = Sem (\s . case f s of (ints, s2) = (ints, put var (S ints) s2))
-
 
 class variable a :: Variable -> (Sem a)
 
@@ -97,30 +99,37 @@ instance - Set where
 eval :: (Sem a) -> (a, State)
 eval e = (unS e) emptyState
 
-expr1 :: Element
-expr1 = integer 2
-
-expr2 :: Element
-expr2 = expr1 + expr1
-
-expr3 :: Element
-expr3 = expr1 + expr1 * integer 3
-
-Start = eval ("9sfd9" =. (insert expr1 (insert expr3 new)))
+Start = eval expr8
 
 
-/*
+
 (:.)  infixl 1 :: (Sem a) (Sem b)             -> Sem b    // sequential composition
-(==.) infix  4 :: (Sem a) (Sem a)             -> Sem Bool // equality
-(<.)  infix  4 :: (Sem a) (Sem a)             -> Sem Bool // less than
+(:.) a b = a *> b
+
+
+//(==.) infix  4 :: (Sem a) (Sem a) -> Sem Bool // equality
+(==.) a b = pure (==) <*> a <*> b
+
+//(<.)  infix  4 :: (Sem a) (Sem a)             -> Sem Bool // less than
+(<.) a b = pure (<) <*> a <*> b
+
+
 IF    :: (Sem Bool) THEN (Sem a) ELSE (Sem a) -> Sem a    // conditional expression
-WHILE :: (Sem Bool) DO (Sem a)                -> Sem ()   // repetition
+IF (Sem cond) THEN (Sem stat1) ELSE (Sem stat2) = Sem (\s . case cond s of
+										(True, s2)	= stat1 s2
+										(False, s3)	= stat2 s3)
+
+
+//WHILE :: (Sem Bool) DO (Sem a)                -> Sem ()   // repetition
 
 :: THEN = THEN
 :: ELSE = ELSE
 :: DO   = DO
 
 // examples
+x = "x"
+y = "y"
+z = "z"
 
 expr1 :: Element
 expr1 = integer 2
@@ -165,6 +174,7 @@ expr9 =
         (x =. delete (integer 0) (variable x)) :.
     variable x
 
+/*
 expr10 :: Set
 expr10 =
 	z =. integer 7 :.
@@ -179,9 +189,5 @@ exprTypeError :: Set
 exprTypeError =
     x =. integer 0 :.
     variable x
-
-x = "x"
-y = "y"
-z = "z"
 */
 
