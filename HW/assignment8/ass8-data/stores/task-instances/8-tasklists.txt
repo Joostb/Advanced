@@ -1,0 +1,1 @@
+20161115-121605["Bin",1,["TaskId",8,2],[{"taskId":["TaskId",8,3],"index":0,"detached":false,"attributes":["Tip"],"value":["Value",["Left",["Tip"]],false],"createdAt":1,"lastEvent":1},{"taskId":["TaskId",8,4],"index":1,"detached":false,"attributes":["Tip"],"value":["Value",["Right",["Insert",["New"],["New"]]],false],"createdAt":1,"lastEvent":1}],["Tip"],["Tip"]]

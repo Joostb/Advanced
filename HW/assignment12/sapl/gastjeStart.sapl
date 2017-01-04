@@ -1,0 +1,119 @@
+|| ?module? gastjeStart
+
+
+gastjeStart.prop0 = gastjeStart._Prop True _predefined._Nil
+gastjeStart.check n_0::I !_x_1 = case _x_1 (_predefined._Nil -> _predefined._Cons "Proof\n" _predefined._Nil) (_ -> case n_0 (0 -> _predefined._Cons "Passed\n" _predefined._Nil) (_ -> case _x_1 (_predefined._Cons p_1_0 x_1_1 -> case (select p_1_0::gastjeStart._Prop 0) (True -> gastjeStart.check (<{StdInt.-_7}> n_0 1) x_1_1) (False -> _predefined._Cons "Fail for: " (StdList.reverse (_predefined._Cons "\n" (select p_1_0::gastjeStart._Prop 1)))) ) ))
+gastjeStart.test !_vprop_0 p_1 = gastjeStart.check 1000 (select _vprop_0::<{gastjeStart.prop;}> 0 p_1 gastjeStart.prop0)
+gastjeStart.pUpper::B !c_0::C = StdBool.not (<{StdChar.==_18}> c_0 (StdChar.toUpper c_0))
+gastjeStart.saai a_0::I b_1::I = <{gastjeStart.=.=}> a_0 b_1
+gastjeStart.holds_1 b_0::B p_1 = _predefined._Cons (update p_1::gastjeStart._Prop [0:b_0]) _predefined._Nil
+gastjeStart.gen_Char_5 = <{StdList.++}> (_SystemEnum._from_to_7 ' ' '~') (_predefined._Cons '\t' (_predefined._Cons '\n' (_predefined._Cons '\b' _predefined._Nil)))
+gastjeStart.string_Char_15 c_0::C = StdList.toString_79 (_predefined._Cons '\'' (_predefined._Cons c_0 (_predefined._Cons '\'' _predefined._Nil)))
+<{gastjeStart.c;20;87_36}> !_vstring_s_0 !_vprop_1 f_2 p_3 !g_l_4 = <{gastjeStart.g_c1;20;92_102}> g_l_4 _vprop_1 f_2 p_3 _vstring_s_0
+<{gastjeStart.g_c1;20;92_102}> !g_l_0 _vprop_1 f_2 p_3 _vstring_s_4 = case g_l_0 (_predefined._Cons a_1_0 g_t_1_1 -> _predefined._Cons (select _vprop_1::<{gastjeStart.prop;}> 0 (f_2 a_1_0) (update p_3::gastjeStart._Prop [1:_predefined._Cons " " (_predefined._Cons (select _vstring_s_4::<{gastjeStart.string_s;}> 0 a_1_0) (select p_3::gastjeStart._Prop 1))])) (<{gastjeStart.c;20;87_36}> _vstring_s_4 _vprop_1 f_2 p_3 g_t_1_1)) (_ -> _predefined._Nil)
+gastjeStart.rev_35 !_x_0 accu_1 = case _x_0 (_predefined._Nil -> accu_1) (_predefined._Cons x_1_0 r_1_1 -> gastjeStart.rev_35 r_1_1 (_predefined._Cons x_1_0 accu_1)) 
+gastjeStart.f_34 n_0::I m_1::I !_x_2 _x_3 = case _x_2 (_predefined._Nil -> case _x_3 (_predefined._Nil -> _predefined._Nil) ) (_ -> case n_0 (0 -> gastjeStart.f_34 m_1 (<{StdInt.+_6}> m_1 1) (gastjeStart.rev_35 _x_3 _x_2) _predefined._Nil) (_ -> case _x_2 (_predefined._Nil -> gastjeStart.f_34 m_1 (<{StdInt.+_6}> m_1 1) (gastjeStart.rev_35 _x_3 _predefined._Nil) _predefined._Nil) (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_predefined._Cons x_2_0 r_2_1 -> _predefined._Cons x_2_0 (gastjeStart.f_34 (<{StdInt.-_7}> n_0 1) m_1 xs_1_1 (_predefined._Cons r_2_1 _x_3))) (_predefined._Nil -> gastjeStart.f_34 (<{StdInt.-_7}> n_0 1) m_1 xs_1_1 _x_3) ) ))
+gastjeStart.diagonal !list_0 = gastjeStart.f_34 1 2 list_0 _predefined._Nil
+gastjeStart.holds_42 !_vtestArg_0 !_vprop_1 !_x_2 p_3 = case _x_2 (gastjeStart.For f_1_0 l_1_1 -> gastjeStart.diagonal (<{gastjeStart.c;20;87_36}> (select _vtestArg_0::<{gastjeStart.testArg;}> 1) _vprop_1 f_1_0 p_3 l_1_1)) 
+<{gastjeStart.c;20;87_92}> !_vprop_0 f_1 p_2 !g_l_3 = <{gastjeStart.g_c1;20;92_103}> g_l_3 _vprop_0 f_1 p_2
+<{gastjeStart.g_c1;20;92_103}> !g_l_0 _vprop_1 f_2 p_3 = case g_l_0 (_predefined._Cons a_1_0 g_t_1_1 -> _predefined._Cons (select _vprop_1::<{gastjeStart.prop;}> 0 (f_2 a_1_0) (update p_3::gastjeStart._Prop [1:_predefined._Cons " " (_predefined._Cons (gastjeStart.string_Char_15 a_1_0) (select p_3::gastjeStart._Prop 1))])) (<{gastjeStart.c;20;87_92}> _vprop_1 f_2 p_3 g_t_1_1)) (_ -> _predefined._Nil)
+gastjeStart.holds_91 !_vprop_0 !_x_1 p_2 = case _x_1 (gastjeStart.For f_1_0 l_1_1 -> gastjeStart.diagonal (<{gastjeStart.c;20;87_92}> _vprop_0 f_1_0 p_2 l_1_1)) 
+<{gastjeStart.c;20;87_95}> f_0 p_1 !g_l_2 = <{gastjeStart.g_c1;20;92_104}> g_l_2 f_0 p_1
+<{gastjeStart.g_c1;20;92_104}> !g_l_0 f_1 p_2 = case g_l_0 (_predefined._Cons a_1_0 g_t_1_1 -> _predefined._Cons (gastjeStart.holds_1 (f_1 a_1_0) (update p_2::gastjeStart._Prop [1:_predefined._Cons " " (_predefined._Cons (gastjeStart.string_Char_15 a_1_0) (select p_2::gastjeStart._Prop 1))])) (<{gastjeStart.c;20;87_95}> f_1 p_2 g_t_1_1)) (_ -> _predefined._Nil)
+gastjeStart.holds_94 !_x_0 p_1 = case _x_0 (gastjeStart.For f_1_0 l_1_1 -> gastjeStart.diagonal (<{gastjeStart.c;20;87_95}> f_1_0 p_1 l_1_1)) 
+gastjeStart.test_93 !p_0 = gastjeStart.check 1000 (gastjeStart.holds_94 p_0 gastjeStart.prop0)
+gastjeStart.Start = _predefined._Cons "pUpper: " (gastjeStart.test_93 (gastjeStart.For gastjeStart.pUpper (_SystemEnum._from_to_7 'a' 'z')))
+gastjeStart.maxint::I =: <{StdInt.-_7}> (<{StdInt.^_12}> 2 31) 1
+gastjeStart.minint::I =: <{StdInt.^_12}> 2 31
+<{gastjeStart.c;56;79_37}> !_vstring_s_0 !_vprop_1 f_2 p_3 !g_l_4 = <{gastjeStart.g_c1;56;84_105}> g_l_4 _vprop_1 f_2 p_3 _vstring_s_0
+<{gastjeStart.g_c1;56;84_105}> !g_l_0 _vprop_1 f_2 p_3 _vstring_s_4 = case g_l_0 (_predefined._Cons a_1_0 g_t_1_1 -> _predefined._Cons (select _vprop_1::<{gastjeStart.prop;}> 0 (f_2 a_1_0) (update p_3::gastjeStart._Prop [1:_predefined._Cons " " (_predefined._Cons (select _vstring_s_4::<{gastjeStart.string_s;}> 0 a_1_0) (select p_3::gastjeStart._Prop 1))])) (<{gastjeStart.c;56;79_37}> _vstring_s_4 _vprop_1 f_2 p_3 g_t_1_1)) (_ -> _predefined._Nil)
+gastjeStart.holds_2 !_vprop_0 !_vtestArg_1 f_2 p_3 = gastjeStart.diagonal (<{gastjeStart.c;56;79_37}> (select _vtestArg_1::<{gastjeStart.testArg;}> 1) _vprop_0 f_2 p_3 (select (select _vtestArg_1::<{gastjeStart.testArg;}> 0)::<{gastjeStart.gen_s;}> 0))
+gastjeStart.string_Bool_14 !b_0::B = StdString.toString_8 b_0
+gastjeStart.holds_43 !_x_0 p_1 = case _x_0 (<{gastjeStart.==>}> a_1_0 b_1_1 -> case (case a_1_0 (True -> StdBool.not b_1_1) (False -> False) ) (True -> _predefined._Cons (gastjeStart._Prop False (_predefined._Cons " " (_predefined._Cons (gastjeStart.string_Bool_14 a_1_0) (_predefined._Cons "a is niet waar" (select p_1::gastjeStart._Prop 1))))) _predefined._Nil) (False -> _predefined._Cons (update p_1::gastjeStart._Prop [1:_predefined._Cons (gastjeStart.string_Bool_14 b_1_1) (_predefined._Cons "implies is gelukt" (select p_1::gastjeStart._Prop 1))]) _predefined._Nil) ) 
+gastjeStart.holds_44 !_vtestArg_0 !_x_1 p_2 = case _x_1 (<{gastjeStart.=.=}> a_1_0 b_1_1 -> case (select (select _vtestArg_0::<{gastjeStart.testArg;}> 2)::<{gastjeStart.gEq_s;}> 0 a_1_0 b_1_1) (True -> _predefined._Cons (update p_2::gastjeStart._Prop [1:_predefined._Cons (select (select _vtestArg_0::<{gastjeStart.testArg;}> 1)::<{gastjeStart.string_s;}> 0 b_1_1) (_predefined._Cons "vergelijking is gelukt" (select p_2::gastjeStart._Prop 1))]) _predefined._Nil) (False -> _predefined._Cons (gastjeStart._Prop False (_predefined._Cons "a <> b: %i%i " (_predefined._Cons (select (select _vtestArg_0::<{gastjeStart.testArg;}> 1)::<{gastjeStart.string_s;}> 0 a_1_0) (_predefined._Cons (select (select _vtestArg_0::<{gastjeStart.testArg;}> 1)::<{gastjeStart.string_s;}> 0 b_1_1) (_predefined._Cons "a is niet b, helaas" (select p_2::gastjeStart._Prop 1)))))) _predefined._Nil) ) 
+<{gastjeStart.+_45}> !s_0 !t_1 = <{StdString.+++_11}> s_0 t_1
+<{gastjeStart.c;63;67_38}> !<{_v~_0}> !_vone_1 !<{_v+_2}> i_3 !g_l_4 = <{gastjeStart.g_c1;63;70_106}> g_l_4 <{_v~_0}> _vone_1 <{_v+_2}> i_3
+<{gastjeStart.c;63;57_39}> !<{_v~_0}> !_vone_1 !<{_v+_2}> i_3 = <{gastjeStart.c;63;67_38}> <{_v~_0}> _vone_1 <{_v+_2}> i_3 (_predefined._Cons i_3 (_predefined._Cons (select <{_v~_0}>::<{StdOverloaded.~;}> 0 i_3) _predefined._Nil))
+<{gastjeStart.g_c1;63;70_106}> !g_l_0 <{_v~_1}> _vone_2 <{_v+_3}> i_4 = case g_l_0 (_predefined._Cons j_1_0 g_t_1_1 -> _predefined._Cons j_1_0 (<{gastjeStart.c;63;67_38}> <{_v~_1}> _vone_2 <{_v+_3}> i_4 g_t_1_1)) (_ -> <{gastjeStart.c;63;57_39}> <{_v~_1}> _vone_2 <{_v+_3}> (select <{_v+_3}>::<{StdOverloaded.+;}> 0 i_4 (select _vone_2::<{StdOverloaded.one;}> 0)))
+<{gastjeStart.c;63;67_97}> !_vone_0 !<{_v+_1}> i_2::I !g_l_3 = <{gastjeStart.g_c1;63;70_107}> g_l_3 _vone_0 <{_v+_1}> i_2
+<{gastjeStart.c;63;57_96}> !_vone_0 !<{_v+_1}> i_2::I = <{gastjeStart.c;63;67_97}> _vone_0 <{_v+_1}> i_2 (_predefined._Cons i_2 (_predefined._Cons (<{StdInt.~_15}> i_2) _predefined._Nil))
+<{gastjeStart.g_c1;63;70_107}> !g_l_0 _vone_1 <{_v+_2}> i_3::I = case g_l_0 (_predefined._Cons j_1_0 g_t_1_1 -> _predefined._Cons j_1_0 (<{gastjeStart.c;63;67_97}> _vone_1 <{_v+_2}> i_3 g_t_1_1)) (_ -> <{gastjeStart.c;63;57_96}> _vone_1 <{_v+_2}> (select <{_v+_2}>::<{StdOverloaded.+;}> 0 i_3 (select _vone_1::<{StdOverloaded.one;}> 0)))
+<{gastjeStart.c;63;67_99}> !<{_v+_0}> i_1::I !g_l_2 = <{gastjeStart.g_c1;63;70_108}> g_l_2 <{_v+_0}> i_1
+<{gastjeStart.c;63;57_98}> !<{_v+_0}> i_1::I = <{gastjeStart.c;63;67_99}> <{_v+_0}> i_1 (_predefined._Cons i_1 (_predefined._Cons (<{StdInt.~_15}> i_1) _predefined._Nil))
+<{gastjeStart.g_c1;63;70_108}> !g_l_0 <{_v+_1}> i_2::I = case g_l_0 (_predefined._Cons j_1_0 g_t_1_1 -> _predefined._Cons j_1_0 (<{gastjeStart.c;63;67_99}> <{_v+_1}> i_2 g_t_1_1)) (_ -> <{gastjeStart.c;63;57_98}> <{_v+_1}> (select <{_v+_1}>::<{StdOverloaded.+;}> 0 i_2 StdInt.one_11))
+<{gastjeStart.c;63;67_101}> i_0::I !g_l_1 = <{gastjeStart.g_c1;63;70_109}> g_l_1 i_0
+<{gastjeStart.c;63;57_100}> i_0::I = <{gastjeStart.c;63;67_101}> i_0 (_predefined._Cons i_0 (_predefined._Cons (<{StdInt.~_15}> i_0) _predefined._Nil))
+<{gastjeStart.g_c1;63;70_109}> !g_l_0 i_1::I = case g_l_0 (_predefined._Cons j_1_0 g_t_1_1 -> _predefined._Cons j_1_0 (<{gastjeStart.c;63;67_101}> i_1 g_t_1_1)) (_ -> <{gastjeStart.c;63;57_100}> (<{StdInt.+_6}> i_1 StdInt.one_11))
+gastjeStart.gen_Int_3 = _predefined._Cons 0 (_predefined._Cons 1 (_predefined._Cons -1 (_predefined._Cons gastjeStart.maxint (_predefined._Cons gastjeStart.minint (_predefined._Cons (<{StdInt.-_7}> gastjeStart.maxint 1) (_predefined._Cons (<{StdInt.+_6}> gastjeStart.minint 1) (<{gastjeStart.c;63;57_100}> 2)))))))
+gastjeStart.gen_Bool_4 = _predefined._Cons True (_predefined._Cons False _predefined._Nil)
+gastjeStart.gen_UNIT_6 = _predefined._Cons StdGeneric.UNIT _predefined._Nil
+gastjeStart.anon_40 !_x_0 = case _x_0 (_Tuple2 a_1_0 b_1_1 -> StdGeneric.PAIR a_1_0 b_1_1) 
+gastjeStart.gen_PAIR_7 !f_0 g_1 = StdList.map gastjeStart.anon_40 (StdList.diag2 f_0 g_1)
+gastjeStart.merge_41 !_x_0 ys_1 = case _x_0 (_predefined._Cons a_1_0 x_1_1 -> _predefined._Cons a_1_0 (gastjeStart.merge_41 ys_1 x_1_1)) (_predefined._Nil -> ys_1) 
+gastjeStart.gen_EITHER_8 f_0 !g_1 = gastjeStart.merge_41 (StdList.map StdGeneric.RIGHT g_1) (StdList.map StdGeneric.LEFT f_0)
+gastjeStart.gen_CONS_9 !f_0 = StdList.map StdGeneric.CONS f_0
+gastjeStart.gen_OBJECT_10 !f_0 = StdList.map StdGeneric.OBJECT f_0
+gastjeStart.gen_RECORD_11 !f_0 = StdList.map StdGeneric.RECORD f_0
+gastjeStart.gen_FIELD_12 !f_0 = StdList.map StdGeneric.FIELD f_0
+gastjeStart.string_Int_13 !i_0::I = StdString.toString_5 i_0
+gastjeStart.string_UNIT_16 _x_0 = ""
+gastjeStart.string_PAIR_17 !f_0 !g_1 !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{gastjeStart.+_45}> (<{gastjeStart.+_45}> (f_0 x_1_0) " ") (g_1 y_1_1)) 
+gastjeStart.string_EITHER_18 f_0 g_1 !_x_2 = case _x_2 (StdGeneric.LEFT x_1_0 -> f_0 x_1_0) (StdGeneric.RIGHT y_1_0 -> g_1 y_1_0) 
+gastjeStart.string_CONS_19 !gcd_0 f_1 !_x_2 = case _x_2 (StdGeneric.CONS x_1_0 -> case (<{StdInt.<_17}> 0 (select gcd_0::StdGeneric._GenericConsDescriptor 1)) (True -> <{gastjeStart.+_45}> (<{gastjeStart.+_45}> (<{gastjeStart.+_45}> (<{gastjeStart.+_45}> "(" (select gcd_0::StdGeneric._GenericConsDescriptor 0)) " ") (f_1 x_1_0)) ")") (False -> select gcd_0::StdGeneric._GenericConsDescriptor 0) ) 
+gastjeStart.string_OBJECT_20 !f_0 !_x_1 = case _x_1 (StdGeneric.OBJECT x_1_0 -> f_0 x_1_0) 
+gastjeStart.string_RECORD_21 !grd_0 !f_1 !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> <{gastjeStart.+_45}> (<{gastjeStart.+_45}> (<{gastjeStart.+_45}> (<{gastjeStart.+_45}> "{" (select grd_0::StdGeneric._GenericRecordDescriptor 0)) "|") (f_1 x_1_0)) "}") 
+gastjeStart.string_FIELD_22 !gfd_0 !f_1 !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> <{gastjeStart.+_45}> (<{gastjeStart.+_45}> (<{gastjeStart.+_45}> (select gfd_0::StdGeneric._GenericFieldDescriptor 0) " = ") (f_1 x_1_0)) " ") 
+<{gastjeStart.TD;Prop}> _x_0::B = _predefined._Nil
+<{gastjeStart.TD;prop;}> _x_0::B = _predefined._Nil
+<{gastjeStart.TD;testArg;}> _x_0::B = _predefined._Nil
+<{gastjeStart.TD;FORA}> _x_0::B = _predefined._Nil
+<{gastjeStart.TD;Implies}> _x_0::B = _predefined._Nil
+<{gastjeStart.TD;AEQB}> _x_0::B = _predefined._Nil
+
+:: gastjeStart.FORA = gastjeStart.For a1 a2
+:: gastjeStart.Implies = <{gastjeStart.==>}> a1 a2
+:: gastjeStart.AEQB = <{gastjeStart.=.=}> a1 a2
+
+|| Converted Records
+:: gastjeStart._Prop = {gastjeStart.bool::B, gastjeStart.info}
+
+:: <{gastjeStart.prop;}> = {!gastjeStart.holds}
+
+:: <{gastjeStart.testArg;}> = {!gastjeStart.gen_s, !gastjeStart.string_s, !gastjeStart.gEq_s}
+
+:: <{gastjeStart.gen_s;}> = {gastjeStart.gen_s}
+
+:: <{gastjeStart.gen_ss;}> = {gastjeStart.gen_ss}
+
+:: <{gastjeStart.gen_sss;}> = {gastjeStart.gen_sss}
+
+:: <{gastjeStart.string_s;}> = {!gastjeStart.string_s}
+
+:: <{gastjeStart.string_ss;}> = {!gastjeStart.string_ss}
+
+:: <{gastjeStart.string_sss;}> = {!gastjeStart.string_sss}
+
+:: <{gastjeStart.bimap_s;}> = {gastjeStart.bimap_s}
+
+:: <{gastjeStart.bimap_ss;}> = {gastjeStart.bimap_ss}
+
+:: <{gastjeStart.bimap_sss;}> = {gastjeStart.bimap_sss}
+
+:: <{gastjeStart.gEq_s;}> = {!gastjeStart.gEq_s}
+
+:: <{gastjeStart.gEq_ss;}> = {!gastjeStart.gEq_ss}
+
+:: <{gastjeStart.gEq_sss;}> = {!gastjeStart.gEq_sss}
+
+:: <{gastjeStart.gEq_ssss;}> = {!gastjeStart.gEq_ssss}
+
+:: <{gastjeStart.gEq_sssss;}> = {!gastjeStart.gEq_sssss}
+
+:: <{gastjeStart.gEq_ssssss;}> = {!gastjeStart.gEq_ssssss}
+
+:: <{gastjeStart.gEq_sssssss;}> = {!gastjeStart.gEq_sssssss}
+
+:: <{gastjeStart.gEq_ssssssss;}> = {!gastjeStart.gEq_ssssssss}
+
+:: <{gastjeStart.gEq_sssssssss;}> = {!gastjeStart.gEq_sssssssss}
+
