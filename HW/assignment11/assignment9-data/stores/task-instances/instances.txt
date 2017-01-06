@@ -1,0 +1,1 @@
+20170106-152451[{"instanceNo":1,"instanceKey":"ptqegjphnjmxpzgbxvvxocacldboevud","listId":["TaskId",0,0],"session":true,"build":"20170106-152451","issuedAt":"2017-01-06 15:24:55","progress":{"value":["None"],"attachedTo":[],"firstEvent":"2017-01-06 15:24:55","connectedTo":"127.0.0.1","lastIO":"2017-01-06 15:25:00"},"attributes":["Tip"]}]

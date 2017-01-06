@@ -1,0 +1,624 @@
+|| ?module? hoi
+
+
+hoi.GetTrackIndex_i::I _x_0::I !_x_1 _x_2 = case _x_1 (_predefined._Nil -> -1) (_predefined._Cons t1_1_0 ts_1_1 -> case (case (<{StdInt.==_16}> (select (select t1_1_0::hoi._Track 1)::hoi._Position 0) (select (select _x_2::hoi._Track 1)::hoi._Position 0)) (True -> <{StdInt.==_16}> (select (select t1_1_0::hoi._Track 1)::hoi._Position 1) (select (select _x_2::hoi._Track 1)::hoi._Position 1)) (False -> False) ) (True -> <{StdInt.-_7}> (<{StdInt.-_7}> _x_0 (StdList.length_47 ts_1_1)) 1) (False -> hoi.GetTrackIndex_i _x_0 ts_1_1 _x_2) ) 
+hoi.GetTrackIndex::I !ts_0 t_1 = hoi.GetTrackIndex_i (StdList.length_47 ts_0) ts_0 t_1
+hoi.anon_106 !q_0 !r_1 = case (<{StdInt.<_17}> (select (select q_0::hoi._Track 1)::hoi._Position 0) (select (select r_1::hoi._Track 1)::hoi._Position 0)) (True -> q_0) (False -> r_1) 
+hoi.GetTracksSmallestX_i !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> x_1_0) (_ -> hoi.anon_106 x_1_0 (hoi.GetTracksSmallestX_i _x_1_1))) 
+hoi.GetTracksSmallestX::I !t_0 = select (select (hoi.GetTracksSmallestX_i t_0)::hoi._Track 1)::hoi._Position 0
+hoi.CheckSwitchSmall::I !_x_0 = case _x_0 (hoi._Track tLabel_1_0 tPosition_1_1 _x_1_2 -> case _x_1_2 (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch _x_3_0 sOn_3_1 -> case _x_3_0 (hoi.SW -> <{StdInt.-_7}> (select tPosition_1_1::hoi._Position 1) 1) (hoi.SE -> <{StdInt.-_7}> (select tPosition_1_1::hoi._Position 1) 1) ) ) ) (_ -> select (select _x_0::hoi._Track 1)::hoi._Position 1)
+hoi.anon_108 !q_0 !r_1 = case (<{StdInt.<_17}> (hoi.CheckSwitchSmall q_0) (hoi.CheckSwitchSmall r_1)) (True -> q_0) (False -> r_1) 
+hoi.GetTracksSmallestY_i !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> x_1_0) (_ -> hoi.anon_108 x_1_0 (hoi.GetTracksSmallestY_i _x_1_1))) 
+hoi.GetTracksSmallestY::I !t_0 = hoi.CheckSwitchSmall (hoi.GetTracksSmallestY_i t_0)
+hoi.CheckSwitchLarge::I !_x_0 = case _x_0 (hoi._Track tLabel_1_0 tPosition_1_1 _x_1_2 -> case _x_1_2 (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch _x_3_0 sOn_3_1 -> case _x_3_0 (hoi.NW -> <{StdInt.+_6}> (select tPosition_1_1::hoi._Position 1) 1) (hoi.NE -> <{StdInt.+_6}> (select tPosition_1_1::hoi._Position 1) 1) ) ) ) (_ -> select (select _x_0::hoi._Track 1)::hoi._Position 1)
+hoi.anon_109 !q_0 !r_1 = case (<{StdInt.<_17}> (hoi.CheckSwitchLarge r_1) (hoi.CheckSwitchLarge q_0)) (True -> q_0) (False -> r_1) 
+hoi.GetTracksLargestY_i !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> x_1_0) (_ -> hoi.anon_109 x_1_0 (hoi.GetTracksLargestY_i _x_1_1))) 
+hoi.GetTracksLargestY::I !t_0 = hoi.CheckSwitchLarge (hoi.GetTracksLargestY_i t_0)
+hoi.GetTrackHeight::I !tracks_0 = <{StdInt.-_7}> (hoi.GetTracksLargestY tracks_0) (<{StdInt.-_7}> (hoi.GetTracksSmallestY tracks_0) 1)
+hoi.anon_107 !q_0 !r_1 = case (<{StdInt.<_17}> (select (select r_1::hoi._Track 1)::hoi._Position 0) (select (select q_0::hoi._Track 1)::hoi._Position 0)) (True -> q_0) (False -> r_1) 
+hoi.GetTracksLargestX_i !_x_0 = case _x_0 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> x_1_0) (_ -> hoi.anon_107 x_1_0 (hoi.GetTracksLargestX_i _x_1_1))) 
+hoi.GetTracksLargestX::I !t_0 = select (select (hoi.GetTracksLargestX_i t_0)::hoi._Track 1)::hoi._Position 0
+hoi.GetTrackWidth::I !tracks_0 = <{StdInt.-_7}> (hoi.GetTracksLargestX tracks_0) (<{StdInt.-_7}> (hoi.GetTracksSmallestX tracks_0) 1)
+hoi.anon_110::B !ypos_0::I !_x_1 = case _x_1 (hoi._Track tLabel_1_0 _x_1_1 tType_1_2 -> case _x_1_1 (hoi._Position xPos_2_0 yPos_2_1 -> <{StdInt.==_16}> yPos_2_1 ypos_0) ) 
+hoi.GetYTracks ypos_0::I !tracks_1 = StdList.filter (hoi.anon_110 ypos_0) tracks_1
+<{hoi.==_5}>::B !_x_0 !_x_1 = case _x_0 (hoi.Designer -> case _x_1 (hoi.Designer -> True) ) (hoi.Machinist -> case _x_1 (hoi.Machinist -> True) ) (hoi.Controller -> case _x_1 (hoi.Controller -> True) ) (_ -> False)
+hoi.toGenericPosition_117 !x_0 = case x_0 (hoi._Position x11_1_0 x12_1_1 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1))) 
+hoi.bimapToGeneric_195 !x_0 = hoi._f1339_1339 x_0
+hoi._f1339_1339 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericPosition_117 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_Position_6 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 2 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "xPos" iTasks._Framework.Generic.Interaction.gEditor_Int_20 iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "xPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "yPos" iTasks._Framework.Generic.Interaction.gEditor_Int_20 iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "yPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "xPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "yPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53)) x1_0 (hoi.bimapToGeneric_195 x2_1) x3_2 x4_3
+hoi.gEditMeta_Position_7 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "xPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "yPos" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53)) (hoi.toGenericPosition_117 x1_0)
+hoi.bimapToGeneric_204 !x_0 = hoi._f1340_1340 x_0
+hoi._f1340_1340 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericPosition_117 x1_1_0) x2_1_1) 
+hoi.findField_198 !match_0 !_x_1 = case _x_1 (_predefined._Cons _x_1_0 xs_1_1 -> case _x_1_0 (_Tuple2 l_2_0 x_2_1 -> case (<{StdString.==_2}> l_2_0 match_0) (True -> _predefined._Cons x_2_1 _predefined._Nil) (False -> hoi.findField_198 match_0 xs_1_1) ) ) (_predefined._Nil -> _predefined._Nil) 
+hoi.JSONDecode_FIELD_197 gfd_name_0 _x_1::I fx_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1341}> (fx_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1342}> (fx_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{hoi._c;144;5_1342}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1341}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.d2_203 !x_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 ys_1_1 -> case _x_1_0 (Data.Maybe.Just y_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.PAIR x_0 y_2_0)) ys_1_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+hoi.d1_202 !fy_0 !_x_1 !l_2 = case _x_1 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (fy_0 False xs_1_1) l_2) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+hoi.JSONDecode_PAIR_201 !fx_0 !fy_1 !_x_2::B !l_3 = hoi.d1_202 fy_1 (fx_0 False l_3) l_3
+hoi.JSONEncode_FIELD_196 !fx_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> fx_0 True x_1_0) 
+<{hoi.++_200}> !_x_0 !list_1 = case _x_0 (_predefined._Cons hd_1_0 tl_1_1 -> _predefined._Cons hd_1_0 (<{hoi.++_200}> tl_1_1 list_1)) (_ -> list_1)
+hoi.JSONEncode_PAIR_199 !fx_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (fx_0 False x_1_0) (fy_1 False y_1_1)) 
+hoi.fromGenericPosition_116 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.FIELD x2_4_0 -> hoi._Position x1_3_0 x2_4_0) ) ) ) 
+hoi.bimapFromGeneric_205 !x_0 = hoi._f1343_1343 x_0
+hoi._f1343_1343 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericPosition_116 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_206 !x_0 = hoi._f1344_1344 x_0
+hoi._f1344_1344 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_205 x1_1_0) x2_1_1) 
+hoi.JSONDecode_FIELD_1262 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1345}> (Text.JSON.JSONDecode_Int_34 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1346}> (Text.JSON.JSONDecode_Int_34 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1346}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1345}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1264 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = hoi.d1_202 fy_2 (hoi.JSONDecode_FIELD_1262 gfd_name_0 _x_1 False l_4) l_4
+hoi.JSONEncode_FIELD_1261 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode_Int_10 True x_1_0) 
+hoi.JSONEncode_PAIR_1263 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1261 False x_1_0) (fy_0 False y_1_1)) 
+hoi.d1_1267 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1262 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+hoi.JSONDecode_PAIR_1266 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = hoi.d1_1267 gfd_name_2 _x_3 (hoi.JSONDecode_FIELD_1262 gfd_name_0 _x_1 False l_5) l_5
+hoi.JSONEncode_PAIR_1265 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1261 False x_1_0) (hoi.JSONEncode_FIELD_1261 False y_1_1)) 
+hoi.gUpdate_Position_8 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_206 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 2 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate_Int_119 iTasks._Framework.Generic.Defaults.gDefault_Int_8 Text.JSON.JSONEncode_Int_10 Text.JSON.JSONDecode_Int_34) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) hoi.JSONEncode_FIELD_1261 (hoi.JSONDecode_FIELD_1262 "xPos" 0) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate_Int_119 iTasks._Framework.Generic.Defaults.gDefault_Int_8 Text.JSON.JSONEncode_Int_10 Text.JSON.JSONDecode_Int_34) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) hoi.JSONEncode_FIELD_1261 (hoi.JSONDecode_FIELD_1262 "yPos" 1)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8)) hoi.JSONEncode_PAIR_1265 (hoi.JSONDecode_PAIR_1266 "xPos" 0 "yPos" 1) x1_0 x2_1 (hoi.bimapToGeneric_204 x3_2) x4_3)
+hoi.bimapToGeneric_207 !x_0 = hoi._f1347_1347 x_0
+hoi._f1347_1347 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericPosition_117 x1_1_0) x2_1_1) 
+hoi.gVerify_Position_9 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 2 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify_Int_86) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify_Int_86)) x1_0 (hoi.bimapToGeneric_207 x2_1)
+hoi.bimapToGeneric_208 !x_0 = hoi._f1348_1348 x_0
+hoi._f1348_1348 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericPosition_117 x1_1_0)) 
+hoi.gText_Position_10 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "xPos" iTasks._Framework.Generic.Visualization.gText_Int_11) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "yPos" iTasks._Framework.Generic.Visualization.gText_Int_11)) x1_0 (hoi.bimapToGeneric_208 x2_1)
+hoi.fli__Position_112 = _predefined._Cons "xPos" (_predefined._Cons "yPos" _predefined._Nil)
+hoi.isNotNull_211::B !_x_0 = case _x_0 (Text.JSON.JSONNull -> False) (_ -> True)
+<{hoi.c;86;47_210}> !g_l_0 g_l_1 = <{hoi.g_c1;86;33_1350}> g_l_0 g_l_1
+<{hoi.g_c1;86;33_1350}> !g_l_0 g_l_1 = case g_l_0 (_predefined._Cons o_1_0 g_t_1_1 -> <{hoi.g_c1;86;54_1349}> g_l_1 o_1_0 g_t_1_1) (_ -> _predefined._Nil)
+<{hoi.g_c1;86;54_1349}> !g_l_0 o_1 g_t_2 = case g_l_0 (_predefined._Cons name_1_0 g_t_1_1 -> case (hoi.isNotNull_211 o_1) (True -> _predefined._Cons (_Tuple2 name_1_0 o_1) (<{hoi.c;86;47_210}> g_t_2 g_t_1_1)) (False -> <{hoi.c;86;47_210}> g_t_2 g_t_1_1) ) (_ -> _predefined._Nil)
+hoi.JSONEncode_RECORD_209 grd_fields_0 fx_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (fx_1 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_RECORD_1268 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1265 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_Position_11 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1268 hoi.fli__Position_112 x1_0 (hoi.toGenericPosition_117 x2_1)
+hoi.d_213 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+hoi.d_214 !_x_0 !xs_1 !l_2 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.RECORD x_2_0)) xs_1) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_2) ) 
+hoi.JSONDecode_RECORD_212 fx_0 !_x_1::B !l_2 = case l_2 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (fx_0 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_2) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_2)
+hoi.bimapFromGeneric_215 !x_0 = hoi._f1351_1351 x_0
+hoi._f1351_1351 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericPosition_116 x1_1_0)) 
+hoi.bimapFromGeneric_216 !x_0 = hoi._f1352_1352 x_0
+hoi._f1352_1352 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_215 x1_1_0) x2_1_1) 
+hoi.JSONDecode_RECORD_1269 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = case l_5 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1266 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1266 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+hoi.JSONDecode_Position_12 !x1_0::B !x2_1 = hoi.bimapFromGeneric_216 (hoi.JSONDecode_RECORD_1269 "xPos" 0 "yPos" 1 x1_0 x2_1)
+hoi.gDefault_Position_13 = hoi.fromGenericPosition_116 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8)))
+hoi.gEq_Position_14::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq_Int_2) (GenEq.gEq_FIELD_12 GenEq.gEq_Int_2)) (hoi.toGenericPosition_117 x1_0) (hoi.toGenericPosition_117 x2_1)
+hoi.toGenericOrientation_130 !x_0 = case x_0 (hoi.NE -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT)))) (hoi.NW -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT)))) (hoi.SE -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT)))) (hoi.SW -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT)))) 
+hoi.bimapToGeneric_217 !x_0 = hoi._f1353_1353 x_0
+hoi._f1353_1353 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericOrientation_130 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gti_SW_124 = StdGeneric.GenTypeCons "Orientation"
+hoi.gti_SE_123 = StdGeneric.GenTypeCons "Orientation"
+hoi.gti_NW_122 = StdGeneric.GenTypeCons "Orientation"
+hoi.gti_NE_121 = StdGeneric.GenTypeCons "Orientation"
+hoi.cdi_NE_125 = StdGeneric._GenericConsDescriptor "NE" 0 StdGeneric.GenConsNoPrio hoi.tdi_Orientation_120 hoi.gti_NE_121 0
+hoi.cdi_NW_126 = StdGeneric._GenericConsDescriptor "NW" 0 StdGeneric.GenConsNoPrio hoi.tdi_Orientation_120 hoi.gti_NW_122 1
+hoi.cdi_SE_127 = StdGeneric._GenericConsDescriptor "SE" 0 StdGeneric.GenConsNoPrio hoi.tdi_Orientation_120 hoi.gti_SE_123 2
+hoi.tdi_Orientation_120 = StdGeneric._GenericTypeDefDescriptor "Orientation" 0 4 hoi.cli_Orientation_119
+hoi.cdi_SW_128 = StdGeneric._GenericConsDescriptor "SW" 0 StdGeneric.GenConsNoPrio hoi.tdi_Orientation_120 hoi.gti_SW_124 3
+hoi.cli_Orientation_119 = _predefined._Cons hoi.cdi_NE_125 (_predefined._Cons hoi.cdi_NW_126 (_predefined._Cons hoi.cdi_SE_127 (_predefined._Cons hoi.cdi_SW_128 _predefined._Nil)))
+hoi.gEditor_Orientation_15 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_OBJECT_16 4 hoi.cli_Orientation_119 (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 0 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 1 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 2 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 3 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) x1_0 (hoi.bimapToGeneric_217 x2_1) x3_2 x4_3
+hoi.gEditMeta_Orientation_16 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_OBJECT_49 (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) (hoi.toGenericOrientation_130 x1_0)
+hoi.bimapToGeneric_218 !x_0 = hoi._f1354_1354 x_0
+hoi._f1354_1354 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericOrientation_130 x1_1_0) x2_1_1) 
+hoi.fromGenericOrientation_129 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.NE) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.NW) ) ) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.SE) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.SW) ) ) ) ) 
+hoi.bimapFromGeneric_219 !x_0 = hoi._f1355_1355 x_0
+hoi._f1355_1355 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericOrientation_129 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_220 !x_0 = hoi._f1356_1356 x_0
+hoi._f1356_1356 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_219 x1_1_0) x2_1_1) 
+hoi.gUpdate_Orientation_17 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_220 (iTasks._Framework.Generic.Interaction.gUpdate_OBJECT_115 4 hoi.cli_Orientation_119 (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 0 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "NE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "NE" Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 1 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "NW" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "NW" Text.JSON.JSONDecode_UNIT_39)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "NE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "NW" Text.JSON.JSONEncode_UNIT_15)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "NE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "NW" Text.JSON.JSONDecode_UNIT_39)) (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 2 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "SE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "SE" Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 3 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "SW" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "SW" Text.JSON.JSONDecode_UNIT_39)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "SE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "SW" Text.JSON.JSONEncode_UNIT_15)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "SE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "SW" Text.JSON.JSONDecode_UNIT_39))) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1))) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "NE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "NW" Text.JSON.JSONEncode_UNIT_15)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "SE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "SW" Text.JSON.JSONEncode_UNIT_15))) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "NE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "NW" Text.JSON.JSONDecode_UNIT_39)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "SE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "SW" Text.JSON.JSONDecode_UNIT_39))) x1_0 x2_1 (hoi.bimapToGeneric_218 x3_2) x4_3)
+hoi.bimapToGeneric_221 !x_0 = hoi._f1357_1357 x_0
+hoi._f1357_1357 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericOrientation_130 x1_1_0) x2_1_1) 
+hoi.gVerify_Orientation_18 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_OBJECT_82 (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79) (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79)) (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79) (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79))) x1_0 (hoi.bimapToGeneric_221 x2_1)
+hoi.bimapToGeneric_222 !x_0 = hoi._f1358_1358 x_0
+hoi._f1358_1358 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericOrientation_130 x1_1_0)) 
+hoi.gText_Orientation_19 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_OBJECT_8 (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_CONS_7 "NE" hoi.tdi_Orientation_120 iTasks._Framework.Generic.Visualization.gText_UNIT_4) (iTasks._Framework.Generic.Visualization.gText_CONS_7 "NW" hoi.tdi_Orientation_120 iTasks._Framework.Generic.Visualization.gText_UNIT_4)) (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_CONS_7 "SE" hoi.tdi_Orientation_120 iTasks._Framework.Generic.Visualization.gText_UNIT_4) (iTasks._Framework.Generic.Visualization.gText_CONS_7 "SW" hoi.tdi_Orientation_120 iTasks._Framework.Generic.Visualization.gText_UNIT_4))) x1_0 (hoi.bimapToGeneric_222 x2_1)
+hoi.JSONEncode_Orientation_20 !x1_0::B !x2_1 = Text.JSON.JSONEncode_OBJECT_30 (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "NE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "NW" Text.JSON.JSONEncode_UNIT_15)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "SE" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "SW" Text.JSON.JSONEncode_UNIT_15))) x1_0 (hoi.toGenericOrientation_130 x2_1)
+hoi.bimapFromGeneric_223 !x_0 = hoi._f1359_1359 x_0
+hoi._f1359_1359 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericOrientation_129 x1_1_0)) 
+hoi.bimapFromGeneric_224 !x_0 = hoi._f1360_1360 x_0
+hoi._f1360_1360 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_223 x1_1_0) x2_1_1) 
+hoi.JSONDecode_Orientation_21 !x1_0::B !x2_1 = hoi.bimapFromGeneric_224 (Text.JSON.JSONDecode_OBJECT_42 (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "NE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "NW" Text.JSON.JSONDecode_UNIT_39)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "SE" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "SW" Text.JSON.JSONDecode_UNIT_39))) x1_0 x2_1)
+hoi.gDefault_Orientation_22 = hoi.fromGenericOrientation_129 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1))))
+hoi.gEq_Orientation_23::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7)) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7))) (hoi.toGenericOrientation_130 x1_0) (hoi.toGenericOrientation_130 x2_1)
+hoi.toGenericSwitch_138 !x_0 = case x_0 (hoi._Switch x11_1_0 x12_1_1 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1))) 
+hoi.bimapToGeneric_225 !x_0 = hoi._f1361_1361 x_0
+hoi._f1361_1361 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericSwitch_138 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_Switch_24 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 2 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "sOrientation" hoi.gEditor_Orientation_15 hoi.gEditMeta_Orientation_16) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOrientation" hoi.gEditMeta_Orientation_16) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "sOn" iTasks._Framework.Generic.Interaction.gEditor_Bool_23 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOn" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOrientation" hoi.gEditMeta_Orientation_16) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOn" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) x1_0 (hoi.bimapToGeneric_225 x2_1) x3_2 x4_3
+hoi.gEditMeta_Switch_25 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOrientation" hoi.gEditMeta_Orientation_16) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sOn" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (hoi.toGenericSwitch_138 x1_0)
+hoi.bimapToGeneric_226 !x_0 = hoi._f1362_1362 x_0
+hoi._f1362_1362 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericSwitch_138 x1_1_0) x2_1_1) 
+hoi.fromGenericSwitch_137 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.FIELD x2_4_0 -> hoi._Switch x1_3_0 x2_4_0) ) ) ) 
+hoi.bimapFromGeneric_227 !x_0 = hoi._f1363_1363 x_0
+hoi._f1363_1363 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericSwitch_137 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_228 !x_0 = hoi._f1364_1364 x_0
+hoi._f1364_1364 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_227 x1_1_0) x2_1_1) 
+hoi.JSONDecode_FIELD_1273 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1365}> (Text.JSON.JSONDecode_Bool_37 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1366}> (Text.JSON.JSONDecode_Bool_37 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1366}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1365}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_FIELD_1271 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1367}> (hoi.JSONDecode_Orientation_21 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1368}> (hoi.JSONDecode_Orientation_21 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1368}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1367}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1275 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = hoi.d1_202 fy_2 (hoi.JSONDecode_FIELD_1271 gfd_name_0 _x_1 False l_4) l_4
+hoi.JSONEncode_FIELD_1272 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode_Bool_13 True x_1_0) 
+hoi.JSONEncode_FIELD_1270 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> hoi.JSONEncode_Orientation_20 True x_1_0) 
+hoi.JSONEncode_PAIR_1274 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1270 False x_1_0) (fy_0 False y_1_1)) 
+hoi.d1_1278 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1273 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+hoi.JSONDecode_PAIR_1277 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = hoi.d1_1278 gfd_name_2 _x_3 (hoi.JSONDecode_FIELD_1271 gfd_name_0 _x_1 False l_5) l_5
+hoi.JSONEncode_PAIR_1276 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1270 False x_1_0) (hoi.JSONEncode_FIELD_1272 False y_1_1)) 
+hoi.gUpdate_Switch_26 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_228 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 2 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 hoi.gUpdate_Orientation_17 hoi.gDefault_Orientation_22 hoi.JSONEncode_Orientation_20 hoi.JSONDecode_Orientation_21) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Orientation_22) hoi.JSONEncode_FIELD_1270 (hoi.JSONDecode_FIELD_1271 "sOrientation" 0) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate_Bool_122 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11) hoi.JSONEncode_FIELD_1272 (hoi.JSONDecode_FIELD_1273 "sOn" 1)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Orientation_22) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) hoi.JSONEncode_PAIR_1276 (hoi.JSONDecode_PAIR_1277 "sOrientation" 0 "sOn" 1) x1_0 x2_1 (hoi.bimapToGeneric_226 x3_2) x4_3)
+hoi.bimapToGeneric_229 !x_0 = hoi._f1369_1369 x_0
+hoi._f1369_1369 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericSwitch_138 x1_1_0) x2_1_1) 
+hoi.gVerify_Switch_27 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 2 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 hoi.gVerify_Orientation_18) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify_Bool_89)) x1_0 (hoi.bimapToGeneric_229 x2_1)
+hoi.bimapToGeneric_230 !x_0 = hoi._f1370_1370 x_0
+hoi._f1370_1370 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericSwitch_138 x1_1_0)) 
+hoi.gText_Switch_28 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "sOrientation" hoi.gText_Orientation_19) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "sOn" iTasks._Framework.Generic.Visualization.gText_Bool_14)) x1_0 (hoi.bimapToGeneric_230 x2_1)
+hoi.fli__Switch_133 = _predefined._Cons "sOrientation" (_predefined._Cons "sOn" _predefined._Nil)
+hoi.JSONEncode_RECORD_1279 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1276 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_Switch_29 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1279 hoi.fli__Switch_133 x1_0 (hoi.toGenericSwitch_138 x2_1)
+hoi.bimapFromGeneric_231 !x_0 = hoi._f1371_1371 x_0
+hoi._f1371_1371 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericSwitch_137 x1_1_0)) 
+hoi.bimapFromGeneric_232 !x_0 = hoi._f1372_1372 x_0
+hoi._f1372_1372 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_231 x1_1_0) x2_1_1) 
+hoi.JSONDecode_RECORD_1280 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = case l_5 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1277 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1277 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+hoi.JSONDecode_Switch_30 !x1_0::B !x2_1 = hoi.bimapFromGeneric_232 (hoi.JSONDecode_RECORD_1280 "sOrientation" 0 "sOn" 1 x1_0 x2_1)
+hoi.gDefault_Switch_31 = hoi.fromGenericSwitch_137 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Orientation_22) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)))
+hoi.gEq_Switch_32::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 hoi.gEq_Orientation_23) (GenEq.gEq_FIELD_12 GenEq.gEq_Bool_4)) (hoi.toGenericSwitch_138 x1_0) (hoi.toGenericSwitch_138 x2_1)
+hoi.toGenericSection_146 !x_0 = case x_0 (hoi._Section x11_1_0 x12_1_1 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1))) 
+hoi.bimapToGeneric_233 !x_0 = hoi._f1373_1373 x_0
+hoi._f1373_1373 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericSection_146 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_Section_33 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 2 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "sLeftSignal" (iTasks._Framework.Generic.Interaction.gEditor_Maybe_36 iTasks._Framework.Generic.Interaction.gEditor_Bool_23 iTasks._Framework.Generic.Visualization.gText_Bool_14 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sLeftSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "sRightSignal" (iTasks._Framework.Generic.Interaction.gEditor_Maybe_36 iTasks._Framework.Generic.Interaction.gEditor_Bool_23 iTasks._Framework.Generic.Visualization.gText_Bool_14 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sRightSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56))) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sLeftSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sRightSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56))) x1_0 (hoi.bimapToGeneric_233 x2_1) x3_2 x4_3
+hoi.gEditMeta_Section_34 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sLeftSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "sRightSignal" (iTasks._Framework.Generic.Interaction.gEditMeta_Maybe_69 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56))) (hoi.toGenericSection_146 x1_0)
+hoi.bimapToGeneric_234 !x_0 = hoi._f1374_1374 x_0
+hoi._f1374_1374 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericSection_146 x1_1_0) x2_1_1) 
+hoi.fromGenericSection_145 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.FIELD x2_4_0 -> hoi._Section x1_3_0 x2_4_0) ) ) ) 
+hoi.bimapFromGeneric_235 !x_0 = hoi._f1375_1375 x_0
+hoi._f1375_1375 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericSection_145 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_236 !x_0 = hoi._f1376_1376 x_0
+hoi._f1376_1376 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_235 x1_1_0) x2_1_1) 
+hoi.JSONDecode_FIELD_1282 gfd_name_0 _x_1::I _x_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1377}> (Text.JSON.JSONDecode_Maybe_53 _x_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1378}> (Text.JSON.JSONDecode_Maybe_53 _x_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{hoi._c;144;5_1378}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1377}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1284 gfd_name_0 _x_1::I _x_2 !fy_3 !_x_4::B !l_5 = hoi.d1_202 fy_3 (hoi.JSONDecode_FIELD_1282 gfd_name_0 _x_1 _x_2 False l_5) l_5
+hoi.JSONEncode_FIELD_1281 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode_Maybe_26 _x_0 True x_1_0) 
+hoi.JSONEncode_PAIR_1283 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1281 _x_0 False x_1_0) (fy_1 False y_1_1)) 
+hoi.d1_1287 gfd_name_0 _x_1::I _x_2 !_x_3 !l_4 = case _x_3 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1282 gfd_name_0 _x_1 _x_2 False xs_1_1) l_4) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_4) ) 
+hoi.JSONDecode_PAIR_1286 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I _x_5 !_x_6::B !l_7 = hoi.d1_1287 gfd_name_3 _x_4 _x_5 (hoi.JSONDecode_FIELD_1282 gfd_name_0 _x_1 _x_2 False l_7) l_7
+hoi.JSONEncode_PAIR_1285 _x_0 _x_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1281 _x_0 False x_1_0) (hoi.JSONEncode_FIELD_1281 _x_1 False y_1_1)) 
+hoi.gUpdate_Section_35 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_236 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 2 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 (iTasks._Framework.Generic.Interaction.gUpdate_Maybe_135 iTasks._Framework.Generic.Interaction.gUpdate_Bool_122 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11) (Text.JSON.JSONEncode_Maybe_26 Text.JSON.JSONEncode_Bool_13) (Text.JSON.JSONDecode_Maybe_53 Text.JSON.JSONDecode_Bool_37)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) (hoi.JSONEncode_FIELD_1281 Text.JSON.JSONEncode_Bool_13) (hoi.JSONDecode_FIELD_1282 "sLeftSignal" 0 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 (iTasks._Framework.Generic.Interaction.gUpdate_Maybe_135 iTasks._Framework.Generic.Interaction.gUpdate_Bool_122 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11) (Text.JSON.JSONEncode_Maybe_26 Text.JSON.JSONEncode_Bool_13) (Text.JSON.JSONDecode_Maybe_53 Text.JSON.JSONDecode_Bool_37)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) (hoi.JSONEncode_FIELD_1281 Text.JSON.JSONEncode_Bool_13) (hoi.JSONDecode_FIELD_1282 "sRightSignal" 1 Text.JSON.JSONDecode_Bool_37)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11))) (hoi.JSONEncode_PAIR_1285 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONEncode_Bool_13) (hoi.JSONDecode_PAIR_1286 "sLeftSignal" 0 Text.JSON.JSONDecode_Bool_37 "sRightSignal" 1 Text.JSON.JSONDecode_Bool_37) x1_0 x2_1 (hoi.bimapToGeneric_234 x3_2) x4_3)
+hoi.bimapToGeneric_237 !x_0 = hoi._f1379_1379 x_0
+hoi._f1379_1379 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericSection_146 x1_1_0) x2_1_1) 
+hoi.gVerify_Section_36 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 2 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 (iTasks._Framework.Generic.Interaction.gVerify_Maybe_102 iTasks._Framework.Generic.Interaction.gVerify_Bool_89)) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 (iTasks._Framework.Generic.Interaction.gVerify_Maybe_102 iTasks._Framework.Generic.Interaction.gVerify_Bool_89))) x1_0 (hoi.bimapToGeneric_237 x2_1)
+hoi.bimapToGeneric_238 !x_0 = hoi._f1380_1380 x_0
+hoi._f1380_1380 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericSection_146 x1_1_0)) 
+hoi.gText_Section_37 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "sLeftSignal" (iTasks._Framework.Generic.Visualization.gText_Maybe_27 iTasks._Framework.Generic.Visualization.gText_Bool_14)) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "sRightSignal" (iTasks._Framework.Generic.Visualization.gText_Maybe_27 iTasks._Framework.Generic.Visualization.gText_Bool_14))) x1_0 (hoi.bimapToGeneric_238 x2_1)
+hoi.fli__Section_141 = _predefined._Cons "sLeftSignal" (_predefined._Cons "sRightSignal" _predefined._Nil)
+hoi.JSONEncode_RECORD_1288 grd_fields_0 _x_1 _x_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1285 _x_1 _x_2 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_Section_38 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1288 hoi.fli__Section_141 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONEncode_Bool_13 x1_0 (hoi.toGenericSection_146 x2_1)
+hoi.bimapFromGeneric_239 !x_0 = hoi._f1381_1381 x_0
+hoi._f1381_1381 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericSection_145 x1_1_0)) 
+hoi.bimapFromGeneric_240 !x_0 = hoi._f1382_1382 x_0
+hoi._f1382_1382 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_239 x1_1_0) x2_1_1) 
+hoi.JSONDecode_RECORD_1289 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I _x_5 !_x_6::B !l_7 = case l_7 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1286 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1286 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+hoi.JSONDecode_Section_39 !x1_0::B !x2_1 = hoi.bimapFromGeneric_240 (hoi.JSONDecode_RECORD_1289 "sLeftSignal" 0 Text.JSON.JSONDecode_Bool_37 "sRightSignal" 1 Text.JSON.JSONDecode_Bool_37 x1_0 x2_1)
+hoi.gDefault_Section_40 = hoi.fromGenericSection_145 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault_Maybe_24 iTasks._Framework.Generic.Defaults.gDefault_Bool_11))))
+hoi.gEq_Section_41::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 (Data.Maybe.gEq_Maybe_13 GenEq.gEq_Bool_4)) (GenEq.gEq_FIELD_12 (Data.Maybe.gEq_Maybe_13 GenEq.gEq_Bool_4))) (hoi.toGenericSection_146 x1_0) (hoi.toGenericSection_146 x2_1)
+hoi.toGenericType_155 !x_0 = case x_0 (hoi.SEC x11_1_0 -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS x11_1_0))) (hoi.SWT x21_1_0 -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.CONS x21_1_0))) 
+hoi.bimapToGeneric_241 !x_0 = hoi._f1383_1383 x_0
+hoi._f1383_1383 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericType_155 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gti_SWT_151 = StdGeneric.GenTypeArrow (StdGeneric.GenTypeCons "Switch") (StdGeneric.GenTypeCons "Type")
+hoi.gti_SEC_150 = StdGeneric.GenTypeArrow (StdGeneric.GenTypeCons "Section") (StdGeneric.GenTypeCons "Type")
+hoi.cdi_SEC_152 = StdGeneric._GenericConsDescriptor "SEC" 1 StdGeneric.GenConsNoPrio hoi.tdi_Type_149 hoi.gti_SEC_150 0
+hoi.tdi_Type_149 = StdGeneric._GenericTypeDefDescriptor "Type" 0 2 hoi.cli_Type_148
+hoi.cdi_SWT_153 = StdGeneric._GenericConsDescriptor "SWT" 1 StdGeneric.GenConsNoPrio hoi.tdi_Type_149 hoi.gti_SWT_151 1
+hoi.cli_Type_148 = _predefined._Cons hoi.cdi_SEC_152 (_predefined._Cons hoi.cdi_SWT_153 _predefined._Nil)
+hoi.gEditor_Type_42 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_OBJECT_16 2 hoi.cli_Type_148 (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 1 0 hoi.gEditor_Section_33 hoi.gEditMeta_Section_34) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Section_34) (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 1 1 hoi.gEditor_Switch_24 hoi.gEditMeta_Switch_25) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Switch_25)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Section_34) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Switch_25)) x1_0 (hoi.bimapToGeneric_241 x2_1) x3_2 x4_3
+hoi.gEditMeta_Type_43 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_OBJECT_49 (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Section_34) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 hoi.gEditMeta_Switch_25)) (hoi.toGenericType_155 x1_0)
+hoi.bimapToGeneric_242 !x_0 = hoi._f1384_1384 x_0
+hoi._f1384_1384 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericType_155 x1_1_0) x2_1_1) 
+hoi.fromGenericType_154 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> hoi.SEC x1_3_0) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.CONS x1_3_0 -> hoi.SWT x1_3_0) ) ) 
+hoi.bimapFromGeneric_243 !x_0 = hoi._f1385_1385 x_0
+hoi._f1385_1385 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericType_154 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_244 !x_0 = hoi._f1386_1386 x_0
+hoi._f1386_1386 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_243 x1_1_0) x2_1_1) 
+hoi.gUpdate_Type_44 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_244 (iTasks._Framework.Generic.Interaction.gUpdate_OBJECT_115 2 hoi.cli_Type_148 (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 1 0 hoi.gUpdate_Section_35 hoi.gDefault_Section_40 hoi.JSONEncode_Section_38 hoi.JSONDecode_Section_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Section_40) (Text.JSON.JSONEncode_CONS_29 "SEC" hoi.JSONEncode_Section_38) (Text.JSON.JSONDecode_CONS_41 "SEC" hoi.JSONDecode_Section_39) (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 1 1 hoi.gUpdate_Switch_26 hoi.gDefault_Switch_31 hoi.JSONEncode_Switch_29 hoi.JSONDecode_Switch_30) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Switch_31) (Text.JSON.JSONEncode_CONS_29 "SWT" hoi.JSONEncode_Switch_29) (Text.JSON.JSONDecode_CONS_41 "SWT" hoi.JSONDecode_Switch_30)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Section_40) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Switch_31)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "SEC" hoi.JSONEncode_Section_38) (Text.JSON.JSONEncode_CONS_29 "SWT" hoi.JSONEncode_Switch_29)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "SEC" hoi.JSONDecode_Section_39) (Text.JSON.JSONDecode_CONS_41 "SWT" hoi.JSONDecode_Switch_30)) x1_0 x2_1 (hoi.bimapToGeneric_242 x3_2) x4_3)
+hoi.bimapToGeneric_245 !x_0 = hoi._f1387_1387 x_0
+hoi._f1387_1387 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericType_155 x1_1_0) x2_1_1) 
+hoi.gVerify_Type_45 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_OBJECT_82 (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 1 hoi.gVerify_Section_36) (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 1 hoi.gVerify_Switch_27)) x1_0 (hoi.bimapToGeneric_245 x2_1)
+hoi.bimapToGeneric_246 !x_0 = hoi._f1388_1388 x_0
+hoi._f1388_1388 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericType_155 x1_1_0)) 
+hoi.gText_Type_46 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_OBJECT_8 (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_CONS_7 "SEC" hoi.tdi_Type_149 hoi.gText_Section_37) (iTasks._Framework.Generic.Visualization.gText_CONS_7 "SWT" hoi.tdi_Type_149 hoi.gText_Switch_28)) x1_0 (hoi.bimapToGeneric_246 x2_1)
+hoi.JSONEncode_Type_47 !x1_0::B !x2_1 = Text.JSON.JSONEncode_OBJECT_30 (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "SEC" hoi.JSONEncode_Section_38) (Text.JSON.JSONEncode_CONS_29 "SWT" hoi.JSONEncode_Switch_29)) x1_0 (hoi.toGenericType_155 x2_1)
+hoi.bimapFromGeneric_247 !x_0 = hoi._f1389_1389 x_0
+hoi._f1389_1389 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericType_154 x1_1_0)) 
+hoi.bimapFromGeneric_248 !x_0 = hoi._f1390_1390 x_0
+hoi._f1390_1390 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_247 x1_1_0) x2_1_1) 
+hoi.JSONDecode_Type_48 !x1_0::B !x2_1 = hoi.bimapFromGeneric_248 (Text.JSON.JSONDecode_OBJECT_42 (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "SEC" hoi.JSONDecode_Section_39) (Text.JSON.JSONDecode_CONS_41 "SWT" hoi.JSONDecode_Switch_30)) x1_0 x2_1)
+hoi.gDefault_Type_49 = hoi.fromGenericType_154 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Section_40) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 hoi.gDefault_Switch_31)))
+hoi.gEq_Type_50::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 hoi.gEq_Section_41) (GenEq.gEq_CONS_10 hoi.gEq_Switch_32)) (hoi.toGenericType_155 x1_0) (hoi.toGenericType_155 x2_1)
+hoi.toGenericTrack_164 !x_0 = case x_0 (hoi._Track x11_1_0 x12_1_1 x13_1_2 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.PAIR (StdGeneric.FIELD x12_1_1) (StdGeneric.FIELD x13_1_2)))) 
+hoi.bimapToGeneric_249 !x_0 = hoi._f1391_1391 x_0
+hoi._f1391_1391 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericTrack_164 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_Track_51 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 3 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "tLabel" iTasks._Framework.Generic.Interaction.gEditor__String_24 iTasks._Framework.Generic.Interaction.gEditMeta__String_57) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tLabel" iTasks._Framework.Generic.Interaction.gEditMeta__String_57) (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "tPosition" hoi.gEditor_Position_6 hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tPosition" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "tType" hoi.gEditor_Type_42 hoi.gEditMeta_Type_43) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tType" hoi.gEditMeta_Type_43)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tPosition" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tType" hoi.gEditMeta_Type_43))) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tLabel" iTasks._Framework.Generic.Interaction.gEditMeta__String_57) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tPosition" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tType" hoi.gEditMeta_Type_43))) x1_0 (hoi.bimapToGeneric_249 x2_1) x3_2 x4_3
+hoi.gEditMeta_Track_52 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tLabel" iTasks._Framework.Generic.Interaction.gEditMeta__String_57) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tPosition" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tType" hoi.gEditMeta_Type_43))) (hoi.toGenericTrack_164 x1_0)
+hoi.bimapToGeneric_250 !x_0 = hoi._f1392_1392 x_0
+hoi._f1392_1392 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericTrack_164 x1_1_0) x2_1_1) 
+hoi.fromGenericTrack_163 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.PAIR c_4_0 c_4_1 -> case c_4_0 (StdGeneric.FIELD x2_5_0 -> case c_4_1 (StdGeneric.FIELD x3_6_0 -> hoi._Track x1_3_0 x2_5_0 x3_6_0) ) ) ) ) ) 
+hoi.bimapFromGeneric_251 !x_0 = hoi._f1393_1393 x_0
+hoi._f1393_1393 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericTrack_163 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_252 !x_0 = hoi._f1394_1394 x_0
+hoi._f1394_1394 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_251 x1_1_0) x2_1_1) 
+hoi.JSONDecode_FIELD_1295 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1395}> (hoi.JSONDecode_Type_48 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1396}> (hoi.JSONDecode_Type_48 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1396}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1395}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_FIELD_1293 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1397}> (hoi.JSONDecode_Position_12 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1398}> (hoi.JSONDecode_Position_12 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1398}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1397}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1297 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = hoi.d1_202 fy_2 (hoi.JSONDecode_FIELD_1293 gfd_name_0 _x_1 False l_4) l_4
+hoi.JSONDecode_FIELD_1291 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1399}> (Text.JSON.JSONDecode__String_38 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1400}> (Text.JSON.JSONDecode__String_38 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1400}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1399}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1299 gfd_name_0 _x_1::I !fy_2 !_x_3::B !l_4 = hoi.d1_202 fy_2 (hoi.JSONDecode_FIELD_1291 gfd_name_0 _x_1 False l_4) l_4
+hoi.JSONEncode_FIELD_1294 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> hoi.JSONEncode_Type_47 True x_1_0) 
+hoi.JSONEncode_FIELD_1292 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> hoi.JSONEncode_Position_11 True x_1_0) 
+hoi.JSONEncode_PAIR_1296 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1292 False x_1_0) (fy_0 False y_1_1)) 
+hoi.JSONEncode_FIELD_1290 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode__String_14 True x_1_0) 
+hoi.JSONEncode_PAIR_1298 !fy_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1290 False x_1_0) (fy_0 False y_1_1)) 
+hoi.d1_1302 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1295 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+hoi.JSONDecode_PAIR_1301 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = hoi.d1_1302 gfd_name_2 _x_3 (hoi.JSONDecode_FIELD_1293 gfd_name_0 _x_1 False l_5) l_5
+hoi.d1_1305 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4 !l_5 = case _x_4 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_PAIR_1301 gfd_name_0 _x_1 gfd_name_2 _x_3 False xs_1_1) l_5) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_5) ) 
+hoi.JSONDecode_PAIR_1304 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = hoi.d1_1305 gfd_name_2 _x_3 gfd_name_4 _x_5 (hoi.JSONDecode_FIELD_1291 gfd_name_0 _x_1 False l_7) l_7
+hoi.JSONEncode_PAIR_1300 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1292 False x_1_0) (hoi.JSONEncode_FIELD_1294 False y_1_1)) 
+hoi.JSONEncode_PAIR_1303 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1290 False x_1_0) (hoi.JSONEncode_PAIR_1300 False y_1_1)) 
+hoi.gUpdate_Track_53 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_252 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 3 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate__String_123 iTasks._Framework.Generic.Defaults.gDefault__String_12 Text.JSON.JSONEncode__String_14 Text.JSON.JSONDecode__String_38) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) hoi.JSONEncode_FIELD_1290 (hoi.JSONDecode_FIELD_1291 "tLabel" 0) (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 hoi.gUpdate_Position_8 hoi.gDefault_Position_13 hoi.JSONEncode_Position_11 hoi.JSONDecode_Position_12) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) hoi.JSONEncode_FIELD_1292 (hoi.JSONDecode_FIELD_1293 "tPosition" 1) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 hoi.gUpdate_Type_44 hoi.gDefault_Type_49 hoi.JSONEncode_Type_47 hoi.JSONDecode_Type_48) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Type_49) hoi.JSONEncode_FIELD_1294 (hoi.JSONDecode_FIELD_1295 "tType" 2)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Type_49)) hoi.JSONEncode_PAIR_1300 (hoi.JSONDecode_PAIR_1301 "tPosition" 1 "tType" 2)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Type_49))) hoi.JSONEncode_PAIR_1303 (hoi.JSONDecode_PAIR_1304 "tLabel" 0 "tPosition" 1 "tType" 2) x1_0 x2_1 (hoi.bimapToGeneric_250 x3_2) x4_3)
+hoi.bimapToGeneric_253 !x_0 = hoi._f1401_1401 x_0
+hoi._f1401_1401 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericTrack_164 x1_1_0) x2_1_1) 
+hoi.gVerify_Track_54 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 3 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify__String_90) (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 hoi.gVerify_Position_9) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 hoi.gVerify_Type_45))) x1_0 (hoi.bimapToGeneric_253 x2_1)
+hoi.bimapToGeneric_254 !x_0 = hoi._f1402_1402 x_0
+hoi._f1402_1402 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericTrack_164 x1_1_0)) 
+hoi.gText_Track_55 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "tLabel" iTasks._Framework.Generic.Visualization.gText__String_15) (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "tPosition" hoi.gText_Position_10) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "tType" hoi.gText_Type_46))) x1_0 (hoi.bimapToGeneric_254 x2_1)
+hoi.fli__Track_158 = _predefined._Cons "tLabel" (_predefined._Cons "tPosition" (_predefined._Cons "tType" _predefined._Nil))
+hoi.JSONEncode_RECORD_1306 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1303 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_Track_56 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1306 hoi.fli__Track_158 x1_0 (hoi.toGenericTrack_164 x2_1)
+hoi.bimapFromGeneric_255 !x_0 = hoi._f1403_1403 x_0
+hoi._f1403_1403 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericTrack_163 x1_1_0)) 
+hoi.bimapFromGeneric_256 !x_0 = hoi._f1404_1404 x_0
+hoi._f1404_1404 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_255 x1_1_0) x2_1_1) 
+hoi.JSONDecode_RECORD_1307 gfd_name_0 _x_1::I gfd_name_2 _x_3::I gfd_name_4 _x_5::I !_x_6::B !l_7 = case l_7 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1304 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1304 gfd_name_0 _x_1 gfd_name_2 _x_3 gfd_name_4 _x_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+hoi.JSONDecode_Track_57 !x1_0::B !x2_1 = hoi.bimapFromGeneric_256 (hoi.JSONDecode_RECORD_1307 "tLabel" 0 "tPosition" 1 "tType" 2 x1_0 x2_1)
+hoi.gDefault_Track_58 = hoi.fromGenericTrack_163 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault__String_12) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Type_49))))
+hoi.gEq_Track_59::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq__String_6) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 hoi.gEq_Position_14) (GenEq.gEq_FIELD_12 hoi.gEq_Type_50))) (hoi.toGenericTrack_164 x1_0) (hoi.toGenericTrack_164 x2_1)
+hoi.toGenericTrain_172 !x_0 = case x_0 (hoi._Train x11_1_0 x12_1_1 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1))) 
+hoi.bimapToGeneric_257 !x_0 = hoi._f1405_1405 x_0
+hoi._f1405_1405 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericTrain_172 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_Train_60 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 2 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "position" hoi.gEditor_Position_6 hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "position" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "direction" iTasks._Framework.Generic.Interaction.gEditor_Bool_23 iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "direction" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "position" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "direction" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) x1_0 (hoi.bimapToGeneric_257 x2_1) x3_2 x4_3
+hoi.gEditMeta_Train_61 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "position" hoi.gEditMeta_Position_7) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "direction" iTasks._Framework.Generic.Interaction.gEditMeta_Bool_56)) (hoi.toGenericTrain_172 x1_0)
+hoi.bimapToGeneric_258 !x_0 = hoi._f1406_1406 x_0
+hoi._f1406_1406 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericTrain_172 x1_1_0) x2_1_1) 
+hoi.fromGenericTrain_171 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.FIELD x1_3_0 -> case c_2_1 (StdGeneric.FIELD x2_4_0 -> hoi._Train x1_3_0 x2_4_0) ) ) ) 
+hoi.bimapFromGeneric_259 !x_0 = hoi._f1407_1407 x_0
+hoi._f1407_1407 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericTrain_171 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_260 !x_0 = hoi._f1408_1408 x_0
+hoi._f1408_1408 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_259 x1_1_0) x2_1_1) 
+hoi.JSONDecode_PAIR_1309 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = hoi.d1_1278 gfd_name_2 _x_3 (hoi.JSONDecode_FIELD_1293 gfd_name_0 _x_1 False l_5) l_5
+hoi.JSONEncode_PAIR_1308 !_x_0::B !_x_1 = case _x_1 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1292 False x_1_0) (hoi.JSONEncode_FIELD_1272 False y_1_1)) 
+hoi.gUpdate_Train_62 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_260 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 2 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 hoi.gUpdate_Position_8 hoi.gDefault_Position_13 hoi.JSONEncode_Position_11 hoi.JSONDecode_Position_12) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) hoi.JSONEncode_FIELD_1292 (hoi.JSONDecode_FIELD_1293 "position" 0) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate_Bool_122 iTasks._Framework.Generic.Defaults.gDefault_Bool_11 Text.JSON.JSONEncode_Bool_13 Text.JSON.JSONDecode_Bool_37) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11) hoi.JSONEncode_FIELD_1272 (hoi.JSONDecode_FIELD_1273 "direction" 1)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)) hoi.JSONEncode_PAIR_1308 (hoi.JSONDecode_PAIR_1309 "position" 0 "direction" 1) x1_0 x2_1 (hoi.bimapToGeneric_258 x3_2) x4_3)
+hoi.bimapToGeneric_261 !x_0 = hoi._f1409_1409 x_0
+hoi._f1409_1409 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericTrain_172 x1_1_0) x2_1_1) 
+hoi.gVerify_Train_63 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 2 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 hoi.gVerify_Position_9) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify_Bool_89)) x1_0 (hoi.bimapToGeneric_261 x2_1)
+hoi.bimapToGeneric_262 !x_0 = hoi._f1410_1410 x_0
+hoi._f1410_1410 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericTrain_172 x1_1_0)) 
+hoi.gText_Train_64 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "position" hoi.gText_Position_10) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "direction" iTasks._Framework.Generic.Visualization.gText_Bool_14)) x1_0 (hoi.bimapToGeneric_262 x2_1)
+hoi.fli__Train_167 = _predefined._Cons "position" (_predefined._Cons "direction" _predefined._Nil)
+hoi.JSONEncode_RECORD_1310 grd_fields_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1308 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_Train_65 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1310 hoi.fli__Train_167 x1_0 (hoi.toGenericTrain_172 x2_1)
+hoi.bimapFromGeneric_263 !x_0 = hoi._f1411_1411 x_0
+hoi._f1411_1411 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericTrain_171 x1_1_0)) 
+hoi.bimapFromGeneric_264 !x_0 = hoi._f1412_1412 x_0
+hoi._f1412_1412 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_263 x1_1_0) x2_1_1) 
+hoi.JSONDecode_RECORD_1311 gfd_name_0 _x_1::I gfd_name_2 _x_3::I !_x_4::B !l_5 = case l_5 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1309 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1309 gfd_name_0 _x_1 gfd_name_2 _x_3 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_5) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_5)
+hoi.JSONDecode_Train_66 !x1_0::B !x2_1 = hoi.bimapFromGeneric_264 (hoi.JSONDecode_RECORD_1311 "position" 0 "direction" 1 x1_0 x2_1)
+hoi.gDefault_Train_67 = hoi.fromGenericTrain_171 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_Position_13) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Bool_11)))
+hoi.gEq_Train_68::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 hoi.gEq_Position_14) (GenEq.gEq_FIELD_12 GenEq.gEq_Bool_4)) (hoi.toGenericTrain_172 x1_0) (hoi.toGenericTrain_172 x2_1)
+hoi.toGenericUserRole_183 !x_0 = case x_0 (hoi.Machinist -> StdGeneric.OBJECT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT))) (hoi.Controller -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.LEFT (StdGeneric.CONS StdGeneric.UNIT)))) (hoi.Designer -> StdGeneric.OBJECT (StdGeneric.RIGHT (StdGeneric.RIGHT (StdGeneric.CONS StdGeneric.UNIT)))) 
+hoi.bimapToGeneric_265 !x_0 = hoi._f1413_1413 x_0
+hoi._f1413_1413 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericUserRole_183 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gti_Designer_178 = StdGeneric.GenTypeCons "UserRole"
+hoi.gti_Controller_177 = StdGeneric.GenTypeCons "UserRole"
+hoi.gti_Machinist_176 = StdGeneric.GenTypeCons "UserRole"
+hoi.cdi_Machinist_179 = StdGeneric._GenericConsDescriptor "Machinist" 0 StdGeneric.GenConsNoPrio hoi.tdi_UserRole_175 hoi.gti_Machinist_176 0
+hoi.cdi_Controller_180 = StdGeneric._GenericConsDescriptor "Controller" 0 StdGeneric.GenConsNoPrio hoi.tdi_UserRole_175 hoi.gti_Controller_177 1
+hoi.tdi_UserRole_175 = StdGeneric._GenericTypeDefDescriptor "UserRole" 0 3 hoi.cli_UserRole_174
+hoi.cdi_Designer_181 = StdGeneric._GenericConsDescriptor "Designer" 0 StdGeneric.GenConsNoPrio hoi.tdi_UserRole_175 hoi.gti_Designer_178 2
+hoi.cli_UserRole_174 = _predefined._Cons hoi.cdi_Machinist_179 (_predefined._Cons hoi.cdi_Controller_180 (_predefined._Cons hoi.cdi_Designer_181 _predefined._Nil))
+hoi.gEditor_UserRole_69 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_OBJECT_16 3 hoi.cli_UserRole_174 (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 0 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditor_EITHER_14 (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 1 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditor_CONS_17 0 2 iTasks._Framework.Generic.Interaction.gEditor_UNIT_13 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46)) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) x1_0 (hoi.bimapToGeneric_265 x2_1) x3_2 x4_3
+hoi.gEditMeta_UserRole_70 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_OBJECT_49 (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_EITHER_47 (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46) (iTasks._Framework.Generic.Interaction.gEditMeta_CONS_50 iTasks._Framework.Generic.Interaction.gEditMeta_UNIT_46))) (hoi.toGenericUserRole_183 x1_0)
+hoi.bimapToGeneric_266 !x_0 = hoi._f1414_1414 x_0
+hoi._f1414_1414 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericUserRole_183 x1_1_0) x2_1_1) 
+hoi.fromGenericUserRole_182 !c_0 = case c_0 (StdGeneric.OBJECT c_1_0 -> case c_1_0 (StdGeneric.LEFT c_2_0 -> case c_2_0 (StdGeneric.CONS c_3_0 -> case c_3_0 (StdGeneric.UNIT -> hoi.Machinist) ) ) (StdGeneric.RIGHT c_2_0 -> case c_2_0 (StdGeneric.LEFT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.Controller) ) ) (StdGeneric.RIGHT c_3_0 -> case c_3_0 (StdGeneric.CONS c_4_0 -> case c_4_0 (StdGeneric.UNIT -> hoi.Designer) ) ) ) ) 
+hoi.bimapFromGeneric_267 !x_0 = hoi._f1415_1415 x_0
+hoi._f1415_1415 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericUserRole_182 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_268 !x_0 = hoi._f1416_1416 x_0
+hoi._f1416_1416 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_267 x1_1_0) x2_1_1) 
+hoi.gUpdate_UserRole_71 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_268 (iTasks._Framework.Generic.Interaction.gUpdate_OBJECT_115 3 hoi.cli_UserRole_174 (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 0 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "Machinist" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "Machinist" Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Interaction.gUpdate_EITHER_114 (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 1 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "Controller" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "Controller" Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Interaction.gUpdate_CONS_116 0 2 iTasks._Framework.Generic.Interaction.gUpdate_UNIT_112 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1 Text.JSON.JSONEncode_UNIT_15 Text.JSON.JSONDecode_UNIT_39) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (Text.JSON.JSONEncode_CONS_29 "Designer" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONDecode_CONS_41 "Designer" Text.JSON.JSONDecode_UNIT_39)) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1)) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "Controller" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "Designer" Text.JSON.JSONEncode_UNIT_15)) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "Controller" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "Designer" Text.JSON.JSONDecode_UNIT_39))) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1))) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "Machinist" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "Controller" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "Designer" Text.JSON.JSONEncode_UNIT_15))) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "Machinist" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "Controller" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "Designer" Text.JSON.JSONDecode_UNIT_39))) x1_0 x2_1 (hoi.bimapToGeneric_266 x3_2) x4_3)
+hoi.bimapToGeneric_269 !x_0 = hoi._f1417_1417 x_0
+hoi._f1417_1417 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericUserRole_183 x1_1_0) x2_1_1) 
+hoi.gVerify_UserRole_72 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_OBJECT_82 (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79) (iTasks._Framework.Generic.Interaction.gVerify_EITHER_81 (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79) (iTasks._Framework.Generic.Interaction.gVerify_CONS_83 0 iTasks._Framework.Generic.Interaction.gVerify_UNIT_79))) x1_0 (hoi.bimapToGeneric_269 x2_1)
+hoi.bimapToGeneric_270 !x_0 = hoi._f1418_1418 x_0
+hoi._f1418_1418 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericUserRole_183 x1_1_0)) 
+hoi.gText_UserRole_73 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_OBJECT_8 (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_CONS_7 "Machinist" hoi.tdi_UserRole_175 iTasks._Framework.Generic.Visualization.gText_UNIT_4) (iTasks._Framework.Generic.Visualization.gText_EITHER_6 (iTasks._Framework.Generic.Visualization.gText_CONS_7 "Controller" hoi.tdi_UserRole_175 iTasks._Framework.Generic.Visualization.gText_UNIT_4) (iTasks._Framework.Generic.Visualization.gText_CONS_7 "Designer" hoi.tdi_UserRole_175 iTasks._Framework.Generic.Visualization.gText_UNIT_4))) x1_0 (hoi.bimapToGeneric_270 x2_1)
+hoi.JSONEncode_UserRole_74 !x1_0::B !x2_1 = Text.JSON.JSONEncode_OBJECT_30 (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "Machinist" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_EITHER_28 (Text.JSON.JSONEncode_CONS_29 "Controller" Text.JSON.JSONEncode_UNIT_15) (Text.JSON.JSONEncode_CONS_29 "Designer" Text.JSON.JSONEncode_UNIT_15))) x1_0 (hoi.toGenericUserRole_183 x2_1)
+hoi.bimapFromGeneric_271 !x_0 = hoi._f1419_1419 x_0
+hoi._f1419_1419 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericUserRole_182 x1_1_0)) 
+hoi.bimapFromGeneric_272 !x_0 = hoi._f1420_1420 x_0
+hoi._f1420_1420 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_271 x1_1_0) x2_1_1) 
+hoi.JSONDecode_UserRole_75 !x1_0::B !x2_1 = hoi.bimapFromGeneric_272 (Text.JSON.JSONDecode_OBJECT_42 (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "Machinist" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_EITHER_40 (Text.JSON.JSONDecode_CONS_41 "Controller" Text.JSON.JSONDecode_UNIT_39) (Text.JSON.JSONDecode_CONS_41 "Designer" Text.JSON.JSONDecode_UNIT_39))) x1_0 x2_1)
+hoi.gDefault_UserRole_76 = hoi.fromGenericUserRole_182 (iTasks._Framework.Generic.Defaults.gDefault_OBJECT_5 (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_EITHER_3 (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1) (iTasks._Framework.Generic.Defaults.gDefault_CONS_4 iTasks._Framework.Generic.Defaults.gDefault_UNIT_1))))
+hoi.gEq_UserRole_77::B x1_0 x2_1 = GenEq.gEq_OBJECT_13 (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_EITHER_9 (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7) (GenEq.gEq_CONS_10 GenEq.gEq_UNIT_7))) (hoi.toGenericUserRole_183 x1_0) (hoi.toGenericUserRole_183 x2_1)
+hoi.toGenericState_193 !x_0 = case x_0 (hoi._State x11_1_0 x12_1_1 x13_1_2 x14_1_3 -> StdGeneric.RECORD (StdGeneric.PAIR (StdGeneric.PAIR (StdGeneric.FIELD x11_1_0) (StdGeneric.FIELD x12_1_1)) (StdGeneric.PAIR (StdGeneric.FIELD x13_1_2) (StdGeneric.FIELD x14_1_3)))) 
+hoi.bimapToGeneric_273 !x_0 = hoi._f1421_1421 x_0
+hoi._f1421_1421 !x_0 = case x_0 (_Tuple3 x1_1_0 x2_1_1 x3_1_2 -> _Tuple3 (hoi.toGenericState_193 x1_1_0) x2_1_1 x3_1_2) 
+hoi.gEditor_State_78 !x1_0 !x2_1 !x3_2 !x4_3 = iTasks._Framework.Generic.Interaction.gEditor_RECORD_18 4 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "tracks" (iTasks._Framework.Generic.Interaction.gEditor__List_25 hoi.gEditor_Track_51 hoi.gText_Track_55 hoi.gDefault_Track_58 hoi.gEditMeta_Track_52 hoi.JSONEncode_Track_56 hoi.JSONDecode_Track_57) (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Track_52)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tracks" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Track_52)) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "role" hoi.gEditor_UserRole_69 hoi.gEditMeta_UserRole_70) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "role" hoi.gEditMeta_UserRole_70)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tracks" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Track_52)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "role" hoi.gEditMeta_UserRole_70)) (iTasks._Framework.Generic.Interaction.gEditor_PAIR_15 (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "step" iTasks._Framework.Generic.Interaction.gEditor_Int_20 iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "step" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditor_FIELD_19 "trains" (iTasks._Framework.Generic.Interaction.gEditor__List_25 hoi.gEditor_Train_60 hoi.gText_Train_64 hoi.gDefault_Train_67 hoi.gEditMeta_Train_61 hoi.JSONEncode_Train_65 hoi.JSONDecode_Train_66) (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Train_61)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "trains" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Train_61))) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "step" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "trains" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Train_61)))) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tracks" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Track_52)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "role" hoi.gEditMeta_UserRole_70)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "step" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "trains" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Train_61)))) x1_0 (hoi.bimapToGeneric_273 x2_1) x3_2 x4_3
+hoi.gEditMeta_State_79 x1_0 = iTasks._Framework.Generic.Interaction.gEditMeta_RECORD_51 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "tracks" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Track_52)) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "role" hoi.gEditMeta_UserRole_70)) (iTasks._Framework.Generic.Interaction.gEditMeta_PAIR_48 (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "step" iTasks._Framework.Generic.Interaction.gEditMeta_Int_53) (iTasks._Framework.Generic.Interaction.gEditMeta_FIELD_52 "trains" (iTasks._Framework.Generic.Interaction.gEditMeta__List_58 hoi.gEditMeta_Train_61)))) (hoi.toGenericState_193 x1_0)
+hoi.bimapToGeneric_274 !x_0 = hoi._f1422_1422 x_0
+hoi._f1422_1422 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericState_193 x1_1_0) x2_1_1) 
+hoi.fromGenericState_192 !c_0 = case c_0 (StdGeneric.RECORD c_1_0 -> case c_1_0 (StdGeneric.PAIR c_2_0 c_2_1 -> case c_2_0 (StdGeneric.PAIR c_3_0 c_3_1 -> case c_3_0 (StdGeneric.FIELD x1_4_0 -> case c_3_1 (StdGeneric.FIELD x2_5_0 -> case c_2_1 (StdGeneric.PAIR c_6_0 c_6_1 -> case c_6_0 (StdGeneric.FIELD x3_7_0 -> case c_6_1 (StdGeneric.FIELD x4_8_0 -> hoi._State x1_4_0 x2_5_0 x3_7_0 x4_8_0) ) ) ) ) ) ) ) 
+hoi.bimapFromGeneric_275 !x_0 = hoi._f1423_1423 x_0
+hoi._f1423_1423 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.fromGenericState_192 x1_1_0) x2_1_1) 
+hoi.bimapFromGeneric_276 !x_0 = hoi._f1424_1424 x_0
+hoi._f1424_1424 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_275 x1_1_0) x2_1_1) 
+hoi.JSONDecode_FIELD_1313 gfd_name_0 _x_1::I _x_2 !_x_3::B !l_4 = case l_4 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1425}> (Text.JSON.JSONDecode__List_43 _x_2 True field_4_0) l_4) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1426}> (Text.JSON.JSONDecode__List_43 _x_2 True (_predefined._Cons field_4_0 _predefined._Nil)) l_4) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_4)
+<{hoi._c;144;5_1426}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1425}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.d1_1320 gfd_name_0 _x_1::I _x_2 !_x_3 !l_4 = case _x_3 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1313 gfd_name_0 _x_1 _x_2 False xs_1_1) l_4) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_4) ) 
+hoi.JSONDecode_PAIR_1319 gfd_name_0 _x_1::I gfd_name_2 _x_3::I _x_4 !_x_5::B !l_6 = hoi.d1_1320 gfd_name_2 _x_3 _x_4 (hoi.JSONDecode_FIELD_1262 gfd_name_0 _x_1 False l_6) l_6
+hoi.JSONDecode_FIELD_1315 gfd_name_0 _x_1::I !_x_2::B !l_3 = case l_3 (_predefined._Cons _x_1_0 _x_1_1 -> case _x_1_0 (Text.JSON.JSONObject fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = hoi.findField_198 gfd_name_0 fields_2_0 in <{hoi._c;133;5_1427}> (hoi.JSONDecode_UserRole_75 True field_4_0) l_3) ) (Text.JSON.JSONArray fields_2_0 -> case _x_1_1 (_predefined._Nil -> let !field_4_0 = <{StdList.!!}> fields_2_0 _x_1 in <{hoi._c;144;5_1428}> (hoi.JSONDecode_UserRole_75 True (_predefined._Cons field_4_0 _predefined._Nil)) l_3) ) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_3)
+<{hoi._c;144;5_1428}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+<{hoi._c;133;5_1427}> !_x_0 !l_1 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> <{_Tuple2!3}> (Data.Maybe.Just (StdGeneric.FIELD x_2_0)) l_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_1)) 
+hoi.JSONDecode_PAIR_1317 gfd_name_0 _x_1::I _x_2 !fy_3 !_x_4::B !l_5 = hoi.d1_202 fy_3 (hoi.JSONDecode_FIELD_1313 gfd_name_0 _x_1 _x_2 False l_5) l_5
+hoi.JSONDecode_PAIR_1322 gfd_name_0 _x_1::I _x_2 !fy_3 !fy_4 !_x_5::B !l_6 = hoi.d1_202 fy_4 (hoi.JSONDecode_PAIR_1317 gfd_name_0 _x_1 _x_2 fy_3 False l_6) l_6
+hoi.JSONEncode_FIELD_1312 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.FIELD x_1_0 -> Text.JSON.JSONEncode__List_16 _x_0 True x_1_0) 
+hoi.JSONEncode_PAIR_1318 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1261 False x_1_0) (hoi.JSONEncode_FIELD_1312 _x_0 False y_1_1)) 
+hoi.JSONEncode_FIELD_1314 !_x_0::B !_x_1 = case _x_1 (StdGeneric.FIELD x_1_0 -> hoi.JSONEncode_UserRole_74 True x_1_0) 
+hoi.JSONEncode_PAIR_1316 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1312 _x_0 False x_1_0) (fy_1 False y_1_1)) 
+hoi.JSONEncode_PAIR_1321 _x_0 !fy_1 !fy_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_PAIR_1316 _x_0 fy_1 False x_1_0) (fy_2 False y_1_1)) 
+hoi.d1_1325 gfd_name_0 _x_1::I !_x_2 !l_3 = case _x_2 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_FIELD_1315 gfd_name_0 _x_1 False xs_1_1) l_3) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_3) ) 
+hoi.JSONDecode_PAIR_1324 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I !_x_5::B !l_6 = hoi.d1_1325 gfd_name_3 _x_4 (hoi.JSONDecode_FIELD_1313 gfd_name_0 _x_1 _x_2 False l_6) l_6
+hoi.JSONDecode_PAIR_1327 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I !fy_5 !_x_6::B !l_7 = hoi.d1_202 fy_5 (hoi.JSONDecode_PAIR_1324 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 False l_7) l_7
+hoi.JSONEncode_PAIR_1323 _x_0 !_x_1::B !_x_2 = case _x_2 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_FIELD_1312 _x_0 False x_1_0) (hoi.JSONEncode_FIELD_1314 False y_1_1)) 
+hoi.JSONEncode_PAIR_1326 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_PAIR_1323 _x_0 False x_1_0) (fy_1 False y_1_1)) 
+hoi.d1_1330 gfd_name_0 _x_1::I gfd_name_2 _x_3::I _x_4 !_x_5 !l_6 = case _x_5 (_Tuple2 _x_1_0 xs_1_1 -> case _x_1_0 (Data.Maybe.Just x_2_0 -> hoi.d2_203 x_2_0 (hoi.JSONDecode_PAIR_1319 gfd_name_0 _x_1 gfd_name_2 _x_3 _x_4 False xs_1_1) l_6) (Data.Maybe.Nothing -> <{_Tuple2!3}> Data.Maybe.Nothing l_6) ) 
+hoi.JSONDecode_PAIR_1329 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I gfd_name_5 _x_6::I gfd_name_7 _x_8::I _x_9 !_x_10::B !l_11 = hoi.d1_1330 gfd_name_5 _x_6 gfd_name_7 _x_8 _x_9 (hoi.JSONDecode_PAIR_1324 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 False l_11) l_11
+hoi.JSONEncode_PAIR_1328 _x_0 _x_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_PAIR_1323 _x_0 False x_1_0) (hoi.JSONEncode_PAIR_1318 _x_1 False y_1_1)) 
+hoi.gUpdate_State_80 !x1_0 !x2_1 !x3_2 !x4_3 = hoi.bimapFromGeneric_276 (iTasks._Framework.Generic.Interaction.gUpdate_RECORD_117 4 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 (iTasks._Framework.Generic.Interaction.gUpdate__List_124 hoi.gUpdate_Track_53 hoi.gDefault_Track_58 hoi.JSONEncode_Track_56 hoi.JSONDecode_Track_57) (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Track_58) (Text.JSON.JSONEncode__List_16 hoi.JSONEncode_Track_56) (Text.JSON.JSONDecode__List_43 hoi.JSONDecode_Track_57)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Track_58)) (hoi.JSONEncode_FIELD_1312 hoi.JSONEncode_Track_56) (hoi.JSONDecode_FIELD_1313 "tracks" 0 hoi.JSONDecode_Track_57) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 hoi.gUpdate_UserRole_71 hoi.gDefault_UserRole_76 hoi.JSONEncode_UserRole_74 hoi.JSONDecode_UserRole_75) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_UserRole_76) hoi.JSONEncode_FIELD_1314 (hoi.JSONDecode_FIELD_1315 "role" 1)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Track_58)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_UserRole_76)) (hoi.JSONEncode_PAIR_1323 hoi.JSONEncode_Track_56) (hoi.JSONDecode_PAIR_1324 "tracks" 0 hoi.JSONDecode_Track_57 "role" 1) (iTasks._Framework.Generic.Interaction.gUpdate_PAIR_113 (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 iTasks._Framework.Generic.Interaction.gUpdate_Int_119 iTasks._Framework.Generic.Defaults.gDefault_Int_8 Text.JSON.JSONEncode_Int_10 Text.JSON.JSONDecode_Int_34) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) hoi.JSONEncode_FIELD_1261 (hoi.JSONDecode_FIELD_1262 "step" 2) (iTasks._Framework.Generic.Interaction.gUpdate_FIELD_118 (iTasks._Framework.Generic.Interaction.gUpdate__List_124 hoi.gUpdate_Train_62 hoi.gDefault_Train_67 hoi.JSONEncode_Train_65 hoi.JSONDecode_Train_66) (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Train_67) (Text.JSON.JSONEncode__List_16 hoi.JSONEncode_Train_65) (Text.JSON.JSONDecode__List_43 hoi.JSONDecode_Train_66)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Train_67)) (hoi.JSONEncode_FIELD_1312 hoi.JSONEncode_Train_65) (hoi.JSONDecode_FIELD_1313 "trains" 3 hoi.JSONDecode_Train_66)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Train_67))) (hoi.JSONEncode_PAIR_1318 hoi.JSONEncode_Train_65) (hoi.JSONDecode_PAIR_1319 "step" 2 "trains" 3 hoi.JSONDecode_Train_66)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Track_58)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_UserRole_76)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Train_67)))) (hoi.JSONEncode_PAIR_1328 hoi.JSONEncode_Track_56 hoi.JSONEncode_Train_65) (hoi.JSONDecode_PAIR_1329 "tracks" 0 hoi.JSONDecode_Track_57 "role" 1 "step" 2 "trains" 3 hoi.JSONDecode_Train_66) x1_0 x2_1 (hoi.bimapToGeneric_274 x3_2) x4_3)
+hoi.bimapToGeneric_277 !x_0 = hoi._f1429_1429 x_0
+hoi._f1429_1429 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.toGenericState_193 x1_1_0) x2_1_1) 
+hoi.gVerify_State_81 !x1_0 x2_1 = iTasks._Framework.Generic.Interaction.gVerify_RECORD_84 4 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 (iTasks._Framework.Generic.Interaction.gVerify__List_91 hoi.gVerify_Track_54)) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 hoi.gVerify_UserRole_72)) (iTasks._Framework.Generic.Interaction.gVerify_PAIR_80 (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 iTasks._Framework.Generic.Interaction.gVerify_Int_86) (iTasks._Framework.Generic.Interaction.gVerify_FIELD_85 (iTasks._Framework.Generic.Interaction.gVerify__List_91 hoi.gVerify_Train_63)))) x1_0 (hoi.bimapToGeneric_277 x2_1)
+hoi.bimapToGeneric_278 !x_0 = hoi._f1430_1430 x_0
+hoi._f1430_1430 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.toGenericState_193 x1_1_0)) 
+hoi.gText_State_82 !x1_0 x2_1 = iTasks._Framework.Generic.Visualization.gText_RECORD_9 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "tracks" (iTasks._Framework.Generic.Visualization.gText__List_16 hoi.gText_Track_55)) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "role" hoi.gText_UserRole_73)) (iTasks._Framework.Generic.Visualization.gText_PAIR_5 (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "step" iTasks._Framework.Generic.Visualization.gText_Int_11) (iTasks._Framework.Generic.Visualization.gText_FIELD_10 "trains" (iTasks._Framework.Generic.Visualization.gText__List_16 hoi.gText_Train_64)))) x1_0 (hoi.bimapToGeneric_278 x2_1)
+hoi.fli__State_186 = _predefined._Cons "tracks" (_predefined._Cons "role" (_predefined._Cons "step" (_predefined._Cons "trains" _predefined._Nil)))
+hoi.JSONEncode_PAIR_1331 _x_0 !fy_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_PAIR_1323 _x_0 False x_1_0) (fy_1 False y_1_1)) 
+hoi.JSONEncode_RECORD_1332 grd_fields_0 _x_1 fy_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1331 _x_1 fy_2 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_PAIR_1334 _x_0 _x_1 !_x_2::B !_x_3 = case _x_3 (StdGeneric.PAIR x_1_0 y_1_1 -> <{hoi.++_200}> (hoi.JSONEncode_PAIR_1323 _x_0 False x_1_0) (hoi.JSONEncode_PAIR_1318 _x_1 False y_1_1)) 
+hoi.JSONEncode_RECORD_1333 grd_fields_0 _x_1 _x_2 !_x_3::B !_x_4 = case _x_4 (StdGeneric.RECORD x_1_0 -> _predefined._Cons (Text.JSON.JSONObject (<{hoi.c;86;47_210}> (hoi.JSONEncode_PAIR_1334 _x_1 _x_2 False x_1_0) grd_fields_0)) _predefined._Nil) 
+hoi.JSONEncode_State_83 !x1_0::B !x2_1 = hoi.JSONEncode_RECORD_1333 hoi.fli__State_186 hoi.JSONEncode_Track_56 hoi.JSONEncode_Train_65 x1_0 (hoi.toGenericState_193 x2_1)
+hoi.bimapFromGeneric_279 !x_0 = hoi._f1431_1431 x_0
+hoi._f1431_1431 !x_0 = case x_0 (Data.Maybe.Nothing -> Data.Maybe.Nothing) (Data.Maybe.Just x1_1_0 -> Data.Maybe.Just (hoi.fromGenericState_192 x1_1_0)) 
+hoi.bimapFromGeneric_280 !x_0 = hoi._f1432_1432 x_0
+hoi._f1432_1432 !x_0 = case x_0 (_Tuple2 x1_1_0 x2_1_1 -> _Tuple2 (hoi.bimapFromGeneric_279 x1_1_0) x2_1_1) 
+hoi.JSONDecode_PAIR_1335 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I !fy_5 !_x_6::B !l_7 = hoi.d1_202 fy_5 (hoi.JSONDecode_PAIR_1324 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 False l_7) l_7
+hoi.JSONDecode_RECORD_1336 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I fy_5 !_x_6::B !l_7 = case l_7 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1335 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 fy_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1335 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 fy_5 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_7) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_7)
+hoi.JSONDecode_PAIR_1338 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I gfd_name_5 _x_6::I gfd_name_7 _x_8::I _x_9 !_x_10::B !l_11 = hoi.d1_1330 gfd_name_5 _x_6 gfd_name_7 _x_8 _x_9 (hoi.JSONDecode_PAIR_1324 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 False l_11) l_11
+hoi.JSONDecode_RECORD_1337 gfd_name_0 _x_1::I _x_2 gfd_name_3 _x_4::I gfd_name_5 _x_6::I gfd_name_7 _x_8::I _x_9 !_x_10::B !l_11 = case l_11 (_predefined._Cons obj_1_0 xs_1_1 -> case obj_1_0 (Text.JSON.JSONObject fields_2_0 -> hoi.d_213 (hoi.JSONDecode_PAIR_1338 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 gfd_name_5 _x_6 gfd_name_7 _x_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) (Text.JSON.JSONArray fields_2_0 -> hoi.d_214 (hoi.JSONDecode_PAIR_1338 gfd_name_0 _x_1 _x_2 gfd_name_3 _x_4 gfd_name_5 _x_6 gfd_name_7 _x_8 _x_9 False (_predefined._Cons obj_1_0 _predefined._Nil)) xs_1_1 l_11) ) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing l_11)
+hoi.JSONDecode_State_84 !x1_0::B !x2_1 = hoi.bimapFromGeneric_280 (hoi.JSONDecode_RECORD_1337 "tracks" 0 hoi.JSONDecode_Track_57 "role" 1 "step" 2 "trains" 3 hoi.JSONDecode_Train_66 x1_0 x2_1)
+hoi.gDefault_State_85 = hoi.fromGenericState_192 (iTasks._Framework.Generic.Defaults.gDefault_RECORD_6 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Track_58)) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 hoi.gDefault_UserRole_76)) (iTasks._Framework.Generic.Defaults.gDefault_PAIR_2 (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 iTasks._Framework.Generic.Defaults.gDefault_Int_8) (iTasks._Framework.Generic.Defaults.gDefault_FIELD_7 (iTasks._Framework.Generic.Defaults.gDefault__List_13 hoi.gDefault_Train_67)))))
+hoi.gEq_State_86::B x1_0 x2_1 = GenEq.gEq_RECORD_11 (GenEq.gEq_PAIR_8 (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 (GenEq.gEq__List_16 hoi.gEq_Track_59)) (GenEq.gEq_FIELD_12 hoi.gEq_UserRole_77)) (GenEq.gEq_PAIR_8 (GenEq.gEq_FIELD_12 GenEq.gEq_Int_2) (GenEq.gEq_FIELD_12 (GenEq.gEq__List_16 hoi.gEq_Train_68)))) (hoi.toGenericState_193 x1_0) (hoi.toGenericState_193 x2_1)
+<{hoi.TD;Position}> _x_0::B = _predefined._Nil
+<{hoi.TD;Orientation}> _x_0::B = _predefined._Nil
+<{hoi.TD;Switch}> _x_0::B = _predefined._Nil
+<{hoi.TD;Section}> _x_0::B = _predefined._Nil
+<{hoi.TD;Type}> _x_0::B = _predefined._Nil
+<{hoi.TD;Track}> _x_0::B = _predefined._Nil
+<{hoi.TD;Train}> _x_0::B = _predefined._Nil
+<{hoi.TD;UserRole}> _x_0::B = _predefined._Nil
+<{hoi.TD;State}> _x_0::B = _predefined._Nil
+
+:: hoi.Orientation = hoi.NE | hoi.NW | hoi.SE | hoi.SW
+:: hoi.Type = hoi.SEC a1 | hoi.SWT a1
+:: hoi.UserRole = hoi.Machinist | hoi.Controller | hoi.Designer
+
+|| Converted Records
+:: hoi._Position = {hoi.xPos::I, hoi.yPos::I}
+
+:: hoi._Switch = {hoi.sOrientation, hoi.sOn::B}
+
+:: hoi._Section = {hoi.sLeftSignal, hoi.sRightSignal}
+
+:: hoi._Track = {hoi.tLabel, hoi.tPosition, hoi.tType}
+
+:: hoi._Train = {hoi.position, hoi.direction::B}
+
+:: hoi._State = {hoi.tracks, hoi.role, hoi.step::I, hoi.trains}
+
+:: <{hoi.JSONEncode_s;}> = {!hoi.JSONEncode_s}
+
+:: <{hoi.JSONEncode_ss;}> = {!hoi.JSONEncode_ss}
+
+:: <{hoi.JSONEncode_sss;}> = {!hoi.JSONEncode_sss}
+
+:: <{hoi.JSONDecode_s;}> = {!hoi.JSONDecode_s}
+
+:: <{hoi.JSONDecode_ss;}> = {!hoi.JSONDecode_ss}
+
+:: <{hoi.JSONDecode_sss;}> = {!hoi.JSONDecode_sss}
+
+:: <{hoi.gDefault_s;}> = {hoi.gDefault_s}
+
+:: <{hoi.gDefault_ss;}> = {hoi.gDefault_ss}
+
+:: <{hoi.gDefault_sss;}> = {hoi.gDefault_sss}
+
+:: <{hoi.gUpdate_s;}> = {!hoi.gUpdate_s}
+
+:: <{hoi.gUpdate_ss;}> = {!hoi.gUpdate_ss}
+
+:: <{hoi.gUpdate_sss;}> = {!hoi.gUpdate_sss}
+
+:: <{hoi.gVerify_s;}> = {!hoi.gVerify_s}
+
+:: <{hoi.gVerify_ss;}> = {!hoi.gVerify_ss}
+
+:: <{hoi.gVerify_sss;}> = {!hoi.gVerify_sss}
+
+:: <{hoi.gText_s;}> = {!hoi.gText_s}
+
+:: <{hoi.gText_ss;}> = {!hoi.gText_ss}
+
+:: <{hoi.gText_sss;}> = {!hoi.gText_sss}
+
+:: <{hoi.gEditor_s;}> = {!hoi.gEditor_s}
+
+:: <{hoi.gEditor_ss;}> = {!hoi.gEditor_ss}
+
+:: <{hoi.gEditor_sss;}> = {!hoi.gEditor_sss}
+
+:: <{hoi.gEditMeta_s;}> = {!hoi.gEditMeta_s}
+
+:: <{hoi.gEditMeta_ss;}> = {!hoi.gEditMeta_ss}
+
+:: <{hoi.gEditMeta_sss;}> = {!hoi.gEditMeta_sss}
+
+:: <{hoi.gEq_s;}> = {!hoi.gEq_s}
+
+:: <{hoi.gEq_ss;}> = {!hoi.gEq_ss}
+
+:: <{hoi.gEq_sss;}> = {!hoi.gEq_sss}
+
+:: <{hoi.JSONEncode_ssss;}> = {!hoi.JSONEncode_ssss}
+
+:: <{hoi.JSONDecode_ssss;}> = {!hoi.JSONDecode_ssss}
+
+:: <{hoi.gEq_ssss;}> = {!hoi.gEq_ssss}
+
+:: <{hoi.gDefault_ssss;}> = {hoi.gDefault_ssss}
+
+:: <{hoi.JSONEncode_sssss;}> = {!hoi.JSONEncode_sssss}
+
+:: <{hoi.JSONEncode_ssssss;}> = {!hoi.JSONEncode_ssssss}
+
+:: <{hoi.JSONEncode_sssssss;}> = {!hoi.JSONEncode_sssssss}
+
+:: <{hoi.JSONEncode_ssssssss;}> = {!hoi.JSONEncode_ssssssss}
+
+:: <{hoi.JSONEncode_sssssssss;}> = {!hoi.JSONEncode_sssssssss}
+
+:: <{hoi.JSONDecode_sssss;}> = {!hoi.JSONDecode_sssss}
+
+:: <{hoi.JSONDecode_ssssss;}> = {!hoi.JSONDecode_ssssss}
+
+:: <{hoi.JSONDecode_sssssss;}> = {!hoi.JSONDecode_sssssss}
+
+:: <{hoi.JSONDecode_ssssssss;}> = {!hoi.JSONDecode_ssssssss}
+
+:: <{hoi.JSONDecode_sssssssss;}> = {!hoi.JSONDecode_sssssssss}
+
+:: <{hoi.bimap_s;}> = {hoi.bimap_s}
+
+:: <{hoi.bimap_ss;}> = {hoi.bimap_ss}
+
+:: <{hoi.bimap_sss;}> = {hoi.bimap_sss}
+
+:: <{hoi.gEq_sssss;}> = {!hoi.gEq_sssss}
+
+:: <{hoi.gEq_ssssss;}> = {!hoi.gEq_ssssss}
+
+:: <{hoi.gEq_sssssss;}> = {!hoi.gEq_sssssss}
+
+:: <{hoi.gEq_ssssssss;}> = {!hoi.gEq_ssssssss}
+
+:: <{hoi.gEq_sssssssss;}> = {!hoi.gEq_sssssssss}
+
+:: <{hoi.gEditor_ssss;}> = {!hoi.gEditor_ssss}
+
+:: <{hoi.gText_ssss;}> = {!hoi.gText_ssss}
+
+:: <{hoi.gEditMeta_ssss;}> = {!hoi.gEditMeta_ssss}
+
+:: <{hoi.gEditor_sssss;}> = {!hoi.gEditor_sssss}
+
+:: <{hoi.gText_sssss;}> = {!hoi.gText_sssss}
+
+:: <{hoi.gDefault_sssss;}> = {hoi.gDefault_sssss}
+
+:: <{hoi.gEditMeta_sssss;}> = {!hoi.gEditMeta_sssss}
+
+:: <{hoi.gEditor_ssssss;}> = {!hoi.gEditor_ssssss}
+
+:: <{hoi.gText_ssssss;}> = {!hoi.gText_ssssss}
+
+:: <{hoi.gDefault_ssssss;}> = {hoi.gDefault_ssssss}
+
+:: <{hoi.gEditMeta_ssssss;}> = {!hoi.gEditMeta_ssssss}
+
+:: <{hoi.gEditor_sssssss;}> = {!hoi.gEditor_sssssss}
+
+:: <{hoi.gText_sssssss;}> = {!hoi.gText_sssssss}
+
+:: <{hoi.gDefault_sssssss;}> = {hoi.gDefault_sssssss}
+
+:: <{hoi.gEditMeta_sssssss;}> = {!hoi.gEditMeta_sssssss}
+
+:: <{hoi.gEditor_ssssssss;}> = {!hoi.gEditor_ssssssss}
+
+:: <{hoi.gText_ssssssss;}> = {!hoi.gText_ssssssss}
+
+:: <{hoi.gDefault_ssssssss;}> = {hoi.gDefault_ssssssss}
+
+:: <{hoi.gEditMeta_ssssssss;}> = {!hoi.gEditMeta_ssssssss}
+
+:: <{hoi.gEditor_sssssssss;}> = {!hoi.gEditor_sssssssss}
+
+:: <{hoi.gText_sssssssss;}> = {!hoi.gText_sssssssss}
+
+:: <{hoi.gDefault_sssssssss;}> = {hoi.gDefault_sssssssss}
+
+:: <{hoi.gEditMeta_sssssssss;}> = {!hoi.gEditMeta_sssssssss}
+
+:: <{hoi.gVerify_ssss;}> = {!hoi.gVerify_ssss}
+
+:: <{hoi.gVerify_sssss;}> = {!hoi.gVerify_sssss}
+
+:: <{hoi.gVerify_ssssss;}> = {!hoi.gVerify_ssssss}
+
+:: <{hoi.gVerify_sssssss;}> = {!hoi.gVerify_sssssss}
+
+:: <{hoi.gVerify_ssssssss;}> = {!hoi.gVerify_ssssssss}
+
+:: <{hoi.gVerify_sssssssss;}> = {!hoi.gVerify_sssssssss}
+
+:: <{hoi.gUpdate_ssss;}> = {!hoi.gUpdate_ssss}
+
+:: <{hoi.gUpdate_sssss;}> = {!hoi.gUpdate_sssss}
+
+:: <{hoi.gUpdate_ssssss;}> = {!hoi.gUpdate_ssssss}
+
+:: <{hoi.gUpdate_sssssss;}> = {!hoi.gUpdate_sssssss}
+
+:: <{hoi.gUpdate_ssssssss;}> = {!hoi.gUpdate_ssssssss}
+
+:: <{hoi.gUpdate_sssssssss;}> = {!hoi.gUpdate_sssssssss}
+
+:: <{hoi.gLexOrd_s;}> = {!hoi.gLexOrd_s}
+
+:: <{hoi.gLexOrd_ss;}> = {!hoi.gLexOrd_ss}
+
+:: <{hoi.gLexOrd_sss;}> = {!hoi.gLexOrd_sss}
+
+:: <{hoi.gLexOrd_ssss;}> = {!hoi.gLexOrd_ssss}
+
+:: <{hoi.gLexOrd_sssss;}> = {!hoi.gLexOrd_sssss}
+
+:: <{hoi.gLexOrd_ssssss;}> = {!hoi.gLexOrd_ssssss}
+
+:: <{hoi.gLexOrd_sssssss;}> = {!hoi.gLexOrd_sssssss}
+
+:: <{hoi.gLexOrd_ssssssss;}> = {!hoi.gLexOrd_ssssssss}
+
+:: <{hoi.gLexOrd_sssssssss;}> = {!hoi.gLexOrd_sssssssss}
+

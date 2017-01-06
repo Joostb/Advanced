@@ -1,0 +1,226 @@
+|| ?module? iTasks._Framework.Client.LinkerSupport
+
+
+iTasks._Framework.Client.LinkerSupport.foldl_18 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_18 op_0 (op_0 r_1 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_17 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_17 op_0 (op_0 r_1 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_16 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_16 op_0 (op_0 r_1 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_15 op_0 r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_15 op_0 (op_0 r_1 a_1_0) x_1_1) 
+<{iTasks._Framework.Client.LinkerSupport.get`_14}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_14}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_14}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.Client.LinkerSupport.mbLinkByExpr linkerstate_0 lib_1 !mbExpr_2 world_3 = <{iTasks._Framework.Client.LinkerSupport._c;47;7_774}> mbExpr_2 linkerstate_0 lib_1 world_3
+<{iTasks._Framework.Client.LinkerSupport._c;47;7_774}> !mbExpr_0 linkerstate_1 lib_2 world_3 = case mbExpr_0 (Data.Maybe.Just expr_1_0 -> let saplEXPR_2_0 = graph_to_sapl_string.graph_to_sapl_string expr_1_0, _x_2_1 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_1 lib_2 saplEXPR_2_0 world_3 in _Tuple4 (select _x_2_1::_Tuple4 0) (select _x_2_1::_Tuple4 1) (Data.Maybe.Just saplEXPR_2_0) (select _x_2_1::_Tuple4 3)) (_ -> _Tuple4 linkerstate_1 lib_2 Data.Maybe.Nothing world_3)
+iTasks._Framework.Client.LinkerSupport.anon_9 !_x_0 !_x_1 = case _x_0 (_Tuple4 linkerstate_1_0 lib_1_1 os_1_2 world_1_3 -> case _x_1 (_Tuple3 id_2_0 event_2_1 f_2_2 -> let _x_3_0 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_1_0 lib_1_1 (graph_to_sapl_string.graph_to_sapl_string f_2_2) world_1_3 in _Tuple4 (select _x_3_0::_Tuple4 0) (select _x_3_0::_Tuple4 1) (_predefined._Cons (_Tuple3 id_2_0 event_2_1 (select _x_3_0::_Tuple4 2)) os_1_2) (select _x_3_0::_Tuple4 3)) ) 
+iTasks._Framework.Client.LinkerSupport.anon_10 !_x_0 !_x_1 = case _x_0 (_Tuple4 linkerstate_1_0 lib_1_1 os_1_2 world_1_3 -> case _x_1 (_Tuple2 fn_2_0 f_2_1 -> let _x_3_0 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_1_0 lib_1_1 (graph_to_sapl_string.graph_to_sapl_string f_2_1) world_1_3 in _Tuple4 (select _x_3_0::_Tuple4 0) (select _x_3_0::_Tuple4 1) (_predefined._Cons (_Tuple2 fn_2_0 (select _x_3_0::_Tuple4 2)) os_1_2) (select _x_3_0::_Tuple4 3)) ) 
+iTasks._Framework.Client.LinkerSupport.handlerr !_x_0 = case _x_0 (Data.Error.Error str_1_0 -> StdMisc.abort (<{StdString.+++_11}> "LinkerSupport.icl: " str_1_0)) (Data.Error.Ok a_1_0 -> a_1_0) 
+iTasks._Framework.Client.LinkerSupport.anon_11 flavour_0 !_x_1 !_x_2 = case _x_1 (_Tuple3 os_1_0 js_lib_1_1 parserstate_1_2 -> case _x_2 (_Tuple3 id_2_0 event_2_1 saplhandler_2_2 -> let _x_3_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_0 False saplhandler_2_2 (Data.Maybe.Just parserstate_1_2) js_lib_1_1) in _Tuple3 (_predefined._Cons (_Tuple3 id_2_0 event_2_1 (select _x_3_0::_Tuple3 0)) os_1_0) (select _x_3_0::_Tuple3 1) (select _x_3_0::_Tuple3 2)) ) 
+iTasks._Framework.Client.LinkerSupport.anon_12 flavour_0 !_x_1 !_x_2 = case _x_1 (_Tuple3 os_1_0 js_lib_1_1 parserstate_1_2 -> case _x_2 (_Tuple2 fn_2_0 saplfun_2_1 -> let _x_3_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_0 False saplfun_2_1 (Data.Maybe.Just parserstate_1_2) js_lib_1_1) in _Tuple3 (_predefined._Cons (_Tuple2 fn_2_0 (select _x_3_0::_Tuple3 0)) os_1_0) (select _x_3_0::_Tuple3 1) (select _x_3_0::_Tuple3 2)) ) 
+iTasks._Framework.Client.LinkerSupport.mbExprGenerateJS flavour_0 tramp_1::B mbparserstate_2 js_lib_3 !_x_4 = case _x_4 (Data.Maybe.Just sapl_1_0 -> let _x_2_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_0 tramp_1 sapl_1_0 mbparserstate_2 js_lib_3) in _Tuple3 (Data.Maybe.Just (select _x_2_0::_Tuple3 0)) (select _x_2_0::_Tuple3 1) (Data.Maybe.Just (select _x_2_0::_Tuple3 2))) (Data.Maybe.Nothing -> _Tuple3 Data.Maybe.Nothing js_lib_3 mbparserstate_2) 
+<{iTasks._Framework.Client.LinkerSupport.get`_767}> _x_0::I !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdInt.<_17}> _x_0 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_767}> _x_0 l_1_3) (False -> case (<{StdInt.<_17}> kx_1_1 _x_0) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_767}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.Client.LinkerSupport.foldl_768 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_768 (iTasks._Framework.Client.LinkerSupport.anon_9 r_0 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_769 !r_0 !_x_1 = case _x_1 (_predefined._Nil -> r_0) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_769 (iTasks._Framework.Client.LinkerSupport.anon_10 r_0 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_770 flavour_0 !r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_770 flavour_0 (iTasks._Framework.Client.LinkerSupport.anon_11 flavour_0 r_1 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.foldl_771 flavour_0 !r_1 !_x_2 = case _x_2 (_predefined._Nil -> r_1) (_predefined._Cons a_1_0 x_1_1 -> iTasks._Framework.Client.LinkerSupport.foldl_771 flavour_0 (iTasks._Framework.Client.LinkerSupport.anon_12 flavour_0 r_1 a_1_0) x_1_1) 
+iTasks._Framework.Client.LinkerSupport.taskletLinker !state_0 !interfaceFuns_1 !eventHandlers_2 !resultFunc_3 !mbControllerFunc_4 !iworld_5 = case iworld_5 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 eventRoute_2_5 editletDiffs_2_6 -> let flavour_3_0 = select jsCompilerState_1_9::_Tuple5 2, loaderstate_3_1 = select jsCompilerState_1_9::_Tuple5 0, ftmap_3_2 = select jsCompilerState_1_9::_Tuple5 1, skipmap_3_3 = select jsCompilerState_1_9::_Tuple5 4, linkerstate_3_4 = _Tuple3 loaderstate_3_1 ftmap_3_2 (Data.Maybe.maybe Data.Set.newSet StdFunc.id (<{iTasks._Framework.Client.LinkerSupport.get`_767}> task_2_1 skipmap_3_3)), _x_3_5 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_3_4 Text.StringAppender.newAppender (graph_to_sapl_string.graph_to_sapl_string state_0) world_1_12, sapl_ST_3_6 = select _x_3_5::_Tuple4 2, _x_3_7 = <{iTasks._Framework.Client.LinkerSupport._c;93;15_776}> mbControllerFunc_4 linkerstate_3_37 lib_3_36 world_3_35, linkerstate_3_8 = select _x_3_7::_Tuple3 0, lib_3_9 = select _x_3_7::_Tuple3 1, world_3_10 = select _x_3_7::_Tuple3 2, _x_3_11 = iTasks._Framework.Client.LinkerSupport.foldl_768 (_Tuple4 linkerstate_3_8 lib_3_9 _predefined._Nil world_3_10) eventHandlers_2, linkerstate_3_12 = select _x_3_11::_Tuple4 0, lib_3_13 = select _x_3_11::_Tuple4 1, world_3_14 = select _x_3_11::_Tuple4 3, _x_3_15 = iTasks._Framework.Client.LinkerSupport.foldl_769 (_Tuple4 linkerstate_3_12 lib_3_13 _predefined._Nil world_3_14) interfaceFuns_1, lib_3_16 = select _x_3_15::_Tuple4 1, sapl_lib_3_17 = Text.StringAppender.toString_4 lib_3_16, _x_3_18 = <{iTasks._Framework.Client.LinkerSupport._c;120;33_775}> sapl_lib_3_17 jsCompilerState_1_9 flavour_3_0, _x_3_19 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_3_0 False sapl_ST_3_6 (select _x_3_18::_Tuple2 1) (select _x_3_18::_Tuple2 0)), js_ST_3_20 = select _x_3_19::_Tuple3 0, linkerstate_3_21 = select _x_3_5::_Tuple4 0, lib_3_22 = select _x_3_5::_Tuple4 1, world_3_23 = select _x_3_5::_Tuple4 3, _x_3_24 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_3_21 lib_3_22 (graph_to_sapl_string.graph_to_sapl_string resultFunc_3) world_3_23, _x_3_25 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_3_0 False (select _x_3_24::_Tuple4 2) (Data.Maybe.Just (select _x_3_19::_Tuple3 2)) (select _x_3_19::_Tuple3 1)), _x_3_26 = iTasks._Framework.Client.LinkerSupport.foldl_770 flavour_3_0 (_Tuple3 _predefined._Nil (select _x_3_25::_Tuple3 1) (select _x_3_25::_Tuple3 2)) (select _x_3_11::_Tuple4 2), _x_3_27 = iTasks._Framework.Client.LinkerSupport.foldl_771 flavour_3_0 (_Tuple3 _predefined._Nil (select _x_3_26::_Tuple3 1) (select _x_3_26::_Tuple3 2)) (select _x_3_15::_Tuple4 2), linkerstate_3_28 = select _x_3_24::_Tuple4 0, lib_3_29 = select _x_3_24::_Tuple4 1, world_3_30 = select _x_3_24::_Tuple4 3, _x_3_31 = iTasks._Framework.Client.LinkerSupport.mbLinkByExpr linkerstate_3_28 lib_3_29 mbControllerFunc_4 world_3_30, _x_3_32 = iTasks._Framework.Client.LinkerSupport.mbExprGenerateJS flavour_3_0 False (Data.Maybe.Just (select _x_3_27::_Tuple3 2)) (select _x_3_27::_Tuple3 1) (select _x_3_31::_Tuple4 2), js_lib_3_33 = select _x_3_32::_Tuple3 1, linkerstate_3_34 = select _x_3_15::_Tuple4 0, world_3_35 = select _x_3_31::_Tuple4 3, lib_3_36 = select _x_3_31::_Tuple4 1, linkerstate_3_37 = select _x_3_31::_Tuple4 0 in <{_Tuple7!127}> js_ST_3_20 (Text.StringAppender.toString_4 js_lib_3_33) (select _x_3_26::_Tuple3 0) (select _x_3_27::_Tuple3 0) (select _x_3_25::_Tuple3 0) (select _x_3_32::_Tuple3 0) (update iworld_5::iTasks._Framework.IWorld._IWorld [9:_Tuple5 (select linkerstate_3_34::_Tuple3 0) (select linkerstate_3_34::_Tuple3 1) flavour_3_0 (select _x_3_32::_Tuple3 2) (Data.Map.put (<{StdOverloaded.<;}> <{StdInt.<_17}>) task_2_1 (select linkerstate_3_34::_Tuple3 2) skipmap_3_3),12:select (System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) "debug.js" (Text.StringAppender.toString_4 js_lib_3_33) (select (System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) "debug.sapl" sapl_lib_3_17 (select (System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) "debug_state.js" js_ST_3_20 (select (System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) "debug_state.sapl" sapl_ST_3_6 (select _x_3_15::_Tuple4 3))::_Tuple2 1))::_Tuple2 1))::_Tuple2 1))::_Tuple2 1])) ) 
+<{iTasks._Framework.Client.LinkerSupport._c;93;15_776}> !mbControllerFunc_0 linkerstate_1 lib_2 world_3 = case mbControllerFunc_0 (Data.Maybe.Just _x_1_0 -> let _x_2_0 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_1 lib_2 (graph_to_sapl_string.graph_to_sapl_string iTasks._Framework.Client.RunOnClient.createClientIWorld) world_3, _x_2_1 = Sapl.Linker.LazyLinker.linkByExpr (select _x_2_0::_Tuple4 0) (select _x_2_0::_Tuple4 1) (graph_to_sapl_string.graph_to_sapl_string iTasks._Framework.Client.RunOnClient.getUIUpdates) (select _x_2_0::_Tuple4 3), _x_2_2 = Sapl.Linker.LazyLinker.linkByExpr (select _x_2_1::_Tuple4 0) (select _x_2_1::_Tuple4 1) (graph_to_sapl_string.graph_to_sapl_string iTasks._Framework.Engine.background) (select _x_2_1::_Tuple4 3) in _Tuple3 (select _x_2_2::_Tuple4 0) (select _x_2_2::_Tuple4 1) (select _x_2_2::_Tuple4 3)) (_ -> _Tuple3 linkerstate_1 lib_2 world_3)
+<{iTasks._Framework.Client.LinkerSupport._c;120;33_775}> !sapl_lib_0 jsCompilerState_1 flavour_2 = case sapl_lib_0 ("" -> _Tuple2 Text.StringAppender.newAppender (select jsCompilerState_1::_Tuple5 3)) (_ -> let _x_1_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.generateJS flavour_2 False sapl_lib_0 (select jsCompilerState_1::_Tuple5 3)) in _Tuple2 (select _x_1_0::_Tuple2 0) (Data.Maybe.Just (select _x_1_0::_Tuple2 1)))
+<{iTasks._Framework.Client.LinkerSupport.get`_19}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_19}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_19}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks._Framework.Client.LinkerSupport.get`_772}> _x_0::I !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdInt.<_17}> _x_0 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_772}> _x_0 l_1_3) (False -> case (<{StdInt.<_17}> kx_1_1 _x_0) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_772}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.Client.LinkerSupport.editletLinker !initDiff_0 !initClientFunc_1 !appDiffFunc_2 !iworld_3 = case iworld_3 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 _x_2_2 attachmentChain_2_3 nextTaskNo_2_4 eventRoute_2_5 editletDiffs_2_6 -> case _x_2_2 (Data.Maybe.Nothing -> <{_Tuple5!31}> "" "" "" "" iworld_3) (Data.Maybe.Just current_3_0 -> let flavour_4_0 = select jsCompilerState_1_9::_Tuple5 2, loaderstate_4_1 = select jsCompilerState_1_9::_Tuple5 0, ftmap_4_2 = select jsCompilerState_1_9::_Tuple5 1, skipmap_4_3 = select jsCompilerState_1_9::_Tuple5 4, linkerstate_4_4 = _Tuple3 loaderstate_4_1 ftmap_4_2 (Data.Maybe.maybe Data.Set.newSet StdFunc.id (<{iTasks._Framework.Client.LinkerSupport.get`_772}> current_3_0 skipmap_4_3)), _x_4_5 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_4_4 Text.StringAppender.newAppender (graph_to_sapl_string.graph_to_sapl_string initDiff_0) world_1_12, linkerstate_4_6 = select _x_4_5::_Tuple4 0, lib_4_7 = select _x_4_5::_Tuple4 1, world_4_8 = select _x_4_5::_Tuple4 3, _x_4_9 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_4_6 lib_4_7 (graph_to_sapl_string.graph_to_sapl_string initClientFunc_1) world_4_8, linkerstate_4_10 = select _x_4_9::_Tuple4 0, lib_4_11 = select _x_4_9::_Tuple4 1, world_4_12 = select _x_4_9::_Tuple4 3, _x_4_13 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_4_10 lib_4_11 (graph_to_sapl_string.graph_to_sapl_string appDiffFunc_2) world_4_12, lib_4_14 = select _x_4_13::_Tuple4 1, sapl_lib_4_15 = Text.StringAppender.toString_4 lib_4_14, _x_4_16 = <{iTasks._Framework.Client.LinkerSupport._c;183;33_777}> sapl_lib_4_15 jsCompilerState_1_9 flavour_4_0, mbparserstate_4_17 = select _x_4_16::_Tuple2 1, _x_4_18 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_4_0 False (select _x_4_5::_Tuple4 2) mbparserstate_4_17 (select _x_4_16::_Tuple2 0)), _x_4_19 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_4_0 False (select _x_4_9::_Tuple4 2) (Data.Maybe.Just (select _x_4_18::_Tuple3 2)) (select _x_4_18::_Tuple3 1)), _x_4_20 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_4_0 False (select _x_4_13::_Tuple4 2) (Data.Maybe.Just (select _x_4_19::_Tuple3 2)) (select _x_4_19::_Tuple3 1)), linkerstate_4_21 = select _x_4_13::_Tuple4 0 in <{_Tuple5!31}> (Text.StringAppender.toString_4 (select _x_4_20::_Tuple3 1)) (select _x_4_18::_Tuple3 0) (select _x_4_19::_Tuple3 0) (select _x_4_20::_Tuple3 0) (update iworld_3::iTasks._Framework.IWorld._IWorld [9:_Tuple5 (select linkerstate_4_21::_Tuple3 0) (select linkerstate_4_21::_Tuple3 1) flavour_4_0 mbparserstate_4_17 (Data.Map.put (<{StdOverloaded.<;}> <{StdInt.<_17}>) current_3_0 (select linkerstate_4_21::_Tuple3 2) skipmap_4_3),12:select _x_4_13::_Tuple4 3])) ) ) 
+<{iTasks._Framework.Client.LinkerSupport._c;183;33_777}> !sapl_lib_0 jsCompilerState_1 flavour_2 = case sapl_lib_0 ("" -> _Tuple2 Text.StringAppender.newAppender (select jsCompilerState_1::_Tuple5 3)) (_ -> let _x_1_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.generateJS flavour_2 False sapl_lib_0 (select jsCompilerState_1::_Tuple5 3)) in _Tuple2 (select _x_1_0::_Tuple2 0) (Data.Maybe.Just (select _x_1_0::_Tuple2 1)))
+<{iTasks._Framework.Client.LinkerSupport.get`_20}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_20}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_20}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks._Framework.Client.LinkerSupport.get`_773}> _x_0::I !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdInt.<_17}> _x_0 kx_1_1) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_773}> _x_0 l_1_3) (False -> case (<{StdInt.<_17}> kx_1_1 _x_0) (True -> <{iTasks._Framework.Client.LinkerSupport.get`_773}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks._Framework.Client.LinkerSupport.diffLinker !cdf_0 !idf_1 !iworld_2 = case iworld_2 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 _x_2_2 attachmentChain_2_3 nextTaskNo_2_4 eventRoute_2_5 editletDiffs_2_6 -> case _x_2_2 (Data.Maybe.Nothing -> <{_Tuple4!15}> "" "" "" iworld_2) (Data.Maybe.Just current_3_0 -> let flavour_4_0 = select jsCompilerState_1_9::_Tuple5 2, loaderstate_4_1 = select jsCompilerState_1_9::_Tuple5 0, ftmap_4_2 = select jsCompilerState_1_9::_Tuple5 1, skipmap_4_3 = select jsCompilerState_1_9::_Tuple5 4, linkerstate_4_4 = _Tuple3 loaderstate_4_1 ftmap_4_2 (Data.Maybe.maybe Data.Set.newSet StdFunc.id (<{iTasks._Framework.Client.LinkerSupport.get`_773}> current_3_0 skipmap_4_3)), _x_4_5 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_4_4 Text.StringAppender.newAppender (graph_to_sapl_string.graph_to_sapl_string cdf_0) world_1_12, linkerstate_4_6 = select _x_4_5::_Tuple4 0, lib_4_7 = select _x_4_5::_Tuple4 1, world_4_8 = select _x_4_5::_Tuple4 3, _x_4_9 = Sapl.Linker.LazyLinker.linkByExpr linkerstate_4_6 lib_4_7 (graph_to_sapl_string.graph_to_sapl_string idf_1) world_4_8, lib_4_10 = select _x_4_9::_Tuple4 1, sapl_lib_4_11 = Text.StringAppender.toString_4 lib_4_10, _x_4_12 = <{iTasks._Framework.Client.LinkerSupport._c;233;33_778}> sapl_lib_4_11 jsCompilerState_1_9 flavour_4_0, mbparserstate_4_13 = select _x_4_12::_Tuple2 1, _x_4_14 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_4_0 False (select _x_4_5::_Tuple4 2) mbparserstate_4_13 (select _x_4_12::_Tuple2 0)), _x_4_15 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.exprGenerateJS flavour_4_0 False (select _x_4_9::_Tuple4 2) (Data.Maybe.Just (select _x_4_14::_Tuple3 2)) (select _x_4_14::_Tuple3 1)), linkerstate_4_16 = select _x_4_9::_Tuple4 0 in <{_Tuple4!15}> (Text.StringAppender.toString_4 (select _x_4_15::_Tuple3 1)) (select _x_4_14::_Tuple3 0) (select _x_4_15::_Tuple3 0) (update iworld_2::iTasks._Framework.IWorld._IWorld [9:_Tuple5 (select linkerstate_4_16::_Tuple3 0) (select linkerstate_4_16::_Tuple3 1) flavour_4_0 mbparserstate_4_13 (Data.Map.put (<{StdOverloaded.<;}> <{StdInt.<_17}>) current_3_0 (select linkerstate_4_16::_Tuple3 2) skipmap_4_3),12:select _x_4_9::_Tuple4 3])) ) ) 
+<{iTasks._Framework.Client.LinkerSupport._c;233;33_778}> !sapl_lib_0 jsCompilerState_1 flavour_2 = case sapl_lib_0 ("" -> _Tuple2 Text.StringAppender.newAppender (select jsCompilerState_1::_Tuple5 3)) (_ -> let _x_1_0 = iTasks._Framework.Client.LinkerSupport.handlerr (Sapl.Target.JS.CodeGeneratorJS.generateJS flavour_2 False sapl_lib_0 (select jsCompilerState_1::_Tuple5 3)) in _Tuple2 (select _x_1_0::_Tuple2 0) (Data.Maybe.Just (select _x_1_0::_Tuple2 1)))
+iTasks._Framework.Client.LinkerSupport.printlnI !msg_0 !iw_1 = case iw_1 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> let _x_2_0 = StdFile.stdio_33 world_1_12 in update iw_1::iTasks._Framework.IWorld._IWorld [12:select (StdFile.fclose_30 (StdFile.fwrites "\n" (StdFile.fwrites msg_0 (select _x_2_0::_Tuple2 0))) (select _x_2_0::_Tuple2 1))::_Tuple2 1]) 
+iTasks._Framework.Client.LinkerSupport.println !msg_0 !world_1 = let _x_1_0 = StdFile.stdio_33 world_1 in select (StdFile.fclose_30 (StdFile.fwrites "\n" (StdFile.fwrites msg_0 (select _x_1_0::_Tuple2 0))) (select _x_1_0::_Tuple2 1))::_Tuple2 1
+iTasks._Framework.Client.LinkerSupport.anon_13 debugOutput_0 file_1 = _Tuple2 (Data.Error.Ok Data.Void.Void) (StdFile.fwrites debugOutput_0 file_1)
+iTasks._Framework.Client.LinkerSupport.debugToFile !fileName_0 debugOutput_1 !world_2 = let _x_1_0 = System.File.fileExists fileName_0 world_2, world_1_1 = select _x_1_0::_Tuple2 1 in select (System.File.withFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) fileName_0 5 (iTasks._Framework.Client.LinkerSupport.anon_13 debugOutput_1) (<{iTasks._Framework.Client.LinkerSupport._if;206;23_779}> (select _x_1_0::_Tuple2 0) world_1_1 fileName_0))::_Tuple2 1
+<{iTasks._Framework.Client.LinkerSupport._if;206;23_779}> !_x_0::B !world_1 fileName_2 = case _x_0 (True -> world_1) (_ -> select (System.File.writeFile (<{StdFile.FileSystem;}> StdFile.fclose_30 StdFile.fopen_31 StdFile.sfopen_32 StdFile.stdio_33) fileName_2 "" world_1)::_Tuple2 1)
+
+
+|| Converted Records
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_s;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_ss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_sss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_s;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_ss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_sss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_s;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_ss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_sss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_s;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_s;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_s;}> = {!iTasks._Framework.Client.LinkerSupport.gText_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_s;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_s;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_s;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_ssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONEncode_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONEncode_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.JSONDecode_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.JSONDecode_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.bimap_s;}> = {iTasks._Framework.Client.LinkerSupport.bimap_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.bimap_ss;}> = {iTasks._Framework.Client.LinkerSupport.bimap_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.bimap_sss;}> = {iTasks._Framework.Client.LinkerSupport.bimap_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEq_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEq_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_sssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_ssssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_sssssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_ssssssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditor_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditor_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gText_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gText_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gDefault_sssssssss;}> = {iTasks._Framework.Client.LinkerSupport.gDefault_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gEditMeta_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gEditMeta_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gVerify_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gVerify_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gUpdate_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gUpdate_sssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_s;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_s}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_ss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_ss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_sss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_sss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_ssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_ssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_sssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_sssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_ssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_ssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_sssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_sssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_ssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_ssssssss}
+
+:: <{iTasks._Framework.Client.LinkerSupport.gLexOrd_sssssssss;}> = {!iTasks._Framework.Client.LinkerSupport.gLexOrd_sssssssss}
+

@@ -1,0 +1,203 @@
+|| ?module? iTasks.UI.Component
+
+
+<{iTasks.UI.Component.TD;ComponentId}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;ComponentEventName}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;ComponentEvent}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;ComponentEventHandlerFunc}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;Conflict}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;ComponentDiff}> _x_0::B = _predefined._Nil
+<{iTasks.UI.Component.TD;ComponentHTML}> _x_0::B = _predefined._Nil
+
+:: iTasks.UI.Component.ComponentEvent = iTasks.UI.Component.ComponentEvent !a1 !a2 a3
+:: iTasks.UI.Component.ComponentDiff = iTasks.UI.Component.NoDiff | iTasks.UI.Component.Diff a1 a2
+
+|| Converted Records
+:: iTasks.UI.Component._ComponentHTML = {!iTasks.UI.Component.width, !iTasks.UI.Component.height, !iTasks.UI.Component.html}
+
+:: <{iTasks.UI.Component.JSONEncode_s;}> = {!iTasks.UI.Component.JSONEncode_s}
+
+:: <{iTasks.UI.Component.JSONEncode_ss;}> = {!iTasks.UI.Component.JSONEncode_ss}
+
+:: <{iTasks.UI.Component.JSONEncode_sss;}> = {!iTasks.UI.Component.JSONEncode_sss}
+
+:: <{iTasks.UI.Component.JSONDecode_s;}> = {!iTasks.UI.Component.JSONDecode_s}
+
+:: <{iTasks.UI.Component.JSONDecode_ss;}> = {!iTasks.UI.Component.JSONDecode_ss}
+
+:: <{iTasks.UI.Component.JSONDecode_sss;}> = {!iTasks.UI.Component.JSONDecode_sss}
+
+:: <{iTasks.UI.Component.gDefault_s;}> = {iTasks.UI.Component.gDefault_s}
+
+:: <{iTasks.UI.Component.gDefault_ss;}> = {iTasks.UI.Component.gDefault_ss}
+
+:: <{iTasks.UI.Component.gDefault_sss;}> = {iTasks.UI.Component.gDefault_sss}
+
+:: <{iTasks.UI.Component.gUpdate_s;}> = {!iTasks.UI.Component.gUpdate_s}
+
+:: <{iTasks.UI.Component.gUpdate_ss;}> = {!iTasks.UI.Component.gUpdate_ss}
+
+:: <{iTasks.UI.Component.gUpdate_sss;}> = {!iTasks.UI.Component.gUpdate_sss}
+
+:: <{iTasks.UI.Component.gVerify_s;}> = {!iTasks.UI.Component.gVerify_s}
+
+:: <{iTasks.UI.Component.gVerify_ss;}> = {!iTasks.UI.Component.gVerify_ss}
+
+:: <{iTasks.UI.Component.gVerify_sss;}> = {!iTasks.UI.Component.gVerify_sss}
+
+:: <{iTasks.UI.Component.gText_s;}> = {!iTasks.UI.Component.gText_s}
+
+:: <{iTasks.UI.Component.gText_ss;}> = {!iTasks.UI.Component.gText_ss}
+
+:: <{iTasks.UI.Component.gText_sss;}> = {!iTasks.UI.Component.gText_sss}
+
+:: <{iTasks.UI.Component.gEditor_s;}> = {!iTasks.UI.Component.gEditor_s}
+
+:: <{iTasks.UI.Component.gEditor_ss;}> = {!iTasks.UI.Component.gEditor_ss}
+
+:: <{iTasks.UI.Component.gEditor_sss;}> = {!iTasks.UI.Component.gEditor_sss}
+
+:: <{iTasks.UI.Component.gEditMeta_s;}> = {!iTasks.UI.Component.gEditMeta_s}
+
+:: <{iTasks.UI.Component.gEditMeta_ss;}> = {!iTasks.UI.Component.gEditMeta_ss}
+
+:: <{iTasks.UI.Component.gEditMeta_sss;}> = {!iTasks.UI.Component.gEditMeta_sss}
+
+:: <{iTasks.UI.Component.gEq_s;}> = {!iTasks.UI.Component.gEq_s}
+
+:: <{iTasks.UI.Component.gEq_ss;}> = {!iTasks.UI.Component.gEq_ss}
+
+:: <{iTasks.UI.Component.gEq_sss;}> = {!iTasks.UI.Component.gEq_sss}
+
+:: <{iTasks.UI.Component.JSONEncode_ssss;}> = {!iTasks.UI.Component.JSONEncode_ssss}
+
+:: <{iTasks.UI.Component.JSONDecode_ssss;}> = {!iTasks.UI.Component.JSONDecode_ssss}
+
+:: <{iTasks.UI.Component.gEq_ssss;}> = {!iTasks.UI.Component.gEq_ssss}
+
+:: <{iTasks.UI.Component.gDefault_ssss;}> = {iTasks.UI.Component.gDefault_ssss}
+
+:: <{iTasks.UI.Component.JSONEncode_sssss;}> = {!iTasks.UI.Component.JSONEncode_sssss}
+
+:: <{iTasks.UI.Component.JSONEncode_ssssss;}> = {!iTasks.UI.Component.JSONEncode_ssssss}
+
+:: <{iTasks.UI.Component.JSONEncode_sssssss;}> = {!iTasks.UI.Component.JSONEncode_sssssss}
+
+:: <{iTasks.UI.Component.JSONEncode_ssssssss;}> = {!iTasks.UI.Component.JSONEncode_ssssssss}
+
+:: <{iTasks.UI.Component.JSONEncode_sssssssss;}> = {!iTasks.UI.Component.JSONEncode_sssssssss}
+
+:: <{iTasks.UI.Component.JSONDecode_sssss;}> = {!iTasks.UI.Component.JSONDecode_sssss}
+
+:: <{iTasks.UI.Component.JSONDecode_ssssss;}> = {!iTasks.UI.Component.JSONDecode_ssssss}
+
+:: <{iTasks.UI.Component.JSONDecode_sssssss;}> = {!iTasks.UI.Component.JSONDecode_sssssss}
+
+:: <{iTasks.UI.Component.JSONDecode_ssssssss;}> = {!iTasks.UI.Component.JSONDecode_ssssssss}
+
+:: <{iTasks.UI.Component.JSONDecode_sssssssss;}> = {!iTasks.UI.Component.JSONDecode_sssssssss}
+
+:: <{iTasks.UI.Component.bimap_s;}> = {iTasks.UI.Component.bimap_s}
+
+:: <{iTasks.UI.Component.bimap_ss;}> = {iTasks.UI.Component.bimap_ss}
+
+:: <{iTasks.UI.Component.bimap_sss;}> = {iTasks.UI.Component.bimap_sss}
+
+:: <{iTasks.UI.Component.gEq_sssss;}> = {!iTasks.UI.Component.gEq_sssss}
+
+:: <{iTasks.UI.Component.gEq_ssssss;}> = {!iTasks.UI.Component.gEq_ssssss}
+
+:: <{iTasks.UI.Component.gEq_sssssss;}> = {!iTasks.UI.Component.gEq_sssssss}
+
+:: <{iTasks.UI.Component.gEq_ssssssss;}> = {!iTasks.UI.Component.gEq_ssssssss}
+
+:: <{iTasks.UI.Component.gEq_sssssssss;}> = {!iTasks.UI.Component.gEq_sssssssss}
+
+:: <{iTasks.UI.Component.gEditor_ssss;}> = {!iTasks.UI.Component.gEditor_ssss}
+
+:: <{iTasks.UI.Component.gText_ssss;}> = {!iTasks.UI.Component.gText_ssss}
+
+:: <{iTasks.UI.Component.gEditMeta_ssss;}> = {!iTasks.UI.Component.gEditMeta_ssss}
+
+:: <{iTasks.UI.Component.gEditor_sssss;}> = {!iTasks.UI.Component.gEditor_sssss}
+
+:: <{iTasks.UI.Component.gText_sssss;}> = {!iTasks.UI.Component.gText_sssss}
+
+:: <{iTasks.UI.Component.gDefault_sssss;}> = {iTasks.UI.Component.gDefault_sssss}
+
+:: <{iTasks.UI.Component.gEditMeta_sssss;}> = {!iTasks.UI.Component.gEditMeta_sssss}
+
+:: <{iTasks.UI.Component.gEditor_ssssss;}> = {!iTasks.UI.Component.gEditor_ssssss}
+
+:: <{iTasks.UI.Component.gText_ssssss;}> = {!iTasks.UI.Component.gText_ssssss}
+
+:: <{iTasks.UI.Component.gDefault_ssssss;}> = {iTasks.UI.Component.gDefault_ssssss}
+
+:: <{iTasks.UI.Component.gEditMeta_ssssss;}> = {!iTasks.UI.Component.gEditMeta_ssssss}
+
+:: <{iTasks.UI.Component.gEditor_sssssss;}> = {!iTasks.UI.Component.gEditor_sssssss}
+
+:: <{iTasks.UI.Component.gText_sssssss;}> = {!iTasks.UI.Component.gText_sssssss}
+
+:: <{iTasks.UI.Component.gDefault_sssssss;}> = {iTasks.UI.Component.gDefault_sssssss}
+
+:: <{iTasks.UI.Component.gEditMeta_sssssss;}> = {!iTasks.UI.Component.gEditMeta_sssssss}
+
+:: <{iTasks.UI.Component.gEditor_ssssssss;}> = {!iTasks.UI.Component.gEditor_ssssssss}
+
+:: <{iTasks.UI.Component.gText_ssssssss;}> = {!iTasks.UI.Component.gText_ssssssss}
+
+:: <{iTasks.UI.Component.gDefault_ssssssss;}> = {iTasks.UI.Component.gDefault_ssssssss}
+
+:: <{iTasks.UI.Component.gEditMeta_ssssssss;}> = {!iTasks.UI.Component.gEditMeta_ssssssss}
+
+:: <{iTasks.UI.Component.gEditor_sssssssss;}> = {!iTasks.UI.Component.gEditor_sssssssss}
+
+:: <{iTasks.UI.Component.gText_sssssssss;}> = {!iTasks.UI.Component.gText_sssssssss}
+
+:: <{iTasks.UI.Component.gDefault_sssssssss;}> = {iTasks.UI.Component.gDefault_sssssssss}
+
+:: <{iTasks.UI.Component.gEditMeta_sssssssss;}> = {!iTasks.UI.Component.gEditMeta_sssssssss}
+
+:: <{iTasks.UI.Component.gVerify_ssss;}> = {!iTasks.UI.Component.gVerify_ssss}
+
+:: <{iTasks.UI.Component.gVerify_sssss;}> = {!iTasks.UI.Component.gVerify_sssss}
+
+:: <{iTasks.UI.Component.gVerify_ssssss;}> = {!iTasks.UI.Component.gVerify_ssssss}
+
+:: <{iTasks.UI.Component.gVerify_sssssss;}> = {!iTasks.UI.Component.gVerify_sssssss}
+
+:: <{iTasks.UI.Component.gVerify_ssssssss;}> = {!iTasks.UI.Component.gVerify_ssssssss}
+
+:: <{iTasks.UI.Component.gVerify_sssssssss;}> = {!iTasks.UI.Component.gVerify_sssssssss}
+
+:: <{iTasks.UI.Component.gUpdate_ssss;}> = {!iTasks.UI.Component.gUpdate_ssss}
+
+:: <{iTasks.UI.Component.gUpdate_sssss;}> = {!iTasks.UI.Component.gUpdate_sssss}
+
+:: <{iTasks.UI.Component.gUpdate_ssssss;}> = {!iTasks.UI.Component.gUpdate_ssssss}
+
+:: <{iTasks.UI.Component.gUpdate_sssssss;}> = {!iTasks.UI.Component.gUpdate_sssssss}
+
+:: <{iTasks.UI.Component.gUpdate_ssssssss;}> = {!iTasks.UI.Component.gUpdate_ssssssss}
+
+:: <{iTasks.UI.Component.gUpdate_sssssssss;}> = {!iTasks.UI.Component.gUpdate_sssssssss}
+
+:: <{iTasks.UI.Component.gLexOrd_s;}> = {!iTasks.UI.Component.gLexOrd_s}
+
+:: <{iTasks.UI.Component.gLexOrd_ss;}> = {!iTasks.UI.Component.gLexOrd_ss}
+
+:: <{iTasks.UI.Component.gLexOrd_sss;}> = {!iTasks.UI.Component.gLexOrd_sss}
+
+:: <{iTasks.UI.Component.gLexOrd_ssss;}> = {!iTasks.UI.Component.gLexOrd_ssss}
+
+:: <{iTasks.UI.Component.gLexOrd_sssss;}> = {!iTasks.UI.Component.gLexOrd_sssss}
+
+:: <{iTasks.UI.Component.gLexOrd_ssssss;}> = {!iTasks.UI.Component.gLexOrd_ssssss}
+
+:: <{iTasks.UI.Component.gLexOrd_sssssss;}> = {!iTasks.UI.Component.gLexOrd_sssssss}
+
+:: <{iTasks.UI.Component.gLexOrd_ssssssss;}> = {!iTasks.UI.Component.gLexOrd_ssssssss}
+
+:: <{iTasks.UI.Component.gLexOrd_sssssssss;}> = {!iTasks.UI.Component.gLexOrd_sssssssss}
+

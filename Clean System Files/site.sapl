@@ -1,0 +1,214 @@
+|| ?module? site
+
+
+site.createTestSection n_0::I = hoi._Track (<{StdString.+++_11}> "s" (StdString.toString_5 n_0)) (hoi._Position n_0 0) (hoi.SEC (hoi._Section (Data.Maybe.Just True) (Data.Maybe.Just False)))
+site.createTest !n_0::I = StdList.map site.createTestSection (_SystemEnum._from_to_6 1 n_0)
+site.state = iTasks.API.Core.SDSs.sharedStore (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>)) "sharedState" (hoi._State (<{StdList.++}> (site.createTest 4) (_predefined._Cons (hoi._Track "s5" (hoi._Position 4 0) (hoi.SEC (hoi._Section (Data.Maybe.Just True) (Data.Maybe.Just False)))) _predefined._Nil)) hoi.Designer 1 (_predefined._Cons (hoi._Train (hoi._Position 1 1) True) _predefined._Nil))
+site.anon_21 o_0 !n_1 = n_1
+site.anon_20 _x_0 s_1 = Data.Maybe.Nothing
+site.anon_19 !s_0 v_1 = s_0
+site.anon_18 s_0 !v_1 = v_1
+site.myImage s_0 = svgDemo.drawTracks s_0
+site.anon_17 s_0 v_1 tags_2 = site.myImage s_0
+site.imageTask = iTasks.API.Common.InteractionTasks.updateSharedInformation (<{iTasks.API.Core.Types.descr;}> iTasks.API.Core.Types.toPrompt_136) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (iTasks.API.Core.Types.Title "Image") (_predefined._Cons (iTasks.API.Extensions.SVG.SVGlet.imageUpdate (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) StdFunc.id site.anon_17 site.anon_18 site.anon_19 site.anon_20 site.anon_21) _predefined._Nil) site.state
+site.updateTask = iTasks.API.Common.InteractionTasks.updateSharedInformation (<{iTasks.API.Core.Types.descr;}> iTasks.API.Core.Types.toPrompt_136) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (iTasks.API.Core.Types.Title "State") _predefined._Nil site.state
+site.designerTask = <{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) (<{iTasks.API.Common.TaskCombinators.-||-}> (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) site.updateTask iTasks.UI.Layout.ArrangeHorizontal) (<{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) site.imageTask iTasks.UI.Layout.ArrangeHorizontal)) iTasks.UI.Layout.ArrangeHorizontal
+site.machinistTask = <{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) site.imageTask iTasks.UI.Layout.ArrangeHorizontal
+site.controllerTask = site.imageTask
+site.nextTask !_x_0 = case _x_0 (hoi._State tracks_1_0 role_1_1 step_1_2 trains_1_3 -> case (<{hoi.==_5}> role_1_1 hoi.Designer) (True -> site.designerTask) (False -> case (<{hoi.==_5}> role_1_1 hoi.Machinist) (True -> site.machinistTask) (False -> case (<{hoi.==_5}> role_1_1 hoi.Controller) (True -> site.controllerTask) (False -> <{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) (<{iTasks.API.Common.TaskCombinators.-||-}> (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) site.updateTask iTasks.UI.Layout.ArrangeHorizontal) (<{iTasks.API.Common.TaskCombinators.<<@}> (<{iTasks.API.Core.TaskCombinators.tune;}> iTasks.UI.Layout.tune_46) site.imageTask iTasks.UI.Layout.ArrangeHorizontal)) iTasks.UI.Layout.ArrangeHorizontal) ) ) ) 
+site.anon_15 role_0 !s_1 = update s_1::hoi._State [1:role_0]
+site.anon_16 role_0 = iTasks.API.Core.Tasks.upd (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (site.anon_15 role_0) site.state
+site.doIdentified = <{iTasks.API.Core.Types.>>=_28}> (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_UserRole_69) (<{site.gEditMeta_s;}> hoi.gEditMeta_UserRole_70) (<{site.gUpdate_s;}> hoi.gUpdate_UserRole_71) (<{site.gVerify_s;}> hoi.gVerify_UserRole_72) (<{site.gText_s;}> hoi.gText_UserRole_73) (<{site.JSONEncode_s;}> hoi.JSONEncode_UserRole_74) (<{site.JSONDecode_s;}> hoi.JSONDecode_UserRole_75) (<{site.gDefault_s;}> hoi.gDefault_UserRole_76) (<{site.gEq_s;}> hoi.gEq_UserRole_77) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;UserRole}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (iTasks.API.Common.InteractionTasks.enterInformation (<{iTasks.API.Core.Types.descr;}> iTasks.API.Core.Types.toPrompt_133) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_UserRole_69) (<{site.gEditMeta_s;}> hoi.gEditMeta_UserRole_70) (<{site.gUpdate_s;}> hoi.gUpdate_UserRole_71) (<{site.gVerify_s;}> hoi.gVerify_UserRole_72) (<{site.gText_s;}> hoi.gText_UserRole_73) (<{site.JSONEncode_s;}> hoi.JSONEncode_UserRole_74) (<{site.JSONDecode_s;}> hoi.JSONDecode_UserRole_75) (<{site.gDefault_s;}> hoi.gDefault_UserRole_76) (<{site.gEq_s;}> hoi.gEq_UserRole_77) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;UserRole}>))) "Enter your role" _predefined._Nil) site.anon_16
+site.task = <{iTasks.API.Core.Types.>>=_28}> (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) site.doIdentified site.nextTask
+site.anon_14 _x_0 = site.task
+site.Start !world_0 = iTasks._Framework.Engine.startEngine (<{iTasks._Framework.Engine.Publishable;}> iTasks._Framework.Engine.publishAll_6) (_predefined._Cons (iTasks._Framework.Engine.publish (<{iTasks._Framework.Generic.iTask;}> (<{site.gEditor_s;}> hoi.gEditor_State_78) (<{site.gEditMeta_s;}> hoi.gEditMeta_State_79) (<{site.gUpdate_s;}> hoi.gUpdate_State_80) (<{site.gVerify_s;}> hoi.gVerify_State_81) (<{site.gText_s;}> hoi.gText_State_82) (<{site.JSONEncode_s;}> hoi.JSONEncode_State_83) (<{site.JSONDecode_s;}> hoi.JSONDecode_State_84) (<{site.gDefault_s;}> hoi.gDefault_State_85) (<{site.gEq_s;}> hoi.gEq_State_86) (_SystemDynamic.TypeCons (_SystemDynamic._TypeCodeConstructor <{hoi.TD;State}>))) "/" (iTasks._Framework.Engine.WebApp _predefined._Nil) site.anon_14) _predefined._Nil) world_0
+site.font = Graphics.Scalable.normalFontDef "Arial" 18.0
+
+
+|| Converted Records
+:: <{site.JSONEncode_s;}> = {!site.JSONEncode_s}
+
+:: <{site.JSONEncode_ss;}> = {!site.JSONEncode_ss}
+
+:: <{site.JSONEncode_sss;}> = {!site.JSONEncode_sss}
+
+:: <{site.JSONDecode_s;}> = {!site.JSONDecode_s}
+
+:: <{site.JSONDecode_ss;}> = {!site.JSONDecode_ss}
+
+:: <{site.JSONDecode_sss;}> = {!site.JSONDecode_sss}
+
+:: <{site.gDefault_s;}> = {site.gDefault_s}
+
+:: <{site.gDefault_ss;}> = {site.gDefault_ss}
+
+:: <{site.gDefault_sss;}> = {site.gDefault_sss}
+
+:: <{site.gUpdate_s;}> = {!site.gUpdate_s}
+
+:: <{site.gUpdate_ss;}> = {!site.gUpdate_ss}
+
+:: <{site.gUpdate_sss;}> = {!site.gUpdate_sss}
+
+:: <{site.gVerify_s;}> = {!site.gVerify_s}
+
+:: <{site.gVerify_ss;}> = {!site.gVerify_ss}
+
+:: <{site.gVerify_sss;}> = {!site.gVerify_sss}
+
+:: <{site.gText_s;}> = {!site.gText_s}
+
+:: <{site.gText_ss;}> = {!site.gText_ss}
+
+:: <{site.gText_sss;}> = {!site.gText_sss}
+
+:: <{site.gEditor_s;}> = {!site.gEditor_s}
+
+:: <{site.gEditor_ss;}> = {!site.gEditor_ss}
+
+:: <{site.gEditor_sss;}> = {!site.gEditor_sss}
+
+:: <{site.gEditMeta_s;}> = {!site.gEditMeta_s}
+
+:: <{site.gEditMeta_ss;}> = {!site.gEditMeta_ss}
+
+:: <{site.gEditMeta_sss;}> = {!site.gEditMeta_sss}
+
+:: <{site.gEq_s;}> = {!site.gEq_s}
+
+:: <{site.gEq_ss;}> = {!site.gEq_ss}
+
+:: <{site.gEq_sss;}> = {!site.gEq_sss}
+
+:: <{site.JSONEncode_ssss;}> = {!site.JSONEncode_ssss}
+
+:: <{site.JSONDecode_ssss;}> = {!site.JSONDecode_ssss}
+
+:: <{site.gEq_ssss;}> = {!site.gEq_ssss}
+
+:: <{site.gDefault_ssss;}> = {site.gDefault_ssss}
+
+:: <{site.JSONEncode_sssss;}> = {!site.JSONEncode_sssss}
+
+:: <{site.JSONEncode_ssssss;}> = {!site.JSONEncode_ssssss}
+
+:: <{site.JSONEncode_sssssss;}> = {!site.JSONEncode_sssssss}
+
+:: <{site.JSONEncode_ssssssss;}> = {!site.JSONEncode_ssssssss}
+
+:: <{site.JSONEncode_sssssssss;}> = {!site.JSONEncode_sssssssss}
+
+:: <{site.JSONDecode_sssss;}> = {!site.JSONDecode_sssss}
+
+:: <{site.JSONDecode_ssssss;}> = {!site.JSONDecode_ssssss}
+
+:: <{site.JSONDecode_sssssss;}> = {!site.JSONDecode_sssssss}
+
+:: <{site.JSONDecode_ssssssss;}> = {!site.JSONDecode_ssssssss}
+
+:: <{site.JSONDecode_sssssssss;}> = {!site.JSONDecode_sssssssss}
+
+:: <{site.bimap_s;}> = {site.bimap_s}
+
+:: <{site.bimap_ss;}> = {site.bimap_ss}
+
+:: <{site.bimap_sss;}> = {site.bimap_sss}
+
+:: <{site.gEq_sssss;}> = {!site.gEq_sssss}
+
+:: <{site.gEq_ssssss;}> = {!site.gEq_ssssss}
+
+:: <{site.gEq_sssssss;}> = {!site.gEq_sssssss}
+
+:: <{site.gEq_ssssssss;}> = {!site.gEq_ssssssss}
+
+:: <{site.gEq_sssssssss;}> = {!site.gEq_sssssssss}
+
+:: <{site.gEditor_ssss;}> = {!site.gEditor_ssss}
+
+:: <{site.gText_ssss;}> = {!site.gText_ssss}
+
+:: <{site.gEditMeta_ssss;}> = {!site.gEditMeta_ssss}
+
+:: <{site.gEditor_sssss;}> = {!site.gEditor_sssss}
+
+:: <{site.gText_sssss;}> = {!site.gText_sssss}
+
+:: <{site.gDefault_sssss;}> = {site.gDefault_sssss}
+
+:: <{site.gEditMeta_sssss;}> = {!site.gEditMeta_sssss}
+
+:: <{site.gEditor_ssssss;}> = {!site.gEditor_ssssss}
+
+:: <{site.gText_ssssss;}> = {!site.gText_ssssss}
+
+:: <{site.gDefault_ssssss;}> = {site.gDefault_ssssss}
+
+:: <{site.gEditMeta_ssssss;}> = {!site.gEditMeta_ssssss}
+
+:: <{site.gEditor_sssssss;}> = {!site.gEditor_sssssss}
+
+:: <{site.gText_sssssss;}> = {!site.gText_sssssss}
+
+:: <{site.gDefault_sssssss;}> = {site.gDefault_sssssss}
+
+:: <{site.gEditMeta_sssssss;}> = {!site.gEditMeta_sssssss}
+
+:: <{site.gEditor_ssssssss;}> = {!site.gEditor_ssssssss}
+
+:: <{site.gText_ssssssss;}> = {!site.gText_ssssssss}
+
+:: <{site.gDefault_ssssssss;}> = {site.gDefault_ssssssss}
+
+:: <{site.gEditMeta_ssssssss;}> = {!site.gEditMeta_ssssssss}
+
+:: <{site.gEditor_sssssssss;}> = {!site.gEditor_sssssssss}
+
+:: <{site.gText_sssssssss;}> = {!site.gText_sssssssss}
+
+:: <{site.gDefault_sssssssss;}> = {site.gDefault_sssssssss}
+
+:: <{site.gEditMeta_sssssssss;}> = {!site.gEditMeta_sssssssss}
+
+:: <{site.gVerify_ssss;}> = {!site.gVerify_ssss}
+
+:: <{site.gVerify_sssss;}> = {!site.gVerify_sssss}
+
+:: <{site.gVerify_ssssss;}> = {!site.gVerify_ssssss}
+
+:: <{site.gVerify_sssssss;}> = {!site.gVerify_sssssss}
+
+:: <{site.gVerify_ssssssss;}> = {!site.gVerify_ssssssss}
+
+:: <{site.gVerify_sssssssss;}> = {!site.gVerify_sssssssss}
+
+:: <{site.gUpdate_ssss;}> = {!site.gUpdate_ssss}
+
+:: <{site.gUpdate_sssss;}> = {!site.gUpdate_sssss}
+
+:: <{site.gUpdate_ssssss;}> = {!site.gUpdate_ssssss}
+
+:: <{site.gUpdate_sssssss;}> = {!site.gUpdate_sssssss}
+
+:: <{site.gUpdate_ssssssss;}> = {!site.gUpdate_ssssssss}
+
+:: <{site.gUpdate_sssssssss;}> = {!site.gUpdate_sssssssss}
+
+:: <{site.gLexOrd_s;}> = {!site.gLexOrd_s}
+
+:: <{site.gLexOrd_ss;}> = {!site.gLexOrd_ss}
+
+:: <{site.gLexOrd_sss;}> = {!site.gLexOrd_sss}
+
+:: <{site.gLexOrd_ssss;}> = {!site.gLexOrd_ssss}
+
+:: <{site.gLexOrd_sssss;}> = {!site.gLexOrd_sssss}
+
+:: <{site.gLexOrd_ssssss;}> = {!site.gLexOrd_ssssss}
+
+:: <{site.gLexOrd_sssssss;}> = {!site.gLexOrd_sssssss}
+
+:: <{site.gLexOrd_ssssssss;}> = {!site.gLexOrd_ssssssss}
+
+:: <{site.gLexOrd_sssssssss;}> = {!site.gLexOrd_sssssssss}
+

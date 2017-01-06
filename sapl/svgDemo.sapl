@@ -1,0 +1,257 @@
+|| ?module? svgDemo
+
+
+svgDemo.wheel = Graphics.Scalable.circle (Graphics.Scalable.px 30.0)
+svgDemo.wheelSpace = Graphics.Scalable.empty (Graphics.Scalable.px 5.0) (Graphics.Scalable.px 5.0)
+svgDemo.wheels = Graphics.Scalable.beside _predefined._Nil _predefined._Nil (_predefined._Cons svgDemo.wheel (_predefined._Cons svgDemo.wheelSpace (_predefined._Cons svgDemo.wheel (_predefined._Cons svgDemo.wheelSpace (_predefined._Cons svgDemo.wheel (_predefined._Cons svgDemo.wheelSpace (_predefined._Cons svgDemo.wheel _predefined._Nil))))))) Data.Maybe.Nothing
+svgDemo.house = <{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_50) (Graphics.Scalable.polygon Data.Maybe.Nothing (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.zero_0 Graphics.Scalable.Internal.zero_0) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.zero_0 (Graphics.Scalable.px 80.0)) (_predefined._Cons (_Tuple2 (Graphics.Scalable.px 200.0) (Graphics.Scalable.px 80.0)) (_predefined._Cons (_Tuple2 (Graphics.Scalable.px 100.0) Graphics.Scalable.Internal.zero_0) _predefined._Nil))))) (Graphics.Scalable.Internal._FillAttr (Graphics.Scalable.toSVGColor_64 "grey"))
+svgDemo.drawTrain !r_0::B = <{svgDemo._if;157;16_1019}> r_0 (Graphics.Scalable.above (StdList.repeat Graphics.Scalable.Internal.AtMiddleX) _predefined._Nil (_predefined._Cons svgDemo.house (_predefined._Cons svgDemo.wheels _predefined._Nil)) Data.Maybe.Nothing)
+<{svgDemo._if;157;16_1019}> !r_0::B = case r_0 (True -> Graphics.Scalable.flipx) (_ -> StdFunc.id)
+svgDemo.BuildTrackDraw !td_0 !t_1 offx_2::I offy_3::I = case t_1 (hoi._Track tLabel_1_0 tPosition_1_1 tType_1_2 -> case tType_1_2 (hoi.SEC section_2_0 -> let xpos_3_0::I = <{StdInt.-_7}> (select tPosition_1_1::hoi._Position 0) offx_2 in StdList.updateAt xpos_3_0 (StdList.updateAt (<{StdInt.-_7}> (select tPosition_1_1::hoi._Position 1) offy_3) (svgDemo.SECTION t_1) (<{StdList.!!}> td_0 xpos_3_0)) td_0) (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch sOrientation_3_0 sOn_3_1 -> <{svgDemo._c;98;78_1020}> sOrientation_3_0 t_1 td_0 tPosition_1_1 offy_3 offx_2) ) ) (_ -> td_0)
+<{svgDemo._c;98;78_1020}> !sOrientation_0 t_1 !td_2 !tPosition_3 offy_4::I !offx_5::I = case sOrientation_0 (hoi.NE -> let xpos_2_0 = <{StdInt.-_7}> (select tPosition_3::hoi._Position 0) offx_5, ypos_2_1::I = <{StdInt.-_7}> (select tPosition_3::hoi._Position 1) offy_4, newtd_2_2::I = StdList.updateAt xpos_2_0 (StdList.updateAt (<{StdInt.+_6}> ypos_2_1 1) (svgDemo.SWITCHB t_1) (<{StdList.!!}> td_2 xpos_2_0)) td_2 in StdList.updateAt xpos_2_0 (StdList.updateAt ypos_2_1 (svgDemo.SWITCHA t_1) (<{StdList.!!}> newtd_2_2 xpos_2_0)) newtd_2_2) (hoi.NW -> let xpos_2_0 = <{StdInt.-_7}> (select tPosition_3::hoi._Position 0) offx_5, ypos_2_1::I = <{StdInt.-_7}> (select tPosition_3::hoi._Position 1) offy_4, newtd_2_2::I = StdList.updateAt xpos_2_0 (StdList.updateAt (<{StdInt.+_6}> ypos_2_1 1) (svgDemo.SWITCHB t_1) (<{StdList.!!}> td_2 xpos_2_0)) td_2 in StdList.updateAt xpos_2_0 (StdList.updateAt ypos_2_1 (svgDemo.SWITCHA t_1) (<{StdList.!!}> newtd_2_2 xpos_2_0)) newtd_2_2) (hoi.SE -> let xpos_2_0 = <{StdInt.-_7}> (select tPosition_3::hoi._Position 0) offx_5, ypos_2_1::I = <{StdInt.-_7}> (select tPosition_3::hoi._Position 1) offy_4, newtd2_2_2::I = StdList.updateAt xpos_2_0 (StdList.updateAt (<{StdInt.-_7}> ypos_2_1 1) (svgDemo.SWITCHB t_1) (<{StdList.!!}> td_2 xpos_2_0)) td_2 in StdList.updateAt xpos_2_0 (StdList.updateAt ypos_2_1 (svgDemo.SWITCHA t_1) (<{StdList.!!}> newtd2_2_2 xpos_2_0)) newtd2_2_2) (hoi.SW -> let xpos_2_0 = <{StdInt.-_7}> (select tPosition_3::hoi._Position 0) offx_5, ypos_2_1::I = <{StdInt.-_7}> (select tPosition_3::hoi._Position 1) offy_4, newtd2_2_2::I = StdList.updateAt xpos_2_0 (StdList.updateAt (<{StdInt.-_7}> ypos_2_1 1) (svgDemo.SWITCHB t_1) (<{StdList.!!}> td_2 xpos_2_0)) td_2 in StdList.updateAt xpos_2_0 (StdList.updateAt ypos_2_1 (svgDemo.SWITCHA t_1) (<{StdList.!!}> newtd2_2_2 xpos_2_0)) newtd2_2_2) 
+svgDemo.BuildTrackDrawing !td_0 !_x_1 offx_2::I offy_3::I = case _x_1 (_predefined._Cons x_1_0 xs_1_1 -> svgDemo.BuildTrackDrawing (svgDemo.BuildTrackDraw td_0 x_1_0 offx_2 offy_3) xs_1_1 offx_2 offy_3) (_predefined._Nil -> td_0) 
+svgDemo.sectionHeight = Graphics.Scalable.px 100.0
+svgDemo.sectionWidth = Graphics.Scalable.px 100.0
+svgDemo.sectionBackgroundColor = Graphics.Scalable.toSVGColor_64 "silver"
+svgDemo.sectionBackground = <{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_50) (Graphics.Scalable.rect svgDemo.sectionWidth svgDemo.sectionHeight) (Graphics.Scalable.Internal._FillAttr svgDemo.sectionBackgroundColor)
+svgDemo.anon_37 b_0::B isLeft_1::B index_2::I i_3 !s_4 = update s_4::hoi._State [0:<{svgDemo._c;171;63_1022}> (select (<{StdList.!!}> (select s_4::hoi._State 0) index_2)::hoi._Track 2) index_2 s_4 isLeft_1 b_0]
+<{svgDemo._c;171;63_1022}> !_x_0 !index_1::I !s_2 isLeft_3::B b_4::B = case _x_0 (hoi.SEC section_1_0 -> StdList.updateAt index_1 (update (<{StdList.!!}> (select s_2::hoi._State 0) index_1)::hoi._Track [2:<{svgDemo._if;173;121_1021}> isLeft_3 section_1_0 b_4]) (select s_2::hoi._State 0)) 
+<{svgDemo._if;173;121_1021}> !isLeft_0::B section_1 b_2::B = case isLeft_0 (True -> hoi.SEC (update section_1::hoi._Section [0:Data.Maybe.Just (StdBool.not b_2)])) (_ -> hoi.SEC (update section_1::hoi._Section [1:Data.Maybe.Just (StdBool.not b_2)]))
+svgDemo.drawSignal _x_0::I !_x_1 _x_2::B = case _x_1 (Data.Maybe.Nothing -> Graphics.Scalable.empty Graphics.Scalable.Internal.zero_0 Graphics.Scalable.Internal.zero_0) (Data.Maybe.Just b_1_0 -> Graphics.Scalable.overlay (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtMiddleY) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtMiddleY) _predefined._Nil)) _predefined._Nil (_predefined._Cons (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_52) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_49) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_50) (Graphics.Scalable.circle (Graphics.Scalable.px 10.0)) (Graphics.Scalable.Internal._FillAttr (Graphics.Scalable.toSVGColor_64 (<{svgDemo._if;169;49_1023}> b_1_0)))) (Graphics.Scalable.Internal._StrokeWidthAttr (Graphics.Scalable.px 2.5))) (Graphics.Scalable.Internal._OnClickAttr (svgDemo.anon_37 b_1_0 _x_2 _x_0) False)) _predefined._Nil) (Data.Maybe.Just (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_49) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_51) (Graphics.Scalable.rect (Graphics.Scalable.px 25.0) (Graphics.Scalable.px 25.0)) (Graphics.Scalable.Internal._OpacityAttr 0.0)) (Graphics.Scalable.Internal._StrokeWidthAttr Graphics.Scalable.Internal.zero_0)))) 
+<{svgDemo._if;169;49_1023}> !b_0::B = case b_0 (True -> "green") (_ -> "red")
+svgDemo.drawRightSignal arg1_0::I !arg2_1 = svgDemo.drawSignal arg1_0 arg2_1 False
+svgDemo.drawLeftSignal arg1_0::I !arg2_1 = svgDemo.drawSignal arg1_0 arg2_1 True
+svgDemo.railColor = Graphics.Scalable.toSVGColor_64 "black"
+svgDemo.drawRail !b_0::B = <{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_61) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_50) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_49) (Graphics.Scalable.xline Data.Maybe.Nothing svgDemo.sectionWidth) (Graphics.Scalable.Internal._StrokeWidthAttr (Graphics.Scalable.px 5.0))) (Graphics.Scalable.Internal._FillAttr svgDemo.railColor)) (<{svgDemo._if;161;97_1024}> b_0)
+<{svgDemo._if;161;97_1024}> !b_0::B = case b_0 (True -> Graphics.Scalable.Internal._DashAttr (_predefined._Cons 5 _predefined._Nil)) (_ -> Graphics.Scalable.Internal._DashAttr _predefined._Nil)
+svgDemo.font = Graphics.Scalable.normalFontDef "Arial" 14.0
+svgDemo.drawSection index_0::I !_x_1 = case _x_1 (hoi._Track tLabel_1_0 tPosition_1_1 _x_1_2 -> case _x_1_2 (hoi.SEC _x_2_0 -> case _x_2_0 (hoi._Section sLeftSignal_3_0 sRightSignal_3_1 -> Graphics.Scalable.overlay (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtBottom) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtMiddleY) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtLeft Graphics.Scalable.Internal.AtTop) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtRight Graphics.Scalable.Internal.AtTop) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtBottom) _predefined._Nil))))) _predefined._Nil (_predefined._Cons (Graphics.Scalable.text svgDemo.font tLabel_1_0) (_predefined._Cons (svgDemo.drawRail False) (_predefined._Cons (svgDemo.drawLeftSignal index_0 sLeftSignal_3_0) (_predefined._Cons (svgDemo.drawRightSignal index_0 sRightSignal_3_1) _predefined._Nil)))) (Data.Maybe.Just svgDemo.sectionBackground)) ) ) 
+svgDemo.anon_34::B !xPos_0::I yPos_1::I !track_2 = case (<{StdInt.==_16}> xPos_0 (select (select track_2::hoi._Track 1)::hoi._Position 0)) (True -> <{StdInt.==_16}> yPos_1 (select (select track_2::hoi._Track 1)::hoi._Position 1)) (False -> False) 
+svgDemo.anon_35::B !xPos_0::I yPos_1::I currentSwitch_2::I !xdirection_3::I ydirection_4::I !track_5 = case (<{StdInt.==_16}> (<{StdInt.+_6}> xPos_0 xdirection_3) (select (select track_5::hoi._Track 1)::hoi._Position 0)) (True -> <{StdInt.==_16}> (<{StdInt.+_6}> (<{StdInt.+_6}> yPos_1 currentSwitch_2) ydirection_4) (select (select track_5::hoi._Track 1)::hoi._Position 1)) (False -> False) 
+svgDemo.getNextTrack_36 xPos_0::I yPos_1::I !s_2 currentSwitch_3::I xdirection_4::I ydirection_5::I = StdList.filter (svgDemo.anon_35 xPos_0 yPos_1 currentSwitch_3 xdirection_4 ydirection_5) (select s_2::hoi._State 0)
+svgDemo.switchUpDown::I !s_0 xPos_1::I yPos_2::I direction_3::B = let currentTrack_1_0::I = <{StdList.!!}> (StdList.filter (svgDemo.anon_34 xPos_1 yPos_2) (select s_0::hoi._State 0)) 0, currentSwitch_1_1::I = <{svgDemo._c;58;39_1028}> (select currentTrack_1_0::hoi._Track 2), xDir_1_2 = <{svgDemo._if;67;30_1025}> direction_3 in <{svgDemo._c;68;35_1035}> (svgDemo.getNextTrack_36 xPos_1 yPos_2 s_0 currentSwitch_1_1 xDir_1_2 0) currentSwitch_1_1 xPos_1 yPos_2 s_0 xDir_1_2
+<{svgDemo._c;68;35_1035}>::I !_x_0 currentSwitch_1::I xPos_2::I yPos_3::I s_4 xDir_5::I = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> currentSwitch_1) (_predefined._Nil -> <{svgDemo._c;70;42_1034}> (svgDemo.getNextTrack_36 xPos_2 yPos_3 s_4 currentSwitch_1 xDir_5 1) xPos_2 yPos_3 s_4 currentSwitch_1 xDir_5) 
+<{svgDemo._c;70;42_1034}>::I !_x_0 xPos_1::I yPos_2::I s_3 currentSwitch_4::I xDir_5::I = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> <{svgDemo._c;71;54_1031}> (select x_1_0::hoi._Track 2) xPos_1 yPos_2 s_3 currentSwitch_4 xDir_5) (_predefined._Nil -> <{svgDemo._c;75;30_1033}> (svgDemo.getNextTrack_36 xPos_1 yPos_2 s_3 currentSwitch_4 xDir_5 -1) currentSwitch_4) 
+<{svgDemo._c;75;30_1033}>::I !_x_0 currentSwitch_1::I = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> <{svgDemo._c;76;42_1032}> (select x_1_0::hoi._Track 2) currentSwitch_1) (_predefined._Nil -> 100) 
+<{svgDemo._c;76;42_1032}>::I !_x_0 currentSwitch_1::I = case _x_0 (hoi.SEC _x_1_0 -> 100) (hoi.SWT swtch_1_0 -> <{StdInt.-_7}> currentSwitch_1 1) 
+<{svgDemo._c;71;54_1031}>::I !_x_0 xPos_1::I yPos_2::I s_3 currentSwitch_4::I xDir_5::I = case _x_0 (hoi.SEC _x_1_0 -> <{svgDemo._c;75;30_1030}> (svgDemo.getNextTrack_36 xPos_1 yPos_2 s_3 currentSwitch_4 xDir_5 -1) currentSwitch_4) (hoi.SWT swtch_1_0 -> <{StdInt.+_6}> currentSwitch_4 1) 
+<{svgDemo._c;75;30_1030}>::I !_x_0 currentSwitch_1::I = case _x_0 (_predefined._Cons x_1_0 xs_1_1 -> <{svgDemo._c;76;42_1029}> (select x_1_0::hoi._Track 2) currentSwitch_1) (_predefined._Nil -> 100) 
+<{svgDemo._c;76;42_1029}>::I !_x_0 currentSwitch_1::I = case _x_0 (hoi.SEC _x_1_0 -> 100) (hoi.SWT swtch_1_0 -> <{StdInt.-_7}> currentSwitch_1 1) 
+<{svgDemo._c;58;39_1028}>::I !_x_0 = case _x_0 (hoi.SEC s_1_0 -> 0) (hoi.SWT swtch_1_0 -> <{svgDemo._if;60;47_1027}> (StdBool.not (select swtch_1_0::hoi._Switch 1)) swtch_1_0) 
+<{svgDemo._if;60;47_1027}>::I !_x_0::B swtch_1 = case _x_0 (True -> 0) (_ -> <{svgDemo._c;62;50_1026}> (select swtch_1::hoi._Switch 0))
+<{svgDemo._c;62;50_1026}>::I !_x_0 = case _x_0 (hoi.NE -> 1) (hoi.SE -> -1) (hoi.NW -> 1) 
+<{svgDemo._if;67;30_1025}>::I !direction_0::B = case direction_0 (True -> -1) (_ -> 1)
+svgDemo.anon_33 s_0 !t_1 !_x_2 = case _x_2 (hoi._Train _x_1_0 direction_1_1 -> case _x_1_0 (hoi._Position xPos_2_0 yPos_2_1 -> case (case (<{StdInt.==_16}> xPos_2_0 (select (select t_1::hoi._Train 0)::hoi._Position 0)) (True -> <{StdInt.==_16}> yPos_2_1 (select (select t_1::hoi._Train 0)::hoi._Position 1)) (False -> False) ) (True -> hoi._Train (hoi._Position (<{StdInt.+_6}> xPos_2_0 (<{svgDemo._if;42;83_1036}> direction_1_1)) (<{StdInt.+_6}> yPos_2_1 (svgDemo.switchUpDown s_0 xPos_2_0 yPos_2_1 direction_1_1))) direction_1_1) (False -> hoi._Train (hoi._Position xPos_2_0 yPos_2_1) direction_1_1) ) ) 
+<{svgDemo._if;42;83_1036}>::I !direction_0::B = case direction_0 (True -> -1) (_ -> 1)
+svgDemo.drive t_0 !s_1 = update s_1::hoi._State [3:StdList.map (svgDemo.anon_33 s_1 t_0) (select s_1::hoi._State 3)]
+svgDemo.anon_31 trains_0 i_1 !s_2 = svgDemo.drive (<{StdList.!!}> trains_0 0) s_2
+svgDemo.anon_32::B !t_0 !_x_1 = case _x_1 (hoi._Train _x_1_0 direction_1_1 -> case _x_1_0 (hoi._Position xPos_2_0 yPos_2_1 -> case (<{StdInt.==_16}> xPos_2_0 (select (select t_0::hoi._Track 1)::hoi._Position 0)) (True -> <{StdInt.==_16}> yPos_2_1 (select (select t_0::hoi._Track 1)::hoi._Position 1)) (False -> False) ) ) 
+svgDemo.TrackHasTrain !s_0 t_1 = let trains_1_0 = StdList.filter (svgDemo.anon_32 t_1) (select s_0::hoi._State 3) in case (StdBool.not (<{StdInt.<_17}> (StdList.length_47 trains_1_0) 1)) (True -> _predefined._Cons (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_52) (Graphics.Scalable.fitx (Graphics.Scalable.px 60.0) (svgDemo.drawTrain (select (<{StdList.!!}> trains_1_0 0)::hoi._Train 1))) (Graphics.Scalable.Internal._OnClickAttr (svgDemo.anon_31 trains_1_0) False)) _predefined._Nil) (False -> _predefined._Nil) 
+svgDemo.drawSwitchRail !_x_0 !b_1::B = case _x_0 (hoi._Track tLabel_1_0 tPosition_1_1 _x_1_2 -> case _x_1_2 (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch sOrientation_3_0 sOn_3_1 -> <{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_61) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_49) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_50) (Graphics.Scalable.line Data.Maybe.Nothing (<{svgDemo._c;204;59_1037}> sOrientation_3_0) (<{Graphics.Scalable.Internal.*._5}> (<{StdOverloaded.toReal;}> StdReal.toReal_14) svgDemo.sectionWidth 0.5) (<{Graphics.Scalable.Internal.*._5}> (<{StdOverloaded.toReal;}> StdReal.toReal_14) svgDemo.sectionHeight 0.5)) (Graphics.Scalable.Internal._FillAttr svgDemo.railColor)) (Graphics.Scalable.Internal._StrokeWidthAttr (Graphics.Scalable.px 5.0))) (<{svgDemo._if;203;109_1038}> b_1)) ) ) 
+<{svgDemo._if;203;109_1038}> !b_0::B = case b_0 (True -> Graphics.Scalable.Internal._DashAttr (_predefined._Cons 5 _predefined._Nil)) (_ -> Graphics.Scalable.Internal._DashAttr _predefined._Nil)
+<{svgDemo._c;204;59_1037}> !sOrientation_0 = case sOrientation_0 (hoi.NW -> Graphics.Scalable.Internal.Backslash) (hoi.NE -> Graphics.Scalable.Internal.Slash) (hoi.SW -> Graphics.Scalable.Internal.Slash) (hoi.SE -> Graphics.Scalable.Internal.Backslash) 
+svgDemo.drawSwitchA !t_0 = case t_0 (hoi._Track tLabel_1_0 tPosition_1_1 tType_1_2 -> case tType_1_2 (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch sOrientation_3_0 sOn_3_1 -> Graphics.Scalable.overlay (_predefined._Cons (<{svgDemo._c;222;71_1039}> sOrientation_3_0) (_predefined._Cons (_Tuple2 Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtMiddleY) (_predefined._Cons (<{svgDemo._c;217;71_1040}> sOrientation_3_0) _predefined._Nil))) _predefined._Nil (_predefined._Cons (Graphics.Scalable.text svgDemo.font tLabel_1_0) (_predefined._Cons (svgDemo.drawRail sOn_3_1) (_predefined._Cons (svgDemo.drawSwitchRail t_0 (StdBool.not sOn_3_1)) _predefined._Nil))) (Data.Maybe.Just svgDemo.sectionBackground)) ) ) 
+<{svgDemo._c;217;71_1040}> !sOrientation_0 = case sOrientation_0 (hoi.NW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtRight Graphics.Scalable.Internal.AtTop) (hoi.NE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtLeft Graphics.Scalable.Internal.AtTop) (hoi.SW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtRight Graphics.Scalable.Internal.AtBottom) (hoi.SE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtLeft Graphics.Scalable.Internal.AtBottom) 
+<{svgDemo._c;222;71_1039}> !sOrientation_0 = case sOrientation_0 (hoi.NW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtBottom) (hoi.NE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtBottom) (hoi.SW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtTop) (hoi.SE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtMiddleX Graphics.Scalable.Internal.AtTop) 
+svgDemo.drawSwitchB !t_0 = case t_0 (hoi._Track tLabel_1_0 tPosition_1_1 tType_1_2 -> case tType_1_2 (hoi.SWT _x_2_0 -> case _x_2_0 (hoi._Switch sOrientation_3_0 sOn_3_1 -> Graphics.Scalable.overlay (_predefined._Cons (<{svgDemo._c;234;69_1041}> sOrientation_3_0) _predefined._Nil) _predefined._Nil (_predefined._Cons (svgDemo.drawSwitchRail t_0 (StdBool.not sOn_3_1)) _predefined._Nil) (Data.Maybe.Just svgDemo.sectionBackground)) ) ) 
+<{svgDemo._c;234;69_1041}> !sOrientation_0 = case sOrientation_0 (hoi.NW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtLeft Graphics.Scalable.Internal.AtBottom) (hoi.NE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtRight Graphics.Scalable.Internal.AtBottom) (hoi.SW -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtLeft Graphics.Scalable.Internal.AtTop) (hoi.SE -> <{_Tuple2!3}> Graphics.Scalable.Internal.AtRight Graphics.Scalable.Internal.AtTop) 
+svgDemo.DrawTrackDrawing _x_0 !_x_1 = case _x_1 (svgDemo.EMPTY -> <{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_51) (<{Graphics.Scalable.<@<}> (<{Graphics.Scalable.tuneImage;}> Graphics.Scalable.tuneImage_49) (Graphics.Scalable.rect svgDemo.sectionWidth svgDemo.sectionHeight) (Graphics.Scalable.Internal._StrokeWidthAttr (Graphics.Scalable.px 0.0))) (Graphics.Scalable.Internal._OpacityAttr 0.0)) (svgDemo.SECTION t_1_0 -> Graphics.Scalable.overlay _predefined._Nil (_predefined._Cons (_Tuple2 (Graphics.Scalable.px 22.0) (Graphics.Scalable.px 15.0)) _predefined._Nil) (svgDemo.TrackHasTrain _x_0 t_1_0) (Data.Maybe.Just (svgDemo.drawSection (hoi.GetTrackIndex (select _x_0::hoi._State 0) t_1_0) t_1_0))) (svgDemo.SWITCHA t_1_0 -> case t_1_0 (hoi._Track tLabel_2_0 tPosition_2_1 tType_2_2 -> case tType_2_2 (hoi.SWT _x_3_0 -> case _x_3_0 (hoi._Switch sOrientation_4_0 sOn_4_1 -> Graphics.Scalable.overlay _predefined._Nil (_predefined._Cons (_Tuple2 (Graphics.Scalable.px 22.0) (Graphics.Scalable.px 15.0)) _predefined._Nil) (<{svgDemo._if;26;91_1042}> (StdBool.not sOn_4_1) _x_0 t_1_0) (Data.Maybe.Just (svgDemo.drawSwitchA t_1_0))) ) ) ) (svgDemo.SWITCHB t_1_0 -> case t_1_0 (hoi._Track tLabel_2_0 tPosition_2_1 tType_2_2 -> case tType_2_2 (hoi.SWT _x_3_0 -> case _x_3_0 (hoi._Switch sOrientation_4_0 sOn_4_1 -> Graphics.Scalable.overlay _predefined._Nil (_predefined._Cons (_Tuple2 (Graphics.Scalable.px 22.0) (Graphics.Scalable.px -19.0)) _predefined._Nil) (<{svgDemo._if;27;92_1043}> sOn_4_1 _x_0 t_1_0) (Data.Maybe.Just (svgDemo.drawSwitchB t_1_0))) ) ) ) 
+<{svgDemo._if;27;92_1043}> !sOn_0::B _x_1 t_2 = case sOn_0 (True -> StdList.map (Graphics.Scalable.rotate (Math.Geometry.deg -45.0)) (svgDemo.TrackHasTrain _x_1 t_2)) (_ -> _predefined._Nil)
+<{svgDemo._if;26;91_1042}> !_x_0::B _x_1 t_2 = case _x_0 (True -> svgDemo.TrackHasTrain _x_1 t_2) (_ -> _predefined._Nil)
+svgDemo.TrackImageFromDrawing s_0 !_x_1 = case _x_1 (_predefined._Cons x_1_0 _x_1_1 -> case _x_1_1 (_predefined._Nil -> Graphics.Scalable.above _predefined._Nil _predefined._Nil (StdList.reverse (StdList.map (svgDemo.DrawTrackDrawing s_0) x_1_0)) Data.Maybe.Nothing) (_ -> Graphics.Scalable.beside _predefined._Nil _predefined._Nil (_predefined._Cons (svgDemo.TrackImageFromDrawing s_0 (_predefined._Cons x_1_0 _predefined._Nil)) (_predefined._Cons (svgDemo.TrackImageFromDrawing s_0 _x_1_1) _predefined._Nil)) Data.Maybe.Nothing)) 
+svgDemo.BuildEmptyTrackDrawing tracks_0 = StdList.repeatn (hoi.GetTrackWidth tracks_0) (StdList.repeatn (hoi.GetTrackHeight tracks_0) svgDemo.EMPTY)
+svgDemo.GetTrackImage !s_0 = svgDemo.TrackImageFromDrawing s_0 (svgDemo.BuildTrackDrawing (svgDemo.BuildEmptyTrackDrawing (select s_0::hoi._State 0)) (select s_0::hoi._State 0) (hoi.GetTracksSmallestX (select s_0::hoi._State 0)) (hoi.GetTracksSmallestY (select s_0::hoi._State 0)))
+svgDemo.drawTracks !s_0 = svgDemo.GetTrackImage s_0
+svgDemo.railHeight = Graphics.Scalable.px 5.0
+svgDemo.switchHeight = Graphics.Scalable.px 200.0
+<{svgDemo.TD;TrackDraw}> _x_0::B = _predefined._Nil
+
+:: svgDemo.TrackDraw = svgDemo.EMPTY | svgDemo.SECTION a1 | svgDemo.SWITCHA a1 | svgDemo.SWITCHB a1
+
+|| Converted Records
+:: <{svgDemo.JSONEncode_s;}> = {!svgDemo.JSONEncode_s}
+
+:: <{svgDemo.JSONEncode_ss;}> = {!svgDemo.JSONEncode_ss}
+
+:: <{svgDemo.JSONEncode_sss;}> = {!svgDemo.JSONEncode_sss}
+
+:: <{svgDemo.JSONDecode_s;}> = {!svgDemo.JSONDecode_s}
+
+:: <{svgDemo.JSONDecode_ss;}> = {!svgDemo.JSONDecode_ss}
+
+:: <{svgDemo.JSONDecode_sss;}> = {!svgDemo.JSONDecode_sss}
+
+:: <{svgDemo.gDefault_s;}> = {svgDemo.gDefault_s}
+
+:: <{svgDemo.gDefault_ss;}> = {svgDemo.gDefault_ss}
+
+:: <{svgDemo.gDefault_sss;}> = {svgDemo.gDefault_sss}
+
+:: <{svgDemo.gUpdate_s;}> = {!svgDemo.gUpdate_s}
+
+:: <{svgDemo.gUpdate_ss;}> = {!svgDemo.gUpdate_ss}
+
+:: <{svgDemo.gUpdate_sss;}> = {!svgDemo.gUpdate_sss}
+
+:: <{svgDemo.gVerify_s;}> = {!svgDemo.gVerify_s}
+
+:: <{svgDemo.gVerify_ss;}> = {!svgDemo.gVerify_ss}
+
+:: <{svgDemo.gVerify_sss;}> = {!svgDemo.gVerify_sss}
+
+:: <{svgDemo.gText_s;}> = {!svgDemo.gText_s}
+
+:: <{svgDemo.gText_ss;}> = {!svgDemo.gText_ss}
+
+:: <{svgDemo.gText_sss;}> = {!svgDemo.gText_sss}
+
+:: <{svgDemo.gEditor_s;}> = {!svgDemo.gEditor_s}
+
+:: <{svgDemo.gEditor_ss;}> = {!svgDemo.gEditor_ss}
+
+:: <{svgDemo.gEditor_sss;}> = {!svgDemo.gEditor_sss}
+
+:: <{svgDemo.gEditMeta_s;}> = {!svgDemo.gEditMeta_s}
+
+:: <{svgDemo.gEditMeta_ss;}> = {!svgDemo.gEditMeta_ss}
+
+:: <{svgDemo.gEditMeta_sss;}> = {!svgDemo.gEditMeta_sss}
+
+:: <{svgDemo.gEq_s;}> = {!svgDemo.gEq_s}
+
+:: <{svgDemo.gEq_ss;}> = {!svgDemo.gEq_ss}
+
+:: <{svgDemo.gEq_sss;}> = {!svgDemo.gEq_sss}
+
+:: <{svgDemo.JSONEncode_ssss;}> = {!svgDemo.JSONEncode_ssss}
+
+:: <{svgDemo.JSONDecode_ssss;}> = {!svgDemo.JSONDecode_ssss}
+
+:: <{svgDemo.gEq_ssss;}> = {!svgDemo.gEq_ssss}
+
+:: <{svgDemo.gDefault_ssss;}> = {svgDemo.gDefault_ssss}
+
+:: <{svgDemo.JSONEncode_sssss;}> = {!svgDemo.JSONEncode_sssss}
+
+:: <{svgDemo.JSONEncode_ssssss;}> = {!svgDemo.JSONEncode_ssssss}
+
+:: <{svgDemo.JSONEncode_sssssss;}> = {!svgDemo.JSONEncode_sssssss}
+
+:: <{svgDemo.JSONEncode_ssssssss;}> = {!svgDemo.JSONEncode_ssssssss}
+
+:: <{svgDemo.JSONEncode_sssssssss;}> = {!svgDemo.JSONEncode_sssssssss}
+
+:: <{svgDemo.JSONDecode_sssss;}> = {!svgDemo.JSONDecode_sssss}
+
+:: <{svgDemo.JSONDecode_ssssss;}> = {!svgDemo.JSONDecode_ssssss}
+
+:: <{svgDemo.JSONDecode_sssssss;}> = {!svgDemo.JSONDecode_sssssss}
+
+:: <{svgDemo.JSONDecode_ssssssss;}> = {!svgDemo.JSONDecode_ssssssss}
+
+:: <{svgDemo.JSONDecode_sssssssss;}> = {!svgDemo.JSONDecode_sssssssss}
+
+:: <{svgDemo.bimap_s;}> = {svgDemo.bimap_s}
+
+:: <{svgDemo.bimap_ss;}> = {svgDemo.bimap_ss}
+
+:: <{svgDemo.bimap_sss;}> = {svgDemo.bimap_sss}
+
+:: <{svgDemo.gEq_sssss;}> = {!svgDemo.gEq_sssss}
+
+:: <{svgDemo.gEq_ssssss;}> = {!svgDemo.gEq_ssssss}
+
+:: <{svgDemo.gEq_sssssss;}> = {!svgDemo.gEq_sssssss}
+
+:: <{svgDemo.gEq_ssssssss;}> = {!svgDemo.gEq_ssssssss}
+
+:: <{svgDemo.gEq_sssssssss;}> = {!svgDemo.gEq_sssssssss}
+
+:: <{svgDemo.gEditor_ssss;}> = {!svgDemo.gEditor_ssss}
+
+:: <{svgDemo.gText_ssss;}> = {!svgDemo.gText_ssss}
+
+:: <{svgDemo.gEditMeta_ssss;}> = {!svgDemo.gEditMeta_ssss}
+
+:: <{svgDemo.gEditor_sssss;}> = {!svgDemo.gEditor_sssss}
+
+:: <{svgDemo.gText_sssss;}> = {!svgDemo.gText_sssss}
+
+:: <{svgDemo.gDefault_sssss;}> = {svgDemo.gDefault_sssss}
+
+:: <{svgDemo.gEditMeta_sssss;}> = {!svgDemo.gEditMeta_sssss}
+
+:: <{svgDemo.gEditor_ssssss;}> = {!svgDemo.gEditor_ssssss}
+
+:: <{svgDemo.gText_ssssss;}> = {!svgDemo.gText_ssssss}
+
+:: <{svgDemo.gDefault_ssssss;}> = {svgDemo.gDefault_ssssss}
+
+:: <{svgDemo.gEditMeta_ssssss;}> = {!svgDemo.gEditMeta_ssssss}
+
+:: <{svgDemo.gEditor_sssssss;}> = {!svgDemo.gEditor_sssssss}
+
+:: <{svgDemo.gText_sssssss;}> = {!svgDemo.gText_sssssss}
+
+:: <{svgDemo.gDefault_sssssss;}> = {svgDemo.gDefault_sssssss}
+
+:: <{svgDemo.gEditMeta_sssssss;}> = {!svgDemo.gEditMeta_sssssss}
+
+:: <{svgDemo.gEditor_ssssssss;}> = {!svgDemo.gEditor_ssssssss}
+
+:: <{svgDemo.gText_ssssssss;}> = {!svgDemo.gText_ssssssss}
+
+:: <{svgDemo.gDefault_ssssssss;}> = {svgDemo.gDefault_ssssssss}
+
+:: <{svgDemo.gEditMeta_ssssssss;}> = {!svgDemo.gEditMeta_ssssssss}
+
+:: <{svgDemo.gEditor_sssssssss;}> = {!svgDemo.gEditor_sssssssss}
+
+:: <{svgDemo.gText_sssssssss;}> = {!svgDemo.gText_sssssssss}
+
+:: <{svgDemo.gDefault_sssssssss;}> = {svgDemo.gDefault_sssssssss}
+
+:: <{svgDemo.gEditMeta_sssssssss;}> = {!svgDemo.gEditMeta_sssssssss}
+
+:: <{svgDemo.gVerify_ssss;}> = {!svgDemo.gVerify_ssss}
+
+:: <{svgDemo.gVerify_sssss;}> = {!svgDemo.gVerify_sssss}
+
+:: <{svgDemo.gVerify_ssssss;}> = {!svgDemo.gVerify_ssssss}
+
+:: <{svgDemo.gVerify_sssssss;}> = {!svgDemo.gVerify_sssssss}
+
+:: <{svgDemo.gVerify_ssssssss;}> = {!svgDemo.gVerify_ssssssss}
+
+:: <{svgDemo.gVerify_sssssssss;}> = {!svgDemo.gVerify_sssssssss}
+
+:: <{svgDemo.gUpdate_ssss;}> = {!svgDemo.gUpdate_ssss}
+
+:: <{svgDemo.gUpdate_sssss;}> = {!svgDemo.gUpdate_sssss}
+
+:: <{svgDemo.gUpdate_ssssss;}> = {!svgDemo.gUpdate_ssssss}
+
+:: <{svgDemo.gUpdate_sssssss;}> = {!svgDemo.gUpdate_sssssss}
+
+:: <{svgDemo.gUpdate_ssssssss;}> = {!svgDemo.gUpdate_ssssssss}
+
+:: <{svgDemo.gUpdate_sssssssss;}> = {!svgDemo.gUpdate_sssssssss}
+
+:: <{svgDemo.gLexOrd_s;}> = {!svgDemo.gLexOrd_s}
+
+:: <{svgDemo.gLexOrd_ss;}> = {!svgDemo.gLexOrd_ss}
+
+:: <{svgDemo.gLexOrd_sss;}> = {!svgDemo.gLexOrd_sss}
+
+:: <{svgDemo.gLexOrd_ssss;}> = {!svgDemo.gLexOrd_ssss}
+
+:: <{svgDemo.gLexOrd_sssss;}> = {!svgDemo.gLexOrd_sssss}
+
+:: <{svgDemo.gLexOrd_ssssss;}> = {!svgDemo.gLexOrd_ssssss}
+
+:: <{svgDemo.gLexOrd_sssssss;}> = {!svgDemo.gLexOrd_sssssss}
+
+:: <{svgDemo.gLexOrd_ssssssss;}> = {!svgDemo.gLexOrd_ssssssss}
+
+:: <{svgDemo.gLexOrd_sssssssss;}> = {!svgDemo.gLexOrd_sssssssss}
+

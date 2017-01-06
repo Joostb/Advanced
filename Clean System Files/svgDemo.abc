@@ -1,0 +1,3841 @@
+.comp 920 00011101001
+.start _nostart_
+.depend "hoi" "20161027105607"
+.depend "iTasks.UI.Component" "20161001160347"
+.depend "iTasks.API.Core.Client.Editlet" "20161001160347"
+.depend "StdMisc" "20160531160413"
+.depend "StdCharList" "20160531160413"
+.depend "_SystemArray" "20160531160413"
+.depend "StdArray" "20160531160413"
+.depend "StdEnv" "20160531160413"
+.depend "Math.Geometry" "20161001160346"
+.depend "Graphics.Scalable.Internal" "20161001160346"
+.depend "Graphics.Scalable" "20161001160346"
+.depend "iTasks.API.Extensions.SVG.SVGlet" "20161001160347"
+.depend "_SystemEnum" "20160531160413"
+.depend "StdEnum" "20160531160413"
+.depend "StdTuple" "20160531160413"
+.depend "StdOrdList" "20160531160413"
+.depend "iTasks.API.Extensions.Admin.WorkflowAdmin" "20161001160347"
+.depend "iTasks.API.Extensions.User" "20161001160347"
+.depend "iTasks.API.Extensions.Admin.UserAdmin" "20161001160347"
+.depend "iTasks.API.Common.SDSCombinators" "20161001160347"
+.depend "iTasks.API.Core.SDSCombinators" "20161001160347"
+.depend "iTasks.API.Core.SDSs" "20161001160347"
+.depend "iTasks.API.Common.TaskCombinators" "20161001160347"
+.depend "iTasks.API.Common.ExportTasks" "20161001160347"
+.depend "iTasks.API.Common.ImportTasks" "20161001160347"
+.depend "iTasks.API.Common.DBTasks" "20161001160347"
+.depend "iTasks.API.Common.InteractionTasks" "20161001160347"
+.depend "Text.URI" "20161001160346"
+.depend "iTasks.API.Core.IntegrationTasks" "20161001160347"
+.depend "iTasks.API.Core.OptimizedCoreTasks" "20161001160347"
+.depend "iTasks.API.Core.Tasks" "20161001160347"
+.depend "iTasks.API" "20161001160347"
+.depend "Internet.HTTP" "20161001160346"
+.depend "Data.IntMap.Base" "20161001160346"
+.depend "Data.IntMap.Strict" "20161001160346"
+.depend "Data.CircularStack" "20161001160346"
+.depend "iTasks._Framework.Tonic.AbsSyn" "20161001160347"
+.depend "iTasks._Framework.Serialization" "20161001160347"
+.depend "iTasks.UI.JS.Interface" "20161001160347"
+.depend "GenLexOrd" "20161001160347"
+.depend "iTasks._Framework.Generic.Defaults" "20161001160347"
+.depend "iTasks._Framework.Generic.Visualization" "20161001160347"
+.depend "iTasks.API.Core.TaskCombinators" "20161001160347"
+.depend "iTasks.UI.Layout" "20161001160347"
+.depend "iTasks._Framework.Generic.Interaction" "20161001160347"
+.depend "iTasks._Framework.Generic" "20161001160347"
+.depend "TCPStringChannelsInternal" "20161001160346"
+.depend "TCPStringChannels" "20161001160346"
+.depend "TCPEvent" "20161001160346"
+.depend "tcp_bytestreams" "20161001160346"
+.depend "TCPDef" "20161001160346"
+.depend "TCPChannels" "20161001160347"
+.depend "tcp" "20161001160346"
+.depend "StdMaybe" "20161001160346"
+.depend "TCPChannelClass" "20161001160346"
+.depend "TCPIP" "20161001160346"
+.depend "Sapl.SaplStruct" "20161001160346"
+.depend "Sapl.SaplParser" "20161001160346"
+.depend "Sapl.Target.Flavour" "20161001160346"
+.depend "System.OSError" "20161001160346"
+.depend "System.File" "20161001160346"
+.depend "Text.StringAppender" "20161001160346"
+.depend "Text.Unicode.UChar" "20161001160346"
+.depend "Text.Unicode" "20161001160346"
+.depend "Sapl.SaplTokenizer" "20161001160346"
+.depend "Sapl.Linker.SaplLinkerShared" "20161001160346"
+.depend "Sapl.Linker.LazyLinker" "20161001160346"
+.depend "Data.Queue" "20161001160346"
+.depend "iTasks._Framework.TaskState" "20161001160347"
+.depend "iTasks.UI.Diff" "20161001160347"
+.depend "Text.HTML" "20161001160346"
+.depend "iTasks.UI.Definition" "20161001160347"
+.depend "StdFile" "20160531160413"
+.depend "Data.Set" "20161001160346"
+.depend "Data.List" "20161001160346"
+.depend "StdFunc" "20160531160413"
+.depend "Data.Map" "20161001160346"
+.depend "iTasks._Framework.IWorld" "20161001160347"
+.depend "Data.Either" "20161001160346"
+.depend "iTasks._Framework.SDS" "20161001160347"
+.depend "System.Time" "20161001160346"
+.depend "Data.Error" "20161001160346"
+.depend "Data.Void" "20161001160346"
+.depend "StdString" "20160531160413"
+.depend "GenEq" "20161001160347"
+.depend "Data.Monoid" "20161001160346"
+.depend "Control.Monad" "20161001160346"
+.depend "Control.Applicative" "20161001160346"
+.depend "System.IO" "20161001160346"
+.depend "Data.Functor" "20161001160346"
+.depend "Data.Maybe" "20161001160346"
+.depend "StdGeneric" "20161001160347"
+.depend "Text.JSON" "20161001160346"
+.depend "iTasks._Framework.Store" "20161001160347"
+.depend "iTasks.API.Core.Types" "20161001160347"
+.depend "iTasks._Framework.Task" "20161001160347"
+.depend "System.OS" "20161001160346"
+.depend "System.FilePath" "20161001160346"
+.depend "StdReal" "20160531160413"
+.depend "StdChar" "20160531160413"
+.depend "StdInt" "20160531160413"
+.depend "StdBool" "20160531160413"
+.depend "StdClass" "20160531160413"
+.depend "StdList" "20160531160413"
+.depend "iTasks._Framework.Engine" "20161001160347"
+.depend "iTasks" "20161001160347"
+.depend "StdOverloaded" "20160531160413"
+.depend "_SystemDynamic" "20161001160347"
+.depend "svgDemo" "20161026151753"
+.module m_svgDemo "svgDemo" "20161028180542"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod hoi
+.impdesc e_hoi_dGetTrackIndex
+.implab e_hoi_nGetTrackIndex
+.impdesc e_hoi_dGetTracksSmallestX
+.implab e_hoi_nGetTracksSmallestX
+.impdesc e_hoi_dGetTracksSmallestY
+.implab e_hoi_nGetTracksSmallestY
+.implab e_hoi_sGetTrackHeight
+.implab e_hoi_sGetTrackWidth
+.impdesc e_hoi_rPosition
+.impdesc e_hoi_dPosition.yPos
+.implab e_hoi_nPosition.yPos
+.impdesc e_hoi_rSection
+.impdesc e_hoi_rTrack
+.impdesc e_hoi_dTrack.tType
+.implab e_hoi_nTrack.tType e_hoi_eaTrack.tType
+.impdesc e_hoi_rTrain
+.impdesc e_hoi_dTrain.direction
+.implab e_hoi_nTrain.direction
+.impdesc e_hoi_dState.tracks
+.implab e_hoi_nState.tracks e_hoi_eaState.tracks
+.impdesc e_hoi_dState.trains
+.implab e_hoi_nState.trains e_hoi_eaState.trains
+.impdesc e_hoi_dNE
+.impdesc e_hoi_dNW
+.impdesc e_hoi_dSE
+.impdesc e_hoi_dSW
+.impdesc e_hoi_dSEC
+.impdesc e_hoi_dSWT
+.impmod Math.Geometry
+.impdesc e_Math.Geometry_ddeg
+.implab e_Math.Geometry_ndeg e_Math.Geometry_eadeg
+.impmod Graphics.Scalable.Internal
+.impdesc e_Graphics.Scalable.Internal_dzero;0
+.implab e_Graphics.Scalable.Internal_szero;0
+.implab e_Graphics.Scalable.Internal_nzero;0 e_Graphics.Scalable.Internal_eazero;0
+.implab e_Graphics.Scalable.Internal_s*.;5
+.impdesc e_Graphics.Scalable.Internal_rStrokeWidthAttr
+.impdesc e_Graphics.Scalable.Internal_tStrokeWidthAttr
+.implab e_Graphics.Scalable.Internal_cStrokeWidthAttr
+.impdesc e_Graphics.Scalable.Internal_rOpacityAttr
+.impdesc e_Graphics.Scalable.Internal_rFillAttr
+.impdesc e_Graphics.Scalable.Internal_tFillAttr
+.implab e_Graphics.Scalable.Internal_cFillAttr
+.impdesc e_Graphics.Scalable.Internal_rDashAttr
+.impdesc e_Graphics.Scalable.Internal_rOnClickAttr
+.impdesc e_Graphics.Scalable.Internal_dAtLeft
+.impdesc e_Graphics.Scalable.Internal_dAtMiddleX
+.impdesc e_Graphics.Scalable.Internal_dAtRight
+.impdesc e_Graphics.Scalable.Internal_dAtTop
+.impdesc e_Graphics.Scalable.Internal_dAtMiddleY
+.impdesc e_Graphics.Scalable.Internal_dAtBottom
+.impdesc e_Graphics.Scalable.Internal_dSlash
+.impdesc e_Graphics.Scalable.Internal_dBackslash
+.impmod Graphics.Scalable
+.impdesc e_Graphics.Scalable_dpx
+.implab e_Graphics.Scalable_spx
+.implab e_Graphics.Scalable_npx e_Graphics.Scalable_eapx
+.implab e_Graphics.Scalable_snormalFontDef
+.implab e_Graphics.Scalable_sempty
+.implab e_Graphics.Scalable_stext
+.implab e_Graphics.Scalable_scircle
+.implab e_Graphics.Scalable_srect
+.implab e_Graphics.Scalable_sxline
+.implab e_Graphics.Scalable_sline
+.implab e_Graphics.Scalable_spolygon
+.implab e_Graphics.Scalable_sfitx
+.impdesc e_Graphics.Scalable_drotate
+.implab e_Graphics.Scalable_sflipx
+.implab e_Graphics.Scalable_soverlay
+.implab e_Graphics.Scalable_sbeside
+.implab e_Graphics.Scalable_sabove
+.implab e_Graphics.Scalable_s<@<
+.impdesc e_Graphics.Scalable_dtuneImage;49
+.impdesc e_Graphics.Scalable_dtuneImage;50
+.impdesc e_Graphics.Scalable_dtuneImage;51
+.impdesc e_Graphics.Scalable_dtuneImage;52
+.impdesc e_Graphics.Scalable_dtuneImage;61
+.implab e_Graphics.Scalable_stoSVGColor;64
+.impdesc e_Graphics.Scalable_rtuneImage;
+.impmod StdFunc
+.implab e_StdFunc_sid
+.impmod Data.Maybe
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod StdReal
+.impdesc e_StdReal_dtoReal;14
+.impmod StdInt
+.implab e_StdInt_s+;6
+.impdesc e_StdInt_d-;7
+.implab e_StdInt_s-;7
+.implab e_StdInt_n-;7
+.implab e_StdInt_s==;16
+.implab e_StdInt_s<;17
+.impmod StdBool
+.impdesc e_StdBool_dnot
+.implab e_StdBool_snot
+.implab e_StdBool_nnot
+.impmod StdList
+.impdesc e_StdList_d!!
+.implab e_StdList_n!! _
+.impdesc e_StdList_dfilter
+.implab e_StdList_sfilter
+.implab e_StdList_nfilter e_StdList_eafilter
+.implab e_StdList_sreverse
+.impdesc e_StdList_dupdateAt
+.implab e_StdList_supdateAt
+.implab e_StdList_nupdateAt e_StdList_eaupdateAt
+.impdesc e_StdList_dmap
+.implab e_StdList_smap
+.implab e_StdList_nmap e_StdList_eamap
+.implab e_StdList_srepeatn
+.implab e_StdList_srepeat
+.implab e_StdList_slength;47
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_rtoReal;
+.desc d254 _hnf _hnf 0 0 "EMPTY"
+.desc d255 _hnf _add_arg 1 0 "SECTION"
+.desc d256 _hnf _add_arg 1 0 "SWITCHA"
+.desc d257 _hnf _add_arg 1 0 "SWITCHB"
+.export e_svgDemo_sTD;TrackDraw
+.export e_svgDemo_eaTD;TrackDraw
+.descexp e_svgDemo_dTD;TrackDraw e_svgDemo_nTD;TrackDraw e_svgDemo_lTD;TrackDraw 1 0 "TD;TrackDraw"
+.o 2 0
+e_svgDemo_lTD;TrackDraw
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_svgDemo_eaTD;TrackDraw
+.n 1 e_svgDemo_dTD;TrackDraw e_svgDemo_eaTD;TrackDraw
+.o 1 0
+e_svgDemo_nTD;TrackDraw
+	push_node _cycle_in_spine 1
+.o 2 0
+e_svgDemo_eaTD;TrackDraw
+.o 2 0
+e_svgDemo_sTD;TrackDraw
+.o 2 0
+s39
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_svgDemo_sdrawTracks
+.descexp e_svgDemo_ddrawTracks e_svgDemo_ndrawTracks e_svgDemo_ldrawTracks 1 0 "drawTracks"
+.o 2 0
+e_svgDemo_ldrawTracks
+	pop_a 1
+.d 1 0
+	jsr ea2
+.o 9 1 i
+.impmod Graphics.Scalable.Internal
+.impdesc e_Graphics.Scalable.Internal_rImage
+	build_r e_Graphics.Scalable.Internal_rImage 9 1 0 0
+	updatepop_a 0 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_svgDemo_ddrawTracks
+.o 1 0
+e_svgDemo_ndrawTracks
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea2
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+e_svgDemo_sdrawTracks
+.o 1 0
+ea2
+	jsr_eval 0
+	repl_r_args 4 0
+.o 4 0
+s2
+	push_a 3
+	push_a 3
+	push_a 3
+	push_a 3
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp s11
+.o 4 0
+s11
+	push_a 0
+	build e_hoi_dGetTracksSmallestY 1 e_hoi_nGetTracksSmallestY
+	push_a 1
+	build e_hoi_dGetTracksSmallestX 1 e_hoi_nGetTracksSmallestX
+	push_a 2
+	jsr_eval 0
+	push_a 3
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr s7
+.o 1 0
+	create
+	push_a 4
+	update_a 1 5
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 0 4
+	pop_a 1
+.d 5 0
+	jsr s8
+.o 1 0
+.impmod hoi
+.impdesc e_hoi_rState
+	build_r e_hoi_rState 4 0 1 0
+	update_a 1 5
+	updatepop_a 0 4
+.d 2 0
+	jmp s10
+.o 2 0
+s7
+	push_a 0
+	build _ 1 n259
+	push_a 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 0
+	jsr e_hoi_sGetTrackWidth
+.o 0 1 i
+	updatepop_a 0 1
+.d 2 1 i
+	jmp e_StdList_srepeatn
+.n 1 _ ea259
+.o 1 0
+n259
+	push_node _cycle_in_spine 1
+.o 2 0
+ea259
+.o 2 0
+s259
+	buildh d254 0
+	push_a 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 0
+	jsr e_hoi_sGetTrackHeight
+.o 0 1 i
+	updatepop_a 0 1
+.d 2 1 i
+	jmp e_StdList_srepeatn
+.n 2 _
+.o 1 0
+n10
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea10
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea10
+	jsr_eval 1
+.o 2 0
+s10
+	eq_desc _Cons 2 1
+	jmp_true case.1
+	jmp s10.1
+case.1
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	jsr_eval 1
+	eq_desc _Nil 0 1
+	jmp_true case.2
+	jmp case.3
+case.2
+	buildh e_Data.Maybe_dNothing 0
+	push_a 1
+	jsr_eval 0
+	push_a 4
+	buildh d3 1
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 5
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr e_StdList_smap
+.o 1 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_StdList_sreverse
+.o 1 0
+	buildh _Nil 0
+	buildh _Nil 0
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp e_Graphics.Scalable_sabove
+case.3
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	push_a 3
+	push_a 5
+	build _ 2 n10
+	buildh _Cons 2
+	buildh _Nil 0
+	push_a 3
+	buildh _Cons 2
+	push_a 5
+	build _ 2 n10
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp e_Graphics.Scalable_sbeside
+s10.1
+	pop_a 2
+	pushD m_svgDemo
+	pushD x_10
+.d 0 2 ii
+	jmp _match_error
+.string x_10 "TrackImageFromDrawing"
+.desc d3 _hnf l3 2 0 "DrawTrackDrawing"
+.a 0 a3
+.o 2 0
+l3
+	repl_args 1 1
+.o 2 0
+a3
+.d 2 0
+	jsr ea3
+.o 9 1 i
+	build_r e_Graphics.Scalable.Internal_rImage 9 1 0 0
+	updatepop_a 0 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea3
+	jsr_eval 1
+.o 2 0
+s3
+	pushD_a 1
+	eqD_b d254 0
+	jmp_true case.4
+	eqD_b d255 1
+	jmp_true case.5
+	eqD_b d256 1
+	jmp_true case.6
+	jmp case.7
+case.4
+	pop_b 1
+	pushR 0.0
+	build_r e_Graphics.Scalable.Internal_rOpacityAttr 0 1 0 0
+	pop_b 1
+	create
+	pushR 0.0
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rStrokeWidthAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s16
+.o 1 0
+	create
+.d 1 0
+	jsr s15
+.o 1 0
+.d 2 0
+	jsr e_Graphics.Scalable_srect
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;49 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;51 0
+	update_a 10 12
+	update_a 9 11
+	update_a 8 10
+	update_a 7 9
+	update_a 6 8
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 11 1 i
+	jmp e_Graphics.Scalable_s<@<
+case.5
+	pop_b 1
+	push_args 1 1 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+	push_a 1
+	build e_hoi_dState.tracks -4 e_hoi_nState.tracks
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_hoi_dGetTrackIndex 2 e_hoi_nGetTrackIndex
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n28
+	buildh e_Data.Maybe_dJust 1
+	push_a 2
+	jsr_eval 0
+	repl_r_args 4 0
+	create
+	push_a 6
+	push_a 5
+	update_a 2 6
+	update_a 4 2
+	update_a 0 4
+	update_a 5 0
+	update_a 1 5
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 8
+	update_a 0 9
+	pop_a 1
+.d 6 0
+	jsr s4
+.o 1 0
+	buildh _Nil 0
+	buildR 15.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildR 22.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+case.6
+	pop_b 1
+	push_args 1 1 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+	jsr_eval 0
+	push_args 0 3 3
+	pop_a 2
+	jsr_eval 0
+	eq_desc e_hoi_dSWT 1 0
+	jmp_true case.8
+	pop_a 2
+	jmp s3.1
+case.8
+	repl_args 1 1
+	jsr_eval 0
+	repl_args 2 2
+	pop_a 1
+	push_a 1
+	build _ 1 n30
+	buildh e_Data.Maybe_dJust 1
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	notB
+	create
+	push_a 3
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	update_a 0 5
+	pop_a 1
+.d 3 1 b
+	jsr s63
+.o 1 0
+	buildh _Nil 0
+	buildR 15.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildR 22.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+case.7
+	pop_b 1
+	push_args 1 1 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+	jsr_eval 0
+	push_args 0 3 3
+	pop_a 2
+	jsr_eval 0
+	eq_desc e_hoi_dSWT 1 0
+	jmp_true case.9
+	pop_a 2
+	jmp s3.1
+case.9
+	repl_args 1 1
+	jsr_eval 0
+	repl_args 2 2
+	pop_a 1
+	push_a 1
+	build _ 1 n31
+	buildh e_Data.Maybe_dJust 1
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	create
+	push_a 3
+	push_a 5
+	buildh _Nil 0
+	update_a 0 7
+	update_a 0 6
+	update_a 0 5
+	pop_a 1
+.d 3 1 b
+	jsr s64
+.o 1 0
+	buildh _Nil 0
+	buildR -19.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildR 22.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh _Nil 0
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+s3.1
+	pop_a 2
+	pushD m_svgDemo
+	pushD d3
+.d 0 2 ii
+	jmp _match_error
+.o 3 1 b
+s64
+	eqB_b TRUE 0
+	jmp_true case.10
+	jmp case.11
+case.10
+	push_a 0
+	jsr_eval 0
+	repl_r_args 4 0
+	create
+	push_a 6
+	push_a 5
+	update_a 2 6
+	update_a 4 2
+	update_a 0 4
+	update_a 5 0
+	update_a 1 5
+	update_a 3 1
+	update_a 0 3
+	pop_a 1
+	pop_b 1
+	update_a 5 7
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 6 0
+	jsr s4
+.o 1 0
+	buildR -45.0
+	build e_Math.Geometry_ddeg 1 e_Math.Geometry_ndeg
+	buildh e_Graphics.Scalable_drotate 1
+.d 3 0
+	jmp e_StdList_smap
+case.11
+	fillh _Nil 0 2
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 1 b
+s63
+	eqB_b TRUE 0
+	jmp_true case.12
+	jmp case.13
+case.12
+	push_a 0
+	jsr_eval 0
+	repl_r_args 4 0
+	push_a 5
+	push_a 4
+	update_a 1 5
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 0 4
+	pop_a 1
+	update_a 4 6
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+	pop_b 1
+.d 6 0
+	jmp s4
+case.13
+	fillh _Nil 0 2
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n31
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea31
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea31
+	jsr_eval 0
+	repl_r_args 3 0
+.o 3 0
+s31
+	jsr_eval 2
+	eq_desc e_hoi_dSWT 1 2
+	jmp_true case.14
+	jmp s31.1
+case.14
+	push_args 2 1 1
+	jsr_eval 0
+	repl_args 2 2
+	build _ 0 n27
+	buildh e_Data.Maybe_dJust 1
+	buildh _Nil 0
+	build_r e_hoi_rTrack 3 0 4 0
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n265
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	push_a 4
+	build _ 1 n62
+	buildh _Cons 2
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+s31.1
+	pop_a 3
+	pushD m_svgDemo
+	pushD x_31
+.d 0 2 ii
+	jmp _match_error
+.string x_31 "drawSwitchB"
+.n 2 _ ea265
+.o 1 0
+n265
+	push_node _cycle_in_spine 2
+.o 3 0
+ea265
+.o 3 0
+s265
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	notB
+	push_r_args 0 3 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 1 b
+	jsr s29
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n62
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea62
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+ea62
+	jsr_eval 0
+.o 1 0
+s62
+	pushD_a 0
+	eqD_b e_hoi_dNW 0
+	jmp_true case.15
+	eqD_b e_hoi_dNE 0
+	jmp_true case.16
+	eqD_b e_hoi_dSW 0
+	jmp_true case.17
+	jmp case.18
+case.15
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtLeft 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.16
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtRight 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.17
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtLeft 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.18
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtRight 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.n 1 _
+.o 1 0
+n30
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea30
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea30
+	jsr_eval 0
+	repl_r_args 3 0
+.o 3 0
+s30
+	jsr_eval 2
+	eq_desc e_hoi_dSWT 1 2
+	jmp_true case.19
+	jmp s30.1
+case.19
+	push_args 2 1 1
+	jsr_eval 0
+	repl_args 2 2
+	build _ 0 n27
+	buildh e_Data.Maybe_dJust 1
+	buildh _Nil 0
+	build_r e_hoi_rTrack 3 0 4 0
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n267
+	buildh _Cons 2
+	push_a 3
+	build _ 1 n23
+	buildh _Cons 2
+	push_a 4
+	build _ 1 n266
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	push_a 4
+	build _ 1 n61
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtMiddleY 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	push_a 4
+	build _ 1 n60
+	buildh _Cons 2
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+s30.1
+	pop_a 3
+	pushD m_svgDemo
+	pushD x_30
+.d 0 2 ii
+	jmp _match_error
+.string x_30 "drawSwitchA"
+.n 2 _ ea267
+.o 1 0
+n267
+	push_node _cycle_in_spine 2
+.o 3 0
+ea267
+.o 3 0
+s267
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	notB
+	push_r_args 0 3 0
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 1 b
+	jsr s29
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea266
+.o 1 0
+n266
+	push_node _cycle_in_spine 1
+.o 2 0
+ea266
+.o 2 0
+s266
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 2
+	pop_a 1
+.d 0 0
+	jsr s12
+.o 5 1 r
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 6 1 r
+	jsr e_Graphics.Scalable_stext
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n61
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea61
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+ea61
+	jsr_eval 0
+.o 1 0
+s61
+	pushD_a 0
+	eqD_b e_hoi_dNW 0
+	jmp_true case.20
+	eqD_b e_hoi_dNE 0
+	jmp_true case.21
+	eqD_b e_hoi_dSW 0
+	jmp_true case.22
+	jmp case.23
+case.20
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtRight 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.21
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtLeft 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.22
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtRight 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.23
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtLeft 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.n 1 _
+.o 1 0
+n60
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea60
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 1 0
+ea60
+	jsr_eval 0
+.o 1 0
+s60
+	pushD_a 0
+	eqD_b e_hoi_dNW 0
+	jmp_true case.24
+	eqD_b e_hoi_dNE 0
+	jmp_true case.25
+	eqD_b e_hoi_dSW 0
+	jmp_true case.26
+	jmp case.27
+case.24
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.25
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.26
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.27
+	pop_b 1
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+.o 3 1 b
+s29
+	jsr_eval 2
+	eq_desc e_hoi_dSWT 1 2
+	jmp_true case.28
+	jmp s29.1
+case.28
+	push_args 2 1 1
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	update_a 0 1
+	pop_a 1
+	push_b 0
+	updatepop_b 0 1
+	update_a 0 4
+	pop_a 4
+.d 0 1 b
+	jsr s59
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rDashAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+	pushR 5.0
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rStrokeWidthAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s14
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rFillAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s16
+.o 1 0
+	buildh e_StdReal_dtoReal;14 0
+	create
+	buildR 0.5
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+.d 4 0
+	jsr e_Graphics.Scalable.Internal_s*.;5
+.o 1 0
+	create
+.d 1 0
+	jsr s15
+.o 1 0
+	buildh e_StdReal_dtoReal;14 0
+	create
+	buildR 0.5
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+.d 4 0
+	jsr e_Graphics.Scalable.Internal_s*.;5
+.o 1 0
+	push_a 5
+	jsr_eval 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 8
+	pop_a 1
+.d 2 0
+	jsr s58
+.o 1 0
+	buildh e_Data.Maybe_dNothing 0
+.d 4 0
+	jsr e_Graphics.Scalable_sline
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;50 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;49 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;61 0
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 11 1 i
+	jmp e_Graphics.Scalable_s<@<
+s29.1
+	pop_a 3
+	pop_b 1
+	pushD m_svgDemo
+	pushD x_29
+.d 0 2 ii
+	jmp _match_error
+.string x_29 "drawSwitchRail"
+.o 0 1 b
+s59
+	eqB_b TRUE 0
+	jmp_true case.29
+	jmp case.30
+case.29
+	buildh _Nil 0
+	buildI 5
+	buildh _Cons 2
+	pop_b 1
+.d 1 0
+	rtn
+case.30
+	buildh _Nil 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+s58
+	pushD_a 0
+	eqD_b e_hoi_dNW 0
+	jmp_true case.31
+	eqD_b e_hoi_dNE 0
+	jmp_true case.32
+	eqD_b e_hoi_dSW 0
+	jmp_true case.33
+	jmp case.34
+case.31
+	pop_b 1
+	fillh e_Graphics.Scalable.Internal_dBackslash 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.32
+	pop_b 1
+	fillh e_Graphics.Scalable.Internal_dSlash 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.33
+	pop_b 1
+	fillh e_Graphics.Scalable.Internal_dSlash 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.34
+	pop_b 1
+	fillh e_Graphics.Scalable.Internal_dBackslash 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 6 0
+s4
+	push_a 3
+	jsr_eval 0
+	push_a 5
+	buildh d33 1
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jsr e_StdList_sfilter
+.o 1 0
+	push_a 0
+.d 1 0
+	jsr e_StdList_slength;47
+.o 0 1 i
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	ltI
+	notB
+	jmp_false else.35
+	buildh _Nil 0
+	push_a 1
+	buildh d32 1
+	pushB FALSE
+	build_r e_Graphics.Scalable.Internal_rOnClickAttr 1 1 0 0
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	buildI 0
+	push_a 3
+	build e_StdList_d!! 2 e_StdList_n!!
+	build e_hoi_dTrain.direction -4 e_hoi_nTrain.direction
+	buildR 60.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	build _ 3 n272
+	fillh _Cons 2 3
+	pop_a 1
+.d 1 0
+	rtn
+else.35
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.n 3 _ ea272
+.o 1 0
+n272
+	push_node _cycle_in_spine 3
+.o 4 0
+ea272
+.o 4 0
+s272
+	push_a 2
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	pushB_a 3
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 3
+	update_a 0 4
+	pop_a 1
+.d 0 1 b
+	jsr s1
+.o 9 1 i
+	push_a 10
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 12
+	pop_a 1
+.d 10 1 i
+	jsr e_Graphics.Scalable_sfitx
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;52 0
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.desc d33 _hnf l33 2 0 "<lambda>[line:34];45;32"
+.a 0 a33
+.o 2 0
+l33
+	repl_args 1 1
+.o 2 0
+a33
+.d 2 0
+	jsr ea33
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea33
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 2 0
+	push_r_args 2 3 0
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	update_a 3 5
+	update_a 1 3
+	pop_a 2
+.o 5 0
+s33
+	jsr_eval 3
+	push_args_u 3 2 2
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	updatepop_a 0 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	eqI
+	jmp_false else.36
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pop_a 7
+	eqI
+.d 0 1 b
+	rtn
+else.36
+	pop_a 7
+	pushB FALSE
+.d 0 1 b
+	rtn
+.desc d32 _hnf l32 3 0 "<lambda>[line:32];44;31"
+.a 0 a32
+.o 2 0
+l32
+	repl_args 2 2
+.o 3 0
+a32
+.d 3 0
+	jsr ea32
+.o 4 0
+	build_r e_hoi_rState 4 0 0 0
+	updatepop_a 0 4
+.d 1 0
+	rtn
+.o 3 0
+ea32
+	jsr_eval 2
+	push_r_args 2 4 0
+	update_a 3 6
+	update_a 0 3
+	push_a 5
+	update_a 3 6
+	update_a 0 3
+	update_a 5 0
+	update_a 2 5
+	update_a 0 2
+	pop_a 2
+.o 6 0
+s32
+	buildI 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 4
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s5
+.o 5 0
+s5
+	push_a 4
+	build_r e_hoi_rState 4 0 2 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh d34 2
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 3
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 4 0
+	rtn
+.desc d34 _hnf l34 3 0 "<lambda>[line:40];26;33"
+.a 0 a34
+.o 2 0
+l34
+	repl_args 2 2
+.o 3 0
+a34
+.d 3 0
+	jsr ea34
+.o 2 0
+	build_r e_hoi_rTrain 2 0 0 0
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.o 3 0
+ea34
+	jsr_eval 2
+	jsr_eval 1
+	push_r_args 2 2 0
+	push_r_args 3 2 0
+	update_a 3 6
+	update_a 0 3
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	pop_a 2
+.o 5 0
+s34
+	jsr_eval 3
+	push_args_u 3 2 2
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	updatepop_a 0 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	eqI
+	jmp_false else.37
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	eqI
+	jmp_false else.37
+	push_a 6
+	push_a 1
+	push_a 4
+	push_a 4
+	build _ 4 n274
+	push_a 7
+	push_a 2
+	build _ 2 n273
+	build_r e_hoi_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 8
+	updatepop_a 0 7
+.d 2 0
+	rtn
+else.37
+	push_a 1
+	push_a 1
+	build_r e_hoi_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	push_a 7
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 8
+	updatepop_a 0 7
+.d 2 0
+	rtn
+.n 4 _ ea274
+.o 1 0
+n274
+	push_node _cycle_in_spine 4
+.o 5 0
+ea274
+.o 5 0
+s274
+	push_a 1
+	jsr_eval 0
+	repl_r_args 4 0
+	push_a 7
+	push_a 5
+	push_a 8
+	push_a 6
+	update_a 3 7
+	update_a 6 3
+	update_a 2 6
+	update_a 5 2
+	update_a 1 5
+	update_a 4 1
+	update_a 0 4
+	pop_a 1
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 7 0
+	jsr s6
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _ ea273
+.o 1 0
+n273
+	push_node _cycle_in_spine 2
+.o 3 0
+ea273
+.o 3 0
+s273
+	push_a 1
+	jsr_eval 0
+	pushB_a 2
+	pop_a 1
+	update_a 0 1
+	pop_a 1
+.d 0 1 b
+	jsr s57
+.o 0 1 i
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pop_a 1
+	addI
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 1 b
+s57
+	eqB_b TRUE 0
+	jmp_true case.39
+	jmp case.40
+case.39
+	pop_b 1
+	pushI -1
+.d 0 1 i
+	rtn
+case.40
+	pop_b 1
+	pushI 1
+.d 0 1 i
+	rtn
+.o 7 0
+s6
+	push_a 0
+	push_a 6
+	push_a 6
+	buildh d35 2
+	build e_StdList_dfilter 2 e_StdList_nfilter
+	buildI 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	build e_hoi_dTrack.tType -4 e_hoi_nTrack.tType
+	build _ 1 n49
+	push_a 7
+	build _ 1 n46
+	build_r e_hoi_rState 4 0 2 0
+	create
+	buildI 0
+	push_a 3
+	push_a 5
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 10
+	push_a 16
+	push_a 16
+	buildh _Nil 0
+	update_a 0 14
+	update_a 0 15
+	update_a 0 16
+	update_a 0 17
+	update_a 0 20
+	pop_a 1
+.d 10 0
+	jsr s37
+.o 1 0
+	push_a 2
+	push_a 10
+	push_a 10
+	push_a 6
+	push_a 5
+	update_a 4 6
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 5 1
+	update_a 0 5
+	pop_a 1
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+.d 6 0
+	jmp s56
+.o 6 0
+s56
+	eq_desc _Cons 2 0
+	jmp_true case.41
+	jmp case.42
+case.41
+	repl_args 2 2
+	pop_a 2
+	jsr_eval 0
+	pushI_a 0
+	pop_a 5
+.d 0 1 i
+	rtn
+case.42
+	create
+	buildI 1
+	push_a 7
+	push_a 4
+	push_r_args 8 4 0
+	push_a 11
+	push_a 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 10 0
+	jsr s37
+.o 1 0
+	push_a 5
+	push_a 2
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 6 0
+	jmp s55
+.o 6 0
+s55
+	eq_desc _Cons 2 0
+	jmp_true case.43
+	jmp case.44
+case.43
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	push_r_args_a 0 3 0 3 1
+	jsr_eval 0
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 6
+	push_a 5
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 5 11
+	update_a 4 10
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 6 0
+	jmp s52
+case.44
+	create
+	buildI -1
+	push_a 7
+	push_a 7
+	push_r_args 7 4 0
+	push_a 10
+	push_a 10
+	update_a 14 15
+	update_a 9 14
+	update_a 8 13
+	update_a 7 12
+	update_a 6 11
+	update_a 5 10
+	update_a 4 9
+	update_a 3 8
+	update_a 2 7
+	update_a 1 6
+	updatepop_a 0 5
+.d 10 0
+	jsr s37
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp s54
+.o 2 0
+s54
+	eq_desc _Cons 2 0
+	jmp_true case.45
+	jmp case.46
+case.45
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	push_r_args_a 0 3 0 3 1
+	jsr_eval 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s53
+case.46
+	pop_a 2
+	pushI 100
+.d 0 1 i
+	rtn
+.o 2 0
+s53
+	eq_desc e_hoi_dSEC 1 0
+	jmp_true case.47
+	jmp case.48
+case.47
+	repl_args 1 1
+	pop_a 1
+	pop_a 1
+	pushI 100
+.d 0 1 i
+	rtn
+case.48
+	repl_args 1 1
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 1
+	subI
+.d 0 1 i
+	rtn
+.o 6 0
+s52
+	eq_desc e_hoi_dSEC 1 0
+	jmp_true case.49
+	jmp case.50
+case.49
+	repl_args 1 1
+	pop_a 1
+	create
+	buildI -1
+	push_a 6
+	push_a 6
+	push_r_args 6 4 0
+	push_a 9
+	push_a 9
+	update_a 13 14
+	update_a 9 13
+	update_a 8 12
+	update_a 7 11
+	update_a 6 10
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 10 0
+	jsr s37
+.o 1 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jmp s51
+case.50
+	repl_args 1 1
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 5
+	addI
+.d 0 1 i
+	rtn
+.o 2 0
+s51
+	eq_desc _Cons 2 0
+	jmp_true case.51
+	jmp case.52
+case.51
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	push_r_args_a 0 3 0 3 1
+	jsr_eval 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s50
+case.52
+	pop_a 2
+	pushI 100
+.d 0 1 i
+	rtn
+.o 2 0
+s50
+	eq_desc e_hoi_dSEC 1 0
+	jmp_true case.53
+	jmp case.54
+case.53
+	repl_args 1 1
+	pop_a 1
+	pop_a 1
+	pushI 100
+.d 0 1 i
+	rtn
+case.54
+	repl_args 1 1
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	pop_a 1
+	subI
+.d 0 1 i
+	rtn
+.n 1 _
+.o 1 0
+n49
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea49
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea49
+	jsr_eval 0
+.o 1 0
+s49
+	eq_desc e_hoi_dSEC 1 0
+	jmp_true case.55
+	jmp case.56
+case.55
+	repl_args 1 1
+	pop_a 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.56
+	repl_args 1 1
+	jsr_eval 0
+	push_r_args_a 0 2 0 2 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+	notB
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jmp s48
+.o 1 1 b
+s48
+	eqB_b TRUE 0
+	jmp_true case.57
+	jmp case.58
+case.57
+	pop_a 1
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.58
+	jsr_eval 0
+	push_r_args_a 0 2 0 1 1
+	jsr_eval 0
+	updatepop_a 0 1
+	pop_b 1
+.d 1 0
+	jmp s47
+.o 1 0
+s47
+	pushD_a 0
+	eqD_b e_hoi_dNE 0
+	jmp_true case.59
+	eqD_b e_hoi_dSE 0
+	jmp_true case.60
+	eqD_b e_hoi_dNW 0
+	jmp_true case.61
+	pop_b 1
+	jmp s47.1
+case.59
+	pop_b 1
+	pop_a 1
+	pushI 1
+.d 0 1 i
+	rtn
+case.60
+	pop_b 1
+	pop_a 1
+	pushI -1
+.d 0 1 i
+	rtn
+case.61
+	pop_b 1
+	pop_a 1
+	pushI 1
+.d 0 1 i
+	rtn
+s47.1
+	pop_a 1
+	pushD m_svgDemo
+	pushD x_47
+.d 0 2 ii
+	jmp _match_error
+.string x_47 "<case>[line:62];50;1026"
+.n 1 _
+.o 1 0
+n46
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea46
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea46
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 0 1 b
+s46
+	eqB_b TRUE 0
+	jmp_true case.62
+	jmp case.63
+case.62
+	pop_b 1
+	pushI -1
+.d 0 1 i
+	rtn
+case.63
+	pop_b 1
+	pushI 1
+.d 0 1 i
+	rtn
+.o 10 0
+s37
+	push_a 2
+	jsr_eval 0
+	push_a 9
+	push_a 9
+	push_a 9
+	push_a 5
+	push_a 5
+	buildh d36 5
+	update_a 1 10
+	updatepop_a 0 9
+.d 3 0
+	jmp e_StdList_sfilter
+.desc d36 _hnf l36 6 0 "<lambda>[line:80];69;35"
+.a 0 a36
+.o 2 0
+l36
+	repl_args 5 5
+.o 6 0
+a36
+.d 6 0
+	jsr ea36
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 6 0
+ea36
+	jsr_eval 5
+	jsr_eval 3
+	jsr_eval 0
+	push_r_args 5 3 0
+	pushI_a 6
+	pushI_a 3
+	update_a 2 8
+	update_a 0 6
+	update_a 4 3
+	update_a 5 4
+	update_a 7 5
+	update_a 1 7
+	pop_a 3
+.o 6 2 ii
+s36
+	push_a 4
+	jsr_eval 0
+	repl_r_args 2 0
+	updatepop_a 0 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_b 2
+	push_b 2
+	addI
+	eqI
+	jmp_false else.64
+	push_a 4
+	jsr_eval 0
+	repl_r_args 2 0
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	addI
+	addI
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 6
+	eqI
+.d 0 1 b
+	rtn
+else.64
+	pop_a 6
+	pop_b 2
+	pushB FALSE
+.d 0 1 b
+	rtn
+.desc d35 _hnf l35 3 0 "<lambda>[line:57];47;34"
+.a 0 a35
+.o 2 0
+l35
+	repl_args 2 2
+.o 3 0
+a35
+.d 3 0
+	jsr ea35
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea35
+	jsr_eval 2
+	jsr_eval 0
+	push_r_args 2 3 0
+	pushI_a 3
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	update_a 0 3
+	pop_a 2
+.o 4 1 i
+s35
+	push_a 2
+	jsr_eval 0
+	repl_r_args 2 0
+	updatepop_a 0 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_b 1
+	eqI
+	jmp_false else.65
+	push_a 2
+	jsr_eval 0
+	repl_r_args 2 0
+	pop_a 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 4
+	eqI
+.d 0 1 b
+	rtn
+else.65
+	pop_a 4
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.n 2 _
+.o 1 0
+n28
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea28
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea28
+	jsr_eval 1
+	push_r_args 1 3 0
+	update_a 2 4
+	update_a 0 2
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 4 0
+s28
+	jsr_eval 3
+	eq_desc e_hoi_dSEC 1 3
+	jmp_true case.66
+	jmp s28.1
+case.66
+	push_args 3 1 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	jsr_eval 0
+	push_args_u 0 2 2
+	build _ 0 n27
+	buildh e_Data.Maybe_dJust 1
+	buildh _Nil 0
+	push_a 3
+	push_a 6
+	build _ 2 n26
+	buildh _Cons 2
+	push_a 2
+	push_a 6
+	build _ 2 n25
+	buildh _Cons 2
+	buildB FALSE
+	build _ 1 n23
+	buildh _Cons 2
+	push_a 6
+	build _ 1 n268
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtRight 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtTop 0
+	buildh e_Graphics.Scalable.Internal_dAtLeft 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtMiddleY 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtBottom 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+s28.1
+	pop_a 4
+	pushD m_svgDemo
+	pushD x_28
+.d 0 2 ii
+	jmp _match_error
+.string x_28 "drawSection"
+.n 1 _ ea268
+.o 1 0
+n268
+	push_node _cycle_in_spine 1
+.o 2 0
+ea268
+.o 2 0
+s268
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	buildh _Nil 0
+	update_a 0 2
+	pop_a 1
+.d 0 0
+	jsr s12
+.o 5 1 r
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 6 1 r
+	jsr e_Graphics.Scalable_stext
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+s12
+	pushR 14.0
+	buildAC "Arial"
+.d 1 1 r
+	jmp e_Graphics.Scalable_snormalFontDef
+.n 1 _
+.o 1 0
+n23
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea23
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea23
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 0 1 b
+s23
+	push_b 0
+	updatepop_b 0 1
+.d 0 1 b
+	jsr s45
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rDashAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s14
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rFillAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+	pushR 5.0
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rStrokeWidthAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s15
+.o 1 0
+	buildh e_Data.Maybe_dNothing 0
+.d 2 0
+	jsr e_Graphics.Scalable_sxline
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;49 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;50 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;61 0
+.d 11 1 i
+	jmp e_Graphics.Scalable_s<@<
+.o 0 1 b
+s45
+	eqB_b TRUE 0
+	jmp_true case.67
+	jmp case.68
+case.67
+	buildh _Nil 0
+	buildI 5
+	buildh _Cons 2
+	pop_b 1
+.d 1 0
+	rtn
+case.68
+	buildh _Nil 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+s14
+	buildAC "black"
+.d 2 0
+	jmp e_Graphics.Scalable_stoSVGColor;64
+.n 2 _
+.o 1 0
+n25
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea25
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea25
+	jsr_eval 1
+.o 2 0
+s25
+	buildB TRUE
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s24
+.n 2 _
+.o 1 0
+n26
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea26
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea26
+	jsr_eval 1
+.o 2 0
+s26
+	buildB FALSE
+	push_a 2
+	push_a 2
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s24
+.o 3 0
+s24
+	eq_desc e_Data.Maybe_dNothing 0 1
+	jmp_true case.69
+	jmp case.70
+case.69
+	create
+	updatepop_a 0 3
+.d 1 0
+	jsr e_Graphics.Scalable.Internal_szero;0
+.o 1 0
+	create
+.d 1 0
+	jsr e_Graphics.Scalable.Internal_szero;0
+.o 1 0
+.d 2 0
+	jmp e_Graphics.Scalable_sempty
+case.70
+	push_args 1 1 1
+	buildh _Nil 0
+	update_a 0 3
+	pop_a 1
+	build e_Graphics.Scalable.Internal_dzero;0 0 e_Graphics.Scalable.Internal_nzero;0
+	build e_Graphics.Scalable.Internal_tStrokeWidthAttr 1 e_Graphics.Scalable.Internal_cStrokeWidthAttr
+	pushR 0.0
+	build_r e_Graphics.Scalable.Internal_rOpacityAttr 0 1 0 0
+	pop_b 1
+	buildR 25.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildR 25.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	build _ 4 n271
+	buildh e_Data.Maybe_dJust 1
+	buildh _Nil 0
+	push_a 3
+	push_a 6
+	push_a 4
+	buildh d38 3
+	pushB FALSE
+	build_r e_Graphics.Scalable.Internal_rOnClickAttr 1 1 0 0
+	update_a 0 1
+	pop_a 1
+	pop_b 1
+	buildR 2.5
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	build e_Graphics.Scalable.Internal_tStrokeWidthAttr 1 e_Graphics.Scalable.Internal_cStrokeWidthAttr
+	push_a 4
+	build _ 1 n270
+	build e_Graphics.Scalable.Internal_tFillAttr 1 e_Graphics.Scalable.Internal_cFillAttr
+	buildR 10.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	build _ 4 n269
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleY 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Graphics.Scalable.Internal_dAtMiddleY 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	buildh _Tuple 2
+	buildh _Cons 2
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 4 0
+	jmp e_Graphics.Scalable_soverlay
+.n 4 _ ea271
+.o 1 0
+n271
+	push_node _cycle_in_spine 4
+.o 5 0
+ea271
+.o 5 0
+s271
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 6
+	update_a 0 7
+	update_a 0 8
+	pop_a 1
+.d 2 0
+	jsr e_Graphics.Scalable_srect
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;51 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;49 0
+	update_a 10 14
+	update_a 9 13
+	update_a 8 12
+	update_a 7 11
+	update_a 6 10
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea270
+.o 1 0
+n270
+	push_node _cycle_in_spine 1
+.o 2 0
+ea270
+.o 2 0
+s270
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	pop_a 1
+.d 0 1 b
+	jsr s44
+.o 1 0
+.d 2 0
+	jmp e_Graphics.Scalable_stoSVGColor;64
+.n 4 _ ea269
+.o 1 0
+n269
+	push_node _cycle_in_spine 4
+.o 5 0
+ea269
+.o 5 0
+s269
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	push_a 3
+	jsr_eval 0
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 6
+	update_a 0 7
+	update_a 0 8
+	pop_a 1
+.d 1 0
+	jsr e_Graphics.Scalable_scircle
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;50 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;49 0
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;52 0
+	update_a 10 14
+	update_a 9 13
+	update_a 8 12
+	update_a 7 11
+	update_a 6 10
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 11 1 i
+	jsr e_Graphics.Scalable_s<@<
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 1 b
+s44
+	eqB_b TRUE 0
+	jmp_true case.71
+	jmp case.72
+case.71
+	pop_b 1
+	buildAC "green"
+.d 1 0
+	rtn
+case.72
+	pop_b 1
+	buildAC "red"
+.d 1 0
+	rtn
+.desc d38 _hnf l38 5 0 "<lambda>[line:171];40;37"
+.a 0 a38
+.o 2 0
+l38
+	repl_args 4 4
+.o 5 0
+a38
+.o 5 0
+ea38
+	jsr_eval 4
+	push_r_args 4 4 0
+	update_a 3 8
+	update_a 6 3
+	update_a 1 6
+	update_a 4 1
+	update_a 7 4
+	update_a 2 7
+	update_a 5 2
+	update_a 0 5
+	pop_a 1
+	build_r e_hoi_rState 4 0 4 0
+	push_a 5
+	push_a 4
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	build e_hoi_dTrack.tType -4 e_hoi_nTrack.tType
+	push_a 2
+	push_a 4
+	push_a 6
+	push_a 4
+	update_a 3 5
+	update_a 0 3
+	update_a 4 0
+	update_a 2 4
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 5 n43
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 4 0
+	build_r e_hoi_rState 4 0 0 0
+	updatepop_a 0 13
+.d 1 0
+	rtn
+.n 5 _ ea43
+.o 1 0
+n43
+	push_node _cycle_in_spine 5
+.o 6 0
+ea43
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 2 4 0
+	pushI_a 5
+	update_a 3 6
+	update_a 0 3
+	update_a 2 5
+	update_a 4 2
+	update_a 1 4
+	pop_a 2
+.o 8 1 i
+s43
+	eq_desc e_hoi_dSEC 1 0
+	jmp_true case.73
+	jmp s43.1
+case.73
+	repl_args 1 1
+	push_a 1
+	jsr_eval 0
+	push_a 7
+	push_a 2
+	push_a 8
+	build _ 3 n42
+	push_a 3
+	buildI_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	build _ 2 n275
+	push_b 0
+	update_a 1 8
+	updatepop_a 0 7
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+s43.1
+	pop_a 8
+	pop_b 1
+	pushD m_svgDemo
+	pushD x_43
+.d 0 2 ii
+	jmp _match_error
+.string x_43 "<case>[line:171];63;1022"
+.n 2 _
+.o 1 0
+n275
+	push_node _cycle_in_spine 2
+.o 2 0
+ea275
+	push_a 1
+	push_a 1
+	jsr_eval 0
+	repl_r_args 3 0
+	update_a 3 2
+	fill_r e_hoi_rTrack 3 0 6 0 0
+	pop_a 6
+.d 1 0
+	rtn
+.n 3 _ ea42
+.o 1 0
+n42
+	push_node _cycle_in_spine 3
+.o 4 0
+ea42
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 3 1 b
+s42
+	eqB_b TRUE 0
+	jmp_true case.74
+	jmp case.75
+case.74
+	push_a 1
+	build _ 1 e_StdBool_nnot
+	buildh e_Data.Maybe_dJust 1
+	push_a 1
+	build _ 2 n276
+	fillh e_hoi_dSEC 1 3
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+case.75
+	push_a 1
+	build _ 1 e_StdBool_nnot
+	buildh e_Data.Maybe_dJust 1
+	push_a 1
+	build _ 2 n277
+	fillh e_hoi_dSEC 1 3
+	pop_a 2
+	pop_b 1
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n276
+	push_node _cycle_in_spine 2
+.o 2 0
+ea276
+	push_a 1
+	push_a 1
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 0
+	fill_r e_hoi_rSection 2 0 5 0 0
+	pop_a 5
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n277
+	push_node _cycle_in_spine 2
+.o 2 0
+ea277
+	push_a 1
+	push_a 1
+	jsr_eval 0
+	repl_r_args 2 0
+	update_a 2 1
+	fill_r e_hoi_rSection 2 0 5 0 0
+	pop_a 5
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n27
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea27
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea27
+.o 0 0
+s27
+	create
+.d 1 0
+	jsr s18
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rFillAttr 1 0 0 0
+	updatepop_a 0 1
+	create
+.d 1 0
+	jsr s16
+.o 1 0
+	create
+.d 1 0
+	jsr s15
+.o 1 0
+.d 2 0
+	jsr e_Graphics.Scalable_srect
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;50 0
+.d 11 1 i
+	jmp e_Graphics.Scalable_s<@<
+.o 1 0
+s18
+	buildAC "silver"
+.d 2 0
+	jmp e_Graphics.Scalable_stoSVGColor;64
+.o 1 0
+s15
+	pushR 100.0
+.d 1 1 r
+	jmp e_Graphics.Scalable_spx
+.o 1 0
+s16
+	pushR 100.0
+.d 1 1 r
+	jmp e_Graphics.Scalable_spx
+.o 5 0
+s8
+	eq_desc _Cons 2 1
+	jmp_true case.76
+	jmp case.77
+case.76
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	repl_r_args 3 0
+	create
+	push_a 10
+	push_a 10
+	push_a 9
+	push_a 6
+	update_a 4 7
+	update_a 0 4
+	update_a 6 0
+	update_a 3 6
+	update_a 0 3
+	update_a 5 0
+	update_a 2 5
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 11
+	update_a 0 9
+	update_a 0 10
+	pop_a 1
+.d 7 0
+	jsr s9
+.o 1 0
+	push_a 7
+	push_a 7
+	push_a 3
+	update_a 2 4
+	update_a 0 2
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 3 9
+	update_a 2 8
+	update_a 1 7
+	updatepop_a 0 6
+.d 5 0
+	jmp s8
+case.77
+	fill_a 0 4
+	pop_a 4
+.d 1 0
+	rtn
+.o 7 0
+s9
+	jmp case.78
+case.78
+	jsr_eval 3
+	eq_desc e_hoi_dSEC 1 3
+	jmp_true case.80
+	jmp case.81
+case.80
+	push_args 3 1 1
+	pop_a 1
+	push_a 4
+	jsr_eval 0
+	pushI_a 5
+	pop_a 1
+	jsr_eval 2
+	push_r_args_a 2 2 0 1 1
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	pop_a 1
+	subI
+	buildI_b 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	build_r e_hoi_rTrack 3 0 2 0
+	buildh d255 1
+	push_r_args_a 4 2 0 2 1
+	push_a 8
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 4 n260
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 7
+	updatepop_a 0 6
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+case.81
+	push_args 3 1 1
+	jsr_eval 0
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	push_a 5
+	jsr_eval 0
+	pushI_a 6
+	pop_a 1
+	push_a 3
+	jsr_eval 0
+	repl_r_args 2 0
+	build_r e_hoi_rTrack 3 0 4 0
+	push_a 3
+	jsr_eval 0
+	push_a 10
+	push_a 6
+	push_a 5
+	update_a 2 6
+	update_a 4 2
+	update_a 5 4
+	update_a 0 5
+	update_a 3 0
+	update_a 1 3
+	update_a 0 1
+	pop_a 1
+	update_a 5 12
+	update_a 4 11
+	update_a 3 10
+	update_a 2 9
+	update_a 1 8
+	updatepop_a 0 7
+.d 7 1 i
+	jmp s41
+case.79
+	fill_a 0 6
+	pop_a 6
+.d 1 0
+	rtn
+.n 4 _ ea260
+.o 1 0
+n260
+	push_node _cycle_in_spine 4
+.o 5 0
+ea260
+.o 5 0
+s260
+	push_a 3
+	jsr_eval 0
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	subI
+	push_a 3
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.o 7 1 i
+s41
+	pushD_a 0
+	eqD_b e_hoi_dNE 0
+	jmp_true case.82
+	eqD_b e_hoi_dNW 0
+	jmp_true case.83
+	eqD_b e_hoi_dSE 0
+	jmp_true case.84
+	jmp case.85
+case.82
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	subI
+	push_a 3
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 e_StdInt_n-;7
+	buildI_b 0
+	push_a 3
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 2
+	buildh d257 1
+	push_a 2
+	build _ 3 n261
+	create
+	push_a 4
+	push_b 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 i
+	jsr e_StdList_supdateAt
+.o 1 0
+	buildI_b 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 3
+	buildh d256 1
+	push_a 3
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+case.83
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	subI
+	push_a 3
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 e_StdInt_n-;7
+	buildI_b 0
+	push_a 3
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 2
+	buildh d257 1
+	push_a 2
+	build _ 3 n262
+	create
+	push_a 4
+	push_b 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 i
+	jsr e_StdList_supdateAt
+.o 1 0
+	buildI_b 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 3
+	buildh d256 1
+	push_a 3
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+case.84
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	subI
+	push_a 3
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 e_StdInt_n-;7
+	buildI_b 0
+	push_a 3
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 2
+	buildh d257 1
+	push_a 2
+	build _ 3 n263
+	create
+	push_a 4
+	push_b 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 i
+	jsr e_StdList_supdateAt
+.o 1 0
+	buildI_b 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 3
+	buildh d256 1
+	push_a 3
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+case.85
+	pop_b 1
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
+	push_b 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	update_b 1 2
+	updatepop_b 0 1
+	pop_a 1
+	subI
+	push_a 3
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 e_StdInt_n-;7
+	buildI_b 0
+	push_a 3
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 2
+	buildh d257 1
+	push_a 2
+	build _ 3 n264
+	create
+	push_a 4
+	push_b 0
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 1 i
+	jsr e_StdList_supdateAt
+.o 1 0
+	buildI_b 0
+	push_a 1
+	build e_StdList_d!! 2 e_StdList_n!!
+	push_a 3
+	buildh d256 1
+	push_a 3
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 1
+	push_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 4
+	updatepop_a 0 3
+	updatepop_b 0 1
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.n 3 _ ea264
+.o 1 0
+n264
+	push_node _cycle_in_spine 3
+.o 4 0
+ea264
+.o 4 0
+s264
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.n 3 _ ea263
+.o 1 0
+n263
+	push_node _cycle_in_spine 3
+.o 4 0
+ea263
+.o 4 0
+s263
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	subI
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.n 3 _ ea262
+.o 1 0
+n262
+	push_node _cycle_in_spine 3
+.o 4 0
+ea262
+.o 4 0
+s262
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.n 3 _ ea261
+.o 1 0
+n261
+	push_node _cycle_in_spine 3
+.o 4 0
+ea261
+.o 4 0
+s261
+	push_a 2
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	push_a 2
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 1 i
+	jmp e_StdList_supdateAt
+.export e_svgDemo_sdrawTrain
+.descexp e_svgDemo_ddrawTrain e_svgDemo_ndrawTrain e_svgDemo_ldrawTrain 1 0 "drawTrain"
+.o 2 0
+e_svgDemo_ldrawTrain
+	pop_a 1
+.d 1 0
+	jsr ea1
+.o 9 1 i
+	build_r e_Graphics.Scalable.Internal_rImage 9 1 0 0
+	updatepop_a 0 9
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 e_svgDemo_ddrawTrain
+.o 1 0
+e_svgDemo_ndrawTrain
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea1
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+e_svgDemo_sdrawTrain
+.o 1 0
+ea1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.o 0 1 b
+s1
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	build _ 0 n21
+	buildh _Cons 2
+	build _ 0 n22
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh e_Graphics.Scalable.Internal_dAtMiddleX 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_StdList_srepeat
+.o 1 0
+.d 4 0
+	jsr e_Graphics.Scalable_sabove
+.o 9 1 i
+	push_b 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 9 2 bi
+	jmp s258
+.n 0 _
+.o 1 0
+n22
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea22
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea22
+.o 0 0
+s22
+	create
+	buildAC "grey"
+.d 2 0
+	jsr e_Graphics.Scalable_stoSVGColor;64
+.o 1 0
+	build_r e_Graphics.Scalable.Internal_rFillAttr 1 0 0 0
+	updatepop_a 0 1
+	buildh _Nil 0
+	build e_Graphics.Scalable.Internal_dzero;0 0 e_Graphics.Scalable.Internal_nzero;0
+	buildR 100.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildR 80.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildR 200.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildR 80.0
+	build e_Graphics.Scalable_dpx 1 e_Graphics.Scalable_npx
+	build e_Graphics.Scalable.Internal_dzero;0 0 e_Graphics.Scalable.Internal_nzero;0
+	buildh _Tuple 2
+	buildh _Cons 2
+	build e_Graphics.Scalable.Internal_dzero;0 0 e_Graphics.Scalable.Internal_nzero;0
+	build e_Graphics.Scalable.Internal_dzero;0 0 e_Graphics.Scalable.Internal_nzero;0
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildh e_Data.Maybe_dNothing 0
+.d 2 0
+	jsr e_Graphics.Scalable_spolygon
+.o 9 1 i
+	buildh e_Graphics.Scalable_dtuneImage;50 0
+.d 11 1 i
+	jmp e_Graphics.Scalable_s<@<
+.n 0 _
+.o 1 0
+n21
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea21
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea21
+.o 0 0
+s21
+	buildh e_Data.Maybe_dNothing 0
+	buildh _Nil 0
+	build _ 0 n19
+	buildh _Cons 2
+	build _ 0 n20
+	buildh _Cons 2
+	build _ 0 n19
+	buildh _Cons 2
+	build _ 0 n20
+	buildh _Cons 2
+	build _ 0 n19
+	buildh _Cons 2
+	build _ 0 n20
+	buildh _Cons 2
+	build _ 0 n19
+	buildh _Cons 2
+	buildh _Nil 0
+	buildh _Nil 0
+.d 4 0
+	jmp e_Graphics.Scalable_sbeside
+.n 0 _
+.o 1 0
+n20
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea20
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea20
+.o 0 0
+s20
+	create
+	pushR 5.0
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+	create
+	pushR 5.0
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+.d 2 0
+	jmp e_Graphics.Scalable_sempty
+.n 0 _
+.o 1 0
+n19
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea19
+.o 9 1 i
+	fill_r e_Graphics.Scalable.Internal_rImage 9 1 9 0 0
+	pop_a 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea19
+.o 0 0
+s19
+	create
+	pushR 30.0
+.d 1 1 r
+	jsr e_Graphics.Scalable_spx
+.o 1 0
+.d 1 0
+	jmp e_Graphics.Scalable_scircle
+.o 9 2 bi
+s258
+	eqB_b TRUE 0
+	jmp_true case.86
+	jmp case.87
+case.86
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_b 1
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	push_a 8
+	update_a 8 17
+	update_a 7 16
+	update_a 6 15
+	update_a 5 14
+	update_a 4 13
+	update_a 3 12
+	update_a 2 11
+	update_a 1 10
+	updatepop_a 0 9
+	updatepop_b 0 2
+.d 9 1 i
+	jmp e_Graphics.Scalable_sflipx
+case.87
+	build_r e_Graphics.Scalable.Internal_rImage 9 1 0 1
+	updatepop_a 0 9
+	pop_b 2
+.d 1 0
+	jsr e_StdFunc_sid
+.o 1 0
+	repl_r_args 9 1
+.d 9 1 i
+	rtn
+.impmod _system
+.implab _match_error

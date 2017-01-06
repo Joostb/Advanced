@@ -1,0 +1,1747 @@
+.comp 920 10011101001
+.start __site_Start
+.depend "hoi" "20161027105607"
+.depend "svgDemo" "20161026151753"
+.depend "iTasks.UI.Component" "20161001160347"
+.depend "iTasks.API.Core.Client.Editlet" "20161001160347"
+.depend "StdMisc" "20160531160413"
+.depend "StdCharList" "20160531160413"
+.depend "_SystemArray" "20160531160413"
+.depend "StdArray" "20160531160413"
+.depend "StdEnv" "20160531160413"
+.depend "Math.Geometry" "20161001160346"
+.depend "Graphics.Scalable.Internal" "20161001160346"
+.depend "Graphics.Scalable" "20161001160346"
+.depend "iTasks.API.Extensions.SVG.SVGlet" "20161001160347"
+.depend "_SystemEnum" "20160531160413"
+.depend "StdEnum" "20160531160413"
+.depend "StdTuple" "20160531160413"
+.depend "StdOrdList" "20160531160413"
+.depend "iTasks.API.Extensions.Admin.WorkflowAdmin" "20161001160347"
+.depend "iTasks.API.Extensions.User" "20161001160347"
+.depend "iTasks.API.Extensions.Admin.UserAdmin" "20161001160347"
+.depend "iTasks.API.Common.SDSCombinators" "20161001160347"
+.depend "iTasks.API.Core.SDSCombinators" "20161001160347"
+.depend "iTasks.API.Core.SDSs" "20161001160347"
+.depend "iTasks.API.Common.TaskCombinators" "20161001160347"
+.depend "iTasks.API.Common.ExportTasks" "20161001160347"
+.depend "iTasks.API.Common.ImportTasks" "20161001160347"
+.depend "iTasks.API.Common.DBTasks" "20161001160347"
+.depend "iTasks.API.Common.InteractionTasks" "20161001160347"
+.depend "Text.URI" "20161001160346"
+.depend "iTasks.API.Core.IntegrationTasks" "20161001160347"
+.depend "iTasks.API.Core.OptimizedCoreTasks" "20161001160347"
+.depend "iTasks.API.Core.Tasks" "20161001160347"
+.depend "iTasks.API" "20161001160347"
+.depend "Internet.HTTP" "20161001160346"
+.depend "Data.IntMap.Base" "20161001160346"
+.depend "Data.IntMap.Strict" "20161001160346"
+.depend "Data.CircularStack" "20161001160346"
+.depend "iTasks._Framework.Tonic.AbsSyn" "20161001160347"
+.depend "iTasks._Framework.Serialization" "20161001160347"
+.depend "iTasks.UI.JS.Interface" "20161001160347"
+.depend "GenLexOrd" "20161001160347"
+.depend "iTasks._Framework.Generic.Defaults" "20161001160347"
+.depend "iTasks._Framework.Generic.Visualization" "20161001160347"
+.depend "iTasks.API.Core.TaskCombinators" "20161001160347"
+.depend "iTasks.UI.Layout" "20161001160347"
+.depend "iTasks._Framework.Generic.Interaction" "20161001160347"
+.depend "iTasks._Framework.Generic" "20161001160347"
+.depend "TCPStringChannelsInternal" "20161001160346"
+.depend "TCPStringChannels" "20161001160346"
+.depend "TCPEvent" "20161001160346"
+.depend "tcp_bytestreams" "20161001160346"
+.depend "TCPDef" "20161001160346"
+.depend "TCPChannels" "20161001160347"
+.depend "tcp" "20161001160346"
+.depend "StdMaybe" "20161001160346"
+.depend "TCPChannelClass" "20161001160346"
+.depend "TCPIP" "20161001160346"
+.depend "Sapl.SaplStruct" "20161001160346"
+.depend "Sapl.SaplParser" "20161001160346"
+.depend "Sapl.Target.Flavour" "20161001160346"
+.depend "System.OSError" "20161001160346"
+.depend "System.File" "20161001160346"
+.depend "Text.StringAppender" "20161001160346"
+.depend "Text.Unicode.UChar" "20161001160346"
+.depend "Text.Unicode" "20161001160346"
+.depend "Sapl.SaplTokenizer" "20161001160346"
+.depend "Sapl.Linker.SaplLinkerShared" "20161001160346"
+.depend "Sapl.Linker.LazyLinker" "20161001160346"
+.depend "Data.Queue" "20161001160346"
+.depend "iTasks._Framework.TaskState" "20161001160347"
+.depend "iTasks.UI.Diff" "20161001160347"
+.depend "Text.HTML" "20161001160346"
+.depend "iTasks.UI.Definition" "20161001160347"
+.depend "StdFile" "20160531160413"
+.depend "Data.Set" "20161001160346"
+.depend "Data.List" "20161001160346"
+.depend "StdFunc" "20160531160413"
+.depend "Data.Map" "20161001160346"
+.depend "iTasks._Framework.IWorld" "20161001160347"
+.depend "Data.Either" "20161001160346"
+.depend "iTasks._Framework.SDS" "20161001160347"
+.depend "System.Time" "20161001160346"
+.depend "Data.Error" "20161001160346"
+.depend "Data.Void" "20161001160346"
+.depend "StdString" "20160531160413"
+.depend "GenEq" "20161001160347"
+.depend "Data.Monoid" "20161001160346"
+.depend "Control.Monad" "20161001160346"
+.depend "Control.Applicative" "20161001160346"
+.depend "System.IO" "20161001160346"
+.depend "Data.Functor" "20161001160346"
+.depend "Data.Maybe" "20161001160346"
+.depend "StdGeneric" "20161001160347"
+.depend "Text.JSON" "20161001160346"
+.depend "iTasks._Framework.Store" "20161001160347"
+.depend "iTasks.API.Core.Types" "20161001160347"
+.depend "iTasks._Framework.Task" "20161001160347"
+.depend "System.OS" "20161001160346"
+.depend "System.FilePath" "20161001160346"
+.depend "StdReal" "20160531160413"
+.depend "StdChar" "20160531160413"
+.depend "StdInt" "20160531160413"
+.depend "StdBool" "20160531160413"
+.depend "StdClass" "20160531160413"
+.depend "StdList" "20160531160413"
+.depend "iTasks._Framework.Engine" "20161001160347"
+.depend "iTasks" "20161001160347"
+.depend "StdOverloaded" "20160531160413"
+.depend "_SystemDynamic" "20161001160347"
+.module m_site "site" "20161028104729"
+.endinfo
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+||	Concurrent Clean Code Generator (Version 0.920)
+.impmod hoi
+.implab e_hoi_s==;5
+.impdesc e_hoi_dgEditor_UserRole;69
+.impdesc e_hoi_dgEditMeta_UserRole;70
+.impdesc e_hoi_dgUpdate_UserRole;71
+.impdesc e_hoi_dgVerify_UserRole;72
+.impdesc e_hoi_dgText_UserRole;73
+.impdesc e_hoi_dJSONEncode_UserRole;74
+.impdesc e_hoi_dJSONDecode_UserRole;75
+.impdesc e_hoi_dgDefault_UserRole;76
+.implab e_hoi_ngDefault_UserRole;76 e_hoi_eagDefault_UserRole;76
+.impdesc e_hoi_dgEq_UserRole;77
+.impdesc e_hoi_dgEditor_State;78
+.impdesc e_hoi_dgEditMeta_State;79
+.impdesc e_hoi_dgUpdate_State;80
+.impdesc e_hoi_dgVerify_State;81
+.impdesc e_hoi_dgText_State;82
+.impdesc e_hoi_dJSONEncode_State;83
+.impdesc e_hoi_dJSONDecode_State;84
+.impdesc e_hoi_dgDefault_State;85
+.implab e_hoi_ngDefault_State;85
+.impdesc e_hoi_dgEq_State;86
+.impdesc e_hoi_dTD;UserRole
+.impdesc e_hoi_dTD;State
+.impdesc e_hoi_rPosition
+.impdesc e_hoi_rSection
+.impdesc e_hoi_rTrack
+.impdesc e_hoi_rTrain
+.impdesc e_hoi_rState
+.impdesc e_hoi_dSEC
+.impdesc e_hoi_dMachinist
+.impdesc e_hoi_dController
+.impdesc e_hoi_dDesigner
+.impmod svgDemo
+.implab e_svgDemo_sdrawTracks
+.impmod iTasks.API.Extensions.SVG.SVGlet
+.implab e_iTasks.API.Extensions.SVG.SVGlet_simageUpdate
+.impmod _SystemEnum
+.implab e__SystemEnum_s_from_to;6
+.impmod iTasks.API.Core.SDSs
+.implab e_iTasks.API.Core.SDSs_ssharedStore
+.impmod iTasks.API.Common.TaskCombinators
+.implab e_iTasks.API.Common.TaskCombinators_s<<@
+.implab e_iTasks.API.Common.TaskCombinators_s-||-
+.impmod iTasks.API.Common.InteractionTasks
+.implab e_iTasks.API.Common.InteractionTasks_senterInformation
+.implab e_iTasks.API.Common.InteractionTasks_supdateSharedInformation
+.impmod iTasks.API.Core.Tasks
+.implab e_iTasks.API.Core.Tasks_supd
+.impmod iTasks.API.Core.TaskCombinators
+.impdesc e_iTasks.API.Core.TaskCombinators_rtune;
+.impmod iTasks.UI.Layout
+.impdesc e_iTasks.UI.Layout_dtune;46
+.impdesc e_iTasks.UI.Layout_dArrangeHorizontal
+.impmod iTasks._Framework.Generic
+.impdesc e_iTasks._Framework.Generic_riTask;
+.impmod StdFunc
+.impdesc e_StdFunc_did
+.impmod StdString
+.implab e_StdString_stoString;5
+.implab e_StdString_s+++;11
+.impmod Data.Maybe
+.impdesc e_Data.Maybe_dNothing
+.impdesc e_Data.Maybe_dJust
+.impmod iTasks.API.Core.Types
+.implab e_iTasks.API.Core.Types_s>>=;28
+.impdesc e_iTasks.API.Core.Types_dtoPrompt;133
+.impdesc e_iTasks.API.Core.Types_dtoPrompt;136
+.impdesc e_iTasks.API.Core.Types_rdescr;
+.impdesc e_iTasks.API.Core.Types_kTitle
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_smap
+.impmod iTasks._Framework.Engine
+.implab e_iTasks._Framework.Engine_sstartEngine
+.implab e_iTasks._Framework.Engine_spublish
+.impdesc e_iTasks._Framework.Engine_dpublishAll;6
+.impdesc e_iTasks._Framework.Engine_rPublishable;
+.impdesc e_iTasks._Framework.Engine_dWebApp
+.impmod _SystemDynamic
+.impdesc e__SystemDynamic_rTypeCodeConstructor
+.impdesc e__SystemDynamic_kTypeCons
+.record rJSONEncode_s; a 1 0 "JSONEncode_s;"
+.record rJSONDecode_s; a 1 0 "JSONDecode_s;"
+.record rgDefault_s; a 1 0 "gDefault_s;"
+.record rgUpdate_s; a 1 0 "gUpdate_s;"
+.record rgVerify_s; a 1 0 "gVerify_s;"
+.record rgText_s; a 1 0 "gText_s;"
+.record rgEditor_s; a 1 0 "gEditor_s;"
+.record rgEditMeta_s; a 1 0 "gEditMeta_s;"
+.record rgEq_s; a 1 0 "gEq_s;"
+.export __site_Start
+.o 0 0
+__site_Start
+	buildI 65536
+	build _ 1 nStart.1
+.d 1 0
+	jmp _driver
+.n 1 _ eaStart.1
+.o 1 0
+nStart.1
+	push_node _cycle_in_spine 1
+.o 2 0
+eaStart.1
+	jsr_eval 0
+.o 2 0
+sStart.1
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	[...|...]
+			||	[]
+	buildh _Nil 0
+			||	_f0
+			||	WebApp
+			||	[]
+	buildh _Nil 0
+	buildh e_iTasks._Framework.Engine_dWebApp 1
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+	build_r rgDefault_s; 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 3 n_f0.211
+	buildh _Cons 2
+			||	Publishable;
+			||	publishAll;6
+	buildh e_iTasks._Framework.Engine_dpublishAll;6 0
+			||	world
+	push_a 2
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 4 0
+	jmp e_iTasks._Framework.Engine_sstartEngine
+.n 3 _ ea_f0.211
+.o 1 0
+n_f0.211
+	push_node _cycle_in_spine 3
+.o 4 0
+ea_f0.211
+.o 4 0
+s_f0.211
+			||	Match code, stacksizes A: 3 B: 0
+			||	Building the contractum, Stacksizes A: 3 B: 0
+			||	<lambda>[line:8];53;14
+	buildh d\;8;53;14.15 0
+			||	iTask;
+			||	_
+	push_a 2
+	jsr_eval 0
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	_
+	push_a 3
+	jsr_eval 0
+	repl_r_args 1 0
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	_
+	push_a 13
+			||	"/"
+	buildAC "/"
+	buildh ARRAY 1
+	push_a 11
+	update_a 2 12
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 10 8
+	update_a 0 10
+	update_a 11 0
+	update_a 1 11
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 0 9
+	pop_a 1
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 13 0
+	jsr e_iTasks._Framework.Engine_spublish
+.o 3 0
+.impmod iTasks._Framework.Engine
+.impdesc e_iTasks._Framework.Engine_rPublishedTask
+	fill_r e_iTasks._Framework.Engine_rPublishedTask 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.desc d\;8;53;14.15 _hnf l\;8;53;14.15 1 0 "<lambda>[line:8];53;14"
+.o 2 0
+l\;8;53;14.15
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.o 2 0
+ea\;8;53;14.15
+.o 2 0
+s\;8;53;14.15
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+	pop_a 1
+.d 1 0
+	jmp stask.3
+.o 1 0
+stask.3
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	nextTask
+	buildh dnextTask.4 0
+			||	doIdentified
+	build _ 0 ndoIdentified.8
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+.d 23 0
+	jmp e_iTasks.API.Core.Types_s>>=;28
+.n 0 _ eadoIdentified.8
+.o 1 0
+ndoIdentified.8
+	push_node _cycle_in_spine 0
+.o 1 0
+eadoIdentified.8
+.o 1 0
+sdoIdentified.8
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	<lambda>[line:48];21;16
+	buildh d\;48;21;16.17 0
+			||	_f3
+			||	[]
+	buildh _Nil 0
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;UserRole
+	buildh e_hoi_dTD;UserRole 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gDefault_s;
+			||	gDefault_UserRole;76
+	build e_hoi_dgDefault_UserRole;76 0 e_hoi_ngDefault_UserRole;76
+	build_r rgDefault_s; 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 3 n_f3.214
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;UserRole
+	buildh e_hoi_dTD;UserRole 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_UserRole;77
+	buildh e_hoi_dgEq_UserRole;77 0
+			||	gDefault_s;
+			||	gDefault_UserRole;76
+	build e_hoi_dgDefault_UserRole;76 0 e_hoi_ngDefault_UserRole;76
+			||	JSONDecode_s;
+			||	JSONDecode_UserRole;75
+	buildh e_hoi_dJSONDecode_UserRole;75 0
+			||	JSONEncode_s;
+			||	JSONEncode_UserRole;74
+	buildh e_hoi_dJSONEncode_UserRole;74 0
+			||	gText_s;
+			||	gText_UserRole;73
+	buildh e_hoi_dgText_UserRole;73 0
+			||	gVerify_s;
+			||	gVerify_UserRole;72
+	buildh e_hoi_dgVerify_UserRole;72 0
+			||	gUpdate_s;
+			||	gUpdate_UserRole;71
+	buildh e_hoi_dgUpdate_UserRole;71 0
+			||	gEditMeta_s;
+			||	gEditMeta_UserRole;70
+	buildh e_hoi_dgEditMeta_UserRole;70 0
+			||	gEditor_s;
+			||	gEditor_UserRole;69
+	buildh e_hoi_dgEditor_UserRole;69 0
+.d 23 0
+	jmp e_iTasks.API.Core.Types_s>>=;28
+.n 3 _ ea_f3.214
+.o 1 0
+n_f3.214
+	push_node _cycle_in_spine 3
+.o 4 0
+ea_f3.214
+.o 4 0
+s_f3.214
+			||	Match code, stacksizes A: 3 B: 0
+			||	Building the contractum, Stacksizes A: 3 B: 0
+			||	iTask;
+			||	_
+	push_a 1
+	jsr_eval 0
+			||	gEq_s;
+			||	gEq_UserRole;77
+	buildh e_hoi_dgEq_UserRole;77 0
+			||	_
+	push_a 2
+	jsr_eval 0
+	repl_r_args 1 0
+			||	JSONDecode_s;
+			||	JSONDecode_UserRole;75
+	buildh e_hoi_dJSONDecode_UserRole;75 0
+			||	JSONEncode_s;
+			||	JSONEncode_UserRole;74
+	buildh e_hoi_dJSONEncode_UserRole;74 0
+			||	gText_s;
+			||	gText_UserRole;73
+	buildh e_hoi_dgText_UserRole;73 0
+			||	gVerify_s;
+			||	gVerify_UserRole;72
+	buildh e_hoi_dgVerify_UserRole;72 0
+			||	gUpdate_s;
+			||	gUpdate_UserRole;71
+	buildh e_hoi_dgUpdate_UserRole;71 0
+			||	gEditMeta_s;
+			||	gEditMeta_UserRole;70
+	buildh e_hoi_dgEditMeta_UserRole;70 0
+			||	gEditor_s;
+			||	gEditor_UserRole;69
+	buildh e_hoi_dgEditor_UserRole;69 0
+			||	descr;
+			||	toPrompt;133
+	buildh e_iTasks.API.Core.Types_dtoPrompt;133 0
+			||	_
+	push_a 13
+			||	"Enter your role"
+	buildAC "Enter your role"
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+	push_a 12
+	update_a 2 13
+	update_a 4 2
+	update_a 6 4
+	update_a 8 6
+	update_a 10 8
+	update_a 12 10
+	update_a 1 12
+	update_a 3 1
+	update_a 5 3
+	update_a 7 5
+	update_a 9 7
+	update_a 11 9
+	update_a 0 11
+	pop_a 1
+	update_a 12 15
+	update_a 11 14
+	update_a 10 13
+	update_a 9 12
+	update_a 8 11
+	update_a 7 10
+	update_a 6 9
+	update_a 5 8
+	update_a 4 7
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 14 0
+	jmp e_iTasks.API.Common.InteractionTasks_senterInformation
+.desc d\;48;21;16.17 _hnf l\;48;21;16.17 1 0 "<lambda>[line:48];21;16"
+.o 2 0
+l\;48;21;16.17
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.o 2 0
+ea\;48;21;16.17
+.o 2 0
+s\;48;21;16.17
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	state
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr sstate.2
+.o 1 0
+			||	<lambda>[line:48];34;15
+			||	role
+	push_a 1
+	buildh d\;48;34;15.16 1
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+	update_a 21 22
+	update_a 20 21
+	update_a 19 20
+	update_a 18 19
+	update_a 17 18
+	update_a 16 17
+	update_a 15 16
+	update_a 14 15
+	update_a 13 14
+	update_a 12 13
+	update_a 11 12
+	update_a 10 11
+	update_a 9 10
+	update_a 8 9
+	update_a 7 8
+	update_a 6 7
+	update_a 5 6
+	update_a 4 5
+	update_a 3 4
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 23 0
+	jmp e_iTasks.API.Core.Tasks_supd
+.desc d\;48;34;15.16 _hnf l\;48;34;15.16 2 0 "<lambda>[line:48];34;15"
+.a 0 a\;48;34;15.16
+.o 2 0
+l\;48;34;15.16
+	repl_args 1 1
+.o 2 0
+a\;48;34;15.16
+.o 2 0
+ea\;48;34;15.16
+	jsr_eval 1
+	push_r_args 1 4 0
+	update_a 3 5
+	update_a 1 3
+	update_a 4 1
+	update_a 2 4
+	update_a 0 2
+	pop_a 1
+			||	Match code, stacksizes A: 5 B: 0
+			||	role
+	push_a 0
+			||	s
+	push_a 5
+	push_a 5
+	push_a 5
+	push_a 5
+	update_a 4 1
+	build_r e_hoi_rState 4 0 0 0
+	updatepop_a 0 10
+.d 1 0
+	rtn
+.desc dnextTask.4 _hnf lnextTask.4 1 0 "nextTask"
+.o 2 0
+lnextTask.4
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.o 2 0
+eanextTask.4
+	jsr_eval 0
+	repl_r_args 4 0
+.o 5 0
+snextTask.4
+			||	Match code, stacksizes A: 4 B: 0
+			||	Designer
+	buildh e_hoi_dDesigner 0
+			||	role
+	push_a 2
+	jsr_eval 0
+			||	Remove unused stack elements
+	update_a 3 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr e_hoi_s==;5
+.o 0 1 b
+	jmp_false else.1
+			||	Building the contractum, Stacksizes A: 1 B: 0
+	pop_a 1
+.d 1 0
+	jmp sdesignerTask.5
+else.1
+			||	Machinist
+	buildh e_hoi_dMachinist 0
+			||	role
+	push_a 1
+			||	Remove unused stack elements
+.d 2 0
+	jsr e_hoi_s==;5
+.o 0 1 b
+	jmp_false else.2
+			||	Building the contractum, Stacksizes A: 1 B: 0
+	pop_a 1
+.d 1 0
+	jmp smachinistTask.6
+else.2
+			||	Controller
+	buildh e_hoi_dController 0
+			||	role
+	push_a 1
+			||	Remove unused stack elements
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr e_hoi_s==;5
+.o 0 1 b
+	jmp_false else.3
+			||	Building the contractum, Stacksizes A: 0 B: 0
+.d 1 0
+	jmp scontrollerTask.7
+else.3
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	-||-
+			||	<<@
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	imageTask
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr simageTask.12
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+			||	Remove unused stack elements
+.d 4 0
+	jsr e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+			||	<<@
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	updateTask
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr supdateTask.9
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+			||	Remove unused stack elements
+.d 4 0
+	jsr e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+	create
+	push_a 12
+	update_a 1 13
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 12 11
+	update_a 0 12
+	pop_a 1
+			||	Remove unused stack elements
+.d 13 0
+	jsr e_iTasks.API.Common.TaskCombinators_s-||-
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+.d 4 0
+	jmp e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+scontrollerTask.7
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+.d 1 0
+	jmp simageTask.12
+.o 1 0
+smachinistTask.6
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	imageTask
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr simageTask.12
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+.d 4 0
+	jmp e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+sdesignerTask.5
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	-||-
+			||	<<@
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	imageTask
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr simageTask.12
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+			||	Remove unused stack elements
+.d 4 0
+	jsr e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+			||	<<@
+			||	ArrangeHorizontal
+	buildh e_iTasks.UI.Layout_dArrangeHorizontal 0
+			||	updateTask
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr supdateTask.9
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+	create
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+			||	Remove unused stack elements
+.d 4 0
+	jsr e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+	create
+	push_a 12
+	update_a 1 13
+	update_a 2 1
+	update_a 3 2
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 7 6
+	update_a 8 7
+	update_a 9 8
+	update_a 10 9
+	update_a 11 10
+	update_a 12 11
+	update_a 0 12
+	pop_a 1
+			||	Remove unused stack elements
+.d 13 0
+	jsr e_iTasks.API.Common.TaskCombinators_s-||-
+.o 1 0
+			||	tune;
+			||	tune;46
+	buildh e_iTasks.UI.Layout_dtune;46 0
+.d 4 0
+	jmp e_iTasks.API.Common.TaskCombinators_s<<@
+.o 1 0
+supdateTask.9
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	state
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr sstate.2
+.o 1 0
+			||	[]
+	buildh _Nil 0
+			||	Title
+			||	"State"
+	buildAC "State"
+	build_r e_iTasks.API.Core.Types_kTitle 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	descr;
+			||	toPrompt;136
+	buildh e_iTasks.API.Core.Types_dtoPrompt;136 0
+.d 25 0
+	jmp e_iTasks.API.Common.InteractionTasks_supdateSharedInformation
+.o 1 0
+simageTask.12
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	state
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr sstate.2
+.o 1 0
+			||	[...|...]
+			||	[]
+	buildh _Nil 0
+			||	_f1
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+	build_r rgDefault_s; 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+	build_r rgDefault_s; 1 0 0 0
+	update_a 0 1
+	pop_a 1
+	build _ 4 n_f1.212
+	buildh _Cons 2
+			||	Title
+			||	"Image"
+	buildAC "Image"
+	build_r e_iTasks.API.Core.Types_kTitle 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	gDefault_s;
+			||	gDefault_State;85
+	build e_hoi_dgDefault_State;85 0 e_hoi_ngDefault_State;85
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	descr;
+			||	toPrompt;136
+	buildh e_iTasks.API.Core.Types_dtoPrompt;136 0
+.d 25 0
+	jmp e_iTasks.API.Common.InteractionTasks_supdateSharedInformation
+.n 4 _ ea_f1.212
+.o 1 0
+n_f1.212
+	push_node _cycle_in_spine 4
+.o 5 0
+ea_f1.212
+.o 5 0
+s_f1.212
+			||	Match code, stacksizes A: 4 B: 0
+			||	Building the contractum, Stacksizes A: 4 B: 0
+			||	<lambda>[line:71];14;21
+	buildh d\;71;14;21.22 0
+			||	<lambda>[line:70];14;20
+	buildh d\;70;14;20.21 0
+			||	<lambda>[line:69];14;19
+	buildh d\;69;14;19.20 0
+			||	<lambda>[line:68];14;18
+	buildh d\;68;14;18.19 0
+			||	<lambda>[line:67];14;17
+	buildh d\;67;14;17.18 0
+			||	id
+	buildh e_StdFunc_did 0
+			||	iTask;
+			||	_
+	push_a 9
+	jsr_eval 0
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	_
+	push_a 10
+	jsr_eval 0
+	repl_r_args 1 0
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+			||	iTask;
+			||	_
+	push_a 17
+	jsr_eval 0
+			||	gEq_s;
+			||	gEq_State;86
+	buildh e_hoi_dgEq_State;86 0
+			||	_
+	push_a 18
+	jsr_eval 0
+	repl_r_args 1 0
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	gText_s;
+			||	gText_State;82
+	buildh e_hoi_dgText_State;82 0
+			||	gVerify_s;
+			||	gVerify_State;81
+	buildh e_hoi_dgVerify_State;81 0
+			||	gUpdate_s;
+			||	gUpdate_State;80
+	buildh e_hoi_dgUpdate_State;80 0
+			||	gEditMeta_s;
+			||	gEditMeta_State;79
+	buildh e_hoi_dgEditMeta_State;79 0
+			||	gEditor_s;
+			||	gEditor_State;78
+	buildh e_hoi_dgEditor_State;78 0
+	update_a 25 29
+	update_a 24 28
+	update_a 23 27
+	update_a 22 26
+	update_a 21 25
+	update_a 20 24
+	update_a 19 23
+	update_a 18 22
+	update_a 17 21
+	update_a 16 20
+	update_a 15 19
+	update_a 14 18
+	update_a 13 17
+	update_a 12 16
+	update_a 11 15
+	update_a 10 14
+	update_a 9 13
+	update_a 8 12
+	update_a 7 11
+	update_a 6 10
+	update_a 5 9
+	update_a 4 8
+	update_a 3 7
+	update_a 2 6
+	update_a 1 5
+	updatepop_a 0 4
+.d 27 0
+	jmp e_iTasks.API.Extensions.SVG.SVGlet_simageUpdate
+.desc d\;67;14;17.18 _hnf l\;67;14;17.18 3 0 "<lambda>[line:67];14;17"
+.a 0 a\;67;14;17.18
+.o 2 0
+l\;67;14;17.18
+	repl_args 2 2
+.o 3 0
+a\;67;14;17.18
+.d 3 0
+	jsr ea\;67;14;17.18
+.o 9 1 i
+.impmod Graphics.Scalable.Internal
+.impdesc e_Graphics.Scalable.Internal_rImage
+	build_r e_Graphics.Scalable.Internal_rImage 9 1 0 0
+	updatepop_a 0 9
+	pop_b 1
+.d 1 0
+	rtn
+.o 3 0
+ea\;67;14;17.18
+.o 3 0
+s\;67;14;17.18
+			||	Match code, stacksizes A: 3 B: 0
+			||	Building the contractum, Stacksizes A: 3 B: 0
+			||	s
+	push_a 0
+	updatepop_a 0 3
+.d 1 0
+	jmp smyImage.13
+.o 1 0
+smyImage.13
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	s
+	push_a 0
+	updatepop_a 0 1
+.d 1 0
+	jmp e_svgDemo_sdrawTracks
+.desc d\;68;14;18.19 _hnf l\;68;14;18.19 2 0 "<lambda>[line:68];14;18"
+.a 0 ea\;68;14;18.19
+.o 2 0
+l\;68;14;18.19
+	repl_args 1 1
+.o 2 0
+ea\;68;14;18.19
+	jsr_eval 1
+.o 2 0
+s\;68;14;18.19
+			||	Match code, stacksizes A: 2 B: 0
+			||	Redirecting the root to: v
+	pop_a 1
+.d 1 0
+	rtn
+.desc d\;69;14;19.20 _hnf l\;69;14;19.20 2 0 "<lambda>[line:69];14;19"
+.a 0 ea\;69;14;19.20
+.o 2 0
+l\;69;14;19.20
+	repl_args 1 1
+.o 2 0
+ea\;69;14;19.20
+	jsr_eval 0
+.o 2 0
+s\;69;14;19.20
+			||	Match code, stacksizes A: 2 B: 0
+			||	Redirecting the root to: s
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.desc d\;70;14;20.21 _hnf l\;70;14;20.21 2 0 "<lambda>[line:70];14;20"
+.a 2 ea\;70;14;20.21
+.o 2 0
+l\;70;14;20.21
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea\;70;14;20.21
+.o 3 0
+s\;70;14;20.21
+			||	Match code, stacksizes A: 2 B: 0
+			||	Building the contractum, Stacksizes A: 2 B: 0
+	fillh e_Data.Maybe_dNothing 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.desc d\;71;14;21.22 _hnf l\;71;14;21.22 2 0 "<lambda>[line:71];14;21"
+.a 0 ea\;71;14;21.22
+.o 2 0
+l\;71;14;21.22
+	repl_args 1 1
+.o 2 0
+ea\;71;14;21.22
+	jsr_eval 1
+.o 2 0
+s\;71;14;21.22
+			||	Match code, stacksizes A: 2 B: 0
+			||	Redirecting the root to: n
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+sstate.2
+			||	Match code, stacksizes A: 0 B: 0
+			||	Building the contractum, Stacksizes A: 0 B: 0
+			||	State
+			||	[...|...]
+			||	[]
+	buildh _Nil 0
+			||	Train
+			||	Position
+			||	1
+	buildI 1
+			||	1
+	buildI 1
+	build_r e_hoi_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+			||	True
+	buildB TRUE
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build_r e_hoi_rTrain 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh _Cons 2
+			||	Designer
+	buildh e_hoi_dDesigner 0
+			||	++
+			||	[...|...]
+			||	[]
+	buildh _Nil 0
+			||	Track
+			||	SEC
+			||	Section
+			||	Just
+			||	False
+	buildB FALSE
+	buildh e_Data.Maybe_dJust 1
+			||	Just
+			||	True
+	buildB TRUE
+	buildh e_Data.Maybe_dJust 1
+	build_r e_hoi_rSection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_hoi_dSEC 1
+			||	Position
+			||	0
+	buildI 0
+			||	4
+	buildI 4
+	build_r e_hoi_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+			||	"s5"
+	buildAC "s5"
+	buildh ARRAY 1
+	build_r e_hoi_rTrack 3 0 0 0
+	update_a 0 3
+	pop_a 3
+	buildh _Cons 2
+			||	createTest
+			||	4
+	buildI 4
+	build _ 1 ncreateTest.11
+	build e_StdList_d++ 2 e_StdList_n++
+			||	1
+	buildI 1
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	build_r e_hoi_rState 4 0 0 0
+	updatepop_a 0 4
+			||	TypeCons
+			||	TypeCodeConstructor
+			||	TD;State
+	buildh e_hoi_dTD;State 0
+	build_r e__SystemDynamic_kTypeCons 1 0 0 0
+	update_a 0 1
+	pop_a 1
+			||	JSONDecode_s;
+			||	JSONDecode_State;84
+	buildh e_hoi_dJSONDecode_State;84 0
+			||	JSONEncode_s;
+			||	JSONEncode_State;83
+	buildh e_hoi_dJSONEncode_State;83 0
+			||	"sharedState"
+	buildAC "sharedState"
+	push_a 3
+	update_a 1 4
+	update_a 2 1
+	update_a 3 2
+	update_a 0 3
+	pop_a 1
+.d 6 0
+	jmp e_iTasks.API.Core.SDSs_ssharedStore
+.n 1 _ eacreateTest.11
+.o 1 0
+ncreateTest.11
+	push_node _cycle_in_spine 1
+.o 2 0
+eacreateTest.11
+	pushI_a 0
+	pop_a 1
+.o 1 1 i
+screateTest.11
+			||	Match code, stacksizes A: 0 B: 1
+			||	Building the contractum, Stacksizes A: 0 B: 1
+			||	_from_to;6
+	create
+			||	n
+	push_b 0
+			||	1
+	pushI 1
+			||	Remove unused stack elements
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jsr e__SystemEnum_s_from_to;6
+.o 1 0
+			||	createTestSection
+	buildh dcreateTestSection.10 0
+.d 3 0
+	jmp e_StdList_smap
+.desc dcreateTestSection.10 _hnf lcreateTestSection.10 1 0 "createTestSection"
+.o 2 0
+lcreateTestSection.10
+	pop_a 1
+.o 1 0
+eacreateTestSection.10
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	SEC
+			||	Section
+			||	Just
+			||	False
+	buildB FALSE
+	buildh e_Data.Maybe_dJust 1
+			||	Just
+			||	True
+	buildB TRUE
+	buildh e_Data.Maybe_dJust 1
+	build_r e_hoi_rSection 2 0 0 0
+	update_a 0 2
+	pop_a 2
+	buildh e_hoi_dSEC 1
+			||	Position
+			||	0
+	buildI 0
+			||	n
+	push_a 2
+	build_r e_hoi_rPosition 2 0 0 0
+	update_a 0 2
+	pop_a 2
+			||	_f2
+			||	n
+	push_a 2
+	build _ 1 n_f2.213
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	build_r e_hoi_rTrack 3 0 0 0
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.n 1 _ ea_f2.213
+.o 1 0
+n_f2.213
+	push_node _cycle_in_spine 1
+.o 2 0
+ea_f2.213
+.o 2 0
+s_f2.213
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	toString;5
+			||	_
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+			||	Remove unused stack elements
+	pop_a 1
+.d 0 1 i
+	jsr ItoAC
+.o 1 0
+			||	"s"
+	buildAC "s"
+.d 2 0
+	jsr catAC
+.o 1 0
+	push_a 0
+	fillh ARRAY 1 2
+	pop_a 1
+.d 1 0
+	rtn

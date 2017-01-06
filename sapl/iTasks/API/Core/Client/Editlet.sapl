@@ -1,0 +1,234 @@
+|| ?module? iTasks.API.Core.Client.Editlet
+
+
+iTasks.API.Core.Client.Editlet.createEditletEventHandler !handler_0 !id_1 = StdMisc.undef
+iTasks.API.Core.Client.Editlet.JSONEncode_Editlet_0 _x_0 _x_1 _x_2 !_x_3::B !tt_4 = _predefined._Cons (iTasks._Framework.Serialization.dynamicJSONEncode tt_4) _predefined._Nil
+iTasks.API.Core.Client.Editlet.JSONDecode_Editlet_1 _x_0 _x_1 _x_2 !_x_3::B !_x_4 = case _x_4 (_predefined._Cons tt_1_0 c_1_1 -> <{_Tuple2!3}> (iTasks._Framework.Serialization.dynamicJSONDecode tt_1_0) c_1_1) (_ -> <{_Tuple2!3}> Data.Maybe.Nothing _x_4)
+iTasks.API.Core.Client.Editlet.anon_14 _x_0 world_1 = _Tuple2 (iTasks.UI.Component._ComponentHTML iTasks.UI.Definition.FlexSize iTasks.UI.Definition.FlexSize (Text.HTML.Html "")) world_1
+iTasks.API.Core.Client.Editlet.anon_15 fc_0 _x_1 _x_2 world_3 = _Tuple2 fc_0 world_3
+iTasks.API.Core.Client.Editlet.anon_16 _x_0 _x_1 _x_2 a_3 world_4 = _Tuple2 a_3 world_4
+iTasks.API.Core.Client.Editlet.anon_17 _x_0 _x_1 = Data.Maybe.Nothing
+iTasks.API.Core.Client.Editlet.anon_18 _x_0 !x_1 = x_1
+iTasks.API.Core.Client.Editlet.gDefault_Editlet_2 fa_0 _x_1 fc_2 = iTasks.API.Core.Client.Editlet._Editlet fa_0 fa_0 iTasks.API.Core.Client.Editlet.anon_14 (iTasks.API.Core.Client.Editlet.anon_15 fc_2) iTasks.API.Core.Client.Editlet.anon_16 iTasks.API.Core.Client.Editlet.anon_17 iTasks.API.Core.Client.Editlet.anon_18
+iTasks.API.Core.Client.Editlet.gEq_Editlet_3::B !fa_0 _x_1 _x_2 editlet1_3 editlet2_4 = fa_0 (select editlet1_3::iTasks.API.Core.Client.Editlet._Editlet 0) (select editlet2_4::iTasks.API.Core.Client.Editlet._Editlet 0)
+iTasks.API.Core.Client.Editlet.gText_Editlet_4 !fa_0 _x_1 _x_2 !mode_3 !_x_4 = case _x_4 (Data.Maybe.Just editlet_1_0 -> fa_0 mode_3 (Data.Maybe.Just (select editlet_1_0::iTasks.API.Core.Client.Editlet._Editlet 0))) (Data.Maybe.Nothing -> fa_0 mode_3 Data.Maybe.Nothing) 
+<{iTasks.API.Core.Client.Editlet.get`_25}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_25}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_25}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.API.Core.Client.Editlet.toJSONA_21 !jsonEncA_0 a_1 = <{iTasks.API.Core.Client.Editlet._c;78;17_775}> (jsonEncA_0 False a_1)
+<{iTasks.API.Core.Client.Editlet._c;78;17_775}> !_x_0 = case _x_0 (_predefined._Cons json_1_0 _x_1_1 -> json_1_0) (_ -> Text.JSON.JSONNull)
+iTasks.API.Core.Client.Editlet.editletOpts_19 !jsonEncA_0 currVal_1 !dp_2 !task_3 !jsScript_4 !js_5 !js_6 !jsAD_7 !uiDef_8 = iTasks.UI.Definition._UIEditletOpts task_3 (iTasks.API.Core.Types.editorId dp_2) (iTasks.API.Core.Client.Editlet.toJSONA_21 jsonEncA_0 currVal_1) (Text.HTML.toString_7 (select uiDef_8::iTasks.UI.Component._ComponentHTML 2)) jsScript_4 js_6 js_5 jsAD_7
+iTasks.API.Core.Client.Editlet.setEditletDiffs_24 jsonEncA_0 dp_1 task_2 ver_3::I value_4 opts_5 diffs_6 !iworld_7 = case iworld_7 (iTasks._Framework.IWorld._IWorld server_1_0 config_1_1 clocks_1_2 current_1_3 random_1_4 sdsNotifyRequests_1_5 memoryShares_1_6 cachedShares_1_7 exposedShares_1_8 jsCompilerState_1_9 ioTasks_1_10 ioStates_1_11 world_1_12 resources_1_13 onClient_1_14 shutdown_1_15 -> case current_1_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_2_0 task_2_1 session_2_2 attachmentChain_2_3 nextTaskNo_2_4 eventRoute_2_5 editletDiffs_2_6 -> update iworld_7::iTasks._Framework.IWorld._IWorld [3:update current_1_3::iTasks._Framework.IWorld._TaskEvalState [6:Data.Map.put (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)))) (_Tuple2 task_2 (iTasks.API.Core.Types.editorId dp_1)) (_Tuple4 ver_3 (iTasks.API.Core.Client.Editlet.toJSONA_21 jsonEncA_0 value_4) opts_5 diffs_6) editletDiffs_2_6]]) ) 
+iTasks.API.Core.Client.Editlet.ui_20 !uiDef_0 !opts_1 = iTasks.UI.Definition.setSize (select uiDef_0::iTasks.UI.Component._ComponentHTML 0) (select uiDef_0::iTasks.UI.Component._ComponentHTML 1) (iTasks.UI.Definition.UIEditlet iTasks.UI.Definition.defaultSizeOpts opts_1)
+iTasks.API.Core.Client.Editlet.fromJSONA_22 !jsonDecA_0 json_1 = select (jsonDecA_0 False (_predefined._Cons json_1 _predefined._Nil))::_Tuple2 0
+iTasks.API.Core.Client.Editlet.diffWithPrevValue_23 !jsonDecA_0 genDiffSrv_1 jsonPrev_2 currVal_3 = <{iTasks.API.Core.Client.Editlet._c;87;11_776}> (iTasks.API.Core.Client.Editlet.fromJSONA_22 jsonDecA_0 jsonPrev_2) genDiffSrv_1 currVal_3
+<{iTasks.API.Core.Client.Editlet._c;87;11_776}> !_x_0 genDiffSrv_1 currVal_2 = case _x_0 (Data.Maybe.Just prev_1_0 -> genDiffSrv_1 prev_1_0 currVal_2) (_ -> Data.Maybe.Nothing)
+<{iTasks.API.Core.Client.Editlet.get`_773}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) _x_0 kx_1_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_773}> _x_0 l_1_3) (False -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) kx_1_1 _x_0) (True -> <{iTasks.API.Core.Client.Editlet.get`_773}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.API.Core.Client.Editlet.gEditor_Editlet_5 fa_0 textA_1 defaultA_2 headersA_3 jsonEncA_4 jsonDecA_5 _x_6 _x_7 _x_8 _x_9 _x_10 _x_11 _x_12 _x_13 _x_14 _x_15 jsonEncD_16 jsonDecD_17 !dp_18 !_x_19 !meta_20 !vst_21 = case _x_19 (_Tuple3 _x_1_0 mask_1_1 ver_1_2 -> case _x_1_0 (iTasks.API.Core.Client.Editlet._Editlet currVal_2_0 defValSrv_2_1 genU_2_2 initClient_2_3 appDiffClt_2_4 genDiffSrv_2_5 appDiffSrv_2_6 -> case vst_21 (iTasks._Framework.Generic.Interaction._VSt selectedCons_3_0 optional_3_1 disabled_3_2 task_3_3 layout_3_4 iworld_3_5 -> case iworld_3_5 (iTasks._Framework.IWorld._IWorld server_4_0 config_4_1 clocks_4_2 current_4_3 random_4_4 sdsNotifyRequests_4_5 memoryShares_4_6 cachedShares_4_7 exposedShares_4_8 jsCompilerState_4_9 ioTasks_4_10 ioStates_4_11 world_4_12 resources_4_13 onClient_4_14 shutdown_4_15 -> case current_4_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_5_0 task_5_1 session_5_2 attachmentChain_5_3 nextTaskNo_5_4 eventRoute_5_5 editletDiffs_5_6 -> <{iTasks.API.Core.Client.Editlet._c;40;5_781}> (<{iTasks.API.Core.Client.Editlet.get`_773}> (_Tuple2 task_3_3 (iTasks.API.Core.Types.editorId dp_18)) editletDiffs_5_6) iworld_3_5 jsonDecA_5 genDiffSrv_2_5 currVal_2_0 genU_2_2 world_4_12 task_3_3 dp_18 jsonEncA_4 vst_21 defValSrv_2_1 initClient_2_3 appDiffClt_2_4) ) ) ) ) 
+<{iTasks.API.Core.Client.Editlet._c;40;5_781}> !_x_0 !iworld_1 jsonDecA_2 genDiffSrv_3 currVal_4 genU_5 world_6 task_7 dp_8 jsonEncA_9 !vst_10 defValSrv_11 initClient_12 appDiffClt_13 = case _x_0 (Data.Maybe.Just _x_1_0 -> iTasks.API.Core.Client.Editlet._f780_780 _x_1_0 iworld_1 jsonDecA_2 genDiffSrv_3 currVal_4 genU_5 world_6 task_7 dp_8 jsonEncA_9 vst_10 _x_0 defValSrv_11 initClient_12 appDiffClt_13) (_ -> <{iTasks.API.Core.Client.Editlet._c;40;5_777}> _x_0 jsonEncA_9 currVal_4 dp_8 task_7 genDiffSrv_3 defValSrv_11 initClient_12 appDiffClt_13 iworld_1 genU_5 world_6 vst_10)
+iTasks.API.Core.Client.Editlet._f780_780 !_x_0 !iworld_1 !jsonDecA_2 genDiffSrv_3 currVal_4 genU_5 world_6 task_7 dp_8 jsonEncA_9 !vst_10 _x_11 defValSrv_12 initClient_13 appDiffClt_14 = case _x_0 (_Tuple4 ver_1_0 prevValue_1_1 opts_1_2 diffs_1_3 -> let html_2_0 = <{StdString.+++_11}> "editlet-" (<{StdString.+++_11}> task_7 (<{StdString.+++_11}> "-" (iTasks.API.Core.Types.editorId dp_8))), _x_2_1 = genU_5 html_2_0 world_6, currentDiff_2_2 = iTasks.API.Core.Client.Editlet.diffWithPrevValue_23 jsonDecA_2 genDiffSrv_3 prevValue_1_1 currVal_4, world_2_3 = select _x_2_1::_Tuple2 1, iworld_2_4 = update iworld_1::iTasks._Framework.IWorld._IWorld [12:world_2_3], _x_2_5 = iTasks._Framework.Client.LinkerSupport.diffLinker currentDiff_2_2 Data.Maybe.Nothing iworld_2_4, jsCDiff_2_6 = select _x_2_5::_Tuple4 1, jsScript_2_7 = select _x_2_5::_Tuple4 0 in <{_Tuple2!3}> (iTasks._Framework.Generic.Interaction.NormalEditor (_predefined._Cons (_Tuple2 (iTasks.API.Core.Client.Editlet.ui_20 (select _x_2_1::_Tuple2 0) (update opts_1_2::iTasks.UI.Definition._UIEditletOpts [2:iTasks.API.Core.Client.Editlet.toJSONA_21 jsonEncA_9 currVal_4,6:select _x_2_5::_Tuple4 2])) Data.Map.newMap) _predefined._Nil)) (update vst_10::iTasks._Framework.Generic.Interaction._VSt [5:iTasks.API.Core.Client.Editlet.setEditletDiffs_24 jsonEncA_9 dp_8 task_7 (<{iTasks.API.Core.Client.Editlet._if;50;48_778}> (Data.Maybe.isJust currentDiff_2_2) ver_1_0) currVal_4 opts_1_2 (<{iTasks.API.Core.Client.Editlet._if;47;48_779}> (Data.Maybe.isJust currentDiff_2_2) jsCDiff_2_6 jsScript_2_7 diffs_1_3) (select _x_2_5::_Tuple4 3)])) (_ -> <{iTasks.API.Core.Client.Editlet._c;40;5_777}> _x_11 jsonEncA_9 currVal_4 dp_8 task_7 genDiffSrv_3 defValSrv_12 initClient_13 appDiffClt_14 iworld_1 genU_5 world_6 vst_10)
+<{iTasks.API.Core.Client.Editlet._if;47;48_779}> !_x_0::B jsCDiff_1 jsScript_2 diffs_3 = case _x_0 (True -> _predefined._Cons (iTasks.UI.Diff.MDiff (_Tuple2 jsCDiff_1 jsScript_2)) diffs_3) (_ -> diffs_3)
+<{iTasks.API.Core.Client.Editlet._if;50;48_778}>::I !_x_0::B !ver_1::I = case _x_0 (True -> <{StdInt.+_6}> ver_1 1) (_ -> ver_1)
+<{iTasks.API.Core.Client.Editlet._c;40;5_777}> !_x_0 jsonEncA_1 currVal_2 dp_3 task_4 !genDiffSrv_5 defValSrv_6 !initClient_7 !appDiffClt_8 !iworld_9 genU_10 world_11 !vst_12 = case _x_0 (Data.Maybe.Nothing -> let _x_2_0 = genU_10 (<{StdString.+++_11}> "editlet-" (<{StdString.+++_11}> task_4 (<{StdString.+++_11}> "-" (iTasks.API.Core.Types.editorId dp_3)))) world_11, uiDef_2_1 = select _x_2_0::_Tuple2 0, _x_2_2 = iTasks._Framework.Client.LinkerSupport.editletLinker (genDiffSrv_5 defValSrv_6 currVal_2) (initClient_7 iTasks.API.Core.Client.Editlet.createEditletEventHandler) (appDiffClt_8 iTasks.API.Core.Client.Editlet.createEditletEventHandler) (update iworld_9::iTasks._Framework.IWorld._IWorld [12:select _x_2_0::_Tuple2 1]), opts_2_3 = iTasks.API.Core.Client.Editlet.editletOpts_19 jsonEncA_1 currVal_2 dp_3 task_4 (select _x_2_2::_Tuple5 0) (select _x_2_2::_Tuple5 1) (select _x_2_2::_Tuple5 2) (select _x_2_2::_Tuple5 3) uiDef_2_1 in <{_Tuple2!3}> (iTasks._Framework.Generic.Interaction.NormalEditor (_predefined._Cons (_Tuple2 (iTasks.API.Core.Client.Editlet.ui_20 uiDef_2_1 opts_2_3) Data.Map.newMap) _predefined._Nil)) (update vst_12::iTasks._Framework.Generic.Interaction._VSt [5:iTasks.API.Core.Client.Editlet.setEditletDiffs_24 jsonEncA_1 dp_3 task_4 1 currVal_2 (update opts_2_3::iTasks.UI.Definition._UIEditletOpts [2:Text.JSON.JSONNull]) _predefined._Nil (select _x_2_2::_Tuple5 4)])) 
+iTasks.API.Core.Client.Editlet.gEditMeta_Editlet_6 !fa_0 _x_1 _x_2 editlet_3 = fa_0 (select editlet_3::iTasks.API.Core.Client.Editlet._Editlet 0)
+<{iTasks.API.Core.Client.Editlet.get`_26}> !<{_v<_0}> _x_1 !_x_2 = case _x_2 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 _x_1 kx_1_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_26}> <{_v<_0}> _x_1 l_1_3) (False -> case (select <{_v<_0}>::<{StdOverloaded.<;}> 0 kx_1_1 _x_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_26}> <{_v<_0}> _x_1 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+<{iTasks.API.Core.Client.Editlet.get`_774}> _x_0 !_x_1 = case _x_1 (Data.Map.Tip -> Data.Maybe.Nothing) (Data.Map.Bin _x_1_0 kx_1_1 x_1_2 l_1_3 r_1_4 -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) _x_0 kx_1_1) (True -> <{iTasks.API.Core.Client.Editlet.get`_774}> _x_0 l_1_3) (False -> case (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) kx_1_1 _x_0) (True -> <{iTasks.API.Core.Client.Editlet.get`_774}> _x_0 r_1_4) (False -> Data.Maybe.Just x_1_2) ) ) 
+iTasks.API.Core.Client.Editlet.gUpdate_Editlet_7 fa_0 _x_1 jEnca_2 jDeca_3 _x_4 _x_5 jEncd_6 jDecd_7 _x_8 _x_9 _x_10 _x_11 !_x_12 !jsonDiff_13 !_x_14 !ust_15 = case _x_12 (_predefined._Nil -> case _x_14 (_Tuple2 ov_2_0 omask_2_1 -> case ust_15 (iTasks._Framework.Generic.Interaction._USt task_3_0 editor_3_1 iworld_3_2 -> case iworld_3_2 (iTasks._Framework.IWorld._IWorld server_4_0 config_4_1 clocks_4_2 current_4_3 random_4_4 sdsNotifyRequests_4_5 memoryShares_4_6 cachedShares_4_7 exposedShares_4_8 jsCompilerState_4_9 ioTasks_4_10 ioStates_4_11 world_4_12 resources_4_13 onClient_4_14 shutdown_4_15 -> case current_4_3 (iTasks._Framework.IWorld._TaskEvalState taskTime_5_0 task_5_1 session_5_2 attachmentChain_5_3 nextTaskNo_5_4 eventRoute_5_5 editletDiffs_5_6 -> let _x_6_0::I = <{iTasks.API.Core.Client.Editlet._c;99;33_782}> jsonDiff_13, jsonDiff_6_1::I = select _x_6_0::_Tuple3 2, diff_6_2 = select _x_6_0::_Tuple3 1, ver_6_3 = select _x_6_0::_Tuple3 0 in <{iTasks.API.Core.Client.Editlet._c;103;7_785}> (jDecd_7 False (_predefined._Cons jsonDiff_6_1 _predefined._Nil)) ov_2_0 ust_15 task_3_0 editor_3_1 editletDiffs_5_6 jDeca_3 ver_6_3 iworld_3_2 current_4_3 diff_6_2 jEnca_2 omask_2_1 jsonDiff_6_1) ) ) ) ) (_ -> <{_Tuple2!3}> _x_14 ust_15)
+<{iTasks.API.Core.Client.Editlet._c;103;7_785}> !_x_0 ov_1 ust_2 task_3 editor_4 editletDiffs_5 jDeca_6 ver_7::I iworld_8 current_9 diff_10::I jEnca_11 omask_12 jsonDiff_13 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just diff_2_0 -> <{_Tuple2!3}> (_Tuple2 (update ov_1::iTasks.API.Core.Client.Editlet._Editlet [0:select ov_1::iTasks.API.Core.Client.Editlet._Editlet 6 diff_2_0 (select ov_1::iTasks.API.Core.Client.Editlet._Editlet 0)]) iTasks.API.Core.Types.Touched) (update ust_2::iTasks._Framework.Generic.Interaction._USt [2:<{iTasks.API.Core.Client.Editlet._c;105;24_784}> (<{iTasks.API.Core.Client.Editlet.get`_774}> (_Tuple2 task_3 editor_4) editletDiffs_5) jDeca_6 ver_7 iworld_8 current_9 task_3 editor_4 diff_10 editletDiffs_5 jEnca_11 ov_1 diff_2_0])) ) (_ -> <{_Tuple2!3}> (_Tuple2 ov_1 omask_12) (StdDebug.trace_n_6 (<{StdString.+++_11}> "Failed to decode JSON: " (Text.JSON.toString_7 jsonDiff_13)) ust_2))
+<{iTasks.API.Core.Client.Editlet._c;105;24_784}> !_x_0 jDeca_1 ver_2::I !iworld_3 current_4 task_5 editor_6 diff_7::I editletDiffs_8 jEnca_9 ov_10 diff_11 = case _x_0 (Data.Maybe.Just _x_1_0 -> case _x_1_0 (_Tuple4 refver_2_0 jsonRef_2_1 opts_2_2 diffs_2_3 -> <{iTasks.API.Core.Client.Editlet._c;106;52_783}> (jDeca_1 False (_predefined._Cons jsonRef_2_1 _predefined._Nil)) ver_2 refver_2_0 iworld_3 current_4 task_5 editor_6 jsonRef_2_1 opts_2_2 diff_7 diffs_2_3 editletDiffs_8 jEnca_9 ov_10 diff_11) ) (Data.Maybe.Nothing -> iworld_3) 
+<{iTasks.API.Core.Client.Editlet._c;106;52_783}> !_x_0 ver_1::I refver_2::I !iworld_3 current_4 task_5 editor_6 jsonRef_7 opts_8 diff_9::I diffs_10 editletDiffs_11 jEnca_12 ov_13 diff_14 = case _x_0 (_Tuple2 _x_1_0 _x_1_1 -> case _x_1_0 (Data.Maybe.Just ref_2_0 -> case (StdBool.not (<{StdInt.==_16}> ver_1 refver_2)) (True -> update iworld_3::iTasks._Framework.IWorld._IWorld [3:update current_4::iTasks._Framework.IWorld._TaskEvalState [6:Data.Map.put (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)))) (_Tuple2 task_5 editor_6) (_Tuple4 ver_1 jsonRef_7 opts_8 (_predefined._Cons (iTasks.UI.Diff.MRollback diff_9) diffs_10)) editletDiffs_11]]) (False -> update iworld_3::iTasks._Framework.IWorld._IWorld [3:update current_4::iTasks._Framework.IWorld._TaskEvalState [6:Data.Map.put (<{StdOverloaded.<;}> (<{StdTuple.<_6}> (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)) (<{StdClass.Ord;}> (<{StdOverloaded.<;}> <{StdString.<_3}>)))) (_Tuple2 task_5 editor_6) (_Tuple4 ver_1 (select (jEnca_12 False (select ov_13::iTasks.API.Core.Client.Editlet._Editlet 6 diff_14 ref_2_0))::_Tuple2 0) opts_8 (_predefined._Cons (iTasks.UI.Diff.MCommit diff_9) diffs_10)) editletDiffs_11]]) ) ) (_ -> iworld_3)
+<{iTasks.API.Core.Client.Editlet._c;99;33_782}> !jsonDiff_0 = case jsonDiff_0 (Text.JSON.JSONArray _x_1_0 -> case _x_1_0 (_predefined._Cons ver_2_0 _x_2_1 -> case _x_2_1 (_predefined._Cons diff_3_0 _x_3_1 -> case _x_3_1 (_predefined._Cons diff_4_0 _x_4_1 -> case _x_4_1 (_predefined._Nil -> _Tuple3 (Data.Maybe.maybe -1 StdFunc.id (Text.JSON.fromJSON (<{iTasks.API.Core.Client.Editlet.JSONDecode_s;}> Text.JSON.JSONDecode_Int_34) ver_2_0)) (Data.Maybe.maybe -1 StdFunc.id (Text.JSON.fromJSON (<{iTasks.API.Core.Client.Editlet.JSONDecode_s;}> Text.JSON.JSONDecode_Int_34) diff_3_0)) diff_4_0) ) ) ) ) (_ -> _Tuple3 -1 -1 Text.JSON.JSONNull)
+iTasks.API.Core.Client.Editlet.gVerify_Editlet_8 fa_0 _x_1 _x_2 !_x_3 !mv_4 = iTasks._Framework.Generic.Interaction.alwaysValid mv_4
+<{iTasks.API.Core.Client.Editlet.TD;EditletEventHandlerFunc}> _x_0::B = _predefined._Nil
+<{iTasks.API.Core.Client.Editlet.TD;EditletEvent}> _x_0::B = _predefined._Nil
+<{iTasks.API.Core.Client.Editlet.TD;EditletHTML}> _x_0::B = _predefined._Nil
+<{iTasks.API.Core.Client.Editlet.TD;Editlet}> _x_0::B = _predefined._Nil
+
+
+|| Converted Records
+:: iTasks.API.Core.Client.Editlet._Editlet = {iTasks.API.Core.Client.Editlet.currVal, iTasks.API.Core.Client.Editlet.defValSrv, iTasks.API.Core.Client.Editlet.genUI, iTasks.API.Core.Client.Editlet.initClient, iTasks.API.Core.Client.Editlet.appDiffClt, iTasks.API.Core.Client.Editlet.genDiffSrv, iTasks.API.Core.Client.Editlet.appDiffSrv}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_s;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_s}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_ss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_sss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_s;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_s}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_ss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_sss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_s;}> = {iTasks.API.Core.Client.Editlet.gDefault_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_ss;}> = {iTasks.API.Core.Client.Editlet.gDefault_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_sss;}> = {iTasks.API.Core.Client.Editlet.gDefault_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_s;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_ss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_sss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_s;}> = {!iTasks.API.Core.Client.Editlet.gVerify_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_ss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_sss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_s;}> = {!iTasks.API.Core.Client.Editlet.gText_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_ss;}> = {!iTasks.API.Core.Client.Editlet.gText_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_sss;}> = {!iTasks.API.Core.Client.Editlet.gText_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_s;}> = {!iTasks.API.Core.Client.Editlet.gEditor_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_ss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_sss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_s;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_ss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_sss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_s;}> = {!iTasks.API.Core.Client.Editlet.gEq_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_ss;}> = {!iTasks.API.Core.Client.Editlet.gEq_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_sss;}> = {!iTasks.API.Core.Client.Editlet.gEq_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_ssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_ssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_ssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_ssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_sssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_ssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_sssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONEncode_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONEncode_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_sssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_ssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_sssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.JSONDecode_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.JSONDecode_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.bimap_s;}> = {iTasks.API.Core.Client.Editlet.bimap_s}
+
+:: <{iTasks.API.Core.Client.Editlet.bimap_ss;}> = {iTasks.API.Core.Client.Editlet.bimap_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.bimap_sss;}> = {iTasks.API.Core.Client.Editlet.bimap_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_sssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEq_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEq_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_ssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_ssss;}> = {!iTasks.API.Core.Client.Editlet.gText_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_ssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_sssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_sssss;}> = {!iTasks.API.Core.Client.Editlet.gText_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_sssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_sssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gText_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_ssssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gText_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_sssssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gText_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_ssssssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditor_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditor_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gText_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gText_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gDefault_sssssssss;}> = {iTasks.API.Core.Client.Editlet.gDefault_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gEditMeta_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gEditMeta_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_ssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_sssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gVerify_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gVerify_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_ssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_sssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gUpdate_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gUpdate_sssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_s;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_s}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_ss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_ss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_sss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_sss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_ssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_ssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_sssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_sssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_ssssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_ssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_sssssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_sssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_ssssssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_ssssssss}
+
+:: <{iTasks.API.Core.Client.Editlet.gLexOrd_sssssssss;}> = {!iTasks.API.Core.Client.Editlet.gLexOrd_sssssssss}
+
