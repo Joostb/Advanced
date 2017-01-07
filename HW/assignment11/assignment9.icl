@@ -1,12 +1,14 @@
 module assignment9
 
-import StdEnv, StdCleanTypes, StdMisc, StdList, StdInt, Data.Tuple, StdClass, iTasks._Framework.Generic, Text.JSON, Data.Functor, Control.Applicative, Data.Void
+import StdCleanTypes, StdMisc, StdList, StdInt, Data.Tuple, StdClass, iTasks._Framework.Generic, Text.JSON, Data.Functor, Control.Applicative, Data.Void
 from iTasks import always, hasValue, :: TaskValue(..), :: Task, :: Stability, :: TaskCont(..), :: Action, updateInformation, 
 		viewInformation, class descr, instance descr String, :: UpdateOption, :: ViewOption(..), -||-, -||, ||-, startEngine, 
 		class Publishable, >>*, class TFunctor, instance TFunctor Task, class TApplicative, instance TApplicative Task, 
 		instance Publishable Task, Void, sharedStore, ::Shared, ::ReadWriteShared, Action, ::ActionOption, ::ActionName, upd,
 		updateSharedInformation, viewSharedInformation
+from StdEnv import &&, ||
 import qualified iTasks
+import iTasks.API.Core.Types
 import qualified Text
 from Text import class Text, instance Text String
 from StdFunc import o
@@ -21,7 +23,7 @@ class type a | toString, TC a where
 	type :: a -> String
 
 :: Button = Select | Up | Left | Down | Right
-:: Display a = D a 
+// :: Display a = D a 
 
 instance type Int where type a = "int"
 instance type Bool where type a = "bool"
