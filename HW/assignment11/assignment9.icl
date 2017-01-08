@@ -12,7 +12,7 @@ import iTasks.API.Core.Types
 import qualified Text
 from Text import class Text, instance Text String
 from StdFunc import o
-from StdTuple import fst
+from StdTuple import snd, fst
 from Data.Map import :: Map, Bin, Tip, put, get, newMap
 from Data.List import union, removeMember, instance Functor []
 import qualified Data.List as List
@@ -84,14 +84,13 @@ class stmt v where
 	(:.) infixr 1 :: (v a p) (v b q) -> v b Stmt
 	SetUp :: (v a q) -> v () Stmt
 	Loop :: (v a q) -> v () Stmt
+	Print :: (v String q) -> v () Stmt
 :: Else = Else
 
-class lcd v where
+/*class lcd v where
 	PrintUp :: (v String p) -> v () Stmt | isExpr p
 	PrintDown :: (v String p) -> v () Stmt | isExpr p
-
-
-
+*/
 class var v where
 	(=.) infixr 2 :: (v t Upd) (v t p) -> v t Expr | type t & isExpr p
 	var :: t ((v t Upd) -> (v a p)) -> (v a p) | type t
@@ -182,10 +181,12 @@ instance stmt Show where
 	Loop stmt = c "void Loop() {"
 					 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
 					 +.+ c "}" +.+ nl
+	Print str = c "Print(" +.+ str +.+ c ")" +.+ nl
 
-instance lcd Show where
+/*instance lcd Show where
 	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
 	PrintDown expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
+*/
 					
 instance var Show where
 	(=.) v e = v +.+ c " = " +.+ e
@@ -208,12 +209,15 @@ show (Show f) = reverse (f s0).print
 :: State =
 	{ map :: Map Int Dynamic
 	, vars :: Int
+	, tstate :: TState
 	}
-e0 :: State
-e0 =
-	{ map = newMap
-	, vars = 0
-	}
+
+state0 :: TState -> State
+state0 ts =
+		{map = newMap
+		, vars = 0
+		, tstate = ts
+		}
 	
 unEval :: (Eval a p) -> (RW a) State -> (MB a,State)
 unEval (Eval f) = f
@@ -237,6 +241,15 @@ rwvar n R s = case get n s.map of
 rwvar n (W a) s
 = (Jst a,{s & map = put n (dynamic a) s.map})
 
+
+
+printlcd :: [Char] -> Eval () p
+printlcd str 
+	| length str > 32 	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (take 16 str2)})
+	| length str >= 16	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (str2 ++ repeatn (16 - length str2) '-')})
+	| otherwise			= Eval \r s.(Jst (), {s & tstate.lcd1 = toString (str ++ repeatn (16 - length str) '-')})
+
+
 instance aexpr Eval where
 	lit a = rtrn a
 	(+.) x y = rtrn (+) <*.> x <*.> y
@@ -257,6 +270,7 @@ instance stmt Eval where
 	While b s = b >>- \c.if c (s :. While b s) (rtrn ())
 	SetUp stmt = stmt >>- \_. (rtrn ()) // een keer uitvoeren
 	Loop stmt = stmt >>- \_. (rtrn ()) //100000000000000 keer uitvoeren
+	Print stre = stre >>- \str. printlcd (fromString str)
 	
 toStmt :: (Eval t p) -> Eval t Stmt
 toStmt (Eval f) = Eval f
@@ -273,13 +287,21 @@ instance var Eval where
 						, map = put s.vars (dynamic x) s.map
 						} 
 						
-eval :: (Eval a p) -> [String] | type a
-eval (Eval f) = case fst (f R e0) of
+eval :: (Eval a p) TState -> [String] | type a
+eval (Eval f) s = case fst (f R (state0 s)) of
 				Jst a = [toString a,"\n"]
 				Err e = ["Error: ",e,"\n"]
+				
+eval2 :: (Eval a p) TState -> ([String], State) | type a
+eval2 (Eval f) s = case f R (state0 s) of
+				(Jst a, s) = ([toString a,"\n"], s)
+				(Err e, s) = (["Error: ",e,"\n"], s)
+				
+evalState :: (Eval a p) TState -> State
+evalState (Eval f) s = snd (f R (state0 s))
 
 
-fac = Loop (PrintDown (lit "csdnfjsdf"))
+fac = Loop (Print (lit "csdnfjsdf"))
 	
   	 
 
@@ -298,19 +320,22 @@ buttonTask ::  Task TState
 buttonTask  = viewSharedInformation "BUTTONS" [] state
 							>>* [OnAction (Action "left" []) (always (upd (\s . {s & left = not s.left}) state ||- buttonTask )),OnAction (Action "right" []) (always (upd (\s . {s & right = not s.right}) state ||- buttonTask )),OnAction (Action "up" []) (always (upd (\s . {s & up = not s.up}) state ||- buttonTask )),OnAction (Action "down" []) (always (upd (\s . {s & down = not s.down}) state ||- buttonTask )),OnAction (Action "select" []) (always (upd (\s . {s & select = not s.select}) state ||- buttonTask ))]
 
+executeTask f = ('iTasks'.get state >>= \s . upd 
+											(let s2 = (evalState f s) in \ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
+											state)
+
+testprog = Print (lit "hello world, i like money, lol xD i am so random")
 
 dinges :: *World -> *World
-dinges world = startEngine (buttonTask) world
+dinges world = startEngine (executeTask testprog ||- buttonTask) world
 
 //START
-
-//If Left Display 3 Else Display 4
-// Start :: *World -> * World
-// Start world = dinges world
+Start :: *World -> * World
+Start world = dinges world
 
 // Start = show fac
 
-Start = foldl (\a b. a +++ b) " " (show fac)
+//Start = foldl (\a b. a +++ b) " " (show fac)
 
 
 
