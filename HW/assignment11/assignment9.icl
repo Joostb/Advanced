@@ -27,7 +27,18 @@ class type a | toString, TC a where
 
 instance type Int where type a = "int"
 instance type Bool where type a = "bool"
-instance type Char where type a = "char"
+instance type String where type a = "string"
+instance type () where type a = "()"
+
+instance toString () where toString _ = "()"
+
+instance toString Button where
+	toString Select = "keyVals[0]"
+	toString Up = "keyVals[1]"
+	toString Down = "keyVals[2]"
+	toString Right = "keyVals[3]"
+	toString Left = "keyVals[4]"
+
 
 
 class aexpr v where
@@ -37,11 +48,13 @@ class aexpr v where
 	(*.) infixl 7 :: (v t p) (v t q) -> v t Expr | type, * t
 	
 class bexpr v where
+	button :: Button -> v Bool Expr
 	(&.) infixr 3 :: (v Bool p) (v Bool q) -> v Bool Expr
 	(|.) infixr 2 :: (v Bool p) (v Bool q) -> v Bool Expr
 	~. :: (v Bool p) -> v Bool Expr
 	(==.) infix 4 :: (v a p) (v a q) -> v Bool Expr | ==, type a
 	(<.) infix 4 :: (v a p) (v a q) -> v Bool Expr | <, Ord, type a
+
 	
 	(!=.) infix 4 :: (v a p) (v a q) -> v Bool Expr | ==, type a
 	(!=.) x y :==  ~. (x == y)
@@ -72,6 +85,10 @@ class stmt v where
 	SetUp :: (v a q) -> v () Stmt
 	Loop :: (v a q) -> v () Stmt
 :: Else = Else
+
+class lcd v where
+	PrintUp :: (v String p) -> v () Stmt | isExpr p
+	PrintDown :: (v String p) -> v () Stmt | isExpr p
 
 
 
@@ -123,6 +140,14 @@ indent = Show \c.{c & indent = inc c.indent}
 unindent :: Show a b
 unindent = Show \c.{c & indent = c.indent - one}
 
+setUp = c "#define KEY_COUNT 5" +.+ nl +.+ 
+		c "int keyLimits [KEY_COUNT+1] = {50, 190, 380, 555, 790, 1024};" +.+ nl +.+
+		c "bool keyVals [KEY_COUNT + 1] = {false, false, false, false, false};" +.+ nl +.+
+		c "LiquidCrystal lcd = LiquidCrystal(8, 9, 4, 5, 6, 7);" 
+
+setFalse = c "for (int i=0; i<KEY_COUNT; i+=1){  keyVals[i] = false; }"
+assignButtons = c "int val = analogRead(A0); for (int i = 0; i < KEY_COUNT; i += 1) { if (val < keyLimits[i]) { keyVals[i] = true; break; }}"
+
 nl :: Show a b
 nl = Show \c.{c & print = [toString ['\n':repeatn (2 * c.indent) ' ']:c.print]}
 
@@ -136,13 +161,14 @@ instance aexpr Show where
 	(*.) x y = brac (x +.+ c "*" +.+ y)
 	
 instance bexpr Show where
+	button b = c (toString b)
 	(&.) x y = brac ( x +.+ c " && " +.+ y)
 	(|.) x y = brac ( x +.+ c " || " +.+ y)
 	~. x = brac ( c " ! " +.+ x)
 	(==.) x y = brac ( x +.+ c " == " +.+ y)
 	(<.) x y = brac ( x +.+ c " < " +.+ y)
 	
-	
+
 instance stmt Show where
 	(:.) s t = s +.+ c ";" +.+ nl +.+ t +.+ c ";" +.+ nl
 	While b s = c "while " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ s 
@@ -150,12 +176,16 @@ instance stmt Show where
 	If b t else e = c "if " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ t 
 					+.+ unindent +.+ nl +.+ c "} else {" +.+ indent 
 					+.+ nl +.+ e +.+ unindent +.+ nl +.+ c "}" +.+ nl
-	SetUp stmt = c "void setUp() {"
+	SetUp stmt = setUp +.+ c "void setUp() {" +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl
 						 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
 						 +.+ c "}" +.+ nl
 	Loop stmt = c "void Loop() {"
 					 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
 					 +.+ c "}" +.+ nl
+
+instance lcd Show where
+	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
+	PrintDown expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
 					
 instance var Show where
 	(=.) v e = v +.+ c " = " +.+ e
@@ -213,15 +243,8 @@ instance aexpr Eval where
 	(-.) x y = rtrn (-) <*.> x <*.> y
 	(*.) x y = rtrn (*) <*.> x <*.> y
 	
-	/*
-		(&.) infixr 3 :: (v Bool p) (v Bool q) -> v Bool Expr
-	(|.) infixr 2 :: (v Bool p) (v Bool q) -> v Bool Expr
-	~. :: (v Bool p) -> v Bool Expr
-	(==.) infix 4 :: (v a p) (v a q) -> v Bool Expr | ==, type a
-	(<.) infix 4 :: (v a p) (v a q) -> v Bool Expr | <, Ord, type a
-	*/
-	
 instance bexpr Eval where
+	button b = rtrn True //TODO, check if the button is pressed
 	(==.) x y = rtrn (==) <*.> x <*.> y
 	(&.) x y = rtrn (&&) <*.> x <*.> y
 	(|.) x y = rtrn (||) <*.> x <*.> y
@@ -256,9 +279,8 @@ eval (Eval f) = case fst (f R e0) of
 				Err e = ["Error: ",e,"\n"]
 
 
-fac = While (lit 4 >. lit 1) (
-	  	 	 lit 234234	  	
-  	 	) :. lit 4
+fac = Loop (PrintDown (lit "csdnfjsdf"))
+	
   	 
 
 //ITASK DINGES

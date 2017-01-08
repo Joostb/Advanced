@@ -104,7 +104,7 @@
 .depend "StdCleanTypes" "20161001160346"
 .depend "StdOverloaded" "20160531160413"
 .depend "_SystemDynamic" "20161001160347"
-.module m_assignment9 "assignment9" "20170107141743"
+.module m_assignment9 "assignment9" "20170108123242"
 .endinfo
 .impmod _system
 .implab _cycle_in_spine
@@ -143,8 +143,6 @@
 .implab _driver
 ||	Concurrent Clean Code Generator (Version 0.920)
 .impmod StdString
-.impdesc e_StdString_dtoString;5
-.implab e_StdString_ntoString;5
 .impdesc e_StdString_dtoString;9
 .implab e_StdString_ntoString;9
 .implab e_StdString_s+++;11
@@ -153,21 +151,17 @@
 .implab e_StdInt_s-;7
 .implab e_StdInt_s*;9
 .implab e_StdInt_sone;11
-.impdesc e_StdInt_d<;17
-.impmod StdClass
-.impdesc e_StdClass_rOrd;
 .impmod StdList
 .implab e_StdList_sreverse
 .implab e_StdList_srepeatn
 .impdesc e_StdList_dtoString;79
 .implab e_StdList_ntoString;79
 .impmod StdOverloaded
-.impdesc e_StdOverloaded_r<;
 .impdesc e_StdOverloaded_rtoString;
 .impmod _SystemDynamic
 .impdesc e__SystemDynamic_rTypeCodeConstructor
 .impdesc e__SystemDynamic_kTypeCons
-.impdesc e__SystemDynamic_dTC_Int
+.impdesc e__SystemDynamic_dTC__Unit
 .desc0 dSelect 0 "Select"
 .desc0 dUp 1 "Up"
 .desc0 dLeft 2 "Left"
@@ -211,10 +205,11 @@ eaSHOW.print
 .record rTState aaaaaaa 7 0 "TState"
 .record rtype; a{a}a 3 0 e_StdOverloaded_rtoString; "type;"
 .record raexpr; aaaa 4 0 "aexpr;"
-.record rbexpr; aaaaa 5 0 "bexpr;"
+.record rbexpr; aaaaaa 6 0 "bexpr;"
 .record risStmt; a 1 0 "isStmt;"
 .record risExpr; a 1 0 "isExpr;"
 .record rstmt; aaaaa 5 0 "stmt;"
+.record rlcd; aa 2 0 "lcd;"
 .record rvar; aaa 3 0 "var;"
 .record rgEditor_s; a 1 0 "gEditor_s;"
 .record rgEditMeta_s; a 1 0 "gEditMeta_s;"
@@ -228,7 +223,7 @@ eaSHOW.print
 .export __assignment9_Start
 .o 0 0
 __assignment9_Start
-	build _ 0 nStart.24
+	build _ 0 nStart.27
 .d 1 0
 	jmp _driver
 .export e_assignment9_sTD;var;
@@ -251,7 +246,34 @@ e_assignment9_eaTD;var;
 .o 2 0
 e_assignment9_sTD;var;
 .o 2 0
-sTD;var;.124
+sTD;var;.135
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.export e_assignment9_sTD;lcd;
+.export e_assignment9_eaTD;lcd;
+.descexp e_assignment9_dTD;lcd; e_assignment9_nTD;lcd; e_assignment9_lTD;lcd; 1 0 "TD;lcd;"
+.o 2 0
+e_assignment9_lTD;lcd;
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.d 2 0
+	jmp e_assignment9_eaTD;lcd;
+.n 1 e_assignment9_dTD;lcd; e_assignment9_eaTD;lcd;
+.o 1 0
+e_assignment9_nTD;lcd;
+	push_node _cycle_in_spine 1
+.o 2 0
+e_assignment9_eaTD;lcd;
+.o 2 0
+e_assignment9_sTD;lcd;
+.o 2 0
+sTD;lcd;.134
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -278,7 +300,7 @@ e_assignment9_eaTD;stmt;
 .o 2 0
 e_assignment9_sTD;stmt;
 .o 2 0
-sTD;stmt;.123
+sTD;stmt;.133
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -305,7 +327,7 @@ e_assignment9_eaTD;isExpr;
 .o 2 0
 e_assignment9_sTD;isExpr;
 .o 2 0
-sTD;isExpr;.122
+sTD;isExpr;.132
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -332,7 +354,7 @@ e_assignment9_eaTD;isStmt;
 .o 2 0
 e_assignment9_sTD;isStmt;
 .o 2 0
-sTD;isStmt;.121
+sTD;isStmt;.131
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -359,7 +381,7 @@ e_assignment9_eaTD;bexpr;
 .o 2 0
 e_assignment9_sTD;bexpr;
 .o 2 0
-sTD;bexpr;.120
+sTD;bexpr;.130
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -386,7 +408,7 @@ e_assignment9_eaTD;aexpr;
 .o 2 0
 e_assignment9_sTD;aexpr;
 .o 2 0
-sTD;aexpr;.119
+sTD;aexpr;.129
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -413,7 +435,7 @@ e_assignment9_eaTD;type;
 .o 2 0
 e_assignment9_sTD;type;
 .o 2 0
-sTD;type;.118
+sTD;type;.128
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -440,7 +462,7 @@ e_assignment9_eaTD;TState
 .o 2 0
 e_assignment9_sTD;TState
 .o 2 0
-sTD;TState.117
+sTD;TState.127
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -467,7 +489,7 @@ e_assignment9_eaTD;State
 .o 2 0
 e_assignment9_sTD;State
 .o 2 0
-sTD;State.116
+sTD;State.126
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -494,7 +516,7 @@ e_assignment9_eaTD;MB
 .o 2 0
 e_assignment9_sTD;MB
 .o 2 0
-sTD;MB.115
+sTD;MB.125
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -521,7 +543,7 @@ e_assignment9_eaTD;RW
 .o 2 0
 e_assignment9_sTD;RW
 .o 2 0
-sTD;RW.114
+sTD;RW.124
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -548,7 +570,7 @@ e_assignment9_eaTD;Eval
 .o 2 0
 e_assignment9_sTD;Eval
 .o 2 0
-sTD;Eval.113
+sTD;Eval.123
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -575,7 +597,7 @@ e_assignment9_eaTD;SHOW
 .o 2 0
 e_assignment9_sTD;SHOW
 .o 2 0
-sTD;SHOW.112
+sTD;SHOW.122
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -602,7 +624,7 @@ e_assignment9_eaTD;Show
 .o 2 0
 e_assignment9_sTD;Show
 .o 2 0
-sTD;Show.111
+sTD;Show.121
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -629,7 +651,7 @@ e_assignment9_eaTD;In
 .o 2 0
 e_assignment9_sTD;In
 .o 2 0
-sTD;In.110
+sTD;In.120
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -656,7 +678,7 @@ e_assignment9_eaTD;Else
 .o 2 0
 e_assignment9_sTD;Else
 .o 2 0
-sTD;Else.109
+sTD;Else.119
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -683,7 +705,7 @@ e_assignment9_eaTD;Stmt
 .o 2 0
 e_assignment9_sTD;Stmt
 .o 2 0
-sTD;Stmt.108
+sTD;Stmt.118
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -710,7 +732,7 @@ e_assignment9_eaTD;Expr
 .o 2 0
 e_assignment9_sTD;Expr
 .o 2 0
-sTD;Expr.107
+sTD;Expr.117
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -737,7 +759,7 @@ e_assignment9_eaTD;Upd
 .o 2 0
 e_assignment9_sTD;Upd
 .o 2 0
-sTD;Upd.106
+sTD;Upd.116
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -764,7 +786,7 @@ e_assignment9_eaTD;Button
 .o 2 0
 e_assignment9_sTD;Button
 .o 2 0
-sTD;Button.105
+sTD;Button.115
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	fillh _Nil 0 1
@@ -773,10 +795,10 @@ sTD;Button.105
 	rtn
 .n 0 _
 .o 1 0
-nStart.24
+nStart.27
 	push_node _cycle_in_spine 0
 .d 0 0
-	jsr eaStart.24
+	jsr eaStart.27
 .o 1 0
 	push_a 0
 	fillh ARRAY 1 2
@@ -784,31 +806,31 @@ nStart.24
 .d 1 0
 	rtn
 .o 0 0
-eaStart.24
+eaStart.27
 .o 0 0
-sStart.24
+sStart.27
 			||	Match code, stacksizes A: 0 B: 0
 			||	Building the contractum, Stacksizes A: 0 B: 0
 			||	show
-			||	fac;942
+			||	fac;951
 	create
 			||	Remove unused stack elements
 .d 1 0
-	jsr sfac;942.210
+	jsr sfac;951.219
 .o 1 0
 			||	type;
 			||	TypeCons
 			||	TypeCodeConstructor
-			||	TC_Int
-	buildh e__SystemDynamic_dTC_Int 0
+			||	TC__Unit
+	buildh e__SystemDynamic_dTC__Unit 0
 	build_r e__SystemDynamic_kTypeCons 1 0 0 0
 	update_a 0 1
 	pop_a 1
 			||	toString;
-			||	toString;5
-	buildh e_StdString_dtoString;5 0
-			||	type;57
-	buildh dtype;57.54 0
+			||	toString;64
+	buildh dtoString;64.61 0
+			||	type;63
+	buildh dtype;63.60 0
 	create
 	push_a 4
 	update_a 1 5
@@ -819,103 +841,43 @@ sStart.24
 	pop_a 1
 			||	Remove unused stack elements
 .d 5 0
-	jsr sshow.11
+	jsr sshow.14
 .o 1 0
 			||	" "
 	buildAC " "
 .d 2 0
-	jmp sfoldl;940.208
+	jmp sfoldl;949.217
 .o 1 0
-sfac;942.210
+sfac;951.219
 			||	Match code, stacksizes A: 0 B: 0
 			||	Building the contractum, Stacksizes A: 0 B: 0
-			||	lit;937
+			||	PrintDown;86
+			||	lit;948
 	create
-			||	4
-	buildI 4
+			||	"csdnfjsdf"
+	buildAC "csdnfjsdf"
+	buildh ARRAY 1
 			||	Remove unused stack elements
 .d 2 0
-	jsr slit;937.205
-.o 1 0
-			||	While;78
-			||	lit;937
-	create
-			||	234234
-	buildI 234234
-			||	Remove unused stack elements
-.d 2 0
-	jsr slit;937.205
-.o 1 0
-			||	<;70
-			||	lit;937
-	create
-			||	4
-	buildI 4
-			||	Remove unused stack elements
-.d 2 0
-	jsr slit;937.205
-.o 1 0
-			||	lit;937
-	create
-			||	1
-	buildI 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr slit;937.205
-.o 1 0
-			||	type;
-			||	TypeCons
-			||	TypeCodeConstructor
-			||	TC_Int
-	buildh e__SystemDynamic_dTC_Int 0
-	build_r e__SystemDynamic_kTypeCons 1 0 0 0
-	update_a 0 1
-	pop_a 1
-			||	toString;
-			||	toString;5
-	buildh e_StdString_dtoString;5 0
-			||	type;57
-	buildh dtype;57.54 0
-			||	Ord;
-			||	<;
-			||	<;17
-	buildh e_StdInt_d<;17 0
-			||	<;
-			||	<;17
-	buildh e_StdInt_d<;17 0
-	create
-	push_a 7
-	update_a 1 8
-	update_a 2 1
-	update_a 3 2
-	update_a 4 3
-	update_a 5 4
-	update_a 6 5
-	update_a 7 6
-	update_a 0 7
-	pop_a 1
-			||	Remove unused stack elements
-.d 8 0
-	jsr s<.;70.67
+	jsr slit;948.216
 .o 1 0
 			||	isExpr;
-			||	isExpr;63
-	buildh disExpr;63.60 0
+			||	isExpr;69
+	buildh disExpr;69.66 0
 	create
-	push_a 3
-	update_a 1 4
+	push_a 2
+	update_a 1 3
 	update_a 2 1
-	update_a 3 2
-	update_a 0 3
+	update_a 0 2
 	pop_a 1
 			||	Remove unused stack elements
-.d 4 0
-	jsr sWhile;78.75
-.o 1 0
 .d 3 0
-	jmp s:.;74.71
+	jsr sPrintDown;86.83
+.o 1 0
+.d 2 0
+	jmp sLoop;83.80
 .o 2 0
-sfoldl;940.208
+sfoldl;949.217
 			||	Match code, stacksizes A: 2 B: 0
 	eq_desc _Nil 0 1
 	jmp_true case.1
@@ -934,7 +896,7 @@ case.2
 			||	x
 	push_a 1
 	jsr_eval 0
-			||	<lambda>[line:291];16;935
+			||	<lambda>[line:313];16;946
 			||	a
 	push_a 1
 	jsr_eval 0
@@ -952,14 +914,14 @@ case.2
 	update_a 0 5
 	pop_a 1
 .d 2 0
-	jsr s\;291;16;935.203
+	jsr s\;313;16;946.214
 .o 1 0
 	update_a 1 5
 	updatepop_a 0 4
 .d 2 0
-	jmp sfoldl;940.208
+	jmp sfoldl;949.217
 .o 2 0
-s\;291;16;935.203
+s\;313;16;946.214
 			||	Match code, stacksizes A: 2 B: 0
 			||	Building the contractum, Stacksizes A: 2 B: 0
 			||	b
@@ -974,88 +936,101 @@ s\;291;16;935.203
 .d 1 0
 	rtn
 .o 2 0
-slit;937.205
+slit;948.216
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 			||	a
 	push_a 0
 	updatepop_a 0 1
 .d 2 0
-	jmp sc;938.206
-.o 2 0
-sc;938.206
-			||	Match code, stacksizes A: 1 B: 0
-			||	Building the contractum, Stacksizes A: 1 B: 0
-			||	<lambda>[line:109];12;939
-			||	a
-	push_a 0
-	buildh d\;109;12;939.207 1
-	fillh dShow 1 2
-	pop_a 1
-.d 1 0
-	rtn
-.desc d\;109;12;939.207 _hnf l\;109;12;939.207 2 0 "<lambda>[line:109];12;939"
-.a 0 a\;109;12;939.207
-.o 2 0
-l\;109;12;939.207
-	repl_args 1 1
-.o 2 0
-a\;109;12;939.207
-.o 2 0
-ea\;109;12;939.207
-	jsr_eval 1
-	push_r_args 1 3 0
-	update_a 2 4
-	update_a 0 2
-	push_a 3
-	update_a 2 4
-	update_a 0 2
-	pop_a 2
-			||	Match code, stacksizes A: 4 B: 0
-			||	[...|...]
-			||	print
-	push_a 3
-			||	toString;5
-			||	a
-	push_a 1
-	build e_StdString_dtoString;5 1 e_StdString_ntoString;5
-	buildh _Cons 2
-			||	c
-	push_a 4
-	push_a 4
-	push_a 4
-	update_a 3 2
-	build_r rSHOW 3 0 0 0
-	updatepop_a 0 8
-.d 1 0
-	rtn
-.o 4 0
-sWhile;78.75
-			||	Match code, stacksizes A: 3 B: 0
-			||	Building the contractum, Stacksizes A: 3 B: 0
+	jmp sc;897.165
+.o 3 0
+sPrintDown;86.83
+			||	Match code, stacksizes A: 2 B: 0
+			||	Building the contractum, Stacksizes A: 2 B: 0
 			||	nl
 	create
 			||	Remove unused stack elements
 	updatepop_a 0 1
 .d 1 0
-	jsr snl.9
+	jsr snl.12
 .o 1 0
 			||	++
-			||	c;886
+			||	c;897
+	create
+			||	")"
+	buildAC ")"
+	buildh ARRAY 1
+			||	Remove unused stack elements
+.d 2 0
+	jsr sc;897.165
+.o 1 0
+			||	++
+			||	c;897
+	create
+			||	"lcd("
+	buildAC "lcd("
+	buildh ARRAY 1
+			||	Remove unused stack elements
+.d 2 0
+	jsr sc;897.165
+.o 1 0
+	create
+			||	expr
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+			||	Remove unused stack elements
+			||	expr
+	buildh _Nil 0
+	update_a 0 6
+	pop_a 1
+.d 3 0
+	jsr s+.+.4
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+			||	Remove unused stack elements
+.d 3 0
+	jsr s+.+.4
+.o 1 0
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s+.+.4
+.o 2 0
+sLoop;83.80
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+			||	nl
+	create
+			||	Remove unused stack elements
+.d 1 0
+	jsr snl.12
+.o 1 0
+			||	++
+			||	c;897
 	create
 			||	"}"
 	buildAC "}"
 	buildh ARRAY 1
 			||	Remove unused stack elements
 .d 2 0
-	jsr sc;886.154
+	jsr sc;897.165
 .o 1 0
 			||	++
 			||	nl
 	create
 			||	Remove unused stack elements
 .d 1 0
-	jsr snl.9
+	jsr snl.12
 .o 1 0
 			||	++
 			||	unindent
@@ -1066,13 +1041,6 @@ sWhile;78.75
 .o 1 0
 			||	++
 			||	++
-			||	nl
-	create
-			||	Remove unused stack elements
-.d 1 0
-	jsr snl.9
-.o 1 0
-			||	++
 			||	indent
 	create
 			||	Remove unused stack elements
@@ -1080,171 +1048,28 @@ sWhile;78.75
 	jsr sindent.7
 .o 1 0
 			||	++
-			||	c;886
-	create
-			||	" {"
-	buildAC " {"
-	buildh ARRAY 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr sc;886.154
-.o 1 0
-			||	++
-			||	c;886
-	create
-			||	"while "
-	buildAC "while "
-	buildh ARRAY 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr sc;886.154
-.o 1 0
-	create
-			||	b
-	push_a 9
-	push_a 2
-	update_a 2 3
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-			||	Remove unused stack elements
-			||	b
-	buildh _Nil 0
-	update_a 0 11
-	pop_a 1
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-			||	s
-	push_a 7
-	push_a 2
-	update_a 2 3
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-			||	Remove unused stack elements
-			||	s
-	buildh _Nil 0
-	update_a 0 9
-	pop_a 1
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-	push_a 2
-	update_a 1 3
-	update_a 2 1
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	update_a 1 3
-	updatepop_a 0 2
-.d 3 0
-	jmp s+.+.4
-.o 3 0
-s:.;74.71
-			||	Match code, stacksizes A: 2 B: 0
-			||	Building the contractum, Stacksizes A: 2 B: 0
 			||	nl
 	create
 			||	Remove unused stack elements
 .d 1 0
-	jsr snl.9
+	jsr snl.12
 .o 1 0
-			||	++
-			||	c;886
+			||	c;897
 	create
-			||	";"
-	buildAC ";"
+			||	"void Loop() {"
+	buildAC "void Loop() {"
 	buildh ARRAY 1
 			||	Remove unused stack elements
 .d 2 0
-	jsr sc;886.154
-.o 1 0
-			||	++
-			||	++
-			||	nl
-	create
-			||	Remove unused stack elements
-.d 1 0
-	jsr snl.9
-.o 1 0
-			||	++
-			||	c;886
-	create
-			||	";"
-	buildAC ";"
-	buildh ARRAY 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr sc;886.154
+	jsr sc;897.165
 .o 1 0
 	create
-			||	s
-	push_a 5
 	push_a 2
-	update_a 2 3
+	update_a 1 3
+	update_a 2 1
 	update_a 0 2
 	pop_a 1
 			||	Remove unused stack elements
-			||	s
-	buildh _Nil 0
-	update_a 0 7
-	pop_a 1
 .d 3 0
 	jsr s+.+.4
 .o 1 0
@@ -1259,17 +1084,17 @@ s:.;74.71
 	jsr s+.+.4
 .o 1 0
 	create
-			||	t
-	push_a 5
+			||	stmt
+	push_a 6
 	push_a 2
 	update_a 2 3
 	update_a 1 2
 	update_a 0 1
 	pop_a 1
 			||	Remove unused stack elements
-			||	t
+			||	stmt
 	buildh _Nil 0
-	update_a 0 7
+	update_a 0 8
 	pop_a 1
 .d 3 0
 	jsr s+.+.4
@@ -1284,82 +1109,36 @@ s:.;74.71
 .d 3 0
 	jsr s+.+.4
 .o 1 0
+	create
+	push_a 2
 	update_a 1 3
-	updatepop_a 0 2
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+			||	Remove unused stack elements
+.d 3 0
+	jsr s+.+.4
+.o 1 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+			||	Remove unused stack elements
+.d 3 0
+	jsr s+.+.4
+.o 1 0
+	update_a 1 2
+	updatepop_a 0 1
 .d 3 0
 	jmp s+.+.4
-.o 8 0
-s<.;70.67
-			||	Match code, stacksizes A: 7 B: 0
-			||	Building the contractum, Stacksizes A: 7 B: 0
-			||	++
-			||	++
-			||	c;886
-	create
-			||	" < "
-	buildAC " < "
-	buildh ARRAY 1
-			||	Remove unused stack elements
-	update_a 1 6
-	updatepop_a 0 5
-.d 2 0
-	jsr sc;886.154
-.o 1 0
-	create
-			||	x
-	push_a 2
-	push_a 2
-	update_a 2 3
-	update_a 0 2
-	pop_a 1
-			||	Remove unused stack elements
-	update_a 2 3
-	update_a 1 2
-	updatepop_a 0 1
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	create
-			||	y
-	push_a 2
-	push_a 2
-	update_a 2 3
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-			||	Remove unused stack elements
-	update_a 2 3
-	update_a 1 2
-	updatepop_a 0 1
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-.d 2 0
-	jmp sbrac.10
-.desc disExpr;63.60 _hnf lisExpr;63.60 1 0 "isExpr;63"
+.desc dtoString;64.61 _hnf ltoString;64.61 1 0 "toString;64"
 .o 2 0
-lisExpr;63.60
-	update_a 1 0
-	create
-	update_a 0 2
-	pop_a 1
-.o 2 0
-eaisExpr;63.60
-	jsr_eval 0
-.o 2 0
-sisExpr;63.60
-			||	Match code, stacksizes A: 1 B: 0
-			||	Redirecting the root to: a
-	fill_a 0 1
+ltoString;64.61
 	pop_a 1
 .d 1 0
-	rtn
-.desc dtype;57.54 _hnf ltype;57.54 1 0 "type;57"
-.o 2 0
-ltype;57.54
-	pop_a 1
-.d 1 0
-	jsr eatype;57.54
+	jsr eatoString;64.61
 .o 1 0
 	push_a 0
 	buildh ARRAY 1
@@ -1367,17 +1146,58 @@ ltype;57.54
 .d 1 0
 	rtn
 .o 1 0
-eatype;57.54
+eatoString;64.61
+	jsr_eval 0
 .o 1 0
-stype;57.54
+stoString;64.61
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 	pop_a 1
-	buildAC "int"
+	buildAC "()"
+.d 1 0
+	rtn
+.desc dtype;63.60 _hnf ltype;63.60 1 0 "type;63"
+.o 2 0
+ltype;63.60
+	pop_a 1
+.d 1 0
+	jsr eatype;63.60
+.o 1 0
+	push_a 0
+	buildh ARRAY 1
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.o 1 0
+eatype;63.60
+.o 1 0
+stype;63.60
+			||	Match code, stacksizes A: 1 B: 0
+			||	Building the contractum, Stacksizes A: 1 B: 0
+	pop_a 1
+	buildAC "()"
+.d 1 0
+	rtn
+.desc disExpr;69.66 _hnf lisExpr;69.66 1 0 "isExpr;69"
+.o 2 0
+lisExpr;69.66
+	update_a 1 0
+	create
+	update_a 0 2
+	pop_a 1
+.o 2 0
+eaisExpr;69.66
+	jsr_eval 0
+.o 2 0
+sisExpr;69.66
+			||	Match code, stacksizes A: 1 B: 0
+			||	Redirecting the root to: a
+	fill_a 0 1
+	pop_a 1
 .d 1 0
 	rtn
 .o 5 0
-sshow.11
+sshow.14
 			||	Match code, stacksizes A: 4 B: 0
 	push_args 3 1 1
 	buildh _Nil 0
@@ -1399,64 +1219,21 @@ sshow.11
 	jsr_eval 0
 .d 2 0
 	jmp e_StdList_sreverse
-.o 2 0
-sbrac.10
-			||	Match code, stacksizes A: 1 B: 0
-			||	Building the contractum, Stacksizes A: 1 B: 0
-			||	c;886
-	create
-			||	")"
-	buildAC ")"
-	buildh ARRAY 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr sc;886.154
 .o 1 0
-			||	++
-			||	c;886
-	create
-			||	"("
-	buildAC "("
-	buildh ARRAY 1
-			||	Remove unused stack elements
-.d 2 0
-	jsr sc;886.154
-.o 1 0
-	create
-			||	e
-	push_a 3
-	push_a 2
-	update_a 2 3
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-			||	Remove unused stack elements
-			||	e
-	buildh _Nil 0
-	update_a 0 5
-	pop_a 1
-.d 3 0
-	jsr s+.+.4
-.o 1 0
-	update_a 1 2
-	updatepop_a 0 1
-.d 3 0
-	jmp s+.+.4
-.o 1 0
-snl.9
+snl.12
 			||	Match code, stacksizes A: 0 B: 0
 			||	Building the contractum, Stacksizes A: 0 B: 0
-			||	<lambda>[line:127];11;29
-	buildh d\;127;11;29.30 0
+			||	<lambda>[line:152];11;32
+	buildh d\;152;11;32.33 0
 	fillh dShow 1 1
 .d 1 0
 	rtn
-.desc d\;127;11;29.30 _hnf l\;127;11;29.30 1 0 "<lambda>[line:127];11;29"
+.desc d\;152;11;32.33 _hnf l\;152;11;32.33 1 0 "<lambda>[line:152];11;32"
 .o 2 0
-l\;127;11;29.30
+l\;152;11;32.33
 	pop_a 1
 .o 1 0
-ea\;127;11;29.30
+ea\;152;11;32.33
 	jsr_eval 0
 	repl_r_args 3 0
 			||	Match code, stacksizes A: 3 B: 0
@@ -1465,10 +1242,10 @@ ea\;127;11;29.30
 	push_a 2
 			||	toString;79
 			||	[...|...]
-			||	_f1
+			||	_f0
 			||	indent
 	push_a 2
-	build _ 1 n_f1.498
+	build _ 1 n_f0.510
 			||	'\n'
 	buildC '\n'
 	buildh _Cons 2
@@ -1483,14 +1260,14 @@ ea\;127;11;29.30
 	updatepop_a 0 7
 .d 1 0
 	rtn
-.n 1 _ ea_f1.498
+.n 1 _ ea_f0.510
 .o 1 0
-n_f1.498
+n_f0.510
 	push_node _cycle_in_spine 1
 .o 2 0
-ea_f1.498
+ea_f0.510
 .o 2 0
-s_f1.498
+s_f0.510
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 			||	*;9
@@ -1511,24 +1288,24 @@ s_f1.498
 sunindent.8
 			||	Match code, stacksizes A: 0 B: 0
 			||	Building the contractum, Stacksizes A: 0 B: 0
-			||	<lambda>[line:124];17;28
-	buildh d\;124;17;28.29 0
+			||	<lambda>[line:141];17;31
+	buildh d\;141;17;31.32 0
 	fillh dShow 1 1
 .d 1 0
 	rtn
-.desc d\;124;17;28.29 _hnf l\;124;17;28.29 1 0 "<lambda>[line:124];17;28"
+.desc d\;141;17;31.32 _hnf l\;141;17;31.32 1 0 "<lambda>[line:141];17;31"
 .o 2 0
-l\;124;17;28.29
+l\;141;17;31.32
 	pop_a 1
 .o 1 0
-ea\;124;17;28.29
+ea\;141;17;31.32
 	jsr_eval 0
 	repl_r_args 3 0
 			||	Match code, stacksizes A: 3 B: 0
-			||	_f0
+			||	_f1
 			||	indent
 	push_a 1
-	build _ 1 n_f0.497
+	build _ 1 n_f1.511
 			||	c
 	push_a 3
 	push_a 3
@@ -1538,14 +1315,14 @@ ea\;124;17;28.29
 	updatepop_a 0 7
 .d 1 0
 	rtn
-.n 1 _ ea_f0.497
+.n 1 _ ea_f1.511
 .o 1 0
-n_f0.497
+n_f1.511
 	push_node _cycle_in_spine 1
 .o 2 0
-ea_f0.497
+ea_f1.511
 .o 2 0
-s_f0.497
+s_f1.511
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 			||	one;11
@@ -1565,24 +1342,24 @@ s_f0.497
 sindent.7
 			||	Match code, stacksizes A: 0 B: 0
 			||	Building the contractum, Stacksizes A: 0 B: 0
-			||	<lambda>[line:121];15;27
-	buildh d\;121;15;27.28 0
+			||	<lambda>[line:138];15;30
+	buildh d\;138;15;30.31 0
 	fillh dShow 1 1
 .d 1 0
 	rtn
-.desc d\;121;15;27.28 _hnf l\;121;15;27.28 1 0 "<lambda>[line:121];15;27"
+.desc d\;138;15;30.31 _hnf l\;138;15;30.31 1 0 "<lambda>[line:138];15;30"
 .o 2 0
-l\;121;15;27.28
+l\;138;15;30.31
 	pop_a 1
 .o 1 0
-ea\;121;15;27.28
+ea\;138;15;30.31
 	jsr_eval 0
 	repl_r_args 3 0
 			||	Match code, stacksizes A: 3 B: 0
 			||	_f2
 			||	indent
 	push_a 1
-	build _ 1 n_f2.499
+	build _ 1 n_f2.512
 			||	c
 	push_a 3
 	push_a 3
@@ -1592,14 +1369,14 @@ ea\;121;15;27.28
 	updatepop_a 0 7
 .d 1 0
 	rtn
-.n 1 _ ea_f2.499
+.n 1 _ ea_f2.512
 .o 1 0
-n_f2.499
+n_f2.512
 	push_node _cycle_in_spine 1
 .o 2 0
-ea_f2.499
+ea_f2.512
 .o 2 0
-s_f2.499
+s_f2.512
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
 			||	one;11
@@ -1616,26 +1393,26 @@ s_f2.499
 .d 1 0
 	rtn
 .o 2 0
-sc;886.154
+sc;897.165
 			||	Match code, stacksizes A: 1 B: 0
 			||	Building the contractum, Stacksizes A: 1 B: 0
-			||	<lambda>[line:109];12;887
+			||	<lambda>[line:126];12;898
 			||	a
 	push_a 0
-	buildh d\;109;12;887.155 1
+	buildh d\;126;12;898.166 1
 	fillh dShow 1 2
 	pop_a 1
 .d 1 0
 	rtn
-.desc d\;109;12;887.155 _hnf l\;109;12;887.155 2 0 "<lambda>[line:109];12;887"
-.a 0 a\;109;12;887.155
+.desc d\;126;12;898.166 _hnf l\;126;12;898.166 2 0 "<lambda>[line:126];12;898"
+.a 0 a\;126;12;898.166
 .o 2 0
-l\;109;12;887.155
+l\;126;12;898.166
 	repl_args 1 1
 .o 2 0
-a\;109;12;887.155
+a\;126;12;898.166
 .o 2 0
-ea\;109;12;887.155
+ea\;126;12;898.166
 	jsr_eval 1
 	push_r_args 1 3 0
 	update_a 2 4
@@ -1671,26 +1448,26 @@ s+.+.4
 	update_a 0 3
 	pop_a 1
 			||	Building the contractum, Stacksizes A: 3 B: 0
-			||	<lambda>[line:15];13;128
+			||	<lambda>[line:15];13;139
 			||	f
 	push_a 1
 			||	g
 	push_a 1
-	buildh d\;15;13;128.125 2
+	buildh d\;15;13;139.136 2
 	fillh dShow 1 4
 	pop_a 3
 .d 1 0
 	rtn
-.desc d\;15;13;128.125 _hnf l\;15;13;128.125 3 0 "<lambda>[line:15];13;128"
-.a 0 ea\;15;13;128.125
+.desc d\;15;13;139.136 _hnf l\;15;13;139.136 3 0 "<lambda>[line:15];13;139"
+.a 0 ea\;15;13;139.136
 .o 2 0
-l\;15;13;128.125
+l\;15;13;139.136
 	repl_args 2 2
 .o 3 0
-ea\;15;13;128.125
+ea\;15;13;139.136
 	jsr_eval 0
 .o 3 0
-s\;15;13;128.125
+s\;15;13;139.136
 			||	Match code, stacksizes A: 3 B: 0
 			||	Building the contractum, Stacksizes A: 3 B: 0
 			||	AP
