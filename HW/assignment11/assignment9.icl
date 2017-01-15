@@ -31,6 +31,25 @@ instance type Bool where type a = "bool"
 instance type String where type a = "string"
 instance type () where type a = "()"
 
+class toString2 a where
+	toString2 :: a -> String
+
+instance toString2 Int where
+	toString2 a = toString a
+
+// instance toString2 Button where
+// 	toString2 a = toString a
+
+instance toString2 Bool where
+	toString2 True = "true"
+	toString2 False = "false"
+
+instance toString2 String where
+	toString2 a = "\"" +++ a +++ "\""
+
+instance toString2 () where
+	toString2 a = toString a
+
 instance toString () where toString _ = "()"
 
 instance toString Button where
@@ -43,7 +62,8 @@ instance toString Button where
 
 
 class aexpr v where
-	lit :: a -> v a Expr | type a
+	lit :: a -> v a Expr | type, toString2 a
+	millis :: v Int Expr
 	(+.) infixl 6 :: (v t p) (v t q) -> v t Expr | type, + t
 	(-.) infixl 6 :: (v t p) (v t q) -> v t Expr | type, - t
 	(*.) infixl 7 :: (v t p) (v t q) -> v t Expr | type, * t
@@ -87,6 +107,7 @@ class stmt v where
 	Loop :: (v a q) -> v () Stmt
 	Print :: (v a q) -> v () Stmt | type a
 	PrintReset :: v () Stmt
+
 :: Else = Else
 
 /*class lcd v where
@@ -95,8 +116,8 @@ class stmt v where
 */
 class var v where
 	(=.) infixr 2 :: (v t Upd) (v t p) -> v t Expr | type t & isExpr p
-	var :: t ((v t Upd) -> (v a p)) -> (v a p) | type t
-	var2 :: ((v t Upd) -> In t (v a p)) -> (v a p) | type t
+	var :: t ((v t Upd) -> (v a p)) -> (v a p) | type, toString2 t
+	var2 :: ((v t Upd) -> In t (v a p)) -> (v a p) | type, toString2 t
 
 :: In a b = In infix 0 a b
 
@@ -156,7 +177,8 @@ brac :: (Show a p) -> Show b q
 brac e = c "(" +.+ e +.+ c ")"
 
 instance aexpr Show where
-	lit a = c a
+	lit a = Show \c.{c & print = [toString2 a:c.print]}
+	millis = c "millis()" 
 	(+.) x y = brac (x +.+ c "+" +.+ y)
 	(-.) x y = brac (x +.+ c "-" +.+ y)
 	(*.) x y = brac (x +.+ c "*" +.+ y)
@@ -173,18 +195,18 @@ instance bexpr Show where
 instance stmt Show where
 	(:.) s t = s +.+ c ";" +.+ nl +.+ t +.+ c ";" +.+ nl
 	While b s = c "while " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ s 
-				+.+ unindent +.+ nl +.+ c "}" +.+ nl
+				+.+ unindent +.+ nl +.+ c ";}" +.+ nl
 	If b t else e = c "if " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ t 
-					+.+ unindent +.+ nl +.+ c "} else {" +.+ indent 
-					+.+ nl +.+ e +.+ unindent +.+ nl +.+ c "}" +.+ nl
-	SetUp stmt = setUp +.+ c "void setUp() {" +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl
-						 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
-						 +.+ c "}" +.+ nl
-	Loop stmt = c "void Loop() {"
+					+.+ unindent +.+ nl +.+ c ";} else {" +.+ indent 
+					+.+ nl +.+ e +.+ unindent +.+ nl +.+ c ";}" +.+ nl
+	SetUp stmt = setUp +.+ nl +.+ nl +.+ c "void setup() {" +.+ indent +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl +.+ nl
+						 +.+ stmt  +.+ unindent +.+ nl 
+						 +.+ c ";}" +.+ nl
+	Loop stmt = c "void loop() {"
 					 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
-					 +.+ c "}" +.+ nl
-	Print str = c "Print(" +.+ str +.+ c ")" +.+ nl
-	PrintReset = c "TODO" +.+ nl
+					 +.+ c ";}" +.+ nl
+	Print str = c "lcd.print( " +.+ str +.+ c ");" +.+ nl
+	PrintReset = c "lcd.setCursor(0, 0);" +.+ nl
 
 /*instance lcd Show where
 	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
@@ -194,10 +216,10 @@ instance stmt Show where
 instance var Show where
 	(=.) v e = v +.+ c " = " +.+ e
 	var x f = c (type x) +.+ c " " +.+ freshVar \v. v +.+
-				c " = " +.+ c x +.+ c ";" +.+ nl +.+ f v
+				c " = " +.+ (Show \c.{c & print = [toString2 x:c.print]}) +.+ c ";" +.+ nl +.+ f v
 	var2 f = freshVar \v. 
 				let (x In rest) = f v in c (type x) +.+ c " " +.+ v 
-									+.+ c " = " +.+ c x +.+ c ";" +.+ nl +.+ rest
+									+.+ c " = " +.+ (Show \c.{c & print = [toString2 x:c.print]}) +.+ c ";" +.+ nl +.+ rest
 									
 show :: (Show a p) -> [String] | type a
 show (Show f) = reverse (f s0).print
@@ -291,6 +313,7 @@ printreset = Eval \r s . (Jst (), {s & tstate.lcd1 = "", tstate.lcd2 = "", curso
 
 instance aexpr Eval where
 	lit a = rtrn a
+	millis = rtrn 0 //todo
 	(+.) x y = rtrn (+) <*.> x <*.> y
 	(-.) x y = rtrn (-) <*.> x <*.> y
 	(*.) x y = rtrn (*) <*.> x <*.> y
@@ -367,6 +390,7 @@ c1 a = Check \c.c
 
 instance aexpr Check where
 	lit a = c1 a
+	millis = c1 "no setup or loop here"
 	(+.) x y = c1 "No setup or loop here"
 	(-.) x y = c1 "No setup or loop here"
 	(*.) x y = c1 "No setup or loop here"
@@ -463,15 +487,19 @@ dinges :: *World -> *World
 dinges world = startEngine ((ChooseView ||- buttonTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal) world
 
 //START
-Start :: *World -> * World
-Start world = dinges world
+// Start :: *World -> * World
+// Start world = dinges world
 
-//Start = foldl (\a b. a +++ b) " " (show fac)
+Start = foldl (\a b. a +++ b) " " (show countDown)
+//Start = foldl (\a b. a +++ b) " " (check test)
 
 ////////////PROGRAMMING TIME !! ///////////////
+
+
 scoreCounter = 
 			var2 \teamOne . 0 In
 			var2 \teamTwo . 0 In
+			var2 \test . toString2 "test" In
 			SetUp (lit "do nothing") :.
 			Loop (
 				PrintReset :.
@@ -499,11 +527,13 @@ scoreCounter =
 countDown = 
  var2 \ minutes. 0 In
  var2 \ seconds. 0 In
+ var2 \ lastTime . 0 In
+ var2 \ stringssss . "tsets" In
  var2 \ start. False In
- SetUp ( lit 0 ) :.
+ SetUp ( lastTime =. millis ) :.
  Loop (
  	PrintReset :.
- 	While (~. start) (
+ 	If (~. start) (
  		// Set the time.
  		If (button Left) (
  			minutes =. minutes +. lit 1
@@ -515,23 +545,21 @@ countDown =
  			start =. lit True
  		) Else (lit "leeg") :.
  		Print (lit "minuten en seconden")
- 	) :.
+ 	) Else (
 
- 	If (lit True) ( // Seconde verstreken
- 		If (seconds ==. lit 0) (
- 			If (~. (minutes ==. lit 0)) (
- 				seconds =. lit 59 :.
- 				minutes =. minutes -. lit 1
- 			) Else (
- 				Print(lit "Time's up")
- 			)
- 		) Else (
- 			seconds =. seconds -. lit 1 :.
- 			Print(lit "Minuten en seconden")
- 		)
- 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt")
+	 	If ((lastTime -. millis) >=. lit 1000 ) ( // Seconde verstreken
+	 		lastTime =. millis :.
+	 		If (seconds ==. lit 0) (
+	 			If (~. (minutes ==. lit 0)) (
+	 				seconds =. lit 59 :.
+	 				minutes =. minutes -. lit 1
+	 			) Else (
+	 				Print(lit "Time's up")
+	 			)
+	 		) Else (
+	 			seconds =. seconds -. lit 1 :.
+	 			Print(lit "Minuten en seconden")
+	 		)
+	 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt")
+ 	)
  )
-
-
-//Start = foldl (\a b. a +++ b) " " (check test)
-
