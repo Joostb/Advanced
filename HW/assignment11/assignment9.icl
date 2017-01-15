@@ -1,11 +1,12 @@
 module assignment9
 
 import StdCleanTypes, StdMisc, StdList, StdInt, Data.Tuple, StdClass, iTasks._Framework.Generic, Text.JSON, Data.Functor, Control.Applicative, Data.Void
-from iTasks import always, hasValue, :: TaskValue(..), :: Task, :: Stability, :: TaskCont(..), :: Action, updateInformation, 
+from iTasks import always, ifValue, hasValue, :: TaskValue(..), :: Task, :: Stability, :: TaskCont(..), :: Action, updateInformation, 
 		viewInformation, class descr, instance descr String, :: UpdateOption, :: ViewOption(..), -||-, -||, ||-, startEngine, 
 		class Publishable, >>*, class TFunctor, instance TFunctor Task, class TApplicative, instance TApplicative Task, 
 		instance Publishable Task, Void, sharedStore, ::Shared, ::ReadWriteShared, Action, ::ActionOption, ::ActionName, upd,
-		updateSharedInformation, viewSharedInformation
+		updateSharedInformation, viewSharedInformation, class tune, <<@, instance tune ArrangeHorizontal, ArrangeHorizontal, 
+		:: ArrangeHorizontal, enterChoice, :: ChoiceOption
 from StdEnv import &&, ||
 import qualified iTasks
 import iTasks.API.Core.Types
@@ -409,16 +410,21 @@ buttonTask ::  Task TState
 buttonTask  = viewSharedInformation "BUTTONS" [] state
 							>>* [OnAction (Action "left" []) (always (upd (\s . {s & left = not s.left}) state ||- buttonTask )),OnAction (Action "right" []) (always (upd (\s . {s & right = not s.right}) state ||- buttonTask )),OnAction (Action "up" []) (always (upd (\s . {s & up = not s.up}) state ||- buttonTask )),OnAction (Action "down" []) (always (upd (\s . {s & down = not s.down}) state ||- buttonTask )),OnAction (Action "select" []) (always (upd (\s . {s & select = not s.select}) state ||- buttonTask ))]
 
-StartView :: Task [String]
-StartView = viewInformation "Start" [] ["Test"]
-				>>* [OnAction (Action "Start" []) (always (StartTask >>= \s . StepView s))]
+ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown"]
+				>>* [OnAction ActionOk (hasValue (\s . case s of 
+														"Score Counter" = StartView scoreCounter
+														"Countdown"		= StartView countDown))]
+
+StartView :: (Eval a b) -> Task [String]
+StartView f = viewInformation "Start" [] ["Test"]
+				>>* [OnAction (Action "Start" []) (always (StartTask f >>= \s . StepView s))]
 
 				
 StepView s1 = viewInformation "Start" [] "Test"
 				>>* [OnAction (Action "Step" []) (always (StepTask s1 >>= \s2 . StepView s2))]
 
 				
-StartTask = 'iTasks'.get state >>= \ts . (let s2 = (evalState scoreCounter ts) in 
+StartTask f = 'iTasks'.get state >>= \ts . (let s2 = (evalState f ts) in 
 											upd 
 											(\ts2 . {ts2 & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
 											state >>| return s2)
@@ -435,13 +441,11 @@ executeTask f = 'iTasks'.get state >>= \s . upd
 											state
 
 dinges :: *World -> *World
-dinges world = startEngine (StartView ||- buttonTask) world
+dinges world = startEngine ((ChooseView ||- buttonTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal) world
 
 //START
 Start :: *World -> * World
 Start world = dinges world
-
-// Start = check fac
 
 //Start = foldl (\a b. a +++ b) " " (show fac)
 
@@ -506,5 +510,5 @@ countDown =
  )
 
 
-Start = foldl (\a b. a +++ b) " " (check test)
+//Start = foldl (\a b. a +++ b) " " (check test)
 
