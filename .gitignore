@@ -1,4 +1,14 @@
+*.exe
+*.prj
+*.prp
+
 HW/assignment11/sapl/
 HW/assignment11/Clean System Files/
+HW/assignment11/assignment9-data/
 sapl/*
 Clean System Files/*
+
+Opdracht2/
+Opdracht2/sapl
+Opdracht2/Clean System Files/
+Opdracht2/assignment9-data/
