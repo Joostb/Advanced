@@ -466,7 +466,7 @@ StartView s = 	viewInformation "Options" [] "Select your option"
 
 
 RunTask (s1=:{tstate})
-		| not tstate.stop = (((viewInformation "wub" [] "wub" >>* [OnAction (Action "Back" []) (always (upd (\s . {s & stop = True}) state))]) ||- waitForTimer {hour=0, min=0, sec=0}) >>| StepTask s1) >>= \s2 . RunTask s2
+		| not tstate.stop = (((viewInformation "Running..." [] "Click back to go back" >>* [OnAction (Action "Back" []) (always (upd (\s . {s & stop = True}) state))]) ||- waitForTimer {hour=0, min=0, sec=0}) >>| StepTask s1) >>= \s2 . RunTask s2
 		| otherwise = upd (\s1 . {s1 & stop = False}) state >>= \ts . return {s1 & tstate=ts}
 
 				
