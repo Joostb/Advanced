@@ -84,7 +84,7 @@ class stmt v where
 	(:.) infixr 1 :: (v a p) (v b q) -> v b Stmt
 	SetUp :: (v a q) -> v () Stmt
 	Loop :: (v a q) -> v () Stmt
-	Print :: (v String q) -> v () Stmt
+	Print :: (v a q) -> v () Stmt | type a
 :: Else = Else
 
 /*class lcd v where
@@ -207,14 +207,22 @@ show (Show f) = reverse (f s0).print
 :: RW a = R | W a
 :: MB a = Jst a | Err String
 :: State =
-	{ map :: Map Int Dynamic
+	{ loop :: Eval () Stmt
+	, map :: Map Int Dynamic
 	, vars :: Int
 	, tstate :: TState
 	}
+	
+derive class iTask State
+derive class iTask Stmt
+derive class iTask Eval
+derive class iTask RW
+derive class iTask MB
 
 state0 :: TState -> State
 state0 ts =
-		{map = newMap
+		{loop = Loop(lit 0)
+		, map = newMap
 		, vars = 0
 		, tstate = ts
 		}
@@ -224,6 +232,17 @@ unEval (Eval f) = f
 	
 rtrn :: a -> Eval a p
 rtrn a = Eval \r s.(Jst a,s)
+
+rtrnbttn :: Button -> Eval Bool p
+rtrnbttn b = Eval \r s.(Jst (case b of
+								Left = s.tstate.left
+								Right = s.tstate.right
+								Up = s.tstate.up
+								Down = s.tstate.down
+								Select = s.tstate.select),s)
+
+rtrnloop :: (Eval a p) -> Eval () Stmt
+rtrnloop stmt = Eval \r s.(Jst (),{s & loop = Loop(stmt)})
 
 (>>-) infixl 1 :: (Eval a p) (a -> Eval b q) -> Eval b q
 (>>-) (Eval e) f = Eval \r s.case e R s of
@@ -242,6 +261,8 @@ rwvar n (W a) s
 = (Jst a,{s & map = put n (dynamic a) s.map})
 
 
+printstr :: String -> Eval () p
+printstr str = printlcd (fromString str)
 
 printlcd :: [Char] -> Eval () p
 printlcd str 
@@ -257,7 +278,7 @@ instance aexpr Eval where
 	(*.) x y = rtrn (*) <*.> x <*.> y
 	
 instance bexpr Eval where
-	button b = rtrn True //TODO, check if the button is pressed
+	button b = rtrnbttn b
 	(==.) x y = rtrn (==) <*.> x <*.> y
 	(&.) x y = rtrn (&&) <*.> x <*.> y
 	(|.) x y = rtrn (||) <*.> x <*.> y
@@ -269,8 +290,8 @@ instance stmt Eval where
 	If b t else e = b >>- \c.if c (t >>- \_.rtrn ()) (e >>- \_.rtrn ())
 	While b s = b >>- \c.if c (s :. While b s) (rtrn ())
 	SetUp stmt = stmt >>- \_. (rtrn ()) // een keer uitvoeren
-	Loop stmt = stmt >>- \_. (rtrn ()) //100000000000000 keer uitvoeren
-	Print stre = stre >>- \str. printlcd (fromString str)
+	Loop stmt = stmt >>- \_. (rtrnloop stmt) //100000000000000 keer uitvoeren
+	Print stre = stre >>- \str. printstr (toString str)
 	
 toStmt :: (Eval t p) -> Eval t Stmt
 toStmt (Eval f) = Eval f
@@ -299,6 +320,9 @@ eval2 (Eval f) s = case f R (state0 s) of
 				
 evalState :: (Eval a p) TState -> State
 evalState (Eval f) s = snd (f R (state0 s))
+
+evalLoop :: State -> State
+evalLoop (s=:{loop=(Eval f)}) = snd (f R s)
 
 :: Check a p = Check (CHECK -> CHECK)
 :: CHECK =
@@ -385,18 +409,37 @@ buttonTask ::  Task TState
 buttonTask  = viewSharedInformation "BUTTONS" [] state
 							>>* [OnAction (Action "left" []) (always (upd (\s . {s & left = not s.left}) state ||- buttonTask )),OnAction (Action "right" []) (always (upd (\s . {s & right = not s.right}) state ||- buttonTask )),OnAction (Action "up" []) (always (upd (\s . {s & up = not s.up}) state ||- buttonTask )),OnAction (Action "down" []) (always (upd (\s . {s & down = not s.down}) state ||- buttonTask )),OnAction (Action "select" []) (always (upd (\s . {s & select = not s.select}) state ||- buttonTask ))]
 
-executeTask f = ('iTasks'.get state >>= \s . upd 
-											(let s2 = (evalState f s) in \ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
-											state)
+StartView :: Task [String]
+StartView = viewInformation "Start" [] ["Test"]
+				>>* [OnAction (Action "Start" []) (always (StartTask >>= \s . StepView s))]
 
-testprog = Print (lit "hello world, i like money, lol xD i am so random")
+				
+StepView s1 = viewInformation "Start" [] "Test"
+				>>* [OnAction (Action "Step" []) (always (StepTask s1 >>= \s2 . StepView s2))]
+
+				
+StartTask = 'iTasks'.get state >>= \ts . (let s2 = (evalState scoreCounter ts) in 
+											upd 
+											(\ts2 . {ts2 & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
+											state >>| return s2)
+			
+								
+StepTask s1 = 'iTasks'.get state >>= \ts . (let s2 = (evalLoop {s1 & tstate = ts}) in 
+											upd 
+											(\ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
+											state >>| return s2
+											)		
+
+executeTask f = 'iTasks'.get state >>= \s . upd 
+											(let s2 = (evalState f s) in \ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
+											state
 
 dinges :: *World -> *World
-dinges world = startEngine (executeTask testprog ||- buttonTask) world
+dinges world = startEngine (StartView ||- buttonTask) world
 
 //START
-// Start :: *World -> * World
-// Start world = dinges world
+Start :: *World -> * World
+Start world = dinges world
 
 // Start = check fac
 
@@ -413,7 +456,7 @@ scoreCounter =
 					teamOne =. teamOne +. lit 1
 				)
 				Else (
-					If (button Left) (
+					If (button Right) (
 						teamTwo =. teamTwo +. lit 1
 					)
 					Else (
@@ -425,7 +468,7 @@ scoreCounter =
 						teamTwo =. lit 0 :.
 						teamOne =. lit 0
 					) Else (lit 0) :.
-				Print(lit "crash")
+				Print(teamOne)
 			)
 
 countDown = 
@@ -464,4 +507,4 @@ countDown =
  )
 
 
-Start = foldl (\a b. a +++ b) " " (check countDown)
+//Start = foldl (\a b. a +++ b) " " (check countDown)
