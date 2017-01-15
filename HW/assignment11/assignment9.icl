@@ -18,27 +18,24 @@ from Data.Map import :: Map, Bin, Tip, put, get, newMap
 from Data.List import union, removeMember, instance Functor []
 import qualified Data.List as List
 
-//class lit v :: a -> v a Expr | type a
 
 class type a | toString, TC a where
 	type :: a -> String
 
 :: Button = Select | Up | Left | Down | Right
-// :: Display a = D a 
 
 instance type Int where type a = "int"
 instance type Bool where type a = "bool"
 instance type String where type a = "string"
 instance type () where type a = "()"
 
+//Tostring2 print in arduinoC ready style:
+// True -> true, a string "sss" is printed with quotes.
 class toString2 a where
 	toString2 :: a -> String
 
 instance toString2 Int where
 	toString2 a = toString a
-
-// instance toString2 Button where
-// 	toString2 a = toString a
 
 instance toString2 Bool where
 	toString2 True = "true"
@@ -52,14 +49,13 @@ instance toString2 () where
 
 instance toString () where toString _ = "()"
 
+//Provides access to buttons in arduinoC
 instance toString Button where
 	toString Select = "keyVals[0]"
 	toString Up = "keyVals[1]"
 	toString Down = "keyVals[2]"
 	toString Right = "keyVals[3]"
 	toString Left = "keyVals[4]"
-
-
 
 class aexpr v where
 	lit :: a -> v a Expr | type, toString2 a
@@ -75,7 +71,6 @@ class bexpr v where
 	~. :: (v Bool p) -> v Bool Expr
 	(==.) infix 4 :: (v a p) (v a q) -> v Bool Expr | ==, type a
 	(<.) infix 4 :: (v a p) (v a q) -> v Bool Expr | <, Ord, type a
-
 	
 	(!=.) infix 4 :: (v a p) (v a q) -> v Bool Expr | ==, type a
 	(!=.) x y :==  ~. (x == y)
@@ -109,15 +104,9 @@ class stmt v where
 	PrintReset :: v () Stmt
 	Cmt :: (v String p) -> v () Stmt
 	Empty :: v () Stmt
-	
-	
 
 :: Else = Else
 
-/*class lcd v where
-	PrintUp :: (v String p) -> v () Stmt | isExpr p
-	PrintDown :: (v String p) -> v () Stmt | isExpr p
-*/
 class var v where
 	(=.) infixr 2 :: (v t Upd) (v t p) -> v t Expr | type t & isExpr p
 	var :: t ((v t Upd) -> (v a p)) -> (v a p) | type, toString2 t
@@ -128,7 +117,8 @@ class var v where
 
 	
 // -------------------------
-// SHOOOOOOOOW TIME!!!~!111!ONE1ELEVEN!!
+// Show view
+// Generates C that should run on the arduino
 // -------------------------
 
 :: Show a p = Show (SHOW -> SHOW)
@@ -166,6 +156,7 @@ indent = Show \c.{c & indent = inc c.indent}
 unindent :: Show a b
 unindent = Show \c.{c & indent = c.indent - one}
 
+// Setup to access the buttons
 setUp = c "#define KEY_COUNT 5" +.+ nl +.+ 
 		c "int keyLimits [KEY_COUNT+1] = {50, 190, 380, 555, 790, 1024};" +.+ nl +.+
 		c "bool keyVals [KEY_COUNT + 1] = {false, false, false, false, false};" +.+ nl +.+
@@ -203,7 +194,8 @@ instance stmt Show where
 	If b t else e = c "if " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ t 
 					+.+ unindent +.+ nl +.+ c ";} else {" +.+ indent 
 					+.+ nl +.+ e +.+ unindent +.+ nl +.+ c ";}" +.+ nl
-	SetUp stmt = setUp +.+ nl +.+ nl +.+ c "void setup() {" +.+ indent +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl +.+ nl
+	SetUp stmt = setUp +.+ nl +.+ nl +.+ c "void setup() {" +.+ indent +.+ nl 
+						 +.+ setFalse +.+ nl +.+ assignButtons +.+ nl +.+ nl
 						 +.+ stmt  +.+ unindent +.+ nl 
 						 +.+ c ";}" +.+ nl
 	Loop stmt = c "void loop() {"
@@ -213,11 +205,6 @@ instance stmt Show where
 	PrintReset = c "lcd.setCursor(0, 0);" +.+ nl
 	Cmt str = c "////" +.+ str +.+ nl
 	Empty = Show \c . c
-
-/*instance lcd Show where
-	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
-	PrintDown expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
-*/
 					
 instance var Show where
 	(=.) v e = v +.+ c " = " +.+ e
@@ -225,13 +212,14 @@ instance var Show where
 				c " = " +.+ (Show \c.{c & print = [toString2 x:c.print]}) +.+ c ";" +.+ nl +.+ f v
 	var2 f = freshVar \v. 
 				let (x In rest) = f v in c (type x) +.+ c " " +.+ v 
-									+.+ c " = " +.+ (Show \c.{c & print = [toString2 x:c.print]}) +.+ c ";" +.+ nl +.+ rest
+									+.+ c " = " +.+ (Show \c.{c & print = [toString2 x:c.print]}) 
+									+.+ c ";" +.+ nl +.+ rest
 									
 show :: (Show a p) -> [String] | type a
 show (Show f) = reverse (f s0).print
 
 //
-// EVAL
+// The view that generates the iTask thing
 //
 
 :: Eval a p = Eval ((RW a) State -> (MB a,State))
@@ -314,16 +302,6 @@ printchars [c:str] s
 printreset :: Eval () p
 printreset = Eval \r s . (Jst (), {s & tstate.lcd1 = "", tstate.lcd2 = "", cursor=0})
 
-//printstr :: String -> Eval () p
-//printstr str = printlcd (fromString str)
-
-//printlcd :: [Char] -> Eval () p
-//printlcd str 
-//	| length str > 32 	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (take 16 str2)})
-//	| length str >= 16	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (str2 ++ repeatn (16 - length str2) '-')})
-//	| otherwise			= Eval \r s.(Jst (), {s & tstate.lcd1 = toString (str ++ repeatn (16 - length str) '-')})
-
-
 instance aexpr Eval where
 	lit a = rtrn a
 	millis = rtrnmillis
@@ -343,8 +321,8 @@ instance stmt Eval where
 	(:.) s t = s >>- \_.toStmt t
 	If b t else e = b >>- \c.if c (t >>- \_.rtrn ()) (e >>- \_.rtrn ())
 	While b s = b >>- \c.if c (s :. While b s) (rtrn ())
-	SetUp stmt = stmt >>- \_. (rtrn ()) // een keer uitvoeren
-	Loop stmt = stmt >>- \_. (rtrnloop stmt) //100000000000000 keer uitvoeren
+	SetUp stmt = stmt >>- \_. (rtrn ()) // is ran once
+	Loop stmt = stmt >>- \_. (rtrnloop stmt) // is ran every step
 	Print stre = stre >>- \str. print str
 	PrintReset = printreset
 	Cmt str = rtrn ()
@@ -381,6 +359,11 @@ evalState (Eval f) t s = snd (f R (state0 t s))
 evalLoop :: State -> State
 evalLoop (s=:{loop=(Eval f)}) = snd (f R s)
 
+
+//
+// A view that checks if the language written is correct.
+// Checks if their is exactly one setup and on loop statement
+//
 :: Check a p = Check (CHECK -> CHECK)
 :: CHECK =
 	{ loops :: Int
@@ -396,12 +379,13 @@ sCheck =
 unCheck :: (Check a p) -> (CHECK -> CHECK)
 unCheck (Check f) = f 
 	
+// throws away the a, and does nothing
 c1 :: a -> Check b c1 | toString a
 c1 a = Check \c.c
 
+// Combines two statements
 (+.=.+) infixl 5 :: (Check a p) (Check b q) -> Check c1 r
 (+.=.+) (Check f) (Check g) = Check (g o f) 
-
 
 instance aexpr Check where
 	lit a = c1 a
@@ -417,7 +401,6 @@ instance bexpr Check where
 	~. x = c1 "No setup or loop here"
 	(==.) x y = c1 "No setup or loop here"
 	(<.) x y = c1 "No setup or loop here"
-	
 
 instance stmt Check where
 	(:.) s t =  s +.=.+ t
@@ -430,12 +413,6 @@ instance stmt Check where
 	Cmt str	= Check \c . c 
 	Empty 	= Check \c . c
 
-/*instance lcd Check where
-	PrintUp expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
-	PrintDown expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
-*/
-
-
 checkVar :: ((Check b q) -> (Check a p)) -> (Check a p)
 checkVar f =  Check \state . unCheck (f (c1 "bloeb")) state
 
@@ -444,20 +421,15 @@ instance var Check where
 	var x f =  checkVar \v. v +.=.+ f v
 	var2 f = checkVar \v. 
 			let (x In rest) = f v in  v +.=.+ rest
-
-
 									
 check :: (Check a p) -> [String] | type a
 check (Check f) = if ((checked.loops == 1) && (checked.setups == 1)) ["OKE"] ["NOT OK", " Number of loops ", toString checked.loops]
 					where checked = f sCheck
 
-fac = Loop (Print (lit "csdnfjsdf")) :. SetUp (lit "r")
-	
-  	 
-
-//ITASK DINGES
-
-// task :: 
+	 
+//
+// ITASK Setup and construction
+//
 
 :: TState = {up::Bool, down::Bool, right::Bool, left::Bool, select ::Bool, lcd1 :: String, lcd2 :: String, stop :: Bool, step :: Int}
 
@@ -507,13 +479,16 @@ dinges :: *World -> *World
 dinges world = startEngine ((ChooseView ||- buttonTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal) world
 
 //START
+// Multiple starts for the different views 
 Start :: *World -> * World
 Start world = dinges world
 
 //Start = foldl (\a b. a +++ b) " " (show countDown)
 //Start = foldl (\a b. a +++ b) " " (check test)
 
-////////////PROGRAMMING TIME !! ///////////////
+//////////// The desired programs ///////////////
+
+fac = Loop (Print (lit "csdnfjsdf")) :. SetUp (lit "r")
 
 
 scoreCounter = 
@@ -548,12 +523,12 @@ countDown =
  var2 \ minutes. 0 In
  var2 \ seconds. 0 In
  var2 \ lastTime . 0 In
- var2 \ stringssss . "tsets" In
  var2 \ start. False In
  SetUp ( 
  	lastTime =. millis :.
  	PrintReset
  ) :.
+
  Loop (
  	If (~. start) (
  		// Set the time.
@@ -590,6 +565,7 @@ countDown =
 	 				seconds =. lit 59 :.
 	 				minutes =. minutes -. lit 1
 	 			) Else (
+	 				PrintReset :.
 	 				Print(lit "Time's up")
 	 			)
 	 		) Else (
