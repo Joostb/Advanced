@@ -349,23 +349,23 @@ instance stmt Check where
 	PrintUp expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
 	PrintDown expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
 */
-					
+
+
+checkVar :: ((Check b q) -> (Check a p)) -> (Check a p)
+checkVar f =  Check \state . unCheck (f (c1 "bloeb")) state
+
 instance var Check where
 	(=.) v e =  c1 "No setup or loop here"
-	var x f =  c1 "No setup or loop here"
-	// var2 f =  c1 "No setup or loop here"
-	var x f = Check \v. v +.=.+ f v
-	var2 f = Check \q . let (x In rest) = f q in let q1 = Check rest in {setups =  q.setups, loops = q.loops} 
-
-	// {setups =  q.setups , loops =  q.loops} 
-	// 				where (x In rest) = f q
-	// 					 // c2 =  (Check rest) 
+	var x f =  checkVar \v. v +.=.+ f v
+	var2 f = checkVar \v. 
+			let (x In rest) = f v in  v +.=.+ rest
 
 
 									
 check :: (Check a p) -> [String] | type a
-check (Check f) = if ((checked.loops == 1) && (checked.setups == 1)) ["OKE"] ["NOT OK"]
+check (Check f) = if ((checked.loops == 1) && (checked.setups == 1)) ["OKE"] ["NOT OK", " Number of loops ", toString checked.loops]
 					where checked = f sCheck
+
 fac = Loop (Print (lit "csdnfjsdf")) :. SetUp (lit "r")
 	
   	 
@@ -403,7 +403,6 @@ dinges world = startEngine (executeTask testprog ||- buttonTask) world
 //Start = foldl (\a b. a +++ b) " " (show fac)
 
 ////////////PROGRAMMING TIME !! ///////////////
-
 scoreCounter = 
 			var2 \teamOne . 0 In
 			var2 \teamTwo . 0 In
@@ -464,4 +463,4 @@ countDown =
  )
 
 
-Start = foldl (\a b. a +++ b) " " (check countDown)
+Start = foldl (\a b. a +++ b) " " (check test)
