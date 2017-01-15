@@ -232,7 +232,9 @@ show (Show f) = reverse (f s0).print
 :: RW a = R | W a
 :: MB a = Jst a | Err String
 :: State =
-	{ loop :: Eval () Stmt
+	{ stime :: Time
+	, ctime :: Time
+	, loop :: Eval () Stmt
 	, map :: Map Int Dynamic
 	, vars :: Int
 	, cursor :: Int
@@ -245,9 +247,11 @@ derive class iTask Eval
 derive class iTask RW
 derive class iTask MB
 
-state0 :: TState -> State
-state0 ts =
-		{ loop = Loop(lit 0)
+state0 :: Time TState -> State
+state0 t ts =
+		{ stime = t
+		, ctime = t
+		, loop = Loop(lit 0)
 		, map = newMap
 		, vars = 0
 		, cursor = 0
@@ -270,6 +274,9 @@ rtrnbttn b = Eval \r s.(Jst (case b of
 
 rtrnloop :: (Eval a p) -> Eval () Stmt
 rtrnloop stmt = Eval \r s.(Jst (),{s & loop = Loop(stmt)})
+
+rtrnmillis :: Eval Int p
+rtrnmillis = Eval \r s.(Jst (let {sec=sec, min=m, hour=h} = (s.ctime - s.stime) in (sec + m*60 + h*60*60)*1000),s)
 
 (>>-) infixl 1 :: (Eval a p) (a -> Eval b q) -> Eval b q
 (>>-) (Eval e) f = Eval \r s.case e R s of
@@ -313,7 +320,7 @@ printreset = Eval \r s . (Jst (), {s & tstate.lcd1 = "", tstate.lcd2 = "", curso
 
 instance aexpr Eval where
 	lit a = rtrn a
-	millis = rtrn 0 //todo
+	millis = rtrnmillis
 	(+.) x y = rtrn (+) <*.> x <*.> y
 	(-.) x y = rtrn (-) <*.> x <*.> y
 	(*.) x y = rtrn (*) <*.> x <*.> y
@@ -350,18 +357,18 @@ instance var Eval where
 						, map = put s.vars (dynamic x) s.map
 						} 
 						
-eval :: (Eval a p) TState -> [String] | type a
-eval (Eval f) s = case fst (f R (state0 s)) of
+eval :: (Eval a p) Time TState -> [String] | type a
+eval (Eval f) t s = case fst (f R (state0 t s)) of
 				Jst a = [toString a,"\n"]
 				Err e = ["Error: ",e,"\n"]
 				
-eval2 :: (Eval a p) TState -> ([String], State) | type a
-eval2 (Eval f) s = case f R (state0 s) of
+eval2 :: (Eval a p) Time TState -> ([String], State) | type a
+eval2 (Eval f) t s = case f R (state0 t s) of
 				(Jst a, s) = ([toString a,"\n"], s)
 				(Err e, s) = (["Error: ",e,"\n"], s)
 				
-evalState :: (Eval a p) TState -> State
-evalState (Eval f) s = snd (f R (state0 s))
+evalState :: (Eval a p) Time TState -> State
+evalState (Eval f) t s = snd (f R (state0 t s))
 
 evalLoop :: State -> State
 evalLoop (s=:{loop=(Eval f)}) = snd (f R s)
@@ -453,10 +460,12 @@ buttonTask ::  Task TState
 buttonTask  = viewSharedInformation "BUTTONS" [] state
 							>>* [OnAction (Action "left" []) (always (upd (\s . {s & left = not s.left}) state ||- buttonTask )),OnAction (Action "right" []) (always (upd (\s . {s & right = not s.right}) state ||- buttonTask )),OnAction (Action "up" []) (always (upd (\s . {s & up = not s.up}) state ||- buttonTask )),OnAction (Action "down" []) (always (upd (\s . {s & down = not s.down}) state ||- buttonTask )),OnAction (Action "select" []) (always (upd (\s . {s & select = not s.select}) state ||- buttonTask ))]
 
-ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown"]
+ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown", "TimeTest"]
 				>>* [OnAction ActionOk (hasValue (\s . case s of 
 														"Score Counter" = return scoreCounter
-														"Countdown"		= return countDown))]
+														"Countdown"		= return countDown
+														"TimeTest"		= return (Loop (PrintReset :. Print(millis)))
+														))]
 				>>= \f. StartTask f >>= \s . StartView s
 				
 StartView :: State -> Task State
@@ -471,22 +480,18 @@ RunTask (s1=:{tstate})
 		| otherwise = upd (\s1 . {s1 & stop = False}) state >>= \ts . return {s1 & tstate=ts}
 
 				
-StartTask f = 'iTasks'.get state >>= \ts . (let s2 = (evalState f ts) in 
+StartTask f = 'iTasks'.get 'iTasks'.currentTime >>= \ct . 'iTasks'.get state >>= \ts . (let s2 = (evalState f ct ts) in 
 											upd 
 											(\ts2 . {ts2 & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
 											state >>| return s2)
 			
 		
 StepTask :: State -> Task State					
-StepTask s1 = 'iTasks'.get state >>= \ts . (let s2 = (evalLoop {s1 & tstate = ts}) in 
+StepTask s1 = 'iTasks'.get 'iTasks'.currentTime >>= \ct . 'iTasks'.get state >>= \ts . (let s2 = (evalLoop {s1 & ctime = ct, tstate = ts}) in 
 											upd 
 											(\ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
 											state >>| return s2
-											)		
-
-executeTask f = 'iTasks'.get state >>= \s . upd 
-											(let s2 = (evalState f s) in \ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
-											state
+											)
 
 dinges :: *World -> *World
 dinges world = startEngine ((ChooseView ||- buttonTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal) world
@@ -509,7 +514,7 @@ scoreCounter =
 			Loop (
 				PrintReset :.
 				If (button Left) (
-					teamOne =. teamOne +. lit "test"
+					teamOne =. teamOne +. lit 1
 				)
 				Else (
 					If (button Right) (
