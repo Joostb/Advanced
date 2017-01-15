@@ -68,7 +68,6 @@ class bexpr v where
 :: Upd = Upd
 :: Expr = Expr
 :: Stmt = Stmt
-:: Prgrm = Prgrm
 
 class isStmt a :: a -> a
 instance isStmt Stmt where isStmt a = a
@@ -79,18 +78,12 @@ class isExpr a :: a -> a
 instance isExpr Expr where isExpr a = a
 instance isExpr Upd where isExpr a = a
 
-class program v where
-	Program :: Define (v a p) Setup (v b q) Loop (v c r) -> (v () Prgrm) |
-						isStmt p & isStmt q & isStmt r
-:: Define = Define
-:: Setup = Setup
-:: Loop = Loop
-
-
 class stmt v where
 	If :: (v Bool p) (v a q) Else (v b r) -> v () Stmt | isExpr p
 	While :: (v Bool p) (v a q) -> v () Stmt | isExpr p
 	(:.) infixr 1 :: (v a p) (v b q) -> v b Stmt
+	SetUp :: (v a q) -> v () Stmt
+	Loop :: (v a q) -> v () Stmt
 	Print :: (v String q) -> v () Stmt
 :: Else = Else
 
@@ -173,19 +166,6 @@ instance bexpr Show where
 	~. x = brac ( c " ! " +.+ x)
 	(==.) x y = brac ( x +.+ c " == " +.+ y)
 	(<.) x y = brac ( x +.+ c " < " +.+ y)
-
-instance program Show where
-	Program Define a Setup b Loop d = printDefine a +.+ nl +.+
-									  printSetup b +.+ nl +.+
-									  printLoop d
-
-printDefine stmt = c "//define variables" +.+ nl +.+ stmt +.+ nl
-printSetup stmt = setUp +.+ nl +.+ c "void setup() {" +.+ indent +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl
-						 +.+ nl +.+ stmt  +.+ unindent +.+ nl 
-						 +.+ c "}" +.+ nl
-printLoop stmt = c "void loop() {"
-					 +.+ indent +.+ nl +.+ stmt  +.+ unindent +.+ nl 
-					 +.+ c "}" +.+ nl
 	
 
 instance stmt Show where
@@ -195,6 +175,12 @@ instance stmt Show where
 	If b t else e = c "if " +.+ b +.+ c " {" +.+ indent +.+ nl +.+ t 
 					+.+ unindent +.+ nl +.+ c "} else {" +.+ indent 
 					+.+ nl +.+ e +.+ unindent +.+ nl +.+ c "}" +.+ nl
+	SetUp stmt = setUp +.+ c "void setUp() {" +.+ nl +.+ setFalse +.+ nl +.+ assignButtons +.+ nl
+						 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
+						 +.+ c "}" +.+ nl
+	Loop stmt = c "void Loop() {"
+					 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
+					 +.+ c "}" +.+ nl
 	Print str = c "Print(" +.+ str +.+ c ")" +.+ nl
 
 /*instance lcd Show where
@@ -282,6 +268,8 @@ instance stmt Eval where
 	(:.) s t = s >>- \_.toStmt t
 	If b t else e = b >>- \c.if c (t >>- \_.rtrn ()) (e >>- \_.rtrn ())
 	While b s = b >>- \c.if c (s :. While b s) (rtrn ())
+	SetUp stmt = stmt >>- \_. (rtrn ()) // een keer uitvoeren
+	Loop stmt = stmt >>- \_. (rtrn ()) //100000000000000 keer uitvoeren
 	Print stre = stre >>- \str. printlcd (fromString str)
 	
 toStmt :: (Eval t p) -> Eval t Stmt
@@ -298,8 +286,7 @@ instance var Eval where
 			in rest R 	{s & vars = inc s.vars
 						, map = put s.vars (dynamic x) s.map
 						} 
-// eval_init :: Eval a b -> [String] | isPgrm b
-
+						
 eval :: (Eval a p) TState -> [String] | type a
 eval (Eval f) s = case fst (f R (state0 s)) of
 				Jst a = [toString a,"\n"]
@@ -311,7 +298,12 @@ eval2 (Eval f) s = case f R (state0 s) of
 				(Err e, s) = (["Error: ",e,"\n"], s)
 				
 evalState :: (Eval a p) TState -> State
-evalState (Eval f) s = snd (f R (state0 s))  	 
+evalState (Eval f) s = snd (f R (state0 s))
+
+
+fac = Loop (Print (lit "csdnfjsdf"))
+	
+  	 
 
 //ITASK DINGES
 
@@ -338,18 +330,31 @@ dinges :: *World -> *World
 dinges world = startEngine (executeTask testprog ||- buttonTask) world
 
 //START
-// Start :: *World -> * World
-// Start world = dinges world
+Start :: *World -> * World
+Start world = dinges world
 
 // Start = show fac
 
-fac = Program
-	Define (var2 \n . lit True In lit 4 )
-	Setup (
-		n =. 3
-	) 
-	Loop (
-		lit 4
-	)
+//Start = foldl (\a b. a +++ b) " " (show fac)
 
-Start = foldl (\a b. a +++ b) " " (show fac)
+
+
+// MEUK
+
+// imageTask = updateSharedInformation 
+// 				(Title "LEFT")
+// 				[ImageUpdate
+// 					id // server state (share) and view are identical
+// 					(\s v tags . myImage s) // generate image
+// 					(\s v . v) //update view when state changes
+// 					(\s v . s) // update state when view changes
+// 					(\_ s . Nothing) //no conflict handling
+// 					(\o n . n) //always select new state
+// 					] 
+// 					state
+
+// myImage :: TState -> Image TState
+// myImage s = 
+// 		overlay [(AtMiddleX,AtMiddleY)] [] [text font "left"]
+// 		(Just (circle (px 100.0)
+// 			<@< {onclick = \i s . {s & left = True}, local = False}))
