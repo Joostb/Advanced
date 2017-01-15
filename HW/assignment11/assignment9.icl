@@ -300,8 +300,65 @@ eval2 (Eval f) s = case f R (state0 s) of
 evalState :: (Eval a p) TState -> State
 evalState (Eval f) s = snd (f R (state0 s))
 
+:: Check a p = Check (CHECK -> CHECK)
+:: CHECK =
+	{ loops :: Int
+	, setups :: Int
+	}
+	
+sCheck :: CHECK
+sCheck =
+	{ loops = 0
+	, setups = 0
+	}
 
-fac = Loop (Print (lit "csdnfjsdf"))
+unCheck :: (Check a p) -> (CHECK -> CHECK)
+unCheck (Check f) = f 
+	
+c1 :: a -> Check b c1 | toString a
+c1 a = Check \c.c
+
+(+.=.+) infixl 5 :: (Check a p) (Check b q) -> Check c1 r
+(+.=.+) (Check f) (Check g) = Check (g o f) 
+
+
+instance aexpr Check where
+	lit a = c1 a
+	(+.) x y = c1 "No setup or loop here"
+	(-.) x y = c1 "No setup or loop here"
+	(*.) x y = c1 "No setup or loop here"
+	
+instance bexpr Check where
+	button b = c1 "No setup or loop here"
+	(&.) x y = c1 "No setup or loop here"
+	(|.) x y = c1 "No setup or loop here"
+	~. x = c1 "No setup or loop here"
+	(==.) x y = c1 "No setup or loop here"
+	(<.) x y = c1 "No setup or loop here"
+	
+
+instance stmt Check where
+	(:.) s t =  s +.=.+ t
+	While b s =  c1 "No setup or loop here"
+	If b t else e =  c1 "No setup or loop here"
+	SetUp stmt = Check \c.{c & setups = c.setups + 1}
+	Loop stmt = Check \c.{c & loops = c.loops + 1}
+	Print str = c1 "No setup or loop here"
+
+/*instance lcd Check where
+	PrintUp expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
+	PrintDown expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
+*/
+					
+instance var Check where
+	(=.) v e =  c1 "No setup or loop here"
+	var x f =  c1 "No setup or loop here"
+	var2 f =  c1 "No setup or loop here"
+									
+check :: (Check a p) -> [String] | type a
+check (Check f) = if ((checked.loops == 1) && (checked.setups == 1)) ["OKE"] ["NOT OK"]
+					where checked = f sCheck
+fac = Loop (Print (lit "csdnfjsdf")) :. SetUp (lit "r")
 	
   	 
 
@@ -330,31 +387,10 @@ dinges :: *World -> *World
 dinges world = startEngine (executeTask testprog ||- buttonTask) world
 
 //START
-Start :: *World -> * World
-Start world = dinges world
+// Start :: *World -> * World
+// Start world = dinges world
 
-// Start = show fac
+Start = check fac
 
 //Start = foldl (\a b. a +++ b) " " (show fac)
 
-
-
-// MEUK
-
-// imageTask = updateSharedInformation 
-// 				(Title "LEFT")
-// 				[ImageUpdate
-// 					id // server state (share) and view are identical
-// 					(\s v tags . myImage s) // generate image
-// 					(\s v . v) //update view when state changes
-// 					(\s v . s) // update state when view changes
-// 					(\_ s . Nothing) //no conflict handling
-// 					(\o n . n) //always select new state
-// 					] 
-// 					state
-
-// myImage :: TState -> Image TState
-// myImage s = 
-// 		overlay [(AtMiddleX,AtMiddleY)] [] [text font "left"]
-// 		(Just (circle (px 100.0)
-// 			<@< {onclick = \i s . {s & left = True}, local = False}))
