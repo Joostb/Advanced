@@ -353,7 +353,15 @@ instance stmt Check where
 instance var Check where
 	(=.) v e =  c1 "No setup or loop here"
 	var x f =  c1 "No setup or loop here"
-	var2 f =  c1 "No setup or loop here"
+	// var2 f =  c1 "No setup or loop here"
+	var x f = Check \v. v +.=.+ f v
+	var2 f = Check \q . let (x In rest) = f q in let q1 = Check rest in {setups =  q.setups, loops = q.loops} 
+
+	// {setups =  q.setups , loops =  q.loops} 
+	// 				where (x In rest) = f q
+	// 					 // c2 =  (Check rest) 
+
+
 									
 check :: (Check a p) -> [String] | type a
 check (Check f) = if ((checked.loops == 1) && (checked.setups == 1)) ["OKE"] ["NOT OK"]
@@ -390,7 +398,70 @@ dinges world = startEngine (executeTask testprog ||- buttonTask) world
 // Start :: *World -> * World
 // Start world = dinges world
 
-Start = check fac
+// Start = check fac
 
 //Start = foldl (\a b. a +++ b) " " (show fac)
 
+////////////PROGRAMMING TIME !! ///////////////
+
+scoreCounter = 
+			var2 \teamOne . 0 In
+			var2 \teamTwo . 0 In
+			SetUp (lit "do nothing") :.
+			Loop (
+				If (button Left) (
+					teamOne =. teamOne +. lit 1
+				)
+				Else (
+					If (button Left) (
+						teamTwo =. teamTwo +. lit 1
+					)
+					Else (
+						lit True
+					)
+				) :.
+
+				If (button Down) (
+						teamTwo =. lit 0 :.
+						teamOne =. lit 0
+					) Else (lit 0) :.
+				Print(lit "crash")
+			)
+
+countDown = 
+ var2 \ minutes. 0 In
+ var2 \ seconds. 0 In
+ var2 \ start. False In
+ SetUp ( lit 0 ) :.
+ Loop (
+ 	While (~. start) (
+ 		// Set the time.
+ 		If (button Left) (
+ 			minutes =. minutes +. lit 1
+ 		) Else (lit "Leeg") :.
+ 		If (button Right) (
+ 			seconds =. seconds +. lit 5
+ 		) Else (lit "Leeg") :.
+ 		If (button Select) (
+ 			start =. lit True
+ 		) Else (lit "leeg") :.
+ 		Print (lit "minuten en seconden")
+ 	) :.
+
+ 	If (lit True) ( // Seconde verstreken
+ 		If (seconds ==. lit 0) (
+ 			If (~. (minutes ==. lit 0)) (
+ 				seconds =. lit 59 :.
+ 				minutes =. minutes -. lit 1
+ 			) Else (
+ 				Print(lit "Time's up")
+ 			)
+ 		) Else (
+ 			seconds =. seconds -. lit 1 :.
+ 			Print(lit "Minuten en seconden")
+ 		)
+ 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt")
+ )
+
+
+Start = foldl (\a b. a +++ b) " " (check countDown)
