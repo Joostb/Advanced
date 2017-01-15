@@ -561,20 +561,29 @@ countDown =
  			minutes =. minutes +. lit 1
  		) Else (lit "Leeg") :.
  		If (button Right) (
- 			seconds =. seconds +. lit 5
+ 			seconds =. seconds +. lit 5:.
+ 			If (seconds >. lit 59) (
+ 				seconds =. lit 0 :.
+ 				minutes =. minutes +. lit 1
+ 			) Else (lit "leeg") 
  		) Else (lit "Leeg") :.
  		If (button Select) (
  			start =. lit True
  		) Else (lit "leeg") :.
+ 		If (button Up) (
+ 			seconds =. lit 0 :.
+ 			minutes =. lit 0
+ 		) Else (lit "leeg") :.
+ 		
+ 		
  		PrintReset :.
-
- 		Print (lit "m:s") :.
  		Print (minutes) :.
- 		Print (lit "-") :.
- 		Print (seconds)
+ 		Print (lit "m : ") :.
+ 		Print (seconds) :.
+ 		Print (lit "s") 
  	) Else (
 
-	 	If ((lastTime -. millis) >=. lit 1000 ) ( // Seconde verstreken
+	 	If ((millis -. lastTime) >=. lit 1000 ) ( // Seconde verstreken
 	 		lastTime =. millis :.
 	 		If (seconds ==. lit 0) (
 	 			If (~. (minutes ==. lit 0)) (
@@ -584,12 +593,17 @@ countDown =
 	 				Print(lit "Time's up")
 	 			)
 	 		) Else (
-	 			seconds =. seconds -. lit 1 :.
-	 			Print(lit "m:s") :.
-	 			Print(minutes) :.
-	 			Print(lit ":") :.
-	 			Print(seconds)
-	 		)
-	 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt")
+	 			seconds =. seconds -. lit 1
+	 		) :.
+	 		PrintReset :.
+ 			Print (minutes) :.
+ 			Print (lit "m : ") :.
+ 			Print (seconds) :.
+ 			Print (lit "s")
+	 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt"
+	 	) :.
+	 	
+	 	If (button Down) (start =. lit False)
+	 	Else (lit "leeg")
  	)
  )
