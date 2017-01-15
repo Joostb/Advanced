@@ -107,6 +107,10 @@ class stmt v where
 	Loop :: (v a q) -> v () Stmt
 	Print :: (v a q) -> v () Stmt | type a
 	PrintReset :: v () Stmt
+	Cmt :: (v String p) -> v () Stmt
+	Empty :: v () Stmt
+	
+	
 
 :: Else = Else
 
@@ -207,6 +211,8 @@ instance stmt Show where
 					 +.+ c ";}" +.+ nl
 	Print str = c "lcd.print( " +.+ str +.+ c ");" +.+ nl
 	PrintReset = c "lcd.setCursor(0, 0);" +.+ nl
+	Cmt str = c "////" +.+ str +.+ nl
+	Empty = Show \c . c
 
 /*instance lcd Show where
 	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
@@ -341,6 +347,8 @@ instance stmt Eval where
 	Loop stmt = stmt >>- \_. (rtrnloop stmt) //100000000000000 keer uitvoeren
 	Print stre = stre >>- \str. print str
 	PrintReset = printreset
+	Cmt str = rtrn ()
+	Empty = rtrn ()
 	
 toStmt :: (Eval t p) -> Eval t Stmt
 toStmt (Eval f) = Eval f
@@ -419,6 +427,8 @@ instance stmt Check where
 	Loop stmt = Check \c.{c & loops = c.loops + 1}
 	Print str = c1 "No setup or loop here"
 	PrintReset = c1 "No setup or loop here"
+	Cmt str	= Check \c . c 
+	Empty 	= Check \c . c
 
 /*instance lcd Check where
 	PrintUp expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
@@ -510,7 +520,7 @@ scoreCounter =
 			var2 \teamOne . 0 In
 			var2 \teamTwo . 0 In
 			var2 \test . toString2 "test" In
-			SetUp (lit "do nothing") :.
+			SetUp (Empty) :.
 			Loop (
 				PrintReset :.
 				If (button Left) (
