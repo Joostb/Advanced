@@ -495,7 +495,7 @@ scoreCounter =
 			var2 \teamOne . 0 In
 			var2 \teamTwo . 0 In
 			var2 \test . toString2 "test" In
-			SetUp (Empty) :.
+			SetUp (PrintReset) :.
 			Loop (
 				PrintReset :.
 				If (button Left) (
@@ -506,14 +506,14 @@ scoreCounter =
 						teamTwo =. teamTwo +. lit 1
 					)
 					Else (
-						lit True
+						Empty
 					)
 				) :.
 
 				If (button Down) (
 						teamTwo =. lit 0 :.
 						teamOne =. lit 0
-					) Else (lit 0) :.
+					) Else (Empty) :.
 				Print(teamOne) :.
 				Print(lit "-") :.
 				Print(teamTwo)
@@ -534,21 +534,21 @@ countDown =
  		// Set the time.
  		If (button Left) (
  			minutes =. minutes +. lit 1
- 		) Else (lit "Leeg") :.
+ 		) Else (Empty) :.
  		If (button Right) (
  			seconds =. seconds +. lit 5:.
  			If (seconds >. lit 59) (
  				seconds =. lit 0 :.
  				minutes =. minutes +. lit 1
- 			) Else (lit "leeg") 
- 		) Else (lit "Leeg") :.
+ 			) Else (Empty) 
+ 		) Else (Empty) :.
  		If (button Select) (
  			start =. lit True
- 		) Else (lit "leeg") :.
+ 		) Else (Empty) :.
  		If (button Up) (
  			seconds =. lit 0 :.
  			minutes =. lit 0
- 		) Else (lit "leeg") :.
+ 		) Else (Empty) :.
  		
  		
  		PrintReset :.
@@ -576,10 +576,10 @@ countDown =
  			Print (lit "m : ") :.
  			Print (seconds) :.
  			Print (lit "s")
-	 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt"
+	 	) Else (Empty
 	 	) :.
 	 	
 	 	If (button Down) (start =. lit False)
-	 	Else (lit "leeg")
+	 	Else (Empty)
  	)
  )
