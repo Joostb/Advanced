@@ -441,14 +441,22 @@ state = sharedStore "sharedState" {left = False, right = False, up = False, down
 buttonTask ::  Task TState
 buttonTask  = viewSharedInformation "BUTTONS" [] state
 							>>* [OnAction (Action "left" []) (always (upd (\s . {s & left = not s.left}) state ||- buttonTask )),OnAction (Action "right" []) (always (upd (\s . {s & right = not s.right}) state ||- buttonTask )),OnAction (Action "up" []) (always (upd (\s . {s & up = not s.up}) state ||- buttonTask )),OnAction (Action "down" []) (always (upd (\s . {s & down = not s.down}) state ||- buttonTask )),OnAction (Action "select" []) (always (upd (\s . {s & select = not s.select}) state ||- buttonTask ))]
+																										
+PrintView = viewInformation "Jebaited" [] ""
 
-ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown", "TimeTest"]
-				>>* [OnAction ActionOk (hasValue (\s . case s of 
-														"Score Counter" = return scoreCounter
-														"Countdown"		= return countDown
-														"TimeTest"		= return (Loop (PrintReset :. Print(millis)))
+
+ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown"]
+				>>* [OnAction (Action "Execute" []) (hasValue (\s . case s of 
+														"Score Counter" = (StartTask scoreCounter >>= \s . StartView s)
+														"Countdown"		= (StartTask countDown >>= \s . StartView s)
+														)),
+					OnAction (Action "Print" []) (hasValue (\s . case s of 
+														"Score Counter" = (PrintProgram scoreCounter >>| ChooseView)
+														"Countdown"		= (PrintProgram countDown >>| ChooseView)
 														))]
-				>>= \f. StartTask f >>= \s . StartView s
+
+						
+PrintProgram f = viewInformation "Program Print" [] (show f)
 				
 StartView :: State -> Task State
 StartView s = 	viewInformation "Options" [] "Select your option"
