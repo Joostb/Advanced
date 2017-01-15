@@ -86,6 +86,7 @@ class stmt v where
 	SetUp :: (v a q) -> v () Stmt
 	Loop :: (v a q) -> v () Stmt
 	Print :: (v a q) -> v () Stmt | type a
+	PrintReset :: v () Stmt
 :: Else = Else
 
 /*class lcd v where
@@ -183,6 +184,7 @@ instance stmt Show where
 					 +.+ nl +.+ indent +.+ stmt  +.+ unindent +.+ nl 
 					 +.+ c "}" +.+ nl
 	Print str = c "Print(" +.+ str +.+ c ")" +.+ nl
+	PrintReset = c "TODO" +.+ nl
 
 /*instance lcd Show where
 	PrintUp expr = c "lcd(" +.+ expr +.+ c ")" +.+ nl
@@ -211,6 +213,7 @@ show (Show f) = reverse (f s0).print
 	{ loop :: Eval () Stmt
 	, map :: Map Int Dynamic
 	, vars :: Int
+	, cursor :: Int
 	, tstate :: TState
 	}
 	
@@ -222,9 +225,10 @@ derive class iTask MB
 
 state0 :: TState -> State
 state0 ts =
-		{loop = Loop(lit 0)
+		{ loop = Loop(lit 0)
 		, map = newMap
 		, vars = 0
+		, cursor = 0
 		, tstate = ts
 		}
 	
@@ -262,14 +266,27 @@ rwvar n (W a) s
 = (Jst a,{s & map = put n (dynamic a) s.map})
 
 
-printstr :: String -> Eval () p
-printstr str = printlcd (fromString str)
+print :: a -> Eval () p | type a
+print a = Eval \r s.(Jst (), (printchars (fromString (toString a)) s))
 
-printlcd :: [Char] -> Eval () p
-printlcd str 
-	| length str > 32 	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (take 16 str2)})
-	| length str >= 16	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (str2 ++ repeatn (16 - length str2) '-')})
-	| otherwise			= Eval \r s.(Jst (), {s & tstate.lcd1 = toString (str ++ repeatn (16 - length str) '-')})
+printchars :: [Char] State -> State
+printchars [] s = s
+printchars [c:str] s 
+		| s.cursor < 16 = printchars str {s & tstate.lcd1 = s.tstate.lcd1 +++ (toString c), cursor = s.cursor + 1}
+		| s.cursor < 32 = printchars str {s & tstate.lcd2 = s.tstate.lcd2 +++ (toString c), cursor = s.cursor + 1}
+		| otherwise		= s
+
+printreset :: Eval () p
+printreset = Eval \r s . (Jst (), {s & tstate.lcd1 = "", tstate.lcd2 = "", cursor=0})
+
+//printstr :: String -> Eval () p
+//printstr str = printlcd (fromString str)
+
+//printlcd :: [Char] -> Eval () p
+//printlcd str 
+//	| length str > 32 	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (take 16 str2)})
+//	| length str >= 16	= let (str1, str2) = splitAt 16 str in Eval \r s.(Jst (), {s & tstate.lcd1 = toString str1, tstate.lcd2 = toString (str2 ++ repeatn (16 - length str2) '-')})
+//	| otherwise			= Eval \r s.(Jst (), {s & tstate.lcd1 = toString (str ++ repeatn (16 - length str) '-')})
 
 
 instance aexpr Eval where
@@ -292,7 +309,8 @@ instance stmt Eval where
 	While b s = b >>- \c.if c (s :. While b s) (rtrn ())
 	SetUp stmt = stmt >>- \_. (rtrn ()) // een keer uitvoeren
 	Loop stmt = stmt >>- \_. (rtrnloop stmt) //100000000000000 keer uitvoeren
-	Print stre = stre >>- \str. printstr (toString str)
+	Print stre = stre >>- \str. print str
+	PrintReset = printreset
 	
 toStmt :: (Eval t p) -> Eval t Stmt
 toStmt (Eval f) = Eval f
@@ -369,6 +387,7 @@ instance stmt Check where
 	SetUp stmt = Check \c.{c & setups = c.setups + 1}
 	Loop stmt = Check \c.{c & loops = c.loops + 1}
 	Print str = c1 "No setup or loop here"
+	PrintReset = c1 "No setup or loop here"
 
 /*instance lcd Check where
 	PrintUp expr = c1 "lcd(" +.=.+ expr +.=.+ c1 ")" +.=.+ nl
@@ -455,6 +474,7 @@ scoreCounter =
 			var2 \teamTwo . 0 In
 			SetUp (lit "do nothing") :.
 			Loop (
+				PrintReset :.
 				If (button Left) (
 					teamOne =. teamOne +. lit 1
 				)
@@ -471,7 +491,9 @@ scoreCounter =
 						teamTwo =. lit 0 :.
 						teamOne =. lit 0
 					) Else (lit 0) :.
-				Print(teamOne)
+				Print(teamOne) :.
+				Print(lit "-") :.
+				Print(teamTwo)
 			)
 
 countDown = 
@@ -480,6 +502,7 @@ countDown =
  var2 \ start. False In
  SetUp ( lit 0 ) :.
  Loop (
+ 	PrintReset :.
  	While (~. start) (
  		// Set the time.
  		If (button Left) (
