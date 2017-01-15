@@ -6,7 +6,7 @@ from iTasks import always, ifValue, hasValue, :: TaskValue(..), :: Task, :: Stab
 		class Publishable, >>*, class TFunctor, instance TFunctor Task, class TApplicative, instance TApplicative Task, 
 		instance Publishable Task, Void, sharedStore, ::Shared, ::ReadWriteShared, Action, ::ActionOption, ::ActionName, upd,
 		updateSharedInformation, viewSharedInformation, class tune, <<@, instance tune ArrangeHorizontal, ArrangeHorizontal, 
-		:: ArrangeHorizontal, enterChoice, :: ChoiceOption
+		:: ArrangeHorizontal, enterChoice, :: ChoiceOption, waitForTime, waitForTimer, repeatTask
 from StdEnv import &&, ||
 import qualified iTasks
 import iTasks.API.Core.Types
@@ -418,11 +418,11 @@ fac = Loop (Print (lit "csdnfjsdf")) :. SetUp (lit "r")
 
 // task :: 
 
-:: TState = {up::Bool, down::Bool, right::Bool, left::Bool, select ::Bool, lcd1 :: String, lcd2 :: String}
+:: TState = {up::Bool, down::Bool, right::Bool, left::Bool, select ::Bool, lcd1 :: String, lcd2 :: String, stop :: Bool, step :: Int}
 
 derive class iTask TState 
 
-state = sharedStore "sharedState" {left = False, right = False, up = False, down = False, select = False, lcd1 = "1234567890abcdef", lcd2 = "1234567890abcdef"}
+state = sharedStore "sharedState" {left = False, right = False, up = False, down = False, select = False, lcd1 = "1234567890abcdef", lcd2 = "1234567890abcdef", stop=False, step=0}
 
 
 buttonTask ::  Task TState
@@ -431,16 +431,20 @@ buttonTask  = viewSharedInformation "BUTTONS" [] state
 
 ChooseView = enterChoice "Choose a program" [] ["Score Counter", "Countdown"]
 				>>* [OnAction ActionOk (hasValue (\s . case s of 
-														"Score Counter" = StartView scoreCounter
-														"Countdown"		= StartView countDown))]
-
-StartView :: (Eval a b) -> Task [String]
-StartView f = viewInformation "Start" [] ["Test"]
-				>>* [OnAction (Action "Start" []) (always (StartTask f >>= \s . StepView s))]
-
+														"Score Counter" = return scoreCounter
+														"Countdown"		= return countDown))]
+				>>= \f. StartTask f >>= \s . StartView s
 				
-StepView s1 = viewInformation "Start" [] "Test"
-				>>* [OnAction (Action "Step" []) (always (StepTask s1 >>= \s2 . StepView s2))]
+StartView :: State -> Task State
+StartView s = 	viewInformation "Options" [] "Select your option"
+				>>* [OnAction (Action "Back" []) (always (ChooseView))
+					,OnAction (Action "Step" []) (always (StepTask s >>= \s2 . StartView s2))
+					,OnAction (Action "Run" []) (always (RunTask s >>= \s2 . StartView s2))]
+
+
+RunTask (s1=:{tstate})
+		| not tstate.stop = (((viewInformation "wub" [] "wub" >>* [OnAction (Action "Back" []) (always (upd (\s . {s & stop = True}) state))]) ||- waitForTimer {hour=0, min=0, sec=0}) >>| StepTask s1) >>= \s2 . RunTask s2
+		| otherwise = upd (\s1 . {s1 & stop = False}) state >>= \ts . return {s1 & tstate=ts}
 
 				
 StartTask f = 'iTasks'.get state >>= \ts . (let s2 = (evalState f ts) in 
@@ -448,7 +452,8 @@ StartTask f = 'iTasks'.get state >>= \ts . (let s2 = (evalState f ts) in
 											(\ts2 . {ts2 & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
 											state >>| return s2)
 			
-								
+		
+StepTask :: State -> Task State					
 StepTask s1 = 'iTasks'.get state >>= \ts . (let s2 = (evalLoop {s1 & tstate = ts}) in 
 											upd 
 											(\ts . {ts & lcd1 = s2.tstate.lcd1, lcd2 = s2.tstate.lcd2}) 
