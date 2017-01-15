@@ -492,10 +492,10 @@ dinges :: *World -> *World
 dinges world = startEngine ((ChooseView ||- buttonTask <<@ ArrangeHorizontal) <<@ ArrangeHorizontal) world
 
 //START
-// Start :: *World -> * World
-// Start world = dinges world
+Start :: *World -> * World
+Start world = dinges world
 
-Start = foldl (\a b. a +++ b) " " (show countDown)
+//Start = foldl (\a b. a +++ b) " " (show countDown)
 //Start = foldl (\a b. a +++ b) " " (check test)
 
 ////////////PROGRAMMING TIME !! ///////////////
@@ -509,7 +509,7 @@ scoreCounter =
 			Loop (
 				PrintReset :.
 				If (button Left) (
-					teamOne =. teamOne +. lit 1
+					teamOne =. teamOne +. lit "test"
 				)
 				Else (
 					If (button Right) (
@@ -535,9 +535,11 @@ countDown =
  var2 \ lastTime . 0 In
  var2 \ stringssss . "tsets" In
  var2 \ start. False In
- SetUp ( lastTime =. millis ) :.
+ SetUp ( 
+ 	lastTime =. millis :.
+ 	PrintReset
+ ) :.
  Loop (
- 	PrintReset :.
  	If (~. start) (
  		// Set the time.
  		If (button Left) (
@@ -549,7 +551,12 @@ countDown =
  		If (button Select) (
  			start =. lit True
  		) Else (lit "leeg") :.
- 		Print (lit "minuten en seconden")
+ 		PrintReset :.
+
+ 		Print (lit "m:s") :.
+ 		Print (minutes) :.
+ 		Print (lit "-") :.
+ 		Print (seconds)
  	) Else (
 
 	 	If ((lastTime -. millis) >=. lit 1000 ) ( // Seconde verstreken
@@ -563,7 +570,10 @@ countDown =
 	 			)
 	 		) Else (
 	 			seconds =. seconds -. lit 1 :.
-	 			Print(lit "Minuten en seconden")
+	 			Print(lit "m:s") :.
+	 			Print(minutes) :.
+	 			Print(lit ":") :.
+	 			Print(seconds)
 	 		)
 	 	) Else ( lit "er is geen seconden verstrken, dus niks gebeurt")
  	)
